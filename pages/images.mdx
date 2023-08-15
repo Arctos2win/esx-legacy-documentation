@@ -1,0 +1,86 @@
+import {Tab, Tabs} from "nextra/components";
+
+## Getting started
+Before you can start using the Image API, you need to create an account and get an API key.
+You can do this by signing up at [Fivemanage](https://www.fivemanage.com).
+
+Login to your account and go to the [Images page](https://www.fivemanage.com/dashbaord/images).
+
+Create a new token by clicking the "Create token" button. You will use this token to authenticate with the API.
+
+## Uploading an image
+If you wish to upload an image to the Image API, you can do so by sending a POST request to the https://api.fivemanage.com/api/image endpoint.
+
+### General
+
+#### Headers
+You need to send an `Authorization` header with your API key.
+
+#### Query parameters
+You can also send your API key as a query parameter `?apiKey=`. This is useful if you are using the Image API in a browser.
+
+#### Body
+The body of the request should be a form-data object with a file named `image`.
+
+### Examples
+```js
+const axios = require('axios');
+const fs = require('fs');
+
+const apiKey = 'YOUR_API_TOKEN';
+const url = 'https://api.fivemanage.com/api/image';
+
+const formData = new FormData();
+
+formData.append('image', fs.createReadStream('image.png'));
+
+axios.post(url, formData, {
+    headers: {
+        Authorization: apiKey,
+    }
+}).then(res => {
+    console.log(res.data.url);
+}).catch(err => {
+    console.error(err);
+});
+```
+
+
+### FiveM
+
+There are a few ways to upload an image to the Image API. The easiest way is to use [Screenshot Basic](https://github.com/citizenfx/screenshot-basic).
+
+#### Screenshot Basic
+
+<Tabs items={['Lua']}>
+    <Tab>
+        ##### Using headers
+        ```lua
+        exports['screenshot-basic']:requestScreenshotUpload('https://api.fivemanage.com/api/image',
+        'image',
+        {
+            headers = {
+                Authorization = "YOUR_API_TOKEN"
+            }
+        },
+        function(data)
+            local resp = json.decode(data)
+            if resp then
+                print(resp.url)
+            end
+        end)
+        ```
+
+        ##### Using query parameters
+        ```lua
+        exports['screenshot-basic']:requestScreenshotUpload('https://api.fivemanage.com/api/image?apiKey=YOUR_API_TOKEN', 'image', function(data)
+            local resp = json.decode(data)
+            if resp then
+                print(resp.url)
+            end
+        end)
+        ```
+    </Tab>
+</Tabs>
+
+

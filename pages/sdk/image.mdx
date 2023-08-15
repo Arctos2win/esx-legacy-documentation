@@ -1,0 +1,31 @@
+### Client Exports
+```lua
+local imageData = exports.fivemanage_lib:takeImage()
+
+-- With metadata
+
+local imageData = exports.fivemanage_lib:takeImage({
+    name = "My image",
+    description = "This is my image",
+    -- or any other field you want
+})
+
+print(image.url)
+```
+
+### Server Exports
+```lua
+local imageData = exports.fivemanage_lib:takeServerImage(src)
+
+-- With metadata
+
+local imageData = exports.fivemanage_lib:takeServerImage(src, {
+    name = "My image",
+    description = "This is my image",
+    -- or any other field you want
+})
+
+print(image.url)
+```
+
+

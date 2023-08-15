@@ -1,0 +1,15 @@
+{
+  "index": "Introduction",
+  "images": "Images",
+  "sdk": "Fivemanage SDK for FiveM",
+  "about": {
+    "title": "About",
+    "type": "page"
+  },
+  "contact": {
+    "title": "Contact ↗",
+    "type": "page",
+    "href": "https://discord.gg/wUgAGHnucZ",
+    "newWindow": true
+  }
+}
