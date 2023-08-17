@@ -44,6 +44,11 @@ function ThemedImage() {
 
 
 const config: DocsThemeConfig = {
+
+  primaryHue: {
+    light: 29,
+    dark:29,
+  },
   
   logo: ThemedImage,
 
