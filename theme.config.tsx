@@ -3,11 +3,13 @@ import { DocsThemeConfig } from 'nextra-theme-docs'
 import { useTheme } from 'next-themes'
 import { useState, useEffect } from 'react'
 
+//probably needs to be rewritten better
 function ThemedImage() {
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   var src
-
+  
+//This is needed to avoid hydration error
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -24,6 +26,7 @@ function ThemedImage() {
           backgroundImage: `url('https://media.discordapp.net/attachments/1141377366589976747/1141377486089896027/dark.png?width=593&height=593')`, 
           backgroundRepeat:  "no-repeat", 
           backgroundSize: '120px',
+          //doesn't actually suppress anything dunno why
         }} suppressHydrationWarning = {true}> ESX Documentation</div>
       break
     case 'dark':
@@ -59,10 +62,10 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: 'https://github.com/esx-framework/docs-rewrite/',
   footer: {
-    text:
+    text: //TODO: ask if more legal stuff is needed
       <span>
            {new Date().getFullYear()} ©{' '}
-          <a href="https://www.esx-framework.org/" target="_blank">
+          <a href="https://www.esx-framework.org/" target="_blank"> 
             ESX Framework
           </a>
         </span>
@@ -90,7 +93,7 @@ const config: DocsThemeConfig = {
         },
       ],
       additionalLinkTags : [
-        {
+        { //can't understand how this pathing works so links needed
           rel: 'icon',
           href: 'https://media.discordapp.net/attachments/1141377366589976747/1141617235752919040/favicon.png?width=320&height=320',
         },
