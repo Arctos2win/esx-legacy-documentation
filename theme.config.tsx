@@ -44,21 +44,20 @@ function ThemedImage() {
 
 
 const config: DocsThemeConfig = {
-
-  primaryHue: {
+  
+  primaryHue : {
     light: 29,
     dark:29,
   },
-  
   logo: ThemedImage,
 
   project: {
-    link: 'https://google.com',
+    link: 'https://github.com/esx-framework',
   },
   chat: {
-    link: 'https://discord.com',
+    link: 'https://discord.esx-framework.org',
   },
-  docsRepositoryBase: 'https://github.com/fivemanage/docs',
+  docsRepositoryBase: 'https://github.com/esx-framework/docs-rewrite/',
   footer: {
     text:
       <span>
@@ -75,15 +74,11 @@ const config: DocsThemeConfig = {
       openGraph: {
         type: 'website',
         locale: 'en_US',
-        url: 'https://docs.fivemanage.com',
+        url: 'https://documentation.esx-framework.org',
         title: 'ESX Documentation',
         description: 'ESX Documentation',
       },
-      twitter: {
-        handle: '@fivemanage',
-        site: '@fivemanage',
-        cardType: 'summary_large_image',
-      },
+
       additionalMetaTags: [
         {
             name: 'viewport',
@@ -91,13 +86,13 @@ const config: DocsThemeConfig = {
         },
         {
             name: 'keywords',
-            content: 'fivemanage, docs, documentation, fivemanage docs, fivemanage documentation, fivem analytics, fivem, fivem server, fivem server analytics, fivem server management, fivem server monitoring, fivem server monitoring, fivem server management',
+            content: 'ESX, docs, documentation, ESX docs, ESX documentation, fivem documentation, fivem, fivem server, ESX framework, fivem server management, fivem franework, fivem server monitoring, fivem server management',
         },
       ],
       additionalLinkTags : [
         {
           rel: 'icon',
-          href: 'https://media.discordapp.net/attachments/989963898570551296/1141265486902997044/esx.e214a7a0-removebg-preview.png?width=732&height=275',
+          href: 'https://media.discordapp.net/attachments/1141377366589976747/1141617235752919040/favicon.png?width=320&height=320',
         },
       ]
     }
@@ -105,4 +100,3 @@ const config: DocsThemeConfig = {
 }
 
 export default config
-
