@@ -22,22 +22,22 @@ function ThemedImage() {
       src = <div 
         style={{
           paddingLeft: '130px', 
-          lineHeight: '118px', 
+          lineHeight: '100px', 
           backgroundImage: `url('https://media.discordapp.net/attachments/1141377366589976747/1141377486089896027/dark.png?width=593&height=593')`, 
           backgroundRepeat:  "no-repeat", 
-          backgroundSize: '120px',
+          backgroundSize: '100px',
           //doesn't actually suppress anything dunno why
-        }} suppressHydrationWarning = {true}> ESX Documentation</div>
+        }} suppressHydrationWarning = {true}>⠀</div>
       break
     case 'dark':
       src = <div 
         style={{
           paddingLeft: '130px', 
-          lineHeight: '118px', 
+          lineHeight: '100px', 
           backgroundImage: `url('https://media.discordapp.net/attachments/989963898570551296/1141297556555579443/white-800x800.png?width=593&height=593')`, 
           backgroundRepeat:  "no-repeat", 
-          backgroundSize: '120px',
-        }} suppressHydrationWarning = {true}> ESX Documentation</div>
+          backgroundSize: '100px',
+        }} suppressHydrationWarning = {true}>⠀</div>
       
       break
   }
@@ -66,7 +66,7 @@ const config: DocsThemeConfig = {
       <span>
            {new Date().getFullYear()} ©{' '}
           <a href="https://www.esx-framework.org/" target="_blank"> 
-            ESX Framework
+            ESX Framework - Powered by Oxygenserver
           </a>
         </span>
   },
@@ -89,7 +89,7 @@ const config: DocsThemeConfig = {
         },
         {
             name: 'keywords',
-            content: 'ESX, docs, documentation, ESX docs, ESX documentation, fivem documentation, fivem, fivem server, ESX framework, fivem server management, fivem franework, fivem server monitoring, fivem server management',
+            content: 'ESX, docs, documentation, ESX docs, ESX documentation, fivem documentation, fivem, fivem server, ESX framework, fivem server management, fivem franework, fivem server tutorial, fivem server management',
         },
       ],
       additionalLinkTags : [

@@ -1,11 +1,7 @@
 {
   "index": "Introduction",
-  "images": "Images",
-  "sdk": "Fivemanage SDK for FiveM",
-  "about": {
-    "title": "About",
-    "type": "page"
-  },
+  "get_started": "Get Started",
+  "esx_core": "ESX Core",
   "contact": {
     "title": "Hosting",
     "type": "page",
