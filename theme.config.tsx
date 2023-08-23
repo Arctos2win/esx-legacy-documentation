@@ -22,7 +22,8 @@ function ThemedImage() {
       src = <div 
         style={{
           paddingLeft: '130px', 
-          lineHeight: '100px', 
+          lineHeight: '100px',
+          height: '100px',
           backgroundImage: `url('https://media.discordapp.net/attachments/1141377366589976747/1141377486089896027/dark.png?width=593&height=593')`, 
           backgroundRepeat:  "no-repeat", 
           backgroundSize: '100px',
@@ -33,7 +34,8 @@ function ThemedImage() {
       src = <div 
         style={{
           paddingLeft: '130px', 
-          lineHeight: '100px', 
+          lineHeight: '100px',
+          height: '100px',
           backgroundImage: `url('https://media.discordapp.net/attachments/989963898570551296/1141297556555579443/white-800x800.png?width=593&height=593')`, 
           backgroundRepeat:  "no-repeat", 
           backgroundSize: '100px',
