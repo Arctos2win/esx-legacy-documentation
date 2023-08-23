@@ -28,7 +28,7 @@ function ThemedImage() {
           backgroundRepeat:  "no-repeat", 
           backgroundSize: '100px',
           //doesn't actually suppress anything dunno why
-        }} suppressHydrationWarning = {true}>⠀</div>
+        }} suppressHydrationWarning = {true}></div>
       break
     case 'dark':
       src = <div 
@@ -39,7 +39,7 @@ function ThemedImage() {
           backgroundImage: `url('https://media.discordapp.net/attachments/989963898570551296/1141297556555579443/white-800x800.png?width=593&height=593')`, 
           backgroundRepeat:  "no-repeat", 
           backgroundSize: '100px',
-        }} suppressHydrationWarning = {true}>⠀</div>
+        }} suppressHydrationWarning = {true}></div>
       
       break
   }
