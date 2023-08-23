@@ -1,5 +1,11 @@
 {
     "index": "introduction",
     "get_started": "Get started"
-    
+    "contact": {
+        "title": "Hosting",
+        "type": "page",
+        "href": "https://www.oxygenserv.com/en/",
+        "newWindow": true
+      }
 }
+
