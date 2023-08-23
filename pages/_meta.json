@@ -1,11 +1,5 @@
 {
-  "index": "Introduction",
-  "get_started": "Get Started",
-  "esx_core": "ESX Core",
-  "contact": {
-    "title": "Hosting",
-    "type": "page",
-    "href": "https://www.oxygenserv.com/en/",
-    "newWindow": true
-  }
+    "index": "introduction",
+    "get_started": "Get started"
+    
 }
