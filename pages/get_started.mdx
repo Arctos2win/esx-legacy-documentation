@@ -1,12 +1,30 @@
 import {DsButton} from 'components/button'
 
-<div style = {{fontSize: '30px', fontWeight: 'bold', textAlign: 'center'}}>Get started</div>
+<div style = {{fontSize: '40px', fontWeight: 'bold', textAlign: 'center'}}>Get started</div>
 
 Get started with ESX and server development.
 
 
 ## Installation guide                                                                              
 Is this the first time you are creating a server? don't worry, you can follow [The installation guide](get_started/install) to find out how to create a server and install ESX.
+
+## Use ESX in your resources
+if you want to use the ESX Framework to create your resources, there are two ways to get advantage of ESX
+
+- If the resource is intended only for ESX :
+
+    Import ESX Object in your `fxmanifest.lua` file:
+    ```lua
+    shared_script '@es_extended/imports.lua'
+    ```
+---
+
+- If the resource is inteded to be multi framework:
+
+    Add the export to your resource file:
+    ```lua
+    ESX = exports["es_extended"]:getSharedObject()'
+    ```
 
 ## Troubleshooting
 Are you having issue with a resource or your server? you can follow [The troubleshooting guide](get_started/troubleshoot) to look at the most commons problems and find out the soulution

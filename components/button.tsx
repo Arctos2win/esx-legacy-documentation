@@ -33,13 +33,13 @@ export const DsButton = () => (
   <button
     type="button"
     style = {{
-      backgroundImage: `url('https://media.discordapp.net/attachments/1141377366589976747/1142084912770449499/dslogo1.jpg?width=593&height=593')`, 
-      backgroundColor: 'white',
-      backgroundRepeat:  "no-repeat", 
+      backgroundImage: `url('https://cdn.discordapp.com/attachments/989963898570551296/1144160836319985745/dslogo1-removebg-preview.png')`, 
+      backgroundRepeat:  "no-repeat",
       backgroundSize: '50px',
       paddingLeft: '50px',
       paddingRight: '10px',
-      lineHeight: '50px',
+      lineHeight: '50px', 
+      backgroundColor: 'white',
       
 
       fontSize: '18px',
@@ -52,7 +52,7 @@ export const DsButton = () => (
     onClick={(e) => {
       e.preventDefault();
       // window.location.href=url;
-      window.open('https://discord.com', '_blank');
+      window.open('https://discord.esx-framework.org/', '_blank');
       }}
     > Discord
   </button>

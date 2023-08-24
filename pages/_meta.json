@@ -1,6 +1,8 @@
 {
-    "index": "introduction",
-    "get_started": "Get started"
+    "index": "Introduction",
+    "get_started": "Get started",
+    "esx_core": "ESX Core",
+    "esx_addons": "ESX Addons",
     "contact": {
         "title": "Hosting",
         "type": "page",
