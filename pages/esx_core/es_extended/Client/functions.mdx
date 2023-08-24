@@ -1,0 +1,153 @@
+import {Callout} from 'nextra/components'
+
+# Functions
+
+The following are ESX Client sided Functions
+
+## IsPlayerLoaded
+```lua
+ESX.IsPlayerLoaded()
+```
+
+This functions checks if the player has loaded in
+
+Example:
+```lua
+CreateThread(function()
+    while true do
+        local sleep = 1000 -- Make the Thread Sleep if doing nothing
+        local IsLoaded = ESX.IsPlayerLoaded()
+        if IsLoaded then
+            -- Do Thigs here!
+        end
+        Wait(sleep)
+    end
+end)
+```
+
+## Progressbar
+
+```lua
+ESX.Progressbar(message, lenght, options)
+```
+This function shows a progress bar and execute code on finish and/or on cancel .
+
+| Argument | Data Type | Optional | Default Value | Explanation                               |
+| -------- | --------- | -------- | ------------- | ----------------------------------------- |
+| message  | string    | No       | -             | The message to display                    |
+| lenght   | int       | No       | -             | the duration in ms                        |
+| options  |table      | Yes      | -             | Options                                   |
+
+Usage:
+
+* ESX Function
+```lua
+    ESX.Progressbar("Unlocking Storage", 3000,{
+        FreezePlayer = true, 
+        animation ={
+            type = "anim",
+            dict = "anim@mp_player_intmenu@key_fob@", 
+            lib ="fob_click"
+        },
+        --[[ Scenario can be used
+        animation ={
+        type = "Scenario",
+        Scenario = "PROP_HUMAN_BUM_BIN", 
+        },]]
+        onFinish = function()
+        --Code here
+    end, onCancel = function()
+        --Code here
+    end
+    })
+```
+
+* Export
+  
+```lua
+    exports["esx_progressbar"]:Progressbar("Unlocking Storage", 3000,{
+        FreezePlayer = true, 
+        animation ={
+            type = "anim",
+            dict = "anim@mp_player_intmenu@key_fob@", 
+            lib ="fob_click"
+        },
+        onFinish = function()
+        --Code here
+    end})
+```
+## SearchInventory
+
+```lua
+ESX.SearchInventory(item, count)
+```
+
+This function search inventory for the specified item and count.
+
+| Argument  | Data Type | Explanation                                                          |
+|-----------|-----------|----------------------------------------------------------------------|
+| item      | string    | The item to search for                                               |
+| count     | int       | the quantity of the item                                             |
+
+Example:
+
+```lua
+ CreateThread( function()
+    while true do
+        Wait(2000)
+        if checkItem('bread') then
+            print('I just ate some bread')
+        else 
+            print('I have no more bread')
+        end
+    end    
+end)
+
+function checkItem(item)
+  local hasItem = ESX.SearchInventory(item, 1)
+    if hasItem >= 1 then
+        return true
+    else
+        return false
+    end
+end
+```
+
+## ShowInventory
+
+```lua
+ESX.ShowInventory()
+```
+
+This function shows the inventory.
+
+## TriggerServerCallback
+
+This function triggers a server callback. See [ESX.RegisterServerCallback](./../../server/functions/registerservercallback) on registering server callbacks.
+
+```lua
+ESX.TriggerServerCallback(name, cb, args)
+```
+
+| Argument | Data Type | Optional | Default Value | Explanation                                                                                                                                                         |
+| -------- | --------- | -------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| name     | string    | No       | -             | A valid server callback name                                                                                                                                        |
+| cb       | function  | No       | -             | The returned function when the async task has completed. The invoked function a varied size of arguments depending on how many arguments are parsed from the server |
+| args     | any       | Yes      | -             | Any arguments to parse to the async function                                                                                                                        |
+
+<Callout type="warning" emoji="⚠️">
+  The code inside the server callback run asynchronously.
+</Callout>
+
+Example:
+
+```lua
+local myAgument = 'hello'
+
+ESX.TriggerServerCallback('esx_example:test', function(isBusy, numKills)
+ print(isBusy, numKills)
+ print('this code is an asynchronous task')
+end, myAgument)
+
+print('this code is running in sync')
+```

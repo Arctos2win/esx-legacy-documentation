@@ -63,13 +63,21 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: 'https://github.com/esx-framework/docs-rewrite/',
   footer: {
-    text: //TODO: ask if more legal stuff is needed
+    text: 
       <span>
-           {new Date().getFullYear()} ©{' '}
+           {/* {new Date().getFullYear()} ©{' '}
           <a href="https://www.esx-framework.org/" target="_blank"> 
             ESX Framework - Powered by Oxygenserver
+          </a> */}
+          <a href="https://www.esx-framework.org/" target="_blank"> 
+            Copyright © {new Date().getFullYear()} {' '} ESX. All rights reserved.
+          </a>
+          <br></br>
+          <a href="https://www.oxygenserv.com/en/" target="_blank"> 
+            Powered by Oxygenserv
           </a>
         </span>
+      
   },
   useNextSeoProps() {
     return {
