@@ -46,6 +46,21 @@ This function deletes the parsed vehicle.
 | -------- | --------- | -------- | ------------- | ------------------ |
 | vehicle  | string    | No       | -             | The vehicle handle |
 
+Example:
+
+```lua
+RegisterCommand('spawncar', function()
+    local veh
+    local ped = PlayerPedId()
+    local playerCoords = GetEntityCoords(ped)
+    ESX.Game.SpawnVehicle('blista', vector3(playerCoords), 100.0, function(vehicle)
+        veh = vehicle
+    end)
+    Wait(2000)
+    ESX.Game.DeleteVehicle(veh)
+end)
+```
+
 ## GetClosestEntity
 
 ```lua

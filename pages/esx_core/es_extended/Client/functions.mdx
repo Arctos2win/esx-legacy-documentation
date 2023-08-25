@@ -144,10 +144,13 @@ Example:
 ```lua
 local myAgument = 'hello'
 
-ESX.TriggerServerCallback('esx_example:test', function(isBusy, numKills)
- print(isBusy, numKills)
- print('this code is an asynchronous task')
-end, myAgument)
+RegisterCommand('testcb', function()
+    ESX.TriggerServerCallback('mycallback', function(haveItem)
+        if haveItem then  --This code is async
+            print('Callback succesfull - i have bread')
+        end
+    end, 'bread')
+end)
 
-print('this code is running in sync')
+-- This code is sync
 ```
