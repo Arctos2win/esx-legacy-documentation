@@ -6,18 +6,18 @@ Then, run `pnpm dev` to start the development server and visit localhost:3000.
 
 # **CLIENT SIDE**
 
-- [ ] Function name and parameters: ESX.ShowNotification(message, type, length)
-- [ ] Function name and parameters: ESX.IsPlayerLoaded()
-- [ ] Function name and parameters: ESX.GetPlayerData()
-- [ ] Function name and parameters: ESX.SearchInventory(items, count)
-- [ ] Function name and parameters: ESX.SetPlayerData(key, val)
-- [ ] Function name and parameters: ESX.Progressbar(message, length, Options)
-- [ ] Function name and parameters: ESX.ShowNotification(message, type, length)
-- [ ] Function name and parameters: ESX.TextUI(message, type)
-- [ ] Function name and parameters: ESX.HideUI()
-- [ ] Function name and parameters: ESX.ShowAdvancedNotification(sender, subject, msg, textureDict, iconType, flash, saveToBrief, hudColorIndex)
-- [ ] Function name and parameters: ESX.ShowHelpNotification(msg, thisFrame, beep, duration)
-- [ ] Function name and parameters: ESX.ShowFloatingHelpNotification(msg, coords)
+- [ ] Function name and parameters: ESX.ShowNotification(message, type, length) *rename args*
+- [x] Function name and parameters: ESX.IsPlayerLoaded()
+- [ ] Function name and parameters: ESX.GetPlayerData() *miss example*
+- [x] Function name and parameters: ESX.SearchInventory(items, count)
+- [x] Function name and parameters: ESX.SetPlayerData(key, val)
+- [x] Function name and parameters: ESX.Progressbar(message, length, Options)
+~~- [ ] Function name and parameters: ESX.ShowNotification(message, type, length)~~ *duplicate*
+- [ ] Function name and parameters: ESX.TextUI(message, type)  
+- [ ] Function name and parameters: ESX.HideUI() 
+- [x] Function name and parameters: ESX.ShowAdvancedNotification(sender, subject, msg, textureDict, iconType, flash, saveToBrief, hudColorIndex)
+- [x] Function name and parameters: ESX.ShowHelpNotification(msg, thisFrame, beep, duration)
+- [x] Function name and parameters: ESX.ShowFloatingHelpNotification(msg, coords)
 - [ ] Function name and parameters: ESX.UI.Menu.RegisterType(type, open, close)
 - [ ] Function name and parameters: ESX.UI.Menu.Open(type, namespace, name, data, submit, cancel, change, close)
 - [ ] Function name and parameters: ESX.UI.Menu.Close(type, namespace, name)
@@ -26,44 +26,44 @@ Then, run `pnpm dev` to start the development server and visit localhost:3000.
 - [ ] Function name and parameters: ESX.UI.Menu.GetOpenedMenus()
 - [ ] Function name and parameters: ESX.UI.Menu.IsOpen(type, namespace, name)
 - [ ] Function name and parameters: ESX.UI.ShowInventoryItemNotification(add, item, count)
-- [ ] Function name and parameters: ESX.Game.GetPedMugshot(ped, transparent)
-- [ ] Function name and parameters: ESX.Game.Teleport(entity, coords, cb)
-- [ ] Function name and parameters: ESX.Game.SpawnObject(object, coords, cb, networked)
-- [ ] Function name and parameters: ESX.Game.SpawnLocalObject(object, coords, cb)
-- [ ] Function name and parameters: ESX.Game.DeleteVehicle(vehicle)
-- [ ] Function name and parameters: ESX.Game.DeleteObject(object)
-- [ ] Function name and parameters: ESX.Game.SpawnVehicle(vehicleModel, coords, heading, cb, networked)
-- [ ] Function name and parameters: ESX.Game.SpawnLocalVehicle(vehicle, coords, heading, cb)
-- [ ] Function name and parameters: ESX.Game.IsVehicleEmpty(vehicle)
-- [ ] Function name and parameters: ESX.Game.GetObjects()
-- [ ] Function name and parameters: ESX.Game.GetPeds(onlyOtherPeds)
-- [ ] Function name and parameters: ESX.Game.GetVehicles()
-- [ ] Function name and parameters: ESX.Game.GetPlayers(onlyOtherPlayers, returnKeyValue, returnPeds)
-- [ ] Function name and parameters: ESX.Game.GetClosestObject(coords, modelFilter)
-- [ ] Function name and parameters: ESX.Game.GetClosestPed(coords, modelFilter)
-- [ ] Function name and parameters: ESX.Game.GetClosestPlayer(coords)
-- [ ] Function name and parameters: ESX.Game.GetClosestVehicle(coords, modelFilter)
-- [ ] Function name and parameters: ESX.Game.GetPlayersInArea(coords, maxDistance)
-- [ ] Function name and parameters: ESX.Game.GetVehiclesInArea(coords, maxDistance)
-- [ ] Function name and parameters: ESX.Game.IsSpawnPointClear(coords, maxDistance)
-- [ ] Function name and parameters: ESX.Game.GetClosestEntity(entities, isPlayerEntities, coords, modelFilter)
-- [ ] Function name and parameters: ESX.Game.GetVehicleInDirection()
-- [ ] Function name and parameters: ESX.Game.GetVehicleProperties(vehicle)
-- [ ] Function name and parameters: ESX.Game.SetVehicleProperties(vehicle, props)
-- [ ] Function name and parameters: ESX.Game.Utils.DrawText3D(coords, text, size, font)
+- [ ] Function name and parameters: ESX.Game.GetPedMugshot(ped, transparent) *missing arg*
+- [x] Function name and parameters: ESX.Game.Teleport(entity, coords, cb) *done but to improve example*
+- [ ] Function name and parameters: ESX.Game.SpawnObject(object, coords, cb, networked) *miss arg and example to be improved*
+- [x] Function name and parameters: ESX.Game.SpawnLocalObject(object, coords, cb) *done but to improve example*
+- [x] Function name and parameters: ESX.Game.DeleteVehicle(vehicle)
+- [x] Function name and parameters: ESX.Game.DeleteObject(object)
+- [ ] Function name and parameters: ESX.Game.SpawnVehicle(vehicleModel, coords, heading, cb, networked) *miss arg improve example*
+- [x] Function name and parameters: ESX.Game.SpawnLocalVehicle(vehicle, coords, heading, cb) *done but improve example*
+- [x] Function name and parameters: ESX.Game.IsVehicleEmpty(vehicle)
+- [ ] Function name and parameters: ESX.Game.GetObjects() *miss example*
+- [ ] Function name and parameters: ESX.Game.GetPeds(onlyOtherPeds) *miss example*
+- [ ] Function name and parameters: ESX.Game.GetVehicles() *miss example*
+- [x] Function name and parameters: ESX.Game.GetPlayers(onlyOtherPlayers, returnKeyValue, returnPeds)
+- [x] Function name and parameters: ESX.Game.GetClosestObject(coords, modelFilter)
+- [ ] Function name and parameters: ESX.Game.GetClosestPed(coords, modelFilter) *miss example*
+- [x] Function name and parameters: ESX.Game.GetClosestPlayer(coords)
+- [ ] Function name and parameters: ESX.Game.GetClosestVehicle(coords, modelFilter) *miss example*
+- [ ] Function name and parameters: ESX.Game.GetPlayersInArea(coords, maxDistance) *miss example*
+- [ ] Function name and parameters: ESX.Game.GetVehiclesInArea(coords, maxDistance) *miss example*
+- [ ] Function name and parameters: ESX.Game.IsSpawnPointClear(coords, maxDistance) *miss example*
+- [ ] Function name and parameters: ESX.Game.GetClosestEntity(entities, isPlayerEntities, coords, modelFilter)*WAIT FOR PAPA FOR THIS*
+- [x] Function name and parameters: ESX.Game.GetVehicleInDirection() *done but improve example?*
+- [ ] Function name and parameters: ESX.Game.GetVehicleProperties(vehicle) *miss example and to check the returned table*
+- [x] Function name and parameters: ESX.Game.SetVehicleProperties(vehicle, props) *check table content*
+- [x] Function name and parameters: ESX.Game.Utils.DrawText3D(coords, text, size, font) *improve style*
 - [ ] Function name and parameters: ESX.GetAccount(account)
 - [ ] Function name and parameters: ESX.GetVehicleType(model)
-- [ ] Function name and parameters: ESX.Scaleform.ShowFreemodeMessage(title, msg, sec)
-- [ ] Function name and parameters: ESX.Scaleform.ShowBreakingNews(title, msg, bottom, sec)
-- [ ] Function name and parameters: ESX.Scaleform.ShowPopupWarning(title, msg, bottom, sec)
-- [ ] Function name and parameters: ESX.Scaleform.ShowTrafficMovie(sec)
-- [ ] Function name and parameters: ESX.Scaleform.Utils.RequestScaleformMovie(movie)
-- [ ] Function name and parameters: ESX.Streaming.RequestModel(modelHash, cb)
-- [ ] Function name and parameters: ESX.Streaming.RequestStreamedTextureDict(textureDict, cb)
-- [ ] Function name and parameters: ESX.Streaming.RequestNamedPtfxAsset(assetName, cb)
-- [ ] Function name and parameters: ESX.Streaming.RequestAnimSet(animSet, cb)
-- [ ] Function name and parameters: ESX.Streaming.RequestAnimDict(animDict, cb)
-- [ ] Function name and parameters: ESX.Streaming.RequestWeaponAsset(weaponHash, cb)
+- [x] Function name and parameters: ESX.Scaleform.ShowFreemodeMessage(title, msg, sec)
+- [ ] Function name and parameters: ESX.Scaleform.ShowBreakingNews(title, msg, bottom, sec) *miss example*
+- [ ] Function name and parameters: ESX.Scaleform.ShowPopupWarning(title, msg, bottom, sec) *miss example*
+- [ ] Function name and parameters: ESX.Scaleform.ShowTrafficMovie(sec) *miss example*
+- [x] Function name and parameters: ESX.Scaleform.Utils.RequestScaleformMovie(movie) *to improve example*
+- [ ] Function name and parameters: ESX.Streaming.RequestModel(modelHash, cb) *miss example*
+- [ ] Function name and parameters: ESX.Streaming.RequestStreamedTextureDict(textureDict, cb) *improve description miss example*
+- [ ] Function name and parameters: ESX.Streaming.RequestNamedPtfxAsset(assetName, cb) *miss description and example*
+- [ ] Function name and parameters: ESX.Streaming.RequestAnimSet(animSet, cb) *improve description miss example*
+- [ ] Function name and parameters: ESX.Streaming.RequestAnimDict(animDict, cb) * improve description miss example*
+- [ ] Function name and parameters: ESX.Streaming.RequestWeaponAsset(weaponHash, cb) *miss description and example*
 - [ ] Function name and parameters: ESX.Math.Round(value, numDecimalPlaces)
 - [ ] Function name and parameters: ESX.Math.GroupDigits(value)
 - [ ] Function name and parameters: ESX.Math.Trim(value)
