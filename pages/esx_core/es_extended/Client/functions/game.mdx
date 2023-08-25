@@ -1,0 +1,632 @@
+import {Callout} from 'nextra/components'
+
+# Game functions
+
+This section contains all gameplay related client functions
+
+## DeleteObject
+
+```lua
+ESX.Game.DeleteObject(object)
+```
+
+This function deletes an object.
+
+| Argument | Data Type | Optional | Default Value | Explanation       |
+| -------- | --------- | -------- | ------------- | ----------------- |
+| object   | string    | No       | -             | The object handle |
+
+Example:
+
+```lua
+
+CreateThread(function()
+  while true do
+    local PlayerPed = ESX.PlayerData.ped
+    local PlayerCoords = GetEntityCoords(PlayerPed)
+
+    local Object = ESX.Game.GetClosestVehicle(PlayerCoords, {["police"] = true}) -- will grab the closest Police Car to the player
+    ESX.Game.DeleteObject(Object) -- Deletes the Police Car
+
+  Wait(0) -- IMPORTANT: Without this, the thread will crash the client.
+  end
+end)
+
+```
+
+## DeleteVehicle
+
+```lua
+ESX.Game.DeleteVehicle(vehicle)
+```
+
+This function deletes the parsed vehicle.
+
+| Argument | Data Type | Optional | Default Value | Explanation        |
+| -------- | --------- | -------- | ------------- | ------------------ |
+| vehicle  | string    | No       | -             | The vehicle handle |
+
+## GetClosestEntity
+
+```lua
+ESX.Game.GetClosestEntity(coords, modelFilter)
+```
+
+This function returns the closest Entity handle, and distance to the Entity.
+
+
+| Argument    | Data Type     | Optional | Default Value            | Explanation                                                                                                                            |
+| ----------- | ------------- | -------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| coords      | table         | Yes      | (your player ped coords) | Coords to search at                                                                                                                    |
+| modelFilter | table&vector3 | Yes      | -                        | Enables whitelist mode for getting closest Entity. The table must be key-value where the key is the model hash, and value set to true. |
+
+## GetClosestObject
+
+```lua
+ESX.Game.GetClosestObject(coords, modelFilter)
+```
+
+This function returns the closest object handle, and distance to the object.
+
+| Argument    | Data Type     | Optional | Default Value            | Explanation                                                                                                                            |
+| ----------- | ------------- | -------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| coords      | table&vector3 | Yes      | (your player ped coords) | Coords to search at                                                                                                                    |
+| modelFilter | table         | Yes      | -                        | Enables whitelist mode for getting closest object. The table must be key-value where the key is the model hash, and value set to true. |
+
+Example:
+
+```lua
+
+CreateThread(function()
+  while true do
+    local PlayerPed = ESX.PlayerData.ped
+    local PlayerCoords = GetEntityCoords(PlayerPed)
+
+    local Object = ESX.Game.GetClosestObject(PlayerCoords, {["police"] = true}) -- will grab the closest Police Car to the player
+    ESX.Game.DeleteObject(Object) -- Deletes the Police Car
+
+  Wait(0) -- IMPORTANT: Without this, the thread will crash the client.
+  end
+end)
+```
+
+## GetClosestPed
+
+```lua
+ESX.Game.GetClosestPed(coords, modelFilter)
+```
+
+This function returns the closest ped handle, and distance to the ped.
+
+| Argument    | Data Type     | Optional | Default Value            | Explanation                                                                                                                         |
+| ----------- | ------------- | -------- | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
+| coords      | table         | Yes      | (your player ped coords) | Coords to search at                                                                                                                 |
+| modelFilter | table&vector3 | Yes      | -                        | Enables whitelist mode for getting closest ped. The table must be key-value where the key is the model hash, and value set to true. |
+
+## GetClosestPlayer
+
+```lua
+ESX.Game.GetClosestPlayer(coords)
+```
+
+This function gets the closest player client id, and distance to the player.
+
+| Argument | Data Type     | Optional | Default Value            | Explanation         |
+| -------- | ------------- | -------- | ------------------------ | ------------------- |
+| coords   | table&vector3 | Yes      | (your player ped coords) | Coords to search at |
+
+Example:
+
+```lua
+local closestPlayer, closestPlayerDistance = ESX.Game.GetClosestPlayer()
+
+if closestPlayer == -1 or closestPlayerDistance > 3.0 then
+ ESX.ShowNotification('There\'s no player near you!', 'error')
+else
+ ESX.ShowNotification(('Found %s, they are %s unit(s) away'):format(GetPlayerName(closestPlayer), closestPlayerDistance), 'success')
+end
+```
+
+## GetClosestVehicle
+
+```lua
+ESX.Game.GetClosestVehicle(coords, modelFilter)
+```
+
+This function gets the closest vehicle.
+
+| Argument    | Data Type     | Optional | Default Value            | Explanation                                                                                                                             |
+| ----------- | ------------- | -------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| coords      | table         | Yes      | (your player ped coords) | Coords to search at                                                                                                                     |
+| modelFilter | table&vector3 | Yes      | -                        | Enables whitelist mode for getting closest vehicle. The table must be key-value where the key is the model hash, and value set to true. |
+
+## GetObjects
+
+```lua
+ESX.Game.GetObjects()
+```
+
+This function gets all objects found in the game world.
+
+## GetPedMugshot
+
+```lua
+local mugshot, mugshotStr = ESX.Game.GetPedMugshot(ped)
+```
+
+This function generates a mugshot of the ped usable in various applications.
+
+| Argument | Data Type | Optional | Default Value | Explanation    |
+| -------- | --------- | -------- | ------------- | -------------- |
+| ped      | string    | No       | -             | The ped handle |
+
+<Callout type = "warning" emoji = "⚠️" >
+Be sure to use `UnregisterPedheadshot(mugshot)` after using it, because the game only allows you 34 mugshots, and you won't be allowed to use mugshot once this limit is reached if you don't unregister it.
+</Callout>
+
+Example:
+
+```lua
+function Notify(msg)
+  local mugshot, mugshotStr = ESX.Game.GetPedMugshot(GetPlayerPed(-1))
+  ESX.ShowAdvancedNotification('Test', 'Testing!', msg, mugshotStr, 1)
+  UnregisterPedheadshot(mugshot)
+end
+```
+![Mugshot Example](https://i.imgur.com/OV72S12.jpg)
+
+## GetPeds
+
+```lua
+ESX.Game.GetPeds(onlyOtherPeds)
+```
+
+This function gets all peds found in the game world.
+
+| Argument      | Data Type | Optional | Default Value | Explanation                               |
+| ------------- | --------- | -------- | ------------- | ----------------------------------------- |
+| onlyOtherPeds | boolean   | Yes      | nil           | Only return other peds than your own ped? |
+
+## GetPlayers
+
+```lua
+ESX.Game.GetPlayers(onlyOtherPlayers, returnKeyValue, returnPeds)
+```
+
+This function is used to get all the active players.
+
+| Argument         | Data Type | Optional | Default Value | Explanation                                                                                                                                                                                                                           |
+| ---------------- | --------- | -------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| onlyOtherPlayers | boolean   | Yes      | nil (false)   | Only return other players than yourself?                                                                                                                                                                                              |
+| returnKeyValue   | boolean   | Yes      | nil (false)   | If set to true it will return in a key-value table where key is player client id and key being the ped handle. Otherwise it create a index-value table, with value being either the ped handle or client id depending on `returnPeds` |
+| returnPeds       | boolean   | Yes      | nil (false)   | If set to true it will return the ped handle for that player, otherwise it will return the player client id                                                                                                                           |
+
+Example:
+
+```lua
+local players = ESX.Game.GetPlayers()
+
+for k,v in ipairs(players) do
+ local targetPed = GetPlayerPed(v)
+ print(('A player with server id %s found at %s!'):format(GetPlayerServerId(v), GetEntityCoords(targetPed)))
+end
+```
+
+## GetPlayersInArea
+
+```lua
+ESX.Game.GetPlayersInArea(coords, maxDistance)
+```
+
+This function gets all players within the max distance of a coord.
+
+| Argument    | Data Type     | Optional | Default Value            | Explanation                  |
+| ----------- | ------------- | -------- | ------------------------ | ---------------------------- |
+| coords      | table&vector3 | Yes      | (your player ped coords) | The coords to search at      |
+| maxDistance | number        | No       | -                        | The maxmimum search distance |
+
+## GetVehicleInDirection
+
+```lua
+ESX.Game.GetVehicleInDirection()
+```
+
+This function gets the closest vehicle in the player's direction within 5 units, utilizes ray-casts.
+
+Example:
+
+```lua
+local vehicle = ESX.Game.GetVehicleInDirection()
+
+if DoesEntityExist(vehicle) then
+  ESX.ShowNotification('yep there is a vehicle here!')
+end
+```
+
+## GetVehicleProperties
+
+```lua
+ESX.Game.GetVehicleProperties(vehicle)
+```
+
+This function gets a vehicle's properties.
+
+Returned table contains:
+
+| Child             | Data Type | Explanation                                                         |
+| ----------------- | --------- | ------------------------------------------------------------------- |
+| model             | number    | The vehicle hash                                                    |
+| plate             | number    | Vehicle plate, maximum 8 characters                                 |
+| plateIndex        | number    | Plate style                                                         |
+| bodyHealth        | number    | Body health                                                         |
+| engineHealth      | number    | Engine health                                                       |
+| tankHealth        | number    | Petrol Tank health                                                  |
+| fuelLevel         | number    | Fuel level                                                          |
+| dirtLevel         | number    | Dirtiness level                                                     |
+| color1            | number    | Primary color                                                       |
+| color2            | number    | Secondary color                                                     |
+| pearlescentColor  | number    | Pearlescent color                                                   |
+| wheelColor        | number    | Wheel color                                                         |
+| dashboardColor    | number    | Dashboard color                                                     |
+| interiorColor     | number    | Interior color                                                      |
+| wheels            | number    | Wheel type                                                          |
+| windowTint        | number    |                                                                     |
+| neonEnabled       | table     | Table with hardcoded four childs for left, back, front & back neons |
+| neonColor         | table     | Packed table with three childs for r,g,b                            |
+| extras            | table     | Pair table with id as index, and state as value                     |
+| tyreSmokeColor    | table     | Packed table with three childs for r,g,b                            |
+| modSpoilers       | number    |                                                                     |
+| modFrontBumper    | number    |                                                                     |
+| modRearBumper     | number    |                                                                     |
+| modSideSkirt      | number    |                                                                     |
+| modExhaust        | number    |                                                                     |
+| modFrame          | number    |                                                                     |
+| modGrille         | number    |                                                                     |
+| modHood           | number    |                                                                     |
+| modFender         | number    |                                                                     |
+| modRightFender    | number    |                                                                     |
+| modRoof           | number    |                                                                     |
+| modEngine         | number    |                                                                     |
+| modBrakes         | number    |                                                                     |
+| modTransmission   | number    |                                                                     |
+| modHorns          | number    |                                                                     |
+| modSuspension     | number    |                                                                     |
+| modArmor          | number    |                                                                     |
+| modTurbo          | boolean   |                                                                     |
+| modSmokeEnabled   | boolean   |                                                                     |
+| modXenon          | boolean   |                                                                     |
+| modFrontWheels    | number    |                                                                     |
+| modBackWheels     | number    |                                                                     |
+| modPlateHolder    | number    |                                                                     |
+| modVanityPlate    | number    |                                                                     |
+| modTrimA          | number    |                                                                     |
+| modOrnaments      | number    |                                                                     |
+| modDashboard      | number    |                                                                     |
+| modDial           | number    |                                                                     |
+| modDoorSpeaker    | number    |                                                                     |
+| modSeats          | number    |                                                                     |
+| modSteeringWheel  | number    |                                                                     |
+| modShifterLeavers | number    |                                                                     |
+| modAPlate         | number    |                                                                     |
+| modSpeakers       | number    |                                                                     |
+| modTrunk          | number    |                                                                     |
+| modHydrolic       | number    |                                                                     |
+| modEngineBlock    | number    |                                                                     |
+| modAirFilter      | number    |                                                                     |
+| modStruts         | number    |                                                                     |
+| modArchCover      | number    |                                                                     |
+| modAerials        | number    |                                                                     |
+| modTrimB          | number    |                                                                     |
+| modTank           | number    |                                                                     |
+| modWindows        | number    |                                                                     |
+| modLivery         | number    |                                                                     |
+
+## GetVehicles
+
+```lua
+ESX.Game.GetVehicles()
+```
+
+Returns all vehicles in the world.
+
+## GetVehiclesInArea
+
+```lua
+ESX.Game.GetVehiclesInArea(coords, maxDistance)
+```
+
+This function gets all vehicles within the max distance of a coord.
+
+| Argument    | Data Type     | Optional | Default Value            | Explanation                  |
+| ----------- | ------------- | -------- | ------------------------ | ---------------------------- |
+| coords      | table&vector3 | Yes      | (your player ped coords) | The coords to search at      |
+| maxDistance | number        | No       | -                        | The maxmimum search distance |
+
+## IsSpawnPointClear
+
+```lua
+ESX.Game.IsSpawnPointClear(coords, maxDistance)
+```
+
+Returns a boolean if the spawn point coords area is clear from vehicles within the max distance.
+
+| Argument    | Data Type     | Optional | Default Value            | Explanation                  |
+| ----------- | ------------- | -------- | ------------------------ | ---------------------------- |
+| coords      | table&vector3 | Yes      | (your player ped coords) | The coords to search at      |
+| maxDistance | number        | No       | -                        | The maxmimum search distance |
+
+## IsVehicleEmpty
+
+```lua
+ESX.Game.IsVehicleEmpty(vehicle)
+```
+
+Returns A bool for if the Vehicle has no players inside.
+
+Example:
+
+```lua
+local vehicle = ESX.Game.GetVehicleInDirection()
+
+if ESX.Game.IsVehicleEmpty(vehicle) then
+  ESX.ShowNotification('Vehicle Is empty')
+end
+```
+
+## SetVehicleProperties
+
+```lua
+ESX.Game.SetVehicleProperties(vehicle, props)
+```
+
+This function sets various properties for an vehicle object.
+
+props arg table content:
+
+| Child             | Data Type | Explanation                                                         |
+| ----------------- | --------- | ------------------------------------------------------------------- |
+| model             | number    | The vehicle hash                                                    |
+| plate             | number    | Vehicle plate, maximum 8 characters                                 |
+| plateIndex        | number    | Plate style                                                         |
+| bodyHealth        | number    | Body health                                                         |
+| engineHealth      | number    | Engine health                                                       |
+| tankHealth        | number    | Petrol Tank health                                                  |
+| fuelLevel         | number    | Fuel level                                                          |
+| dirtLevel         | number    | Dirtiness level                                                     |
+| color1            | number    | Primary color                                                       |
+| color2            | number    | Secondary color                                                     |
+| pearlescentColor  | number    | Pearlescent color                                                   |
+| wheelColor        | number    | Wheel color                                                         |
+| wheels            | number    | Wheel type                                                          |
+| windowTint        | number    |                                                                     |
+| neonEnabled       | table     | Table with hardcoded four childs for left, back, front & back neons |
+| neonColor         | table     | Packed table with three childs for r,g,b                            |
+| extras            | table     | Pair table with id as index, and state as value                     |
+| tyreSmokeColor    | table     | Packed table with three childs for r,g,b                            |
+| modSpoilers       | number    |                                                                     |
+| modFrontBumper    | number    |                                                                     |
+| modRearBumper     | number    |                                                                     |
+| modSideSkirt      | number    |                                                                     |
+| modExhaust        | number    |                                                                     |
+| modFrame          | number    |                                                                     |
+| modGrille         | number    |                                                                     |
+| modHood           | number    |                                                                     |
+| modFender         | number    |                                                                     |
+| modRightFender    | number    |                                                                     |
+| modRoof           | number    |                                                                     |
+| modEngine         | number    |                                                                     |
+| modBrakes         | number    |                                                                     |
+| modTransmission   | number    |                                                                     |
+| modHorns          | number    |                                                                     |
+| modSuspension     | number    |                                                                     |
+| modArmor          | number    |                                                                     |
+| modTurbo          | boolean   |                                                                     |
+| modSmokeEnabled   | boolean   |                                                                     |
+| modXenon          | boolean   |                                                                     |
+| modFrontWheels    | number    |                                                                     |
+| modBackWheels     | number    |                                                                     |
+| modPlateHolder    | number    |                                                                     |
+| modVanityPlate    | number    |                                                                     |
+| modTrimA          | number    |                                                                     |
+| modOrnaments      | number    |                                                                     |
+| modDashboard      | number    |                                                                     |
+| modDial           | number    |                                                                     |
+| modDoorSpeaker    | number    |                                                                     |
+| modSeats          | number    |                                                                     |
+| modSteeringWheel  | number    |                                                                     |
+| modShifterLeavers | number    |                                                                     |
+| modAPlate         | number    |                                                                     |
+| modSpeakers       | number    |                                                                     |
+| modTrunk          | number    |                                                                     |
+| modHydrolic       | number    |                                                                     |
+| modEngineBlock    | number    |                                                                     |
+| modAirFilter      | number    |                                                                     |
+| modStruts         | number    |                                                                     |
+| modArchCover      | number    |                                                                     |
+| modAerials        | number    |                                                                     |
+| modTrimB          | number    |                                                                     |
+| modTank           | number    |                                                                     |
+| modWindows        | number    |                                                                     |
+| modLivery         | number    |                                                                     |
+
+Example:
+
+```lua
+local playerPed = PlayerPedId()
+
+if IsPedInAnyVehicle(playerPed, false) then
+ local vehicle = GetVehiclePedIsIn(playerPed, false)
+
+ ESX.Game.SetVehicleProperties(vehicle, {
+  plate = 'ESX',
+  modTurbo = true
+ })
+end
+```
+
+## SpawnLocalObject
+
+```lua
+ESX.Game.SpawnLocalObject(model, coords, cb)
+```
+
+This function spawns a local object, which is only visible to the local player and no one else.
+
+| Argument | Data Type     | Optional | Default Value | Explanation                                                                                                                |
+| -------- | ------------- | -------- | ------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| model    | string&number | No       | -             | You can either specify a model, for example `prop_cs_cuffs_01`, or a object hash                                           |
+| coords   | table         | No       | -             | The coords where the object should be spawned. You can also parse an vector type without any issues                        |
+| cb       | function      | Yes      | -             | The returned function when the object has been spawned. The invoked function has one argument, which is the object handle. |
+
+<Callout type = "warning" emoji = "⚠️">
+This is an async function because it awaits the object model to be streamed, there is an example below on how to properly utilize it.
+</Callout>
+
+Example:
+
+```lua
+ESX.Game.SpawnLocalObject('prop_cs_cuffs_01', vector3(120.0, -200.0, 30.0), function(object)
+  print(DoesEntityExist(object), 'this code is async!')
+end)
+
+print('this code is sync!')
+```
+
+## SpawnLocalVehicle
+
+```lua
+ESX.Game.SpawnLocalVehicle(model, coords, heading, cb)
+```
+
+This function spawns a local vehicle, which is only visible to the local player and no one else.
+
+| Argument | Data Type     | Optional | Default Value | Explanation                                                                                                                 |
+| -------- | ------------- | -------- | ------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| model    | string&number | No       | -             | You can either specify a model, for example `blista`, or a vehicle hash.                                                    |
+| coords   | table         | No       | -             | The coords where the vehicle should be spawned. You can also parse an vector type without any issues                        |
+| heading  | number        | No       | -             | The heading of the spawned vehicle, must contain a decimal                                                                  |
+| cb       | function      | Yes      | -             | The returned function when the vehicle has been spawned. The invoked function has one argument, which is the vehicle handle |
+
+<Callout type = "warning" emoji = "⚠️">
+This is an async function because it awaits the object model to be streamed, there is an example below on how to properly utilize it.
+</Callout>
+
+Example:
+
+```lua
+ESX.Game.SpawnLocalVehicle('blista', vector3(120.0, -200.0, 30.0), 100.0, function(vehicle)
+  print(DoesEntityExist(vehicle), 'this code is async!')
+end)
+
+print('this code is sync!')
+```
+## SpawnObject
+
+```lua
+ESX.Game.SpawnObject(model, coords, cb)
+```
+
+This function spawns an object visible to everyone on the server.
+
+| Argument | Data Type     | Optional | Default Value | Explanation                                                                                                                |
+| -------- | ------------- | -------- | ------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| model    | string&number | No       | -             | You can either specify a model, for example `prop_cs_cuffs_01`, or a object hash                                           |
+| coords   | table         | No       | -             | The coords where the object should be spawned. You can also parse an vector type without any issues                        |
+| cb       | function      | Yes      | -             | The returned function when the object has been spawned. The invoked function has one argument, which is the object handle. |
+
+<Callout type = "warning" emoji = "⚠️">
+This is an async function because it awaits the object model to be streamed, there is an example below on how to properly utilize it.
+</Callout>
+
+Example:
+
+```lua
+ESX.Game.SpawnObject('prop_cs_cuffs_01', vector3(120.0, -200.0, 30.0), function(object)
+  print(DoesEntityExist(object), 'this code is async!')
+end)
+
+print('this code is sync!')
+```
+
+## SpawnVehicle
+
+```lua
+ESX.Game.SpawnVehicle(model, coords, heading, cb)
+```
+
+This function spawns an vehicle visible to everyone on the server.
+
+| Argument | Data Type     | Optional | Default Value | Explanation                                                                                                                 |
+| -------- | ------------- | -------- | ------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| model    | string&number | No       | -             | You can either specify a model, for example `blista`, or a vehicle hash.                                                    |
+| coords   | table         | No       | -             | The coords where the vehicle should be spawned. You can also parse an vector type without any issues                        |
+| heading  | number        | No       | -             | The heading of the spawned vehicle, must contain a decimal                                                                  |
+| cb       | function      | Yes      | -             | The returned function when the vehicle has been spawned. The invoked function has one argument, which is the vehicle handle |
+
+<Callout type = "warning" emoji = "⚠️">
+This is an async function because it awaits the object model to be streamed, there is an example below on how to properly utilize it.
+</Callout>
+
+Example:
+
+```lua
+ESX.Game.SpawnVehicle('blista', vector3(120.0, -200.0, 30.0), 100.0, function(vehicle)
+  print(DoesEntityExist(vehicle), 'this code is async!')
+end)
+
+print('this code is sync!')
+```
+
+## Teleport
+
+```lua
+ESX.Game.Teleport(entity, coords, cb)
+```
+
+This function teleports an entity.
+
+| Argument | Data Type     | Optional | Default Value | Explanation                                                                                                                                                              |
+| -------- | ------------- | -------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| entity   | string        | No       | -             | The entity to teleport                                                                                                                                                   |
+| coords   | table&vector3 | No       | -             | The coords to be teleported to. Supports both vector3 and table types. If using a table type you can also specify `heading` to set the entity heading upon teleportation |
+| cb       | function      | Yes      | -             | The returned function when the entity has been teleported                                                                                                                |
+
+<Callout type = "warning" emoji = "⚠️">
+This is an async function because it awaits collision to be loaded, there is an example below on how to properly utilize it.
+</Callout>
+
+Example:
+
+```lua
+local playerPed = PlayerPedId()
+
+ESX.Game.Teleport(playerPed, {x = 120.0, y = -200.0, z = 30.0, heading = 100.0}, function()
+  print('this code is async!')
+end)
+
+print('this code is sync!')
+```
+## Utils.DrawText3D
+
+```lua
+ESX.Game.Utils.DrawText3D(coords, text, size, font)
+```
+
+This function draws 3D text on the specified coords. Must be drawn every frame, ideally in a loop. `size` and `font` arguments are optional.
+
+Example:
+
+```lua
+local Location = vector3(0,0,0) -- Location to show the Text
+
+CreateThread(function()
+  while true do
+    local PlayerPed = ESX.PlayerData.ped
+    local PlayerCoords = GetEntityCoords(PlayerPed)
+
+    ESX.Game.Utils.DrawText3D(Location, 'Hello World!', 1.0, 1) -- Show a 3D "Hello World!" At `Location`.
+
+    Wait(Sleep) -- IMPORTANT: Without this, the thread will crash the client.
+  end
+end)
+```
