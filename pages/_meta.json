@@ -1,15 +1,13 @@
 {
-  "index": "Introduction",
-  "images": "Images",
-  "sdk": "Fivemanage SDK for FiveM",
-  "about": {
-    "title": "About",
-    "type": "page"
-  },
-  "contact": {
-    "title": "Contact ↗",
-    "type": "page",
-    "href": "https://discord.gg/wUgAGHnucZ",
-    "newWindow": true
-  }
+    "index": "Introduction",
+    "get_started": "Get started",
+    "esx_core": "ESX Core",
+    "esx_addons": "ESX Addons",
+    "contact": {
+        "title": "Hosting",
+        "type": "page",
+        "href": "https://www.oxygenserv.com/en/",
+        "newWindow": true
+      }
 }
+

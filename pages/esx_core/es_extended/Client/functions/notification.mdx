@@ -1,0 +1,134 @@
+# Notifications functions
+
+This section contains the client sided functions for Notifications
+
+## ShowAdvancedNotification
+
+```lua
+ESX.ShowAdvancedNotification(sender, subject, msg, textureDict, iconType, flash, saveToBrief, hudColorIndex)
+```
+
+This function shows an advanced notification.
+
+| Argument      | Data Type | Optional | Default Value | Explanation                                                                                         |
+| ------------- | --------- | -------- | ------------- | --------------------------------------------------------------------------------------------------- |
+| sender        | string    | No       | -             | Message header                                                                                      |
+| subject       | string    | No       | -             | Message subject                                                                                     |
+| msg           | string    | No       | -             | Message content                                                                                     |
+| textureDict   | string    | No       | -             | Texture directory, see [Texture Directory](#Texture_Directory) for accepted values                  |
+| iconType      | number    | No       | -             | Icon type, see [Icon Types](#Icon_Types) for accepted values                                        |
+| flash         | boolean   | Yes      | false         | Flash the notification?                                                                             |
+| savetoBreif   | boolean   | Yes      | true          | Save to breif? Located in Pause Menu > Help                                                         |
+| hudColorIndex | number    | Yes      | nil           | The background color, see [this link](https://gyazo.com/68bd384455fceb0a85a8729e48216e15) for available colors |
+
+**Texture Dictionary**
+
+To specify a texture dictionary you can either simply parse an already existing notification image, or you can for example create a player mugshot with ESX.
+
+- [Existing Image](https://wiki.gtanet.work/index.php?title=Notification_Pictures)
+- [Player Mugshots](./game/getpedmugshot)
+
+**Icon Types**
+
+| Icon Type | Explantation        |
+| --------- | ------------------- |
+| 1         | Chat Box            |
+| 2         | Email               |
+| 3         | Add Friend Request  |
+| 7         | Right Jumping Arrow |
+| 8         | RP Icon             |
+| 9         | $ Icon              |
+
+Example:
+
+```lua
+function notification(msg)
+  local mugshot, mugshotStr = ESX.Game.GetPedMugshot(PlayerPedId())
+  ESX.ShowAdvancedNotification('title', 'subject', 'msg', mugshotStr, 1)
+  UnregisterPedheadshot(mugshot)
+end
+```
+![Advanced Notification Example Picture](https://i.imgur.com/bX1oxrF.jpg)
+
+## ShowFloatingHelpNotification
+
+```lua
+ESX.ShowFloatingHelpNotification(msg, coords)
+```
+
+This function shows a help notification with a message. These help notification support displaying button inputs, see [this list](https://pastebin.com/HPg8pYwi)
+
+
+| Argument | Data Type | Optional | Default Value | Explanation                               |
+| -------- | --------- | -------- | ------------- | ----------------------------------------- |
+| msg      | string    | No       | -             | The message to display                    |
+| coords   | Vector3   | No       | -             | The coordinates to show to notifcation at |
+
+Example:
+
+```lua
+local coords = GetEntityCoords(PlayerPedId())
+ESX.ShowFloatingHelpNotification('Your Notification', vector3(coords.x, coords.y, coords.z))
+```
+
+## ShowHelpNotification
+
+```lua
+ESX.ShowHelpNotification(msg, thisFrame, beep, duration)
+```
+
+This function shows a help notification with a message. These help notification support displaying button inputs, see [this list](https://pastebin.com/HPg8pYwi)
+
+
+| Argument  | Data Type | Optional | Default Value | Explanation                                                                         |
+| --------- | --------- | -------- | ------------- | ----------------------------------------------------------------------------------- |
+| msg       | string    | No       | -             | The message to display                                                              |
+| thisFrame | boolean   | Yes      | false         | Only show this frame? Should be used with scripts that show notifications in a loop |
+| beep      | boolean   | Yes      | true          | Play the beep sound?                                                                |
+| duration  | number    | Yes      | -1 (5000 ms)  | Duration to show the help notification in milliseconds                              |
+
+Example:
+
+```lua
+ESX.ShowHelpNotification('Hit ~INPUT_CONTEXT~ to do shit!')
+```
+## ShowNotification
+
+This function shows a notification to the player.
+
+```lua
+ESX.ShowNotification(msg, type, time)
+```
+
+| Argument | Data Type | Optional | Default Value | Explanation                               |
+| -------- | --------- | -------- | ------------- | ----------------------------------------- |
+| msg      | string    | No       | -             | The message to display                    |
+| Type     | string    | Yes      | "info"        | What type the notification would be       |
+| time     | number    | Yes      | 3000          | For how long the notification should show |
+
+**color codes**
+
+```lua
+~r~ = Red
+~b~ = Blue
+~g~ = Green
+~y~ = Yellow
+~p~ = Purple
+~c~ = Grey
+~m~ = Dark Grey
+~u~ = Black
+~o~ = Orange
+```
+
+**types available**
+
+| Syntax    | Types                |
+| --------- | -------------------- |
+| "info"    | Info Notification    |
+| "success" | Success Notification |
+| "error"   | Error Notification   |
+
+Example:
+```lua
+ESX.ShowNotification('I i ~r~love~s~ donuts', 'success', 3000)
+```

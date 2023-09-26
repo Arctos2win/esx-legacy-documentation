@@ -1,0 +1,121 @@
+import {DsButton} from 'components/button'
+
+<div style = {{fontSize: '40px', fontWeight: 'bold', textAlign: 'center'}}>Troubleshooting</div>
+
+This section will cover the most common problems users may incour while using ESX
+
+
+<details>
+  <summary>GetSharedObject deprecation/non existing error</summary>
+  <br/>
+  <p>You may have incurred in a similar message:</p>
+  <br/>
+  <img src= "https://media.discordapp.net/attachments/1133464969485234207/1133464969783021670/image.png?width=1440&height=79" alt ="img"></img>
+
+  Your script is using the obsolete method to get the ESX object, to fix this you simply need to import ESX in your script like this:
+
+  <div style = {{fontSize: '25px', fontWeight: 'bold'}}> Import method </div>
+
+  This is the *recommended* approach
+
+  in your `fxmanifest.lua` add this line:
+  ```lua
+  shared_script '@es_extended/imports.lua'
+  ```
+  Then remove the following lines from your script:
+  ```lua
+  -- Client Side
+
+  ESX = nil
+
+  Citizen.CreateThread(function()
+      while ESX == nil do
+          TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+          Citizen.Wait(0)
+      end
+  end)
+  ```
+  ```lua
+  -- Server Side
+  
+  ESX = nil
+
+  TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+  ```
+And you should be good to go!
+
+<div style = {{fontSize: '25px', fontWeight: 'bold'}}> Export method </div>
+
+This method is optimal when your resource is intended to be multi-framework
+
+Remove those lines from your resource:
+  ```lua
+  -- Client Side
+
+  ESX = nil
+
+  Citizen.CreateThread(function()
+      while ESX == nil do
+          TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+          Citizen.Wait(0)
+      end
+  end)
+  ```
+  ```lua
+  -- Server Side
+  
+  ESX = nil
+
+  TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+  ```
+And replace them with the export:
+```lua
+ESX = exports["es_extended"]:getSharedObject()
+```
+Example:
+<img src= "https://media.discordapp.net/attachments/1095531372719910982/1095621601317367888/Replace.gif"></img>
+</details>
+
+<details>
+  <summary>Native XXXXXXXX is not supported</summary>
+  <br/>
+  <p>You may have incurred in a similar message:</p>
+  <img src = "https://cdn.discordapp.com/attachments/1141377366589976747/1144176204329521212/image.png"></img>
+
+  This may happen because you downloaded the "recommended version" of Fx Artifacts.
+
+  To fix this you simply need to use the latest artifact available instead like this:
+
+  <img src= "https://cdn.discordapp.com/attachments/1141377366589976747/1144180544050053151/tut.png"></img>
+</details>
+
+<details>
+  <summary>ESX Multicharacter couldn't connect to the database</summary>
+  <br/>
+  <p>You may have incurred in a similar message:</p>
+  <img src = "https://cdn.discordapp.com/attachments/1141377366589976747/1144185585876082698/Screenshot_2023-05-13_233328.png"></img>
+
+  This error may be caused by a wrong mySQL string in your `server.cfg` file and/or your connection to the database is not working.
+
+  The following steps may help you solve the problem:
+  - your mySQL string in your `server.cfg` file is correct and correctly formatted: check [OxMySQL documentation](https://overextended.dev/oxmysql#installation) for more instructions.
+  - check if your database connection is working, use the [Install guide](get_started/install) to make sure your database is up and running
+</details>
+
+<details>
+  <summary>Error ESX = nil</summary>
+  <br/>
+  <p>You may have incurred in a similar message:</p>
+  <img src = "https://i.gyazo.com/thumb/1200/6ebb0adb3c4ddd26d902a5cfc3eceede-png.jpg"></img>
+
+  This error may be caused from an incorrect upgrade to the new ESX import method
+
+  If the error come from an [Official ESX resource](https://github.com/esx-framework) then please update your resource to the latest available
+
+  If the error comes from a community made resource then:
+  - Look for an ```lua ESX = nil ``` in your files and remove it if present 
+  - Follow along the GetSharedObject deprecation/non existing error part
+</details>
+
+If your problem still persists or you couldn't find what you were looking for, join our discord and ask for help to the community.
+<div style = {{textAlign: 'center'}}><DsButton></DsButton></div>
