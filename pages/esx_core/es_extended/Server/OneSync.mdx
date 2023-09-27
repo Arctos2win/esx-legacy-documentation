@@ -1,0 +1,282 @@
+import { Callout } from 'nextra/components'; 
+
+## ESX.OneSync.GetPlayersInArea
+
+this function gets all players in the given area. 
+
+| Argument | Data Type | Optional | Default Value | Explanation                               |
+| -------- | --------- | -------- | ------------- | ----------------------------------------- |
+| source  | int    | No       | -             | The id from the player you want the near players from                   |
+| radius   | int       | Yes       | -             | the radius to search for players                       |
+| ignore  |table      | Yes      | -             | The server id's that can be ignored                                   |
+
+Usage: 
+
+```lua
+    local this = ESX.OneSync.GetPlayersInArea(1, 10.0, {
+        [1] = true 
+    })
+    
+    for i=1, #this do
+        local player = this[i] 
+    
+    end 
+```
+
+in this case local table player will contain 
+
+| id | ped object | coords | dist |
+| -------- | --------- | -------- | ------------- |
+| number  | string    | vector3       | number             | 
+
+## ESX.OneSync.GetClosestPlayer
+
+this function returns the closest player from the given player 
+
+| Argument | Data Type | Optional | Default Value | Explanation                               |
+| -------- | --------- | -------- | ------------- | ----------------------------------------- |
+| source  | int    | No       | -             | The id from who you want the players in area                    |
+| maxDistance   | int       | Yes       | -             | the area to search for players                        |
+| ignore  |table      | Yes      | -             | The server id's that can be ignored                                   |
+
+Example: 
+
+```lua
+local player = ESX.OneSync.GetClosestPlayer(1, 10.0, {
+    [2] = true 
+}) -- this will ignore player with id 2 
+```
+
+this function will return an empty table if no player is found. 
+If a player is found it will return this: 
+
+| id | ped object | coords | dist |
+| -------- | --------- | -------- | ------------- |
+| number  | string    | vector3       | number             |  
+
+## ESX.OneSync.SpawnVehicle 
+
+this function will spawn a vehicle with the vehicle server setter, which means 
+the vehicle will belong to the server and won't be removed when no clients are active. 
+
+| Argument | Data Type | Optional | Default Value | Explanation                               |
+| -------- | --------- | -------- | ------------- | ----------------------------------------- |
+| model  | string    | No       | -             | the model that you want to spawn                    |
+| coords   | vector3       | No       | -             | the coords where the vehicle needs to be spawned      |
+| heading  | int    | No       | -             | the heading the vehicle needs to have when spawned     |
+| properties  | table  | No      | -             | the vehicle properties              |
+| cb  | function  | No      | -             | the callback function            |
+
+<Callout type="warning">
+    When there is no player in a radius of 300 from the coords, the vehicle will NOT spawn. 
+</Callout>
+
+Example: 
+
+```lua
+ESX.OneSync.SpawnVehicle('blista', vector3(0, 0, 0), 0, {}, function(networkId)     
+    local vehicle = NetworkGetEntityFromNetworkId(networkId)
+end)  
+```
+
+## ESX.OneSync.SpawnObject 
+
+this function will spawn an object. 
+
+| Argument | Data Type | Optional | Default Value | Explanation                               |
+| -------- | --------- | -------- | ------------- | ----------------------------------------- |
+| model  | string    | No       | -             | the model that you want to spawn                    |
+| coords   | vector3       | No       | -             | the coords where you want the object to be spawned    |
+| heading  | int    | No       | -             | the heading that you want the object to have   |
+| cb  | function  | No      | -             | the callback function           |
+
+Example: 
+
+```lua
+    ESX.OneSync.SpawnObject('prop_rub_boxpile_04', vector3(0,0,0), 0.0, function(networkId) 
+        local obj = NetworkGetEntityFromNetworkId(networkId) 
+    end) 
+``` 
+
+## ESX.OneSync.SpawnPed 
+
+this function will spawn a ped 
+
+| Argument | Data Type | Optional | Default Value | Explanation                               |
+| -------- | --------- | -------- | ------------- | ----------------------------------------- |
+| model  | string    | No       | -             | the model that you want to spawn                    |
+| coords   | vector3       | No       | -             | the coords where you want the object to be spawned    |
+| heading  | int    | No       | -             | the heading that you want the object to have   |
+| cb  | function  | No      | -             | the callback function           |
+
+Example: 
+
+```lua
+    ESX.OneSync.SpawnPed('a_f_m_beach_01', vector3(0,0,0), 0.0, function(networkId) 
+        local ped = NetworkGetEntityFromNetworkId(networkId) 
+    end) 
+``` 
+
+## ESX.OneSync.SpawnPedInVehicle 
+
+this function will spawn a ped inside a vehicle 
+
+| Argument | Data Type | Optional | Default Value | Explanation                               |
+| -------- | --------- | -------- | ------------- | ----------------------------------------- |
+| model  | string    | No       | -             | the model that you want to spawn                    |
+| vehicle   | vehicle  | No       | -             | the vehicle handle the ped needs to be spawned in   |
+| seat  | number    | No       | -             | the seat where the ped needs to be created in   |
+| cb  | function  | No      | -             | the callback function           |
+
+Example: 
+
+```lua
+    local vehicles = GetAllVehicles()
+
+    if #vehicles < 1 then return end 
+    ESX.OneSync.SpawnPedInVehicle('a_f_m_beach_01', vehicles[math.random(1, #vehicles)], -1, function(networkId)
+        local ped = NetworkGetEntityFromNetworkId(networkId) 
+    end)
+```
+
+## ESX.OneSync.GetPedsInArea 
+
+this function will get all peds in given area ( coords + radius ) 
+
+| Argument | Data Type | Optional | Default Value | Explanation                               |
+| -------- | --------- | -------- | ------------- | ----------------------------------------- |
+| coords  | vector3    | No       | -             | the coords of the area                  |
+| radius   | int  | No       | -             | the radius of the area   |
+| modelFilter  | table   | No       | -             | the seat where the ped needs to be created in   |
+
+this function will return a table with the network id's from the found peds
+
+Example: 
+
+```lua
+    local peds = ESX.OneSync.GetPedsInArea(vector3(0,0,0), 30.0, {
+        [joaat('a_f_m_beach_01')] = true -- joaat needs lua 5.4
+    })
+
+    for i=1, #peds do 
+        local ped = NetworkGetEntityFromNetworkId[peds[i]] 
+    end 
+```
+
+## ESX.OneSync.GetObjectsInArea 
+
+this function will get all objects in given area ( coords + radius ) 
+
+| Argument | Data Type | Optional | Default Value | Explanation                               |
+| -------- | --------- | -------- | ------------- | ----------------------------------------- |
+| coords  | vector3    | No       | -             | the coords of the area                  |
+| radius   | int  | No       | -             | the radius of the area   |
+| modelFilter  | table   | No       | -             | the seat where the ped needs to be created in   |
+
+this function will return a table with the network id's from the found objects
+
+Example: 
+
+```lua
+    local objects = ESX.OneSync.GetObjectsInArea(vector3(0,0,0), 30.0, {
+        [joaat('prop_rub_boxpile_04')] = true -- joaat needs lua 5.4
+    })
+
+    for i=1, #objects do 
+        local object = NetworkGetEntityFromNetworkId[objects[i]]   
+    end 
+```
+
+## ESX.OneSync.GetVehiclesInArea 
+
+this function will get all vehicles in given area ( coords + radius ) 
+
+| Argument | Data Type | Optional | Default Value | Explanation                               |
+| -------- | --------- | -------- | ------------- | ----------------------------------------- |
+| coords  | vector3    | No       | -             | the coords of the area                  |
+| radius   | int  | No       | -             | the radius of the area   |
+| modelFilter  | table   | No       | -             | the seat where the ped needs to be created in   |
+
+this function will return a table with the network id's from the found objects
+
+Example: 
+
+```lua
+    local vehicles = ESX.OneSync.GetVehiclesInArea(vector3(0,0,0), 30.0, {
+        [joaat('zentorno')] = true -- joaat needs lua 5.4
+    })
+
+    for i=1, #vehicles do 
+        local vehicle = NetworkGetEntityFromNetworkId[vehicles[i]]   
+    end 
+```
+
+## ESX.OneSync.GetClosestPed 
+
+this function will return the closest ped to given coords
+
+| Argument | Data Type | Optional | Default Value | Explanation                               |
+| -------- | --------- | -------- | ------------- | ----------------------------------------- |
+| coords  | vector3    | No       | -             | the coords of the area                  |
+| modelFilter  | table   | No       | -             | the seat where the ped needs to be created in   |
+
+Example: 
+
+```lua
+    local networkId, distance, closestCoords = ESX.OneSync.GetClosestPed(vector3(0,0,0), {
+        [joaat('mp_m_freemode_01')] = true  
+    })
+```
+
+
+
+## ESX.OneSync.GetClosestPed 
+
+this function will return the closest object to given coords
+
+| Argument | Data Type | Optional | Default Value | Explanation                               |
+| -------- | --------- | -------- | ------------- | ----------------------------------------- |
+| coords  | vector3    | No       | -             | the coords of the area                  |
+| modelFilter  | table   | No       | -             | the seat where the ped needs to be created in   |
+
+Example: 
+
+```lua
+    local networkId, distance, closestCoords = ESX.OneSync.GetClosestPed(vector3(0,0,0), {
+        [joaat('mp_m_freemode_01')] = true  
+    })
+```
+
+## ESX.OneSync.GetClosestObject 
+
+this function will return the closest object to given coords
+
+| Argument | Data Type | Optional | Default Value | Explanation                               |
+| -------- | --------- | -------- | ------------- | ----------------------------------------- |
+| coords  | vector3    | No       | -             | the coords of the area                  |
+| modelFilter  | table   | No       | -             | the seat where the ped needs to be created in   |
+
+Example: 
+
+```lua
+    local networkId, distance, closestCoords = ESX.OneSync.GetClosestObject(vector3(0,0,0), {
+        [joaat('prop_rub_boxpile_04')] = true  
+    })
+```
+
+## ESX.OneSync.GetClosestVehicle
+
+this function will return the closest vehicle to given coords
+
+| Argument | Data Type | Optional | Default Value | Explanation                               |
+| -------- | --------- | -------- | ------------- | ----------------------------------------- |
+| coords  | vector3    | No       | -             | the coords of the area                  |
+| modelFilter  | table   | No       | -             | the seat where the ped needs to be created in   |
+
+Example: 
+
+```lua
+    local networkId, distance, closestCoords = ESX.OneSync.GetClosestVehicle(vector3(0,0,0), {
+        [joaat('zentorno')] = true  
+    })
+```
