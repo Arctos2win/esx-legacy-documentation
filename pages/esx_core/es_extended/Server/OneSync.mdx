@@ -14,14 +14,14 @@ this function gets all players in the given area.
 Usage: 
 
 ```lua
-    local this = ESX.OneSync.GetPlayersInArea(1, 10.0, {
-        [1] = true 
-    })
+local this = ESX.OneSync.GetPlayersInArea(1, 10.0, {
+    [1] = true 
+})
     
-    for i=1, #this do
-        local player = this[i] 
+for i=1, #this do
+    local player = this[i] 
     
-    end 
+end 
 ```
 
 in this case local table player will contain:
@@ -94,9 +94,9 @@ this function will spawn an object.
 Example: 
 
 ```lua
-    ESX.OneSync.SpawnObject('prop_rub_boxpile_04', vector3(0,0,0), 0.0, function(networkId) 
-        local obj = NetworkGetEntityFromNetworkId(networkId) 
-    end) 
+ESX.OneSync.SpawnObject('prop_rub_boxpile_04', vector3(0,0,0), 0.0, function(networkId) 
+    local obj = NetworkGetEntityFromNetworkId(networkId) 
+end) 
 ``` 
 
 ## ESX.OneSync.SpawnPed 
@@ -113,9 +113,9 @@ this function will spawn a ped
 Example: 
 
 ```lua
-    ESX.OneSync.SpawnPed('a_f_m_beach_01', vector3(0,0,0), 0.0, function(networkId) 
-        local ped = NetworkGetEntityFromNetworkId(networkId) 
-    end) 
+ESX.OneSync.SpawnPed('a_f_m_beach_01', vector3(0,0,0), 0.0, function(networkId) 
+    local ped = NetworkGetEntityFromNetworkId(networkId) 
+end) 
 ``` 
 
 ## ESX.OneSync.SpawnPedInVehicle 
@@ -132,12 +132,12 @@ this function will spawn a ped inside a vehicle
 Example: 
 
 ```lua
-    local vehicles = GetAllVehicles()
+local vehicles = GetAllVehicles()
 
-    if #vehicles < 1 then return end 
-    ESX.OneSync.SpawnPedInVehicle('a_f_m_beach_01', vehicles[math.random(1, #vehicles)], -1, function(networkId)
-        local ped = NetworkGetEntityFromNetworkId(networkId) 
-    end)
+if #vehicles < 1 then return end 
+ESX.OneSync.SpawnPedInVehicle('a_f_m_beach_01', vehicles[math.random(1, #vehicles)], -1, function(networkId)
+    local ped = NetworkGetEntityFromNetworkId(networkId) 
+end)
 ```
 
 ## ESX.OneSync.GetPedsInArea 
@@ -155,13 +155,13 @@ this function will return a table with the network id's from the found peds
 Example: 
 
 ```lua
-    local peds = ESX.OneSync.GetPedsInArea(vector3(0,0,0), 30.0, {
-        [joaat('a_f_m_beach_01')] = true -- joaat is a function of lua v5.4
-    })
+local peds = ESX.OneSync.GetPedsInArea(vector3(0,0,0), 30.0, {
+    [joaat('a_f_m_beach_01')] = true -- joaat is a function of lua v5.4
+})
 
-    for i=1, #peds do 
-        local ped = NetworkGetEntityFromNetworkId[peds[i]] 
-    end 
+for i=1, #peds do 
+    local ped = NetworkGetEntityFromNetworkId[peds[i]] 
+end 
 ```
 
 ## ESX.OneSync.GetObjectsInArea 
@@ -179,13 +179,13 @@ this function will return a table with the network id's from the found objects
 Example: 
 
 ```lua
-    local objects = ESX.OneSync.GetObjectsInArea(vector3(0,0,0), 30.0, {
-        [joaat('prop_rub_boxpile_04')] = true -- joaat is a function of lua v5.4
-    })
+local objects = ESX.OneSync.GetObjectsInArea(vector3(0,0,0), 30.0, {
+    [joaat('prop_rub_boxpile_04')] = true -- joaat is a function of lua v5.4
+})
 
-    for i=1, #objects do 
-        local object = NetworkGetEntityFromNetworkId[objects[i]]   
-    end 
+for i=1, #objects do 
+    local object = NetworkGetEntityFromNetworkId[objects[i]]   
+end 
 ```
 
 ## ESX.OneSync.GetVehiclesInArea 
@@ -203,13 +203,13 @@ this function will return a table with the network id's from the found objects
 Example: 
 
 ```lua
-    local vehicles = ESX.OneSync.GetVehiclesInArea(vector3(0,0,0), 30.0, {
-        [joaat('zentorno')] = true -- joaat is a function of lua v5.4
-    })
+local vehicles = ESX.OneSync.GetVehiclesInArea(vector3(0,0,0), 30.0, {
+    [joaat('zentorno')] = true -- joaat is a function of lua v5.4
+})
 
-    for i=1, #vehicles do 
-        local vehicle = NetworkGetEntityFromNetworkId[vehicles[i]]   
-    end 
+for i=1, #vehicles do 
+    local vehicle = NetworkGetEntityFromNetworkId[vehicles[i]]   
+end 
 ```
 
 ## ESX.OneSync.GetClosestPed 
@@ -224,9 +224,9 @@ this function will return the closest object to given coords
 Example: 
 
 ```lua
-    local networkId, distance, closestCoords = ESX.OneSync.GetClosestPed(vector3(0,0,0), {
-        [joaat('mp_m_freemode_01')] = true -- joaat is a function of lua v5.4
-    })
+local networkId, distance, closestCoords = ESX.OneSync.GetClosestPed(vector3(0,0,0), {
+    [joaat('mp_m_freemode_01')] = true -- joaat is a function of lua v5.4
+})
 ```
 
 ## ESX.OneSync.GetClosestObject 
@@ -241,9 +241,9 @@ this function will return the closest object to given coords
 Example: 
 
 ```lua
-    local networkId, distance, closestCoords = ESX.OneSync.GetClosestObject(vector3(0,0,0), {
-        [joaat('prop_rub_boxpile_04')] = true -- joaat is a function of lua v5.4 
-    })
+local networkId, distance, closestCoords = ESX.OneSync.GetClosestObject(vector3(0,0,0), {
+    [joaat('prop_rub_boxpile_04')] = true -- joaat is a function of lua v5.4 
+})
 ```
 
 ## ESX.OneSync.GetClosestVehicle
@@ -258,7 +258,7 @@ this function will return the closest vehicle to given coords
 Example: 
 
 ```lua
-    local networkId, distance, closestCoords = ESX.OneSync.GetClosestVehicle(vector3(0,0,0), {
-        [joaat('zentorno')] = true -- joaat is a function of lua v5.4
-    })
+local networkId, distance, closestCoords = ESX.OneSync.GetClosestVehicle(vector3(0,0,0), {
+    [joaat('zentorno')] = true -- joaat is a function of lua v5.4
+})
 ```
