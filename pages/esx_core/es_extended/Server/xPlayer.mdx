@@ -1,0 +1,156 @@
+import { ArgumentsTable } from "components/argumentstable";
+import { Callout } from 'nextra/components'; 
+
+## triggerEvent 
+
+this function will trigger a client side event for the player.
+
+<ArgumentsTable rows={[
+    { arg: "eventName", type: "string", optional: false, explanation: "The event you want to trigger for the xPlayer" },
+]} />
+
+Examle: 
+
+```lua 
+local xPlayer = ESX.GetPlayerFromId(playerId) 
+
+xPlayer.triggerEvent('esx:showNotification', 'this is a notification') 
+```
+
+You can use more arguments like you would do in a classic TriggerEvent 
+
+## setCoords 
+
+this function will change the coords of the player. 
+
+<ArgumentsTable rows={[
+    { arg: "coords", type: "vector3, vector4 or table (x, y, z, heading)", optional: false, explanation: "The coords the player needs to be teleported to" },
+]} />
+
+Example: 
+
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId) 
+
+xPlayer.setCoords(vector3(0, 0, 0)) 
+```
+
+## getCoords 
+
+this function will return the coords from the player.
+
+<ArgumentsTable rows={[
+    { arg: "vector", type: "boolean", optional: true, defaultValue: 'false',  explanation: "if you want a table returned or a vector3" },
+]} />
+
+Example: 
+
+```lua
+local xPlayer = ESX.GetPlayerFromid(playerId) 
+
+xPlayer.getCoords(true) 
+```
+
+## kick 
+
+this function will kick the player. 
+
+<ArgumentsTable rows={[
+    { arg: "reason", type: "string", optional: true, explanation: "the reason why the player is being kicked" },
+]} />
+
+Example: 
+
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId) 
+
+xPlayer.kick('You are kicked')
+```
+
+## getIdentifier 
+
+this function will return the player his / her identifier. 
+
+Example: 
+
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId) 
+local identifier = xPlayer.getIdentifier()
+```
+
+## setGroup 
+
+this function will set the player his / her group. 
+
+<ArgumentsTable rows={[
+    { arg: "group", type: "string", optional: false, explanation: "The group you want to give the player" },
+]} />
+
+Example: 
+
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId) 
+
+xPlayer.setGroup('admin')
+```
+
+# Useless functions 
+
+<Callout type="warning">
+    The functions beneath only exists for backwards compatibility and are executing other 
+    functions within the player object. 
+</Callout>
+
+## setMoney 
+
+this function will set the money account from the player 
+
+<Callout type="info">
+    this function executes setAccountMoney
+</Callout>
+
+<ArgumentsTable rows={[
+    { arg: "amount", type: "number", optional: false, explanation: "how many money you want the player to have" },
+]} />
+
+Example: 
+
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId) 
+xPlayer.setMoney(100) 
+```
+
+## getMoney 
+
+this function will return the amount of money the player has. 
+
+<Callout type="info">
+    this function executes getAccountMoney
+</Callout>
+
+Example: 
+
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId) 
+local money = xPlayer.getMoney() 
+```
+
+## addMoney 
+
+this function will add money to the players money account. 
+
+<Callout type="info">
+    this function executes addAccountMoney
+</Callout>
+
+<ArgumentsTable rows={[
+    { arg: "amount", type: "number", optional: false, explanation: "the amount you want to add to the player's money account." },
+]} />
+
+Example: 
+
+```lua 
+local xPlayer = ESX.GetPlayerFromId(playerId) 
+xPlayer.addMoney(100)
+```
+

@@ -1,7 +1,7 @@
 import { Callout } from 'nextra/components'; 
 import { ArgumentsTable } from "components/argumentstable";
 
-## ESX.OneSync.GetPlayersInArea
+## GetPlayersInArea
 
 this function gets all players in the given area. 
 
@@ -30,14 +30,14 @@ in this case local table player will contain:
 | -------- | --------- | -------- | ------------- |
 | number  | string    | vector3       | number             | 
 
-## ESX.OneSync.GetClosestPlayer
+## GetClosestPlayer
 
 this function returns the closest player from the given player 
 
 <ArgumentsTable rows={[
     { arg: "playerId", type: "int", optional: false, explanation: "The id from the player you want the nearest player from" },
     { arg: "radius", type: "int", optional: true, defaultValue: '100', explanation: "The radius to search for the nearest player" },
-    { arg: "ignore", type: "table", optional: true, explanation: "A table with server id's that can be ignored" },
+    { arg: "ignore", type: "table", optional: true, explanation: "A table with server id's as keys that can be ignored" },
 ]} />
 
 Example: 
@@ -45,7 +45,7 @@ Example:
 ```lua
 local player = ESX.OneSync.GetClosestPlayer(1, 10.0, {
     [2] = true 
-}) -- this will ignore player with id 2 
+})
 ```
 
 this function will return an empty table if no player is found. 
@@ -55,7 +55,7 @@ If a player is found it will return this:
 | -------- | --------- | -------- | ------------- |
 | number  | string    | vector3       | number             |  
 
-## ESX.OneSync.SpawnVehicle 
+## SpawnVehicle 
 
 this function will spawn a vehicle with the vehicle server setter, which means 
 the vehicle will belong to the server and won't be removed when no clients are active. 
@@ -80,7 +80,7 @@ ESX.OneSync.SpawnVehicle('blista', vector3(0, 0, 0), 0, {}, function(networkId)
 end)  
 ```
 
-## ESX.OneSync.SpawnObject 
+## SpawnObject 
 
 this function will spawn an object. 
 
@@ -99,7 +99,7 @@ ESX.OneSync.SpawnObject('prop_rub_boxpile_04', vector3(0,0,0), 0.0, function(net
 end) 
 ``` 
 
-## ESX.OneSync.SpawnPed 
+## SpawnPed 
 
 this function will spawn a ped 
 
@@ -118,7 +118,7 @@ ESX.OneSync.SpawnPed('a_f_m_beach_01', vector3(0,0,0), 0.0, function(networkId)
 end) 
 ``` 
 
-## ESX.OneSync.SpawnPedInVehicle 
+## SpawnPedInVehicle 
 
 this function will spawn a ped inside a vehicle 
 
@@ -140,7 +140,7 @@ ESX.OneSync.SpawnPedInVehicle('a_f_m_beach_01', vehicles[math.random(1, #vehicle
 end)
 ```
 
-## ESX.OneSync.GetPedsInArea 
+## GetPedsInArea 
 
 this function will get all peds in given area ( coords + radius ) 
 
@@ -164,7 +164,7 @@ for i=1, #peds do
 end 
 ```
 
-## ESX.OneSync.GetObjectsInArea 
+## GetObjectsInArea 
 
 this function will get all objects in given area ( coords + radius ) 
 
@@ -188,7 +188,7 @@ for i=1, #objects do
 end 
 ```
 
-## ESX.OneSync.GetVehiclesInArea 
+## GetVehiclesInArea 
 
 this function will get all vehicles in given area ( coords + radius ) 
 
@@ -212,7 +212,7 @@ for i=1, #vehicles do
 end 
 ```
 
-## ESX.OneSync.GetClosestPed 
+## GetClosestPed 
 
 this function will return the closest object to given coords
 
@@ -229,7 +229,7 @@ local networkId, distance, closestCoords = ESX.OneSync.GetClosestPed(vector3(0,0
 })
 ```
 
-## ESX.OneSync.GetClosestObject 
+## GetClosestObject 
 
 this function will return the closest object to given coords
 
@@ -246,7 +246,7 @@ local networkId, distance, closestCoords = ESX.OneSync.GetClosestObject(vector3(
 })
 ```
 
-## ESX.OneSync.GetClosestVehicle
+## GetClosestVehicle
 
 this function will return the closest vehicle to given coords
 
