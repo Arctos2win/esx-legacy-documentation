@@ -51,22 +51,6 @@ local xPlayer = ESX.GetPlayerFromid(playerId)
 xPlayer.getCoords(true) 
 ```
 
-## kick 
-
-this function will kick the player. 
-
-<ArgumentsTable rows={[
-    { arg: "reason", type: "string", optional: true, description: "the reason why the player is being kicked" },
-]} />
-
-Example: 
-
-```lua
-local xPlayer = ESX.GetPlayerFromId(playerId) 
-
-xPlayer.kick('You are kicked')
-```
-
 ## getIdentifier 
 
 this function will return the player his / her identifier. 
@@ -154,3 +138,22 @@ local xPlayer = ESX.GetPlayerFromId(playerId)
 xPlayer.addMoney(100)
 ```
 
+## kick 
+
+this function will kick the player. 
+
+<Callout type="info">
+    you can replace this function with DropPlayer(playerId)
+</Callout>
+
+<ArgumentsTable rows={[
+    { arg: "reason", type: "string", optional: true, explanation: "the reason why the player is being kicked" },
+]} />
+
+Example: 
+
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId) 
+
+xPlayer.kick('You are kicked')
+```
