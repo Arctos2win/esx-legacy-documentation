@@ -1,6 +1,6 @@
 import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
-import { useTheme } from 'next-themes'
+import { useTheme } from 'nextra-theme-docs'
 import { useState, useEffect } from 'react'
 
 //probably needs to be rewritten better
