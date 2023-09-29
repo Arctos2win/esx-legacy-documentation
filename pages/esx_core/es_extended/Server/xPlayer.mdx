@@ -1,4 +1,4 @@
-import { ArgumentsTable } from "components/argumentstable";
+import { ArgumentsTable } from "components/table";
 import { Callout } from 'nextra/components'; 
 
 ## triggerEvent 
@@ -6,7 +6,7 @@ import { Callout } from 'nextra/components';
 this function will trigger a client side event for the player.
 
 <ArgumentsTable rows={[
-    { arg: "eventName", type: "string", optional: false, explanation: "The event you want to trigger for the xPlayer" },
+    { arg: "eventName", type: "string", optional: false, description: "The event you want to trigger for the xPlayer" },
 ]} />
 
 Examle: 
@@ -24,7 +24,7 @@ You can use more arguments like you would do in a classic TriggerEvent
 this function will change the coords of the player. 
 
 <ArgumentsTable rows={[
-    { arg: "coords", type: "vector3, vector4 or table (x, y, z, heading)", optional: false, explanation: "The coords the player needs to be teleported to" },
+    { arg: "coords", type: "vector3, vector4 or table (x, y, z, heading)", optional: false, description: "The coords the player needs to be teleported to" },
 ]} />
 
 Example: 
@@ -40,7 +40,7 @@ xPlayer.setCoords(vector3(0, 0, 0))
 this function will return the coords from the player.
 
 <ArgumentsTable rows={[
-    { arg: "vector", type: "boolean", optional: true, defaultValue: 'false',  explanation: "if you want a table returned or a vector3" },
+    { arg: "vector", type: "boolean", optional: true, defaultValue: 'false',  description: "if you want a table returned or a vector3" },
 ]} />
 
 Example: 
@@ -56,7 +56,7 @@ xPlayer.getCoords(true)
 this function will kick the player. 
 
 <ArgumentsTable rows={[
-    { arg: "reason", type: "string", optional: true, explanation: "the reason why the player is being kicked" },
+    { arg: "reason", type: "string", optional: true, description: "the reason why the player is being kicked" },
 ]} />
 
 Example: 
@@ -83,7 +83,7 @@ local identifier = xPlayer.getIdentifier()
 this function will set the player his / her group. 
 
 <ArgumentsTable rows={[
-    { arg: "group", type: "string", optional: false, explanation: "The group you want to give the player" },
+    { arg: "group", type: "string", optional: false, description: "The group you want to give the player" },
 ]} />
 
 Example: 
@@ -110,7 +110,7 @@ this function will set the money account from the player
 </Callout>
 
 <ArgumentsTable rows={[
-    { arg: "amount", type: "number", optional: false, explanation: "how many money you want the player to have" },
+    { arg: "amount", type: "number", optional: false, description: "how many money you want the player to have" },
 ]} />
 
 Example: 
@@ -144,7 +144,7 @@ this function will add money to the players money account.
 </Callout>
 
 <ArgumentsTable rows={[
-    { arg: "amount", type: "number", optional: false, explanation: "the amount you want to add to the player's money account." },
+    { arg: "amount", type: "number", optional: false, description: "the amount you want to add to the player's money account." },
 ]} />
 
 Example: 
