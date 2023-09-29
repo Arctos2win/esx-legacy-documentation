@@ -1,4 +1,5 @@
-import {Callout} from 'nextra/components'
+import {Callout} from 'nextra/components'; 
+import { ArgumentsTable } from "components/argumentstable";
 
 # Functions
 
@@ -9,20 +10,11 @@ The following are ESX Client sided Functions
 ESX.IsPlayerLoaded()
 ```
 
-This functions checks if the player has loaded in
+This functions returns if the player is loaded
 
 Example:
 ```lua
-CreateThread(function()
-    while true do
-        local sleep = 1000 -- Make the Thread Sleep if doing nothing
-        local IsLoaded = ESX.IsPlayerLoaded()
-        if IsLoaded then
-            -- Do Thigs here!
-        end
-        Wait(sleep)
-    end
-end)
+while not ESX.IsPlayerLoaded() do Wait(250) end 
 ```
 
 ## Progressbar
@@ -32,13 +24,13 @@ ESX.Progressbar(message, lenght, options)
 ```
 This function shows a progress bar and execute code on finish and/or on cancel .
 
-| Argument | Data Type | Optional | Default Value | Explanation                               |
-| -------- | --------- | -------- | ------------- | ----------------------------------------- |
-| message  | string    | No       | -             | The message to display                    |
-| lenght   | int       | No       | -             | the duration in ms                        |
-| options  |table      | Yes      | -             | Options                                   |
+<ArgumentsTable rows={[
+    { arg: "message", type: "string", optional: false, explanation: "The message to display" },
+    { arg: "lenght", type: "int", optional: false, explanation: "the duration in ms"}, 
+    { arg: "options", type:"table", optional: true, explanation: "Options"}
+]} />
 
-Usage:
+Example:
 
 * ESX Function
 ```lua
@@ -79,10 +71,10 @@ Usage:
 ## SearchInventory
 
 ```lua
-ESX.SearchInventory(item, count)
+ESX.SearchInventory(items, count)
 ```
 
-This function search inventory for the specified item and count.
+This function search inventory for the specified item(s) and count.
 
 | Argument  | Data Type | Explanation                                                          |
 |-----------|-----------|----------------------------------------------------------------------|
