@@ -1,34 +1,35 @@
-import { ArgumentsTable } from "components/table";
+import { ArgumentsTable, OutputTable } from "components/table";
 import { Callout } from 'nextra/components'; 
 
 ## triggerEvent 
+This function will trigger a client side event for the player.
 
-this function will trigger a client side event for the player.
-
+**Arguments**
 <ArgumentsTable rows={[
-    { arg: "eventName", type: "string", optional: false, description: "The event you want to trigger for the xPlayer" },
+    { arg: "eventName", type: "string", description: "The event you want to trigger for the xPlayer" },
+    { arg: "...", type: "arguments", optional: true, description: "All arguments that you want to send"}
 ]} />
 
-Examle: 
+**Example**
 
+You can use more arguments like you would do in a classic TriggerEvent 
 ```lua 
 local xPlayer = ESX.GetPlayerFromId(playerId) 
 
-xPlayer.triggerEvent('esx:showNotification', 'this is a notification') 
+xPlayer.triggerEvent('esx:showNotification', 'this is a notification', 'error', 4000) 
 ```
 
-You can use more arguments like you would do in a classic TriggerEvent 
+
 
 ## setCoords 
+This function will change the coords of the player. Making him teleport.
 
-this function will change the coords of the player. 
-
+**Arguments**
 <ArgumentsTable rows={[
-    { arg: "coords", type: "vector3, vector4 or table (x, y, z, heading)", optional: false, description: "The coords the player needs to be teleported to" },
+    { arg: "coords", type: "vector3 | vector4 | table", description: "The coords the player needs to be teleported to" },
 ]} />
 
-Example: 
-
+**Example**
 ```lua
 local xPlayer = ESX.GetPlayerFromId(playerId) 
 
@@ -36,124 +37,316 @@ xPlayer.setCoords(vector3(0, 0, 0))
 ```
 
 ## getCoords 
+This function will return the coords from the player.
 
-this function will return the coords from the player.
-
+**Arguments**
 <ArgumentsTable rows={[
-    { arg: "vector", type: "boolean", optional: true, defaultValue: 'false',  description: "if you want a table returned or a vector3" },
+    { arg: "vector", type: "boolean", optional: true, defaultValue: 'false',  description: "True if you want a vector3 returned or a table" },
 ]} />
 
-Example: 
-
+**Example**
 ```lua
 local xPlayer = ESX.GetPlayerFromid(playerId) 
-
-xPlayer.getCoords(true) 
+local playerCoords = xPlayer.getCoords(true) 
 ```
 
-## getIdentifier 
-
-this function will return the player his / her identifier. 
-
-Example: 
-
-```lua
-local xPlayer = ESX.GetPlayerFromId(playerId) 
-local identifier = xPlayer.getIdentifier()
-```
-
-## setGroup 
-
-this function will set the player his / her group. 
-
-<ArgumentsTable rows={[
-    { arg: "group", type: "string", optional: false, description: "The group you want to give the player" },
-]} />
-
-Example: 
-
-```lua
-local xPlayer = ESX.GetPlayerFromId(playerId) 
-
-xPlayer.setGroup('admin')
-```
-
-# Useless functions 
-
-<Callout type="warning">
-    The functions beneath only exists for backwards compatibility and are executing other 
-    functions within the player object. 
-</Callout>
-
-## setMoney 
-
-this function will set the money account from the player 
+## kick 
+This function will kick the player from the Server. 
 
 <Callout type="info">
-    this function executes setAccountMoney
+    This function only exits for backwards compatibility. You should use `DropPlayer(playerId)` instead.
 </Callout>
 
+**Arguments**
 <ArgumentsTable rows={[
-    { arg: "amount", type: "number", optional: false, description: "how many money you want the player to have" },
+    { arg: "reason", type: "string", optional: true, explanation: "The reason why the player is being kicked" },
 ]} />
 
-Example: 
+**Example**
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId) 
 
+xPlayer.kick('You are kicked')
+```
+## setMoney 
+This function will set the money account from the player.
+
+<Callout type="info">
+    This function only exits for backwards compatibility. You should use `xPlayer.setAccountMoney('money', amount)` instead.
+</Callout>
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: "amount", type: "number", description: "The amount of cash to set" },
+]} />
+
+**Example**
 ```lua
 local xPlayer = ESX.GetPlayerFromId(playerId) 
 xPlayer.setMoney(100) 
 ```
 
 ## getMoney 
-
-this function will return the amount of money the player has. 
+This function will return the amount of money the player has. 
 
 <Callout type="info">
-    this function executes getAccountMoney
+    This function only exits for backwards compatibility. You should use `xPlayer.getAccountMoney('money').money` instead.
 </Callout>
 
-Example: 
-
+**Example**
 ```lua
 local xPlayer = ESX.GetPlayerFromId(playerId) 
 local money = xPlayer.getMoney() 
 ```
 
 ## addMoney 
-
-this function will add money to the players money account. 
+This function will add money to the players money account. 
 
 <Callout type="info">
-    this function executes addAccountMoney
+    This function only exits for backwards compatibility. You should use `xPlayer.addAccountMoney('money', amount, reason)` instead.
 </Callout>
 
+**Arguments**
 <ArgumentsTable rows={[
-    { arg: "amount", type: "number", optional: false, description: "the amount you want to add to the player's money account." },
+    { arg: "amount", type: "number", description: "The amount you want to add to the player's money account." },
+    { arg: "reason", type: "string", optional: true, description: "The reason the player receives the money."}
 ]} />
 
-Example: 
-
+**Example**
 ```lua 
 local xPlayer = ESX.GetPlayerFromId(playerId) 
-xPlayer.addMoney(100)
+xPlayer.addMoney(100, "Sold an apple")
 ```
 
-## kick 
-
-this function will kick the player. 
+## removeMoney
+This function will remove money from the player's money account.
 
 <Callout type="info">
-    you can replace this function with DropPlayer(playerId)
+    This function only exits for backwards compatibility. You should use `xPlayer.removeAccountMoney('money', amount, reason)` instead.
 </Callout>
 
+**Arguments**
 <ArgumentsTable rows={[
-    { arg: "reason", type: "string", optional: true, explanation: "the reason why the player is being kicked" },
+    { arg: "amount", type: "number", description: "The amount you want to remove from the player's money account." },
+    { arg: "reason", type: "string", optional: true, description: "The reason the player looses the money."}
 ]} />
 
-Example: 
+**Example**
+```lua 
+local xPlayer = ESX.GetPlayerFromId(playerId) 
+xPlayer.removeMoney(900, "Bought an apple including Tax")
+```
 
+## getIdentifier 
+This function will return the player's identifier. 
+
+**Returns**
+
+The player's rockstar license.
+<OutputTable rows={[
+    { arg: "identifier", type: "string", description: "The rockstar license of the player" },
+]}/>
+
+**Example** 
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId) 
+local identifier = xPlayer.getIdentifier()
+```
+
+## setGroup 
+This function will set the player's group. 
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: "group", type: "string", description: "The group you want to give the player" },
+]} />
+
+**Example**
 ```lua
 local xPlayer = ESX.GetPlayerFromId(playerId) 
 
-xPlayer.kick('You are kicked')
+xPlayer.setGroup('admin')
 ```
+
+## getGroup
+This function will get the player's group.
+
+**Returns**
+
+The player's group.
+<OutputTable rows={[
+    { arg: "group", type: "string", description: "The players group" },
+]}/>
+
+## set
+This function will set a variable that you can access from the xPlayer table.
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: "key", type: "string", description: "The key of the variable" },
+    { arg: "value", type: "any", description: "The value of the variable" }
+]} />
+
+**Example**
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId) 
+
+xPlayer.set('cool', false)
+```
+
+## get
+This function will get a variable saved in the xPlayer table.
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: "key", type: "string", description: "The key of the variable" }
+]} />
+
+**Example**
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId) 
+
+if xPlayer.get('cool') then
+    print("Player is cool! :)")
+else
+    print("Player is not cool! >:/")
+end
+```
+
+## getAccounts
+This function returns all of the player's accounts.
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: "minimal", type: "boolean", optional: true, description: "Should only return amount of accounts." }
+]} />
+
+**Returns**
+
+A **`table`** with the key being the account name and the value either being a table or a number with the accounts balance amount when minimal.
+
+Non-Minimal:
+<OutputTable isTable={true} rows={[
+    { arg: "name", type: "string", description: "The account name" },
+    { arg: "money", type: "number", description: "The account balance" },
+    { arg: "label", type: "string", description: "The account label" },
+]}/>
+
+Minimal:
+<OutputTable rows={[
+    { arg: "money", type: "number", description: "The account balance" }
+]}/>
+
+**Example**
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId)
+local accounts = xPlayer.getAccounts()
+local accountsMinimal = xPlayer.getAccounts(true) -- Minimal data
+
+print("Player has " .. accounts["bank"].money .. " on his " .. accounts["bank"].name .. " account.")
+print("Player has " .. accounts["black_money"] .. "on his black_money account") 
+```
+
+## getInventory
+This function returns the inventory of the player.
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: "minimal", type: "boolean", optional: true, description: "Should only return count of items." }
+]} />
+
+**Returns**
+
+A **`table`** with the key being the item name and the value either being a table or a number with the item count when minimal.
+Non-Minimal:
+<OutputTable isTable={true} rows={[
+    { arg: "name", type: "string", description: "The item name" },
+    { arg: "count", type: "number", description: "The item count" },
+    { arg: "label", type: "string", description: "The item label" },
+    { arg: "weight", type: "number", description: "The item weight" },
+    { arg: "usable", type: "boolean", description: "Does the item have a use callback?" },
+    { arg: "rare", type: "boolean", description: "Is the item rare?" },
+    { arg: "canRemove", type: "boolean", description: "Can the item be removed?" }
+]}/>
+
+Minimal:
+<OutputTable rows={[
+    { arg: "count", type: "number", description: "The item count" }
+]}/>
+
+**Example**
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId)
+local inventory = xPlayer.getInventory()
+local breadItem = inventory["bread"]
+
+print("Player has " .. breadItem.count .. " bread. Weighing: " .. breadItem.weight)
+```
+
+## getJob
+This function returns the job of the player.
+
+**Returns**
+<OutputTable isTable={true} rows={[
+    { arg: "id", type: "number", description: "The job's id from the database" },
+    { arg: "name", type: "string", description: "The job's name" },
+    { arg: "label", type: "string", description: "The job's label" },
+    { arg: "grade", type: "string", description: "The job's grade" },
+    { arg: "grade_name", type: "string", description: "The job's grade name" },
+    { arg: "grade_label", type: "string", description: "The job's grade label" },
+    { arg: "grade_salary", type: "string", description: "The job's grade salary" },
+    { arg: "skin_male", type: "table", description: "The job's male grade skin/outfit" },
+    { arg: "skin_female", type: "table", description: "The job's female grade skin/outfit" },
+]}/>
+
+**Example**
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId)
+local job = xPlayer.getJob()
+
+print("Player is a " .. job.label .. " with a salary of " .. job.grade_salary)
+```
+
+## getLoadout
+This function returns the loadout of the player.
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: "minimal", type: "boolean", optional: true, description: "Should only return ammo and components." }
+]} />
+
+**Returns**
+
+A **`table`** with the key being the weapon name and the value either being a table.
+Non-Minimal:
+<OutputTable isTable={true} rows={[
+    { arg: "name", type: "string", description: "The weapon's name." },
+    { arg: "ammo", type: "number", description: "The weapon's ammo." },
+    { arg: "label", type: "string", description: "The weapon's label." },
+    { arg: "components", type: "table", description: "The weapon's components." },
+    { arg: "tintIndex", type: "number", description: "The weapon's tint." },
+]}/>
+
+Minimal:
+<OutputTable rows={[
+    { arg: "ammo", type: "number", description: "The weapon's ammo." },
+    { arg: "components", type: "table", description: "The weapon's components." },
+]}/>
+
+**Example**
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId)
+local loadout = xPlayer.getLoadout()
+
+if loudout["weapon_pistol"] ~= nil then
+    print("Player has a pistol with " .. loadout["weapon_pistol"].ammo .. " ammo.")
+end
+```
+
+## getName
+This function returns the name of the player. Either a roleplay name consisting out of firstname and lastname with esx_identity or his fivem name.
+
+**Returns**
+<OutputTable rows={[
+    { arg: "name", type: "string", description: "Player's name" }
+]}/>
