@@ -1,0 +1,81 @@
+import { Callout } from 'nextra/components'; 
+
+# Serversided Events
+This page is dedicated to the server events introduced by the esx_core scripts.
+
+## Triggered by the Client
+The events listed here are triggered by the client and should be handled with caution.
+
+### esx:clientLog
+This event prints a message to the server console with the message given by the client.
+When the Debug mode is enabled in the ESX config.
+
+### esx:playerPedChanged
+
+
+### esx:playerJumping
+
+
+### esx:enteringVehicle
+
+
+### esx:enteringVehicleAborted
+
+
+### esx:enteredVehicle
+
+
+### esx:exitedVehicle
+
+
+### esx:ReturnVehicleType
+
+
+### esx:triggerServerCallback
+
+
+### esx:clientCallback
+
+
+### esx:onPlayerJoined
+
+
+### esx:updateWeaponAmmo
+
+
+### esx:giveInventoryItem
+
+
+### esx:removeInventoryItem
+
+
+### esx:useItem
+
+
+### esx:onPickup
+
+
+## Triggered by the Server
+
+### esx:getSharedObject
+Outdated event that was used to get the ESX Shared Object
+<Callout type="error">
+    This event no longer exists, or the function has been removed.
+    If you see an error about this event getting triggered follow the tutorial in the Tutorials Tab.
+</Callout>
+
+### esx:playerLoaded
+This event gets triggered when the player has successfully loaded / the character was chosen and loaded.
+
+```lua
+AddEventHandler('esx:playerLoaded', function (playerId, xPlayer)
+    print(xPlayer.getName() .. " successfully loaded with the playerId: " .. playerId)
+end)
+```
+
+### esx:playerLogout
+This event gets triggered when the player has disconnected.
+
+```lua
+// Placeholder
+```
