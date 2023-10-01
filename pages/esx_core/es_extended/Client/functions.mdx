@@ -1,9 +1,7 @@
 import {Callout} from 'nextra/components'; 
-import { ArgumentsTable } from "components/table";
+import { ArgumentsTable, OutputTable } from "components/table";
 
 # Functions
-
-The following are ESX Client sided Functions
 
 ## IsPlayerLoaded
 ```lua
@@ -76,42 +74,29 @@ ESX.SearchInventory(items, count)
 
 This function search inventory for the specified item(s) and count.
 
-| Argument  | Data Type | Explanation                                                          |
-|-----------|-----------|----------------------------------------------------------------------|
-| item      | string    | The item to search for                                               |
-| count     | int       | the quantity of the item                                             |
+<ArgumentsTable rows={[
+    { arg: "item", type: "string", optional: false, description: "The item to search for" },
+    { arg: "count", type: "boolean", optional: true, defaultValue: 'false', description: "only return the count or return all item data" },
+]} />
 
 Example:
 
 ```lua
- CreateThread( function()
-    while true do
-        Wait(2000)
-        if checkItem('bread') then
-            print('I just ate some bread')
-        else 
-            print('I have no more bread')
-        end
-    end    
-end)
+local items = ESX.SearchInventory({'bread', 'water'}, true) 
 
-function checkItem(item)
-  local hasItem = ESX.SearchInventory(item, 1)
-    if hasItem >= 1 then
-        return true
-    else
-        return false
-    end
-end
+for key, value in pairs(items) do 
+    print(string.format(('you have %sx %s'), value, key)) 
+end 
 ```
 
 ## ShowInventory
 
+This function shows the inventory.
+
+Example: 
 ```lua
 ESX.ShowInventory()
 ```
-
-This function shows the inventory.
 
 ## TriggerServerCallback
 
@@ -128,21 +113,20 @@ This function triggers a server callback. See [ESX.RegisterServerCallback](./../
 | args     | any       | Yes      | -             | Any arguments to parse to the async function                                                                                                                        |
 
 <Callout type="warning" emoji="⚠️">
-  The code inside the server callback run asynchronously.
+  The callback code runs asynchronously ! 
 </Callout>
 
 Example:
 
 ```lua
-local myAgument = 'hello'
+local hasItem
 
 RegisterCommand('testcb', function()
     ESX.TriggerServerCallback('mycallback', function(haveItem)
         if haveItem then  --This code is async
-            print('Callback succesfull - i have bread')
+            print('Callback succesfull - i have bread') 
+            hasItem = true
         end
     end, 'bread')
 end)
-
--- This code is sync
 ```

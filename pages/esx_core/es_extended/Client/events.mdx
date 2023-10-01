@@ -1,4 +1,5 @@
 import {Callout} from 'nextra/components'
+import { ArgumentsTable, OutputTable } from "components/table";
 
 # Client Events
 
@@ -10,7 +11,7 @@ This section contains the client sided events
 RegisterNetEvent('esx:addInventoryItem', function(item, count) end)
 ```
 
-This event is triggered when the player has receive item
+This event is triggered when the player has received an item
 
 | Argument | Type   | Explanation |
 | -------- | ------ | ----------- |
@@ -21,8 +22,7 @@ Example:
 
 ```lua
 RegisterNetEvent('esx:addInventoryItem', function(item, count)
-  print('you received item: ', item)
-  print('count', count)
+  print(string.format(('You have received %sx %s'), count, item))
 end)
 ```
 
@@ -42,7 +42,7 @@ Example:
 
 ```lua
 AddEventHandler('esx:pauseMenuActive', function(isActive)
-	print('pause menu state:', isActive)
+	print(string.format(('pause menu stat is: %s'), isActive)) 
 end)
 ```
 
