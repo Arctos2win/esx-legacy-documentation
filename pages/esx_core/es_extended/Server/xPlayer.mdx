@@ -2,7 +2,7 @@ import { ArgumentsTable, OutputTable } from "components/table";
 import { Callout } from 'nextra/components'; 
 
 # xPlayer Functions
-Used to set and manipulate data from the player. It consists out of multiple functions and multiple variables
+Used to set and manipulate data from the player. It consists out of multiple functions and multiple variables.
 
 ## Getting the xPlayer
 You can get the xPlayer by using the `ESX.GetPlayerFromId` function.
@@ -41,8 +41,8 @@ This function will trigger a client side event for the player.
 
 **Arguments**
 <ArgumentsTable rows={[
-    { arg: "eventName", type: "string", description: "The event you want to trigger for the xPlayer" },
-    { arg: "...", type: "arguments", optional: true, description: "All arguments that you want to send"}
+    { arg: "eventName", type: "string", description: "The event you want to trigger for the xPlayer." },
+    { arg: "...", type: "arguments", optional: true, description: "All arguments that you want to send."}
 ]} />
 
 **Example**
@@ -134,7 +134,7 @@ This function sets the name of the player.
 ```lua
 local xPlayer = ESX.GetPlayerFromId(playerId)
 
-xPlayer.setName("Mike Johnson")
+xPlayer.setName("John Doe")
 ```
 
 ### getName
@@ -904,6 +904,22 @@ else
 end
 ```
 
+### syncInventory
+This function syncs weight, items and account money from ox_iventory with esx.
+
+<Callout type="warning">
+    This function only exists with ox_inventory.
+    This function should not be used and only exists to sync data between the scripts.
+</Callout>
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: "weight", type: "number", description: "The weight of the player" },
+    { arg: "maxWeight", type: "number", description: "The max weight of the player" },
+    { arg: "items", type: "table", description: "The items of the player" },
+    { arg: "money", type: "table", description: "The account's of the player" },
+]} />
+
 ## Item
 
 ### hasItem
@@ -1032,22 +1048,6 @@ local xPlayer = ESX.GetPlayerFromId(playerId)
 
 xPlayer.setInventoryItem("bread", 5) -- Sets bread count to 5
 ```
-
-### syncInventory
-This function syncs weight, items and account money from ox_iventory with esx.
-
-<Callout type="warning">
-    This function only exists with ox_inventory.
-    This function should not be used and only exists to sync data between the scripts.
-</Callout>
-
-**Arguments**
-<ArgumentsTable rows={[
-    { arg: "weight", type: "number", description: "The weight of the player" },
-    { arg: "maxWeight", type: "number", description: "The max weight of the player" },
-    { arg: "items", type: "table", description: "The items of the player" },
-    { arg: "money", type: "table", description: "The account's of the player" },
-]} />
 
 
 ## Notifications
