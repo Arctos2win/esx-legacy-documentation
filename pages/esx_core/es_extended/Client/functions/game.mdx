@@ -117,3 +117,102 @@ ESX.Game.DeleteVehicle(vehicle)
 local object = -- a object handle
 ESX.Game.DeleteObject(object) 
 ```
+
+## SpawnVehicle
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: "vehicleModel", type: "string or hash", description: "the model name or hash." },
+    { arg: "coords", type: "vector3", description: "where the vehicle needs to be spawned."}, 
+    { arg: "heading", type: "number", description: "the heading of the vehicle"}, 
+    { arg: "cb", type: "function", description: "the callback function"}, 
+    { arg: "networked", type: "boolean", description: "if the vehicle needs to be networked or local"} 
+]} />
+
+**Example** 
+```lua
+ESX.Game.SpawnVehicle('blista', vector3(0, 0, 0), 0.0, function(vehicle)
+    print(vehicle) 
+end, true)  
+```
+
+## SpawnLocalVehicle
+
+<Callout type="info">
+    This function only exits for backwards compatibility. You should use `ESX.SpawnVehicle(model, coords, heading, cb, false)` instead.
+</Callout>
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: "vehicleModel", type: "string or hash", description: "the model name or hash." },
+    { arg: "coords", type: "vector3", description: "where the vehicle needs to be spawned."}, 
+    { arg: "heading", type: "number", description: "the heading of the vehicle"}, 
+    { arg: "cb", type: "function", description: "the callback function"}, 
+]} />
+
+**Example** 
+```lua
+ESX.Game.SpawnLocalVehicle('blista', vector3(0, 0, 0), 0.0, function(vehicle)
+    print(vehicle) 
+end)  
+```
+
+## IsVehicleEmpty
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: "vehicle", type: "vehicle handle", description: "the vehicle you want to check" }, 
+]} />
+
+**Example** 
+```lua
+    local vehicle = GetVehiclePedIsIn(PlayerPedId(), true) 
+    local isEmpty = ESX.Game.IsVehicleEmpty(vehicle) 
+```
+
+## GetObjects 
+<Callout type="info">
+    This function only exits for backwards compatibility. You should use `GetGamePool('CObject')` instead.
+</Callout>
+
+**Example** 
+```lua
+local objects = ESX.Game.GetObjects() 
+
+for i=1, #objects do 
+    local object = objects[i] 
+end 
+```
+
+## GetVehicles 
+
+<Callout type="info">
+    This function only exits for backwards compatibility. You should use `GetGamePool('CVehicle')` instead.
+</Callout>
+
+**Example** 
+
+```lua
+local vehicles = ESX.Game.GetVehicles() 
+
+for i=1, #vehicles do
+    local vehicle = vehicles[i] 
+end 
+```
+
+
+
+## GetPeds
+
+**Arguments** 
+<ArgumentsTable rows={[
+    { arg: "onlyOtherPeds", type: "boolean", description: "exclude or include the playerped" }, 
+]} />
+
+**Example** 
+```lua
+local otherPeds = ESX.Game.GetPeds(true) 
+local allPeds = ESX.Game.GetPeds(false) 
+```
+
+## 
