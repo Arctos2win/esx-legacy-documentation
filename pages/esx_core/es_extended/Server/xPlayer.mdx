@@ -215,6 +215,19 @@ local xPlayer = ESX.GetPlayerFromId(playerId)
 xPlayer.setMoney(100) 
 ```
 
+### getMoney 
+This function will return the amount of money the player has. 
+
+<Callout type="info">
+    This function only exits for backwards compatibility. You should use `xPlayer.getAccount('money').money` instead.
+</Callout>
+
+**Example**
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId) 
+local money = xPlayer.getMoney() 
+```
+
 ### addMoney 
 This function will add money to the players money account. 
 
@@ -232,19 +245,6 @@ This function will add money to the players money account.
 ```lua 
 local xPlayer = ESX.GetPlayerFromId(playerId) 
 xPlayer.addMoney(100, "Sold an apple")
-```
-
-### getMoney 
-This function will return the amount of money the player has. 
-
-<Callout type="info">
-    This function only exits for backwards compatibility. You should use `xPlayer.getAccountMoney('money').money` instead.
-</Callout>
-
-**Example**
-```lua
-local xPlayer = ESX.GetPlayerFromId(playerId) 
-local money = xPlayer.getMoney() 
 ```
 
 ### removeMoney
