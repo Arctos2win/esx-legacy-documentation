@@ -20,6 +20,11 @@ To run a ESX Legacy Server you will need a Mysql Server as a database.
         8. If you receive a User Account Control prompt asking to allow the installation, click on Yes.
         9. Click on Finish. [(Screenshot)](https://prnt.sc/7i3B_VxoOCOG)
 
+        ### Download HeidiSQL
+        Download and follow the setup process:
+        - [HeidiSQL](https://www.heidisql.com/download.php).
+
+
         ### Creating your FiveM Server database and user
         1. Open HeidiSQL which was installed with MariaDB.
         2. The Hostname/IP address should by default be 127.0.0.1 which should not be changed, unless you are connecting to the database from a different computer.
@@ -36,21 +41,17 @@ To run a ESX Legacy Server you will need a Mysql Server as a database.
         
     </Tab>
     <Tab>
-    
         ## XAMPP Method
         <Callout type="warning">
             Running a XAMPP Server is not recommended as it is slow. But it will do it's job for a development environment. **It should not be used in production!**
         </Callout>
 
         ### Installing Requirements
-
         Download and follow the setup process for the following:
-
         - [Xampp](https://www.apachefriends.org/download.html).
         - [HeidiSQL](https://www.heidisql.com/download.php).
 
         ### Starting Your Database
-
         - Open the `Xampp` you installed (Run as admininstator)
         - Find the [Actions column](https://prnt.sc/PooUmoH7cEJe)
         - Press Start on the top [2 boxes](https://prnt.sc/fIyfBJK3o2zM)
@@ -58,3 +59,13 @@ To run a ESX Legacy Server you will need a Mysql Server as a database.
         
     </Tab>
 </Tabs>
+
+### Installing the Server
+1. Go to the FiveM [Artifact Downloads page](https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/)
+2. Download the most recent artifact version, [see here](https://i.imgur.com/OMcCVIW.png) for an example.
+3. Open the `server.zip` you just downloaded.
+4. Choose a location on your server where you want to store your files. We'll use the example `C:\fxserver` (aka the Server Home folder).
+4. Extract the Zip file you downloaded to a folder within `C:\fxserver` with the name being whatever the build number is. For example, if you downloaded version `6721` the folder path would be `C:\fxserver\6721`.
+5. Now go into the `6721` folder and start the FXServer.exe. This will start the server and will create a `start_6721_default.bat` in your home folder, which you will use the next time you want to start the server.
+6. Once started a browser window will popup, it will ask you for a 4-digit code. If it's not already filled look into the console that recently opened. Continue and log in using your [cfx.re forum](https://forum.cfx.re/) account.
+7. Then it should ask you for a password. Make sure this password is secure as this is one of the options on how you will log in into your txAdmin master account.
