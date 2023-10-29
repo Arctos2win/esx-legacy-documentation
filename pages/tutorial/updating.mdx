@@ -5,9 +5,68 @@ Between older versions of esx and the newer releases there have been introduced 
 
 
 ## Updating getSharedObject
+For the new methods to work you need to remove the old method from the script you want to update.
+And then implement either the Export or Import method to get the ESX Object.
+
+Also make sure the script starts **after** es_extended and other core resources.
+
+### Removing outdated method
+There is a difference between the outdated method on clientside and serverside.
+Below are example's how the outdated code could look like. 
+If you recognized it remove it and replace it with one of the below methods of getting the ESX Object.
+
+Make sure you remove every `ESX = nil`
+
+#### Clientside
+```lua
+ESX = nil
+
+Citizen.CreateThread(function()
+    while ESX == nil do
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+        Citizen.Wait(0)
+    end
+end)
+```
+
+#### Serverside
+```lua
+ESX = nil
+
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+```
 
 ### Export method
 This is perfect if you just need the ESX Object.
 
+To use the export method you simply get it by using in the file you need it:
+```lua
+ESX = exports['es_extended']:getSharedObject()
+```
+
 ### Import method
 This can be used if you need the ESX Object and also the PlayerData on the clientside.
+
+To use the import method you just add the line below to the fxmanifest, either into the client, server or shared scripts:
+```lua
+'@es_extended/imports.lua'
+```
+
+**Example**
+```lua
+fx_version 'cerulean'
+game 'gta5'
+
+description 'My favorite script'
+
+shared_scripts {
+    '@es_extended/imports.lua'
+}
+
+server_script 'server.lua'
+client_script 'client.lua'
+
+dependencies {
+    'es_extended'
+}
+```
