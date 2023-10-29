@@ -1,0 +1,13 @@
+# Updating your Scripts
+Between older versions of esx and the newer releases there have been introduced some breaking changes, including but not limited to:
+- The change of the inventory limit system to weight system
+- The change from the `esx:getSharedObject` event to the `getSharedObject` export or import in the fxmanifest.
+
+
+## Updating getSharedObject
+
+### Export method
+This is perfect if you just need the ESX Object.
+
+### Import method
+This can be used if you need the ESX Object and also the PlayerData on the clientside.
