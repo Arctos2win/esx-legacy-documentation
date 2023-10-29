@@ -159,9 +159,20 @@ Outdated event that was used to get the ESX Shared Object
 ### esx:playerLoaded
 This event gets triggered when the player has successfully loaded / the character was chosen and loaded.
 
+**Returns**
+<OutputTable rows={[
+    { arg: "playerId", type: "number", description: "The player's player id." },
+    { arg: "xPlayer", type: "string", description: "The xPlayer object of the player that connected." },
+    { arg: "isNew", type: "boolean", description: "Is the player's character new." },
+]}/>
+
 ```lua
-AddEventHandler('esx:playerLoaded', function (playerId, xPlayer)
-    print(xPlayer.getName() .. " successfully loaded with the playerId: " .. playerId)
+AddEventHandler('esx:playerLoaded', function (playerId, xPlayer, isNew)
+    if isNew then
+        print("The new character " .. xPlayer.getName() .. " successfully loaded with the playerId: " .. playerId)
+    else
+        print(xPlayer.getName() .. " successfully loaded with the playerId: " .. playerId)
+    end
 end)
 ```
 
