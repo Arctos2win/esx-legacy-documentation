@@ -1,0 +1,362 @@
+import { ArgumentsTable, OutputTable } from 'components/table';
+
+# UI
+This topic shows the possible ui components.
+
+## Context
+Context system using `esx_context`
+
+### OpenContent
+Open a context menu and enable mouse focus.
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: 'position', type: 'string', description: 'The position the context should be displayed at.' }, 
+    { arg: 'elements', type: 'table', description: 'Table with the elements that should be displayed.' },
+    { arg: 'canClose', type: 'boolean', optional: true, defaultValue: 'true', description: 'Should the menu be able to be closed?' },
+    { arg: 'onSelect', type: 'function', description: 'Function that gets ran when the client selects an element.' },
+    { arg: 'onClose', type: 'function', description: 'Function that gets ran when the client clsoes the menu.'}
+]} /> 
+
+**Positions**
+- left
+- center
+- right
+
+**Elements**
+<OutputTable rows={[
+    { arg: 'uselectable', type: 'boolean', description: 'Should selection be disabled?' },
+    { arg: 'disabled', type: 'boolean', description: 'Should the button be disabled?' },
+    { arg: 'icon', type: 'string', description: '(Free) Fontawesome Icon or empty to hide icon?' },
+    { arg: 'title', type: 'string', description: 'Title of the element.' },
+    { arg: 'description', type: 'string', description: 'Description of the element.' },
+    { arg: 'input', type: 'boolean', description: 'Allow input?' },
+    { arg: 'inputType', type: '"radio" | "number" | "text"', description: 'Type of the input.' },
+    { arg: 'inputPlaceholder', type: 'string', description: 'Placeholder to show in input.' },
+    { arg: 'inputValue', type: 'number|string', description: 'Default value' },
+    { arg: 'inputMin', type: 'number', description: 'Minimum Value. Only works with type: "number"' },
+    { arg: 'inputMax', type: 'number', description: 'Maximum Value. Only works with type: "number"' },
+    { arg: 'name', type: 'string', description: 'Input key (later used when checking in code).'}
+]}/>
+
+**Example**
+```lua
+RegisterCommand('contextTest', function()
+    local formMenu = {
+        {
+            unselectable = true,
+            icon = 'fas fa-info-circle',
+            title = 'Unselectable Item (Header/Label?)',
+        },
+        {
+            icon = '',
+            title = 'Input Text',
+            input = true,
+            inputType = 'text',
+            inputPlaceholder = 'Placeholder...',
+            name = 'firstname',
+        },
+        {
+            icon = 'fas fa-check',
+            title = 'Submit',
+            name = 'submit'
+        }
+    }
+
+    ESX.OpenContext('right', formMenu, function(menu, element)
+        print('Element selected', element.title)
+
+		if element.name ~= 'submit' then
+			return
+		end
+
+		for _, element in ipairs(menu.eles) do
+			if element.input then
+				print(element.name, element.inputType, element.inputValue)
+			end
+		end
+
+        ESX.CloseContext()
+    end, function ()
+        print('Context closed')
+    end)
+end)
+```
+
+### PreviewContext
+Open context menu without enabling mouse focus.
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: 'position', type: 'string', description: 'The position the context should be displayed at.' }, 
+    { arg: 'elements', type: 'table', description: 'Table with the elements that should be displayed.' },
+    { arg: 'canClose', type: 'boolean', optional: true, defaultValue: 'true', description: 'Should the menu be able to be closed?' },
+    { arg: 'onSelect', type: 'function', description: 'Function that gets ran when the client selects an element.' },
+    { arg: 'onClose', type: 'function', description: 'Function that gets ran when the client clsoes the menu.'}
+]} /> 
+
+**Positions**
+- left
+- center
+- right
+
+**Elements**
+<OutputTable rows={[
+    { arg: 'uselectable', type: 'boolean', description: 'Should selection be disabled?' },
+    { arg: 'disabled', type: 'boolean', description: 'Should the button be disabled?' },
+    { arg: 'icon', type: 'string', description: '(Free) Fontawesome Icon or empty to hide icon?' },
+    { arg: 'title', type: 'string', description: 'Title of the element.' },
+    { arg: 'description', type: 'string', description: 'Description of the element.' },
+    { arg: 'input', type: 'boolean', description: 'Allow input?' },
+    { arg: 'inputType', type: '"radio" | "number" | "text"', description: 'Type of the input.' },
+    { arg: 'inputPlaceholder', type: 'string', description: 'Placeholder to show in input.' },
+    { arg: 'inputValue', type: 'number|string', description: 'Default value' },
+    { arg: 'inputMin', type: 'number', description: 'Minimum Value. Only works with type: "number"' },
+    { arg: 'inputMax', type: 'number', description: 'Maximum Value. Only works with type: "number"' },
+    { arg: 'name', type: 'string', description: 'Input key (later used when checking in code).'}
+]}/>
+
+**Example**
+```lua
+RegisterCommand('contextTest', function()
+    local formMenu = {
+        {
+            unselectable = true,
+            icon = 'fas fa-info-circle',
+            title = 'Unselectable Item (Header/Label?)',
+        },
+        {
+            icon = '',
+            title = 'Input Text',
+            input = true,
+            inputType = 'text',
+            inputPlaceholder = 'Placeholder...',
+            name = 'firstname',
+        },
+        {
+            icon = 'fas fa-check',
+            title = 'Submit',
+            name = 'submit'
+        }
+    }
+
+    ESX.OpenContext('right', formMenu, function(menu, element)
+        print('Element selected', element.title)
+
+		if element.name ~= 'submit' then
+			return
+		end
+
+		for _, element in ipairs(menu.eles) do
+			if element.input then
+				print(element.name, element.inputType, element.inputValue)
+			end
+		end
+
+        ESX.CloseContext()
+    end, function ()
+        print('Context closed')
+    end)
+end)
+```
+
+### CloseContext
+This function closes the current open context.
+
+### RefreshContext
+This function updates the context menu.
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: 'position', type: 'string', description: 'The position the context should be displayed at.' }, 
+    { arg: 'elements', type: 'table', description: 'Table with the elements that should be displayed.' },
+]} /> 
+
+**Positions**
+- left
+- center
+- right
+
+**Elements**
+<OutputTable rows={[
+    { arg: 'uselectable', type: 'boolean', description: 'Should selection be disabled?' },
+    { arg: 'disabled', type: 'boolean', description: 'Should the button be disabled?' },
+    { arg: 'icon', type: 'string', description: '(Free) Fontawesome Icon or empty to hide icon?' },
+    { arg: 'title', type: 'string', description: 'Title of the element.' },
+    { arg: 'description', type: 'string', description: 'Description of the element.' },
+    { arg: 'input', type: 'boolean', description: 'Allow input?' },
+    { arg: 'inputType', type: '"radio" | "number" | "text"', description: 'Type of the input.' },
+    { arg: 'inputPlaceholder', type: 'string', description: 'Placeholder to show in input.' },
+    { arg: 'inputValue', type: 'number|string', description: 'Default value' },
+    { arg: 'inputMin', type: 'number', description: 'Minimum Value. Only works with type: "number"' },
+    { arg: 'inputMax', type: 'number', description: 'Maximum Value. Only works with type: "number"' },
+    { arg: 'name', type: 'string', description: 'Input key (later used when checking in code).' }
+]}/>
+
+**Example**
+```lua
+RegisterCommand('updateContext', function()
+    local formMenu = {
+        {
+            unselectable = true,
+            icon = 'fas fa-info-circle',
+            title = 'Really cool Header',
+        },
+        {
+            icon = '',
+            title = 'New Input Text',
+            input = true,
+            inputType = 'text',
+            inputPlaceholder = 'Placeholders are useful...',
+            name = 'firstname',
+        },
+        {
+            icon = 'fas fa-check',
+            title = 'Submit',
+            name = 'submit'
+        }
+    }
+
+    ESX.RefreshContext('right', formMenu)
+end)
+```
+
+## UI Menu
+
+### RegisterType
+Register a custom Menu Type
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: 'type', type: 'string', description: 'The menu key for the type.' }, 
+    { arg: 'open', type: 'function', description: 'Function that gets ran when it should be opened.' },
+    { arg: 'close', type: 'function', description: 'Function that gets ran when it should be closed.' },
+]} /> 
+
+**Example**
+```lua
+ESX.UI.Menu.RegisterType("my_menu", myOpenFunction, myCloseFunction)
+```
+
+### Open
+Open menu of given type and data.
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: 'type', type: 'string', description: 'The menu key for the type.' }, 
+    { arg: 'namespace', type: 'string', description: 'The namespace for the menu. (Usually script name)' }, 
+    { arg: 'name', type: 'string', description: 'The name of the menu' }, 
+    { arg: 'data', type: 'table', description: 'The options for the menu' }, 
+    { arg: 'submit', type: 'function', description: 'The function that gets ran when triggering a button.' }, 
+    { arg: 'cancel', type: 'function', description: 'The function that gets ran when canceling the menu.' }, 
+    { arg: 'change', type: 'function', description: 'The function that gets ran when data changes.' }, 
+    { arg: 'close', type: 'function', description: 'The function that gets ran when the menu closes.' }
+]} />
+
+**Returns**
+<OutputTable rows={[
+    { arg: 'type', type: 'string', description: 'The menu key for the type.' }, 
+    { arg: 'namespace', type: 'string', description: 'The namespace for the menu. (Usually script name)' },
+    { arg: 'resourceName', type: 'string', description: 'The script that created it or Unknown' },
+    { arg: 'name', type: 'string', description: 'The name of the menu' }, 
+    { arg: 'data', type: 'table', description: 'The options for the menu' },
+    { arg: 'submit', type: 'function', description: 'Trigger to force the submit function.' }, 
+    { arg: 'cancel', type: 'function', description: 'Trigger to force the cancel function.' }, 
+    { arg: 'change', type: 'function', description: 'Trigger to force the change function.' }, 
+    { arg: 'close', type: 'function', description: 'Closes the menu.' },
+    { arg: 'update', type: 'function', description: 'Updates the menu.' },
+    { arg: 'refresh', type: 'function', description: 'Refreshes the menu.' },
+    { arg: 'setElement', type: 'function', description: 'Set element data.' },
+    { arg: 'setElements', type: 'function', description: 'Set elements.' },
+    { arg: 'setTitle', type: 'function', description: 'Set title of menu' },
+    { arg: 'removeElement', type: 'function', description: 'Remove element by given query' }
+]}/>
+
+
+**Example**
+```lua
+RegisterCommand('testOpen', function()
+    ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'my_default_menu', {
+        title = "My title",
+        align = 'bottom-left',
+        elements = elements
+    }, function(data, menu)
+        print("Submit data", data, menu)
+    end, function(data, menu)
+        menu.close()
+        print("Cancel data", data, menu)
+    end, function(data, menu)
+        print("Change data", data, menu)
+    end, function()
+        print("Closed menu")
+    end)
+end)
+```
+
+### Close
+Close the menu of given type, namespace and name
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: 'menuType', type: 'string', description: 'The type of the menu.' }, 
+    { arg: 'namespace', type: 'string', description: 'The namespace for the menu. (Usually script name)' }, 
+    { arg: 'name', type: 'string', description: 'The name of the menu' }
+]} /> 
+
+**Example**
+```lua
+RegisterCommand('testClose', function()
+    ESX.UI.Menu.Close('default', GetCurrentResourceName(), 'my_default_menu')
+end)
+```
+
+### CloseAll
+Close all menu's
+
+**Example**
+```lua
+RegisterCommand('closeAllMenus', function()
+    ESX.UI.Menu.CloseAll()
+end)
+```
+
+### GetOpened
+Get Menu table of given type, namespace and name. Refer to the docs for `ESX.UI.Menu.Open` for detailed infos to the menu data.
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: 'menuType', type: 'string', description: 'The type of the menu.' }, 
+    { arg: 'namespace', type: 'string', description: 'The namespace for the menu. (Usually script name)' }, 
+    { arg: 'name', type: 'string', description: 'The name of the menu' }
+]} /> 
+
+**Example**
+```lua
+RegisterCommand('closeAllMenus', function()
+    local myMenu = ESX.UI.Menu.GetOpened('default', GetCurrentResourceName(), 'my_default_menu')
+
+    myMenu.close() -- Close menu
+end)
+```
+
+### GetOpenedMenus
+Get all open menus. Refer to the docs for `ESX.UI.Menu.Open` for detailed infos to the menu data.
+
+### IsOpen
+Check if menu of given type, namespace and name is open.
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: 'menuType', type: 'string', description: 'The type of the menu.' }, 
+    { arg: 'namespace', type: 'string', description: 'The namespace for the menu. (Usually script name)' }, 
+    { arg: 'name', type: 'string', description: 'The name of the menu' }
+]} /> 
+
+**Example**
+```lua
+RegisterCommand('isMenuOpen', function()
+    if ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'my_default_menu') then
+        print("My epic menu is open!")
+    end
+end)
+```

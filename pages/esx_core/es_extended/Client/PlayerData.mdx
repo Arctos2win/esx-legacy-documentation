@@ -1,170 +1,196 @@
-# Player Data
+import { ArgumentsTable, OutputTable } from "components/table";
+import { Callout } from 'nextra/components'; 
 
-You can retrieve and manipulate the PlayerData class client side with these functions.
+# Client Player Data
+Data of the player, can be used to get data about the player.
 
-The PlayerData class contains the main informations about the character.
+## PlayerLoaded
+This variable returns a `bool` if the player's character has finished loading.
 
-## GetPlayerData
-
-```lua
-ESX.GetPlayerData()
+**Example**
+```lua 
+CreateThread(function()
+    while not ESX.PlayerLoaded do
+        Wait(1000)
+        print("Player has not laoded")
+    end
+end)
 ```
 
-This function gets player data.
 
-## SetPlayerData
+## PlayerData
 
-```lua
-ESX.SetPlayerData(key, val)
+### coords
+The player's last known coords and heading.
+
+<OutputTable isTable={true} rows={[
+    { arg: "x", type: "number", description: "The players coords on the x axis." },
+    { arg: "y", type: "number", description: "The players coords on the y axis." },
+    { arg: "z", type: "number", description: "The players coords on the z axis." },
+    { arg: "heading", type: "number", description: "The players heading." },
+]}/>
+
+**Example**
+```lua 
+if #(ESX.PlayerData.coords - vector3(124, 152, 26)) < 5 then
+    print("Player is in the range of 5 meters!")
+end
 ```
 
-This function sets player data, this can Then be access with `ESX.PlayerData[key]`
+### ped
+The player's ped handle.
 
-Example:
-
+**Example**
 ```lua
-
--- Setting the value
-ESX.SetPlayerData('IsArrested', false)
-
--- This can then be accessed wih:
-ESX.PlayerData.IsArrested
+local playerHealth = GetEntityHealth(ESX.PlayerData.ped) 
+print("player has " .. playerHealth .. " hp")
 ```
 
-## accounts
+### group
+The player's group. (e.g. admin, user, vip)
 
-```lua
-ESX.PlayerData.accounts
-```
-Default accounts:
-- Bank: the money deposited in the bank account
-- Money: the cash money of the player
-- Black: the "dirty money" of the player
+<Callout type="warning">
+    This should not be the only thing you check for player's permission. 
+    When triggering things on the serverside make sure to check for player's permission there too.
+</Callout>
 
-## coords
-
-```lua
-ESX.PlayerData.coords
-```
-
-This function returns a table of the players current coords
-
-## dateofbirth
-
-```lua
-ESX.PlayerData.dateofbirth
+**Example**
+```lua 
+if ESX.PlayerData.group == "admin" then
+    print("Player is an admin")
+end
 ```
 
-This function returns the date of birth of the player. in a MM/DD/Y format
+### identifier
+The player's rockstar identifier.
 
-## firstName
-
-```lua
-ESX.PlayerData.firstName
+**Example**
+```lua 
+print("The player's identifier is: " .. ESX.PlayerData.identifier)
 ```
 
-This function returns the players first name
+### inventory
+The player's inventory `table`. This includes items the player doesn't have but the item count will be 0.
 
-## job.grade
+**Values**
+<OutputTable isTable={true} rows={[
+    { arg: "name", type: "string", description: "The item name" },
+    { arg: "count", type: "number", description: "The item count" },
+    { arg: "label", type: "string", description: "The item label" },
+    { arg: "weight", type: "number", description: "The item weight" },
+    { arg: "usable", type: "boolean", description: "Does the item have a use callback?" },
+    { arg: "rare", type: "boolean", description: "Is the item rare?" },
+    { arg: "canRemove", type: "boolean", description: "Can the item be removed?" }
+]}/>
 
-```lua
-ESX.PlayerData.job.grade
+**Example**
+```lua 
+if ESX.PlayerData.inventory["bread"].count > 0 then
+    print("The player has bread")
+end
 ```
 
-This function returns the players job grade
+### job
+The player's job `table`.
 
-## job.grade_name
+<Callout type="warning">
+    This should not be the only thing you check for player's job. 
+    When triggering things on the serverside make sure to check for player's job there too.
+</Callout>
 
-```lua
-ESX.PlayerData.job.grade_name
+**Values**
+<OutputTable isTable={true} rows={[
+    { arg: "id", type: "number", description: "The job's id from the database" },
+    { arg: "name", type: "string", description: "The job's name" },
+    { arg: "label", type: "string", description: "The job's label" },
+    { arg: "grade", type: "string", description: "The job's grade" },
+    { arg: "grade_name", type: "string", description: "The job's grade name" },
+    { arg: "grade_label", type: "string", description: "The job's grade label" },
+    { arg: "grade_salary", type: "string", description: "The job's grade salary" },
+    { arg: "skin_male", type: "table", description: "The job's male grade skin/outfit" },
+    { arg: "skin_female", type: "table", description: "The job's female grade skin/outfit" },
+]}/>
+
+**Example**
+```lua 
+if ESX.PlayerData.job.name == "police" then
+    print("Player is a police officer")
+    renderMarkers()
+end
 ```
 
-This function returns the grade name of the players job
+### loadout
+The player's loadout.
 
-## height
+**Values**
+<OutputTable isTable={true} rows={[
+    { arg: "name", type: "string", description: "The weapon's name." },
+    { arg: "ammo", type: "number", description: "The weapon's ammo." },
+    { arg: "label", type: "string", description: "The weapon's label." },
+    { arg: "components", type: "table", description: "The weapon's components." },
+    { arg: "tintIndex", type: "number", description: "The weapon's tint." },
+]}/>
 
-```lua
-ESX.PlayerData.height
+### name
+The player name.
+
+**Example**
+```lua 
+print("The player is called: " .. ESX.PlayerData.name)
 ```
 
-This function returns the players height
+### playerId
+The player's source.
 
-## identifier
-
-```lua
-ESX.PlayerData.identifier
+**Example**
+```lua 
+print("The player's server id/source': " .. ESX.PlayerData.playerId)
 ```
 
-This function returns the players license
+### source
+The player's source.
 
-## inventory
-
-```lua
-ESX.PlayerData.inventory
+**Example**
+```lua 
+print("The player's server id/source': " .. ESX.PlayerData.playerId)
 ```
 
-This function returns a table of all items the player currently has
+### variables
+The player's variables that were set by the server.
 
-## job
+### weight
+The player's current weight.
 
-```lua
-ESX.PlayerData.job
+**Example**
+```lua 
+print("The player's current weight is: " .. ESX.PlayerData.weight)
 ```
 
-This function returns a table of everything regarding the job
+### maxWeight
+The player's max weight
 
-## job.label
+### metadata
+The player's metadata set by the server.
 
-```lua
-ESX.PlayerData.job.label
+### admin
+If the player is an admin.
+
+<Callout type="warning">
+    This should not be the only thing you check for player's permission. 
+    When triggering things on the serverside make sure to check for player's permission there too.
+</Callout>
+
+**Example**
+```lua 
+if ESX.PlayerData.admin then
+    print("Player is admin")
+end
 ```
 
-This function returns the players jobs label
+### license
+The player's rockstar identifier.
 
-## job.name
-
-```lua
-ESX.PlayerData.job.name
+**Example**
+```lua 
+print("The player's identifier is: " .. ESX.PlayerData.license)
 ```
-
-This function returns the players jobs name
-
-## lastName
-
-```lua
-ESX.PlayerData.lastName
-```
-
-This function returns the players last name
-
-## loadout
-
-```lua
-ESX.PlayerData.loadout
-```
-
-This function returns the loadout of the player (weapons and ammo)
-
-## money
-
-```lua
-ESX.PlayerData.money
-```
-
-This function returns the cash the player has on them.
-
-## name
-
-```lua
-ESX.PlayerData.name
-```
-
-This function returns the players full name
-
-## sex
-
-```lua
-ESX.PlayerData.sex
-```
-
-This function returns the players sex (Male or Female)
