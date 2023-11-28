@@ -1,4 +1,6 @@
 {
-  "xPlayer": "xPlayer",
-  "events": "Events"
+  "events": "Events",
+  "functions": "Functions",
+  "onesync": "Onesync",
+  "xplayer": "xPlayer"
 }

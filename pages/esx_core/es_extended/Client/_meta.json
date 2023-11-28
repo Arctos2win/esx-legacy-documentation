@@ -1,5 +1,6 @@
 {
-  "PlayerData": "Player Data",
-  "functions": "Functions",
-  "events": "Events"
+    "events": "Events",
+    "functions": "Functions",
+    "playerdata": "PlayerData",
+    "ui": "UI"
 }
