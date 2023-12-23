@@ -1,4 +1,4 @@
-import { ArgumentsTable, OutputTable } from "components/table";
+import { OutputTable } from "components/table";
 import { Callout } from 'nextra/components'; 
 
 # Client Player Data
@@ -12,11 +12,10 @@ This variable returns a `bool` if the player's character has finished loading.
 CreateThread(function()
     while not ESX.PlayerLoaded do
         Wait(1000)
-        print("Player has not laoded")
+        print("Player has not loaded")
     end
 end)
 ```
-
 
 ## PlayerData
 
