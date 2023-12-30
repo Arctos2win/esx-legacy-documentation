@@ -14,4 +14,11 @@ const withNextra = nextra({
   }
 })
 
-export default withNextra()
+export default {
+  ...withNextra(),
+  output: 'export',
+  basePath: '/docs-rewrite',
+  images: {
+    unoptimized: true
+  }
+}
