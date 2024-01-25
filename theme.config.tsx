@@ -1,60 +1,43 @@
-import React from 'react'
-import { DocsThemeConfig } from 'nextra-theme-docs'
-import { useTheme } from 'nextra-theme-docs'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import { DocsThemeConfig, useTheme } from 'nextra-theme-docs'
 
-//probably needs to be rewritten better
 function ThemedImage() {
-  const { resolvedTheme } = useTheme()
+  const { theme, systemTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
-  var src
-  
-//This is needed to avoid hydration error
+  const _theme = theme == "system" ? systemTheme : theme
+
   useEffect(() => {
     setMounted(true)
   }, [])
   if (!mounted) {
     return null
   }
-
-  switch (resolvedTheme) {
-    case 'light':
-      src = <div 
-        style={{
-          paddingLeft: '130px', 
-          lineHeight: '100px',
-          height: '100px',
-          backgroundImage: `url('https://media.discordapp.net/attachments/1141377366589976747/1141377486089896027/dark.png?width=593&height=593')`, 
-          backgroundRepeat:  "no-repeat", 
-          backgroundSize: '100px',
-        }} suppressHydrationWarning = {true}></div>
-      break
-    case 'dark':
-      src = <div 
-        style={{
-          paddingLeft: '130px', 
-          lineHeight: '100px',
-          height: '100px',
-          backgroundImage: `url('https://media.discordapp.net/attachments/989963898570551296/1141297556555579443/white-800x800.png?width=593&height=593')`, 
-          backgroundRepeat:  "no-repeat", 
-          backgroundSize: '100px',
-        }} suppressHydrationWarning = {true}></div>
-      
-      break
+  const images = {
+    "light": "https://media.discordapp.net/attachments/1141377366589976747/1141377486089896027/dark.png",
+    "dark": "https://media.discordapp.net/attachments/989963898570551296/1141297556555579443/white-800x800.png"
   }
-    return src
+
+  return (
+    <div
+      style={{
+        paddingLeft: '130px',
+        lineHeight: '80px',
+        height: '80px',
+        backgroundImage: `url('${images[_theme]}')`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: '80px',
+      }}
+    >
+    </div>
+  )
 }
 
-
-
 const config: DocsThemeConfig = {
-  
-  primaryHue : {
+  primaryHue: {
     light: 29,
-    dark:29,
+    dark: 29
   },
   logo: ThemedImage,
-
   project: {
     link: 'https://github.com/esx-framework',
   },
@@ -63,21 +46,15 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: 'https://github.com/esx-framework/docs-rewrite/',
   footer: {
-    text: 
-      <span>
-           {/* {new Date().getFullYear()} ©{' '}
-          <a href="https://www.esx-framework.org/" target="_blank"> 
-            ESX Framework - Powered by Oxygenserver
-          </a> */}
-          <a href="https://www.esx-framework.org/" target="_blank"> 
-            Copyright © {new Date().getFullYear()} {' '} ESX. All rights reserved.
-          </a>
-          <br></br>
-          <a href="https://www.oxygenserv.com/en/" target="_blank"> 
-            Powered by Oxygenserv
-          </a>
-        </span>
-      
+    text: <span>
+      <a href="https://www.esx-framework.org/" target="_blank">
+        Copyright © {new Date().getFullYear()} ESX. All rights reserved.
+      </a>
+      <br></br>
+      <a href="https://www.oxygenserv.com/en/" target="_blank">
+        Powered by Oxygenserv
+      </a>
+    </span>
   },
   useNextSeoProps() {
     return {
@@ -93,15 +70,15 @@ const config: DocsThemeConfig = {
 
       additionalMetaTags: [
         {
-            name: 'viewport',
-            content: 'width=device-width, initial-scale=1.0',
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1.0',
         },
         {
-            name: 'keywords',
-            content: 'ESX, docs, documentation, ESX docs, ESX documentation, fivem documentation, fivem, fivem server, ESX framework, fivem server management, fivem franework, fivem server tutorial, fivem server management',
+          name: 'keywords',
+          content: 'ESX, docs, documentation, ESX docs, ESX documentation, fivem documentation, fivem, fivem server, ESX framework, fivem server management, fivem franework, fivem server tutorial, fivem server management, reworked',
         },
       ],
-      additionalLinkTags : [
+      additionalLinkTags: [
         { //can't understand how this pathing works so links needed
           rel: 'icon',
           href: 'https://media.discordapp.net/attachments/1141377366589976747/1141617235752919040/favicon.png?width=320&height=320',

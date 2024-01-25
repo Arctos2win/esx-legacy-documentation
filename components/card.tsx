@@ -1,4 +1,4 @@
-export const CardESX = ({icon, url, text}) =>(
+export const CardESX = ({ icon, url, text }) =>(
     <a href = {url}>
     <div
       style = {{

@@ -1,4 +1,4 @@
-export const ArgumentsTable = ({rows, isTable}) =>(
+export const ArgumentsTable = ({ rows, isTable }) =>(
     <table className="nx-block nx-overflow-x-scroll nextra-scrollbar nx-mt-6 nx-p-0 first:nx-mt-0">
         <thead>
             <tr className="nx-m-0 nx-border-t nx-border-gray-300 nx-p-0 dark:nx-border-gray-600 even:nx-bg-gray-100 even:dark:nx-bg-gray-600/20">
@@ -23,7 +23,7 @@ export const ArgumentsTable = ({rows, isTable}) =>(
     </table>
 );
 
-export const OutputTable = ({rows, isTable}) =>(
+export const OutputTable = ({ rows, isTable }) =>(
     <table className="nx-block nx-overflow-x-scroll nextra-scrollbar nx-mt-6 nx-p-0 first:nx-mt-0">
         <thead>
             <tr className="nx-m-0 nx-border-t nx-border-gray-300 nx-p-0 dark:nx-border-gray-600 even:nx-bg-gray-100 even:dark:nx-bg-gray-600/20">
