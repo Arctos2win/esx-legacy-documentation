@@ -1,5 +1,6 @@
 {
     "shared": "Shared",
     "server": "Server",
-    "client": "Client"
+    "client": "Client",
+    "config": "Config"
 }
