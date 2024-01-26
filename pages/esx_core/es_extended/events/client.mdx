@@ -2,35 +2,70 @@ import { Callout } from 'nextra/components';
 import { ArgumentsTable, OutputTable } from "components/table";
 
 # Clientsided Events
-This page is dedicated to the client events introduced by the esx_core scripts.
+This page is dedicated to the client events introduced by the es_extended script.
 
-## Triggered by the Client
-The events listed here are triggered by the client.
-
-### esx:getSharedObject
-Outdated event that was used to get the ESX Shared Object
-<Callout type="error">
-    This event no longer exists and the function has been removed.
-    If you see an error about this event getting triggered follow the tutorial in the Tutorials Tab.
+## Event Triggers
+<Callout type="info">
+    These events can be triggered by any scripts. 
 </Callout>
 
-**Updating to the new Method**
 
-Follow the [Updating Tutorial](/tutorial/updating) on how to replace it with the new method.
 
-### esx:playerPedChanged
-This is a listen only event and should not be triggered. This event gets triggered when the player's ped id changed.
+## Event Handlers
+<Callout type="warning">
+    These events can only be listened to and should **not** be triggered. If done eitherway **will** break scripts.
+</Callout>
+
+### esx:addInventoryItem
+This event gets triggered when the player has received an item. *This is a server triggered event*
 
 **Returns**
 <OutputTable rows={[
-    { arg: "ped", type: "number", description: "The player's new ped entity handle" },
+    { arg: "itemName", type: "string", description: "The vehicle's entity handle." },
+    { arg: "itemCount", type: "number", description: "The vehicle's plate." },
 ]}/>
 
 **Example**
 ```lua 
-AddEventHandler('esx:playerPedChanged', function(ped)
-    print("Player ped has changed and now has the ped id: "..ped)
-    print("The player also has: ".. GetEntityHealth(ped))
+RegisterNetEvent('esx:addInventoryItem', function(item, count)
+  print(string.format('You have received %sx %s', count, item))
+end)
+```
+
+### esx:playerLoaded
+This event gets triggered when the player has finished loading
+
+**Arguments**
+<OutputTable rows={[
+    { arg: "xPlayer", type: "string", description: "The xPlayer object of the player that connected. (Only PlayerData)" },
+    { arg: "skin", type: "table", description: "The skin of the player." }
+]}/>
+
+**Example**
+```lua
+AddEventHandler('esx:playerLoaded', function (xPlayer, skin)
+    print("The character " .. xPlayer.name .. " successfully loaded")
+end)
+```
+
+### esx:onPlayerDeath
+This event gets triggered when the player hdies
+
+**Data**
+<OutputTable isTable={true} rows={[
+    { arg: "victimCoords", type: "vector3", description: "The coords of the victim." },
+    { arg: "killerCoords", type: "vector3", description: "The coords of the killer." },
+    { arg: "distance", type: "number", description: "The distance between the victim and the killer." },
+    { arg: "killedByPlayer", type: "boolean", description: "Is the killer a player." },
+    { arg: "deathCause", type: "string", description: "The death cause." },
+    { arg: "killerServerId", type: "number", description: "The killer's server id." },
+    { arg: "killerClientId", type: "string", description: "The killer's local id." },
+]}/>
+
+**Example**
+```lua
+AddEventHandler('esx:onPlayerDeath', function (data)
+    print(string.format("You were killed by %s from %s meters away.", data.killerServerId, data.distance))
 end)
 ```
 
@@ -112,64 +147,31 @@ AddEventHandler('esx:exitedVehicle', function(vehicle, plate, seat, displayName,
 end)
 ```
 
-### esx:updateWeaponAmmo
-This is a trigger only event. Can be used to update weapon ammo.
-
-**Arguments**
-<ArgumentsTable rows={[
-    { arg: "weaponName", type: "string", description: "The weapon name." },
-    { arg: "ammoCount", type: "number", description: "The new weapon's ammo count." },
-]}/>
-
-**Example**
-```lua
-TriggerServerEvent('esx:updateWeaponAmmo', "weapon_pistol", 100)
-```
-
-### esx:useItem
-This is a trigger only event. Can be used to force a player to use a item. This will trigger `ESX.UseItem` on the serverside.
-
-**Arguments**
-<ArgumentsTable rows={[
-    { arg: "itemName", type: "string", description: "The item that got removed." },
-]}/>
-
-**Example**
-```lua 
-TriggerServerEvent('esx:useItem', "bread") -- Eat a bread
-```
-
 ### esx:pauseMenuActive
-This is a listen only event and should not be triggered. This event gets triggered when the player opens or closes the pause menu.
+This event gets triggered when the player hdies
 
-**Returns**
+**Data**
 <OutputTable rows={[
-    { arg: "active", type: "boolean", description: "Is pause menu active." },
+    { arg: "isPauseMenu", type: "boolean", description: "Is the player in the pause menu." }
 ]}/>
 
 **Example**
 ```lua
-AddEventHandler('esx:pauseMenuActive', function(isActive)
-	print(string.format(('pause menu stat is: %s'), isActive)) 
+AddEventHandler('esx:pauseMenuActive', function (isPauseMenu)
+    if isPauseMenu then
+        print("Player opened his pause menu")
+    else
+        print("Player closed his pause menu")
+    end
 end)
 ```
 
-
-## Triggered by the Server
-The events listed here are triggered by the server.
-
-### esx:addInventoryItem
-This is a listen only event and should not be triggered. This event gets triggered when the player has received an item.
-
-**Returns**
-<OutputTable rows={[
-    { arg: "itemName", type: "string", description: "The vehicle's entity handle." },
-    { arg: "itemCount", type: "number", description: "The vehicle's plate." },
-]}/>
+### esx:onPlayerSpawn
+This event gets triggered when the player spawns
 
 **Example**
-```lua 
-RegisterNetEvent('esx:addInventoryItem', function(item, count)
-  print(string.format(('You have received %sx %s'), count, item))
+```lua
+AddEventHandler('esx:onPlayerSpawn', function ()
+    print("Player successfully loaded and his ped spawned.")
 end)
 ```
