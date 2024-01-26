@@ -74,111 +74,17 @@ ESX.SetPlayerData('test', 'a nice test')
 print(ESX.PlayerData.test) -- this will print 'a nice test'
 ```
 
+## Context
+ESX has a context system by default as a seperate resource. See more at [esx_context](../../esx_context.mdx)
+
 ## Progressbar 
-This function will show a progressbar using `esx_progressbar`.
-
-**Arguments** 
-<ArgumentsTable rows={[
-    { arg: 'text', type: 'string', description: 'The text on the progressbar.' }, 
-    { arg: 'length', type:'number', description: 'The lenght of the progressbar in ms' }, 
-    { arg: 'Options', type:'table', description: 'The progressbar options' } 
-]} />
-
-***Options table*** 
-<ArgumentsTable isTable='true' rows={[
-    { arg: 'animation', type: 'table', description: 'A table with animation data' }, 
-    { arg: 'FreezePlayer', type:'boolean', description: 'Should the player be frozen?' }, 
-    { arg: 'onFinish', type:'function', description: 'A function that will be executed on finish' }, 
-    { arg: 'onCancel', type:'function', optional: true, description: 'A function that will be executed on cancel' }
-]} />
-
-***Animation table***
-<ArgumentsTable isTable='true' rows={[
-    { arg: 'type', type: 'string', description: 'anim or scenario' }, 
-    { arg: 'lib', type:'string', description: 'The animation lib' }, 
-    { arg: 'dict', type:'string', description: 'The animation dict' } 
-]} />
-
-**Example**
-```lua
-ESX.Progressbar('test', 25000,{
-    FreezePlayer = false, 
-    animation ={
-        type = 'anim',
-        dict = 'mini@prostitutes@sexlow_veh', 
-        lib ='low_car_sex_to_prop_p2_player' 
-    }, 
-    onFinish = function()
-        -- Code that should run when finished
-    end, onCancel = function() 
-        -- Code that should run when progressbar was cancelled
-    end
-})
-```
+ESX has a progress bar system by default as a seperate resource. See more at [esx_progressbar](../../esx_progressbar.mdx)
 
 ## ShowNotification 
-This function shows a notification using `esx_notify`
-
-**Arguments**
-<ArgumentsTable rows={[
-    { arg: 'message', type: 'string', description: 'The notification message.' }, 
-    { arg: 'type', type:'string', description: 'The notification type' }, 
-    { arg: 'length', type:'number', description: 'The progressbar options' } 
-]} />
-
-**Example** 
-```lua
-ESX.ShowNotification('This is my new test.', 'error', 1500) 
-``` 
-
-**Notification Types** 
-- success 
-- error 
-- info
+ESX has a custom notification system as a seperate resource. See more at [esx_notify](../../esx_notify.mdx)
 
 ## TextUI 
-This function will show a text ui pop up. 
-
-**Arguments**
-<ArgumentsTable rows={[
-    { arg: 'message', type: 'string', description: 'The TextUI message.' }, 
-    { arg: 'type', type:'string', defaultValue: 'info', optional: true, description: 'The TextUI type'}
-]} />
-
-**Example** 
-```lua
-ESX.TextUI('Press [E] to use', 'error')
-```
-
-**TextUI types**
-- success 
-- error 
-- info
-
-## HideUI 
-This function will hide the TextUI.
-
-<Callout type='warning'>
-    This will close any TextUI that is currently open.
-</Callout>
-
-**Example** 
-```lua
-local interactCoords = vector3(0, 0, 0)
-CreateThread(function()
-    local TextUI
-    while true do
-        local coords = GetEntityCoords(PlayerPedId())
-        local inDist = #(coords - interactCoords) < 2.0
-        if inDist and not TextUI then 
-            ESX.TextUI('Press [E] to interact')
-        elseif inDist and TextUI then 
-            ESX.HideUI() 
-        end
-        Wait(500)
-    end 
-end) 
-```
+ESX has a Text UI system by default as a seperate resource. See more at [esx_textui](../../esx_textui.mdx)
 
 ## ShowAdvancedNotification
 This function will show a default GTA 5 notification 
@@ -262,15 +168,23 @@ end)
 ```
 
 ## HashString
-This function will turn a string into a hash.
+This function will turn a string into a (rockstar) hash. Which for example could be used to display a key of a custom keybind.
 
 **Arguments**
 <ArgumentsTable rows={[
     { arg: 'str', type: 'string', description: 'The string that should be hashed.' }
 ]} />
 
+**Example** 
+```lua
+RegisterCommand('howtosit', function (source, args, raw)
+    local inputMapping = string.format("~INPUT_%s~"):format(ESX.HashString("sit"))
+    ESX.ShowHelpNotification("You can sit down using "..inputMapping , false, true, 3500)
+end)
+```
+
 ## RegisterInput 
-This functions register an input.
+This functions registers an input.
 
 **Arguments** 
 <ArgumentsTable rows={[
