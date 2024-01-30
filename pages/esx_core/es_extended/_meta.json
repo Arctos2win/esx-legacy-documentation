@@ -3,5 +3,6 @@
     "server": "Server",
     "client": "Client",
     "config": "Config",
-    "events": "Events"
+    "events": "Events",
+    "playerdata": "PlayerData"
 }

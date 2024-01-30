@@ -1,0 +1,13 @@
+import { OutputTable } from "components/table";
+
+## loadout
+The player's loadout.
+
+**Values**
+<OutputTable isTable={true} rows={[
+    { arg: "name", type: "string", description: "The weapon's name." },
+    { arg: "ammo", type: "number", description: "The weapon's ammo." },
+    { arg: "label", type: "string", description: "The weapon's label." },
+    { arg: "components", type: "table", description: "The weapon's components." },
+    { arg: "tintIndex", type: "number", description: "The weapon's tint." },
+]}/>

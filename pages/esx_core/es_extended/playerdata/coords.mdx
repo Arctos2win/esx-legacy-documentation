@@ -1,0 +1,19 @@
+import { OutputTable } from "components/table";
+
+## coords
+The player's last known coords and heading.
+
+<OutputTable isTable={true} rows={[
+    { arg: "x", type: "number", description: "The players coords on the x axis." },
+    { arg: "y", type: "number", description: "The players coords on the y axis." },
+    { arg: "z", type: "number", description: "The players coords on the z axis." },
+    { arg: "heading", type: "number", description: "The players heading." },
+]}/>
+
+**Example**
+```lua 
+local pos = vector3(ESX.PlayerData.coords.x, ESX.PlayerData.coords.y, ESX.PlayerData.coords.z)
+if #(pos - vector3(124, 152, 26)) < 5 then
+    print("Player is in the range of 5 meters!")
+end
+```

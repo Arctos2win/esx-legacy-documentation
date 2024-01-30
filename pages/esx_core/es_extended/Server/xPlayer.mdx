@@ -23,7 +23,7 @@ These global variables are saved in the xPlayer table. You can freely use their 
     { arg: "inventory", type: "table", description: "The player's inventory. Used by xPlayer.getInventory()." },
     { arg: "job", type: "table", description: "The player's job table. Used by xPlayer.getJob()." },
     { arg: "loadout", type: "table", description: "The player's job table. Used by xPlayer.getLoudout()." },
-    { arg: "name", type: "string", description: "The player's name. Used by xPlayer.getName()." },
+    { arg: "name", type: "string", description: "The player's fivem name. Used by xPlayer.getName()." },
     { arg: "playerId", type: "number", description: "The player's playerId / source." },
     { arg: "source", type: "number", description: "The player's playerId. Only exists for backwards compatibility. Use xPlayer.playerId instead." },
     { arg: "variables", type: "table", description: "The player's variables. Set using xPlayer.set() and get by xPlayer.get()." },
@@ -138,7 +138,7 @@ xPlayer.setName("John Doe")
 ```
 
 ### getName
-This function returns the name of the player.
+This function returns the name of the fivem player.
 
 **Returns**
 
