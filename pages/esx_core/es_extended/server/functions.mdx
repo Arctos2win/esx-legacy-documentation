@@ -34,7 +34,7 @@ end
 ## RegisterServerCallback
 This function registers a server callback, which is used for sending Server Data, to a client.
 
-See [*TriggerClientCallback*](../Client/functions/#triggerservercallback)
+See [*TriggerClientCallback*](../client/functions/#triggerservercallback)
 
 **Arguments**
 <ArgumentsTable rows={[
@@ -357,7 +357,11 @@ ESX.UseItem(5, "bread") -- Force player to eat bread.
 ```
 
 ## RegisterPlayerFunctionOverrides
-This function registers function overrides for the xPlayer object.
+With this function you can override existing functions in the player object or add new ones.
+
+<Callout type="warning">
+    Please note, only one override can be active at a time. Ensure no other scripts are using this function simultaneously. This limitation may be lifted in future updates.
+</Callout>
 
 **Arguments**
 <ArgumentsTable rows={[
@@ -365,17 +369,36 @@ This function registers function overrides for the xPlayer object.
     { arg: "overrides", type: "table", description: "The table with the functions to be overriden with." },
 ]} />
 
-// TODO: Add Example
+**Example**
+```lua
+local LeoJobs = { "police", "sheriff", "fib" }
+local FireJobs = { "ambulance", "doctor", "firefighter" }
+ESX.RegisterPlayerFunctionOverrides("myOverrides", {
+    isLeo = function(self)
+        return table.contains(LeoJobs, self.job.name)
+    end,
+    isMedic = function(self)
+        return table.contains(FireJobs, self.job.name)
+    end
+})
+```
 
 ## SetPlayerFunctionOverride
 This function switches the function overrides.
+
+<Callout type="warning">
+    Please note, only one override can be active at a time. Ensure no other scripts are using this function simultaneously. This limitation may be lifted in future updates.
+</Callout>
 
 **Arguments**
 <ArgumentsTable rows={[
     { arg: "index", type: "string", description: "The overrides index." }
 ]} />
 
-// TODO: Add Example
+**Example**
+```lua
+ESX.SetPlayerFunctionOverride("myOverrides")
+```
 
 ## GetItemLabel
 This function returns the item label of the given item.

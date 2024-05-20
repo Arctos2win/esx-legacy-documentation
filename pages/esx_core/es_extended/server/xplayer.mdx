@@ -18,27 +18,9 @@ local xPlayer = ESX.GetPlayerFromId(playerId)
 if xPlayer then ... end  --Always check for nil
 ```
 
-## Globals
-These global variables are saved in the xPlayer table. You can freely use their data.
+## Playerdata
+There are some variables that contain different data about the player. For more information about the playerdata, check the [Player Data](#player-data) section.
 
-<OutputTable isTable={true} rows={[
-    { arg: "accounts", type: "table", description: "The player's accounts Used by xPlayer.getAccounts()." },
-    { arg: "coords", type: "vector3", description: "The player's current coordinates. Used by xPlayer.getCoords(true)." },
-    { arg: "group", type: "string", description: "The player's current ace group. Used by xPlayer.getGroup()." },
-    { arg: "identifier", type: "string", description: "The player's rockstar identifier. Used by xPlayer.getIdentifier()." },
-    { arg: "inventory", type: "table", description: "The player's inventory. Used by xPlayer.getInventory()." },
-    { arg: "job", type: "table", description: "The player's job table. Used by xPlayer.getJob()." },
-    { arg: "loadout", type: "table", description: "The player's job table. Used by xPlayer.getLoudout()." },
-    { arg: "name", type: "string", description: "The player's fivem name. Used by xPlayer.getName()." },
-    { arg: "playerId", type: "number", description: "The player's playerId / source." },
-    { arg: "source", type: "number", description: "The player's playerId. Only exists for backwards compatibility. Use xPlayer.playerId instead." },
-    { arg: "variables", type: "table", description: "The player's variables. Set using xPlayer.set() and get by xPlayer.get()." },
-    { arg: "weight", type: "number", description: "The player's current inventory weight." },
-    { arg: "maxWeight", type: "number", description: "The player's max inventory weight." },
-    { arg: "metadata", type: "table", description: "The player's metadata. Set using xPlayer.setMeta() and get by xPlayer.getMeta()." },
-    { arg: "admin", type: "boolean", description: "If the player is an admin." },
-    { arg: "license", type: "string", description: "The player's rockstar identifier. With 'license' prefix." }
-]}/>
 
 ## Miscellaneous
 
@@ -752,7 +734,7 @@ This function returns the inventory of the player.
 
 <Callout type="warning">
     This function has different behaviour with ox_inventory installed. And also returns some different values.
-    You should visit ox_inventory's [docs]() for more information.
+    You should visit ox_inventory's [docs](https://overextended.dev/ox_inventory/Functions/Server#getinventoryitems) for more information.
 </Callout>
 
 **Arguments**
