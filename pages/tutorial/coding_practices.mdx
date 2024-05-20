@@ -1,0 +1,58 @@
+# Best Coding Practices
+This section will cover the best coding practices for Fivem and the **ESX Legacy** Framework.
+
+## Programming style
+It is important to follow a consistent programming style when writing code. This makes it easier for you and others to read and understand your code. This section displays some general guidelines you should follow when writing code.
+
+### Naming conventions
+There are different naming conventions for different programming languages and for Lua `camelCase` is used. This means that the first letter of the first word is lowercase and the first letter of each subsequent word is uppercase. For example, `myVariableName`. 
+But this changes slightly with global functions and global variables which will additionally will start with a uppercase. For example, `MyGlobalVariableName`. 
+
+### Constants
+Use constants to highlight things that should not be modified / Constants are variables that are not supposed to change while the script is running.
+
+Constants should be written in uppercase and separated by underscores. For example, `MY_CONSTANT`.
+If you have [Lua 5.4 enabled(`lua54 'yes'`)](https://docs.fivem.net/docs/scripting-reference/resource-manifest/resource-manifest/#lua54) you can also use the `const` keyword to define constants.
+Example:
+```lua
+local MY_CONSTANT <const> = 42
+MY_CONSTANT = 43 -- This will throw an error
+```
+
+### Indentation
+Indentation is important for readability. It is recommended to use 2 spaces for indentation.
+
+## Comments
+Comments are important for explaining what your code does. It is recommended to use comments to explain what your code does and why you wrote it that way.
+
+With comments you an also set what a function is supposed to return, what the function does and what the parameters are supposed to be.
+
+```lua
+--- Add two numbers together
+---@param num1 number The first number
+---@param num2 number The second number
+---@return number sum result of both numbers
+local function addNumbers(num1, num2)
+    -- Calculate the sum of num1 and num2
+    local sum = num1 + num2
+
+    -- Return the sum
+    return sum
+end
+
+addNumbers(5, 10) -- Returns 15
+```
+
+## Globalization and Localization
+```lua
+MyGlobalVariable = 42 -- This is a global variable
+local myLocalVariable = 42 -- This is a local variable
+```
+
+### Globals
+**Minimize** the use of global variables and functions. They can be accessed throughout your entire script, leading to unpredictable behavior, increased memory usage, and access overhead. Favor local variables for their scope limitation.
+
+### Local
+Use local variables and functions **whenever possible**. Local variables are faster to access than global variables and are only accessible within the scope/file they are defined in.
+
+## 
