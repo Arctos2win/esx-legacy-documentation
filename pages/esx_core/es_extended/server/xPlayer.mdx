@@ -7,9 +7,15 @@ Used to set and manipulate data from the player. It consists out of multiple fun
 ## Getting the xPlayer
 You can get the xPlayer by using the `ESX.GetPlayerFromId` function.
 
+<Callout type="warning">
+    You should always check for `nil` before using xPlayer
+</Callout>
+
 **Example**
 ```lua
-local xPlayer = ESX.GetPlayerFromId(playerId) 
+local xPlayer = ESX.GetPlayerFromId(playerId)
+
+if xPlayer then ... end  --Always check for nil
 ```
 
 ## Globals
