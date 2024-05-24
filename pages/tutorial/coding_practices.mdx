@@ -54,7 +54,7 @@ When using loops, it is important to use the correct loop for the task at hand. 
 ### Infinite loops
 Make sure to avoid infinite loops. Infinite loops can cause your script to use more resources and lag your server and players. If possible make sure to have a condition that will eventually be false.
 
-** Example for don't do**
+**Example for don't do**
 ```lua
 CreateThread(function()
     while true do
@@ -129,7 +129,7 @@ And only have the data you still need in the table. Once data is not needed anym
 Lua, FiveM and ESX are constantly being updated with new features and improvements and new more efficient ways are often found. 
 Make sure to keep up to date with the latest changes and use the newest methods available.
 
-** Popular outdated or replaced functions**
+**Popular outdated or replaced functions**
 - `GetPlayerPedId(-1) -> PlayerPedId()` Getting the player Ped.
 - `GetDistanceBetweenCoords(x1, y1, z1, x2, y2, z2, true) -> #(vector3(x1, y1, z1) - vector3(x2, y2, z2))` Getting the distance between two points.
 - `GetHashKey('adder') -> joaat('adder') or `adder\``
