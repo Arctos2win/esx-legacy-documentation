@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useRouter } from 'nextra/hooks';
 import { DocsThemeConfig, useTheme } from 'nextra-theme-docs'
 
 function ThemedImage() {
@@ -32,6 +33,32 @@ function ThemedImage() {
   )
 }
 
+const translations = {
+  en: {
+    title: "ESX Documentation",
+    description: "ESX Documentation",
+    copyright: "Copyright ©",
+    allRightsReserved: "All rights reserved.",
+    poweredBy: "Powered by",
+    keywords: "ESX, docs, documentation, ESX docs, ESX documentation, fivem documentation, fivem, fivem server, ESX framework, fivem server management, fivem framework, fivem server tutorial, fivem server management, reworked",
+    EDIT_TEXT: "Edit this page on GitHub →",
+  },
+  fr: {
+    title: "Documentation ESX",
+    description: "Documentation ESX",
+    copyright: "Droit d'auteur ©",
+    allRightsReserved: "Tous droits réservés.",
+    poweredBy: "Propulsé par",
+    keywords: "ESX, docs, documentation, ESX docs, documentation ESX, documentation fivem, fivem, serveur fivem, framework ESX, gestion de serveur fivem, framework fivem, tutoriel serveur fivem, gestion de serveur fivem, remanié",
+    EDIT_TEXT: "Modifier cette page sur GitHub →",
+  }
+};
+
+function useTranslation() {
+  const { locale } = useRouter();
+  return translations[locale] || translations.en;
+}
+
 const config: DocsThemeConfig = {
   color: {
     hue: {
@@ -39,6 +66,20 @@ const config: DocsThemeConfig = {
       dark: 29,
     },
   },
+  editLink: {
+    content: () => {
+      const t = useTranslation();
+      return (
+        <a href={"https://github.com/esx-framework/docs-rewrite"}>
+          {t.EDIT_TEXT}
+        </a>
+      );
+    }
+  },
+  i18n: [
+    { locale: 'en', name: 'English' },
+    { locale: 'fr', name: 'Français'}
+  ],
   logo: ThemedImage,
   project: {
     link: "https://github.com/esx-framework",
@@ -48,41 +89,47 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: "https://github.com/esx-framework/docs-rewrite",
   footer: {
-    content: (
-      <span>
-        <a href="https://www.esx-framework.org/" target="_blank">
-          Copyright © {new Date().getFullYear()} ESX. All rights reserved.
-        </a>
-        <br></br>
-        <a href="https://www.oxygenserv.com/en/" target="_blank">
-          Powered by Oxygenserv
-        </a>
-      </span>
-    ),
+    content: () => {
+      const t = useTranslation();
+      return (
+        <span>
+          <a href="https://www.esx-framework.org/" target="_blank">
+            {t.copyright} {new Date().getFullYear()} ESX. {t.allRightsReserved}.
+          </a>
+          <br></br>
+          <a href="https://www.oxygenserv.com/en/" target="_blank">
+            {t.poweredBy} Oxygenserv
+          </a>
+        </span>
+      );
+    }
   },
-  head: () => (
+  head: () => {
+    const t = useTranslation();
+    return (
     <>
-      <title>ESX Documentation</title>
-      <meta name="description" content="ESX Documentation" />
+      <title>{t.title}</title>
+      <meta name="description" content={t.description} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_US" />
       <meta
         property="og:url"
         content="https://documentation.esx-framework.org"
       />
-      <meta property="og:title" content="ESX Documentation" />
-      <meta property="og:description" content="ESX Documentation" />
+      <meta property="og:title" content={t.title} />
+      <meta property="og:description" content={t.description} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta
         name="keywords"
-        content="ESX, docs, documentation, ESX docs, ESX documentation, fivem documentation, fivem, fivem server, ESX framework, fivem server management, fivem franework, fivem server tutorial, fivem server management, reworked"
+        content={t.keywords}
       />
       <link
         rel="icon"
         href="https://media.discordapp.net/attachments/1141377366589976747/1141617235752919040/favicon.png?width=320&height=320"
       />
     </>
-  ),
+    );
+  },
 };
 
 export default config

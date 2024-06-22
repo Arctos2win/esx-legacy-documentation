@@ -17,6 +17,17 @@ const withNextra = nextra({
 
 export default {
   ...withNextra(),
+  i18n: {
+    locales: ['en', 'fr'],
+    defaultLocale: 'en',
+  },
+  redirects: () => [
+    {
+      source: '/',
+      destination: `/en`,
+      permanent: false,
+    }
+  ],
   images: {
     unoptimized: true,
   },
