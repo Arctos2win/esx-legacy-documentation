@@ -1,5 +1,6 @@
 {
   "name": "esx-legacy-docs",
+  "type": "module",
   "version": "1.10.2",
   "description": "ESX Legacy Framework Documentation",
   "scripts": {

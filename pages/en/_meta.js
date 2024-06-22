@@ -1,7 +1,6 @@
 export default {
     "index": {
         "title": "Introduction",
-        "type": "page"
     },
     "esx_core": "ESX Core",
     "contact": {

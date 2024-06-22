@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'nextra/hooks';
-import { DocsThemeConfig, useTheme } from 'nextra-theme-docs'
+import { LocaleSwitch,DocsThemeConfig, useTheme } from 'nextra-theme-docs'
 
 function ThemedImage() {
   const { theme, systemTheme } = useTheme()
@@ -32,6 +32,11 @@ function ThemedImage() {
     </div>
   )
 }
+
+export const SUPPORTED_LOCALES = [
+  { locale: 'en', name: 'English' },
+  { locale: 'fr', name: 'Français'}
+]
 
 const translations = {
   en: {
@@ -76,11 +81,11 @@ const config: DocsThemeConfig = {
       );
     }
   },
-  i18n: [
-    { locale: 'en', name: 'English' },
-    { locale: 'fr', name: 'Français'}
-  ],
+  i18n: SUPPORTED_LOCALES,
   logo: ThemedImage,
+  navbar: {
+    extraContent: LocaleSwitch
+  },
   project: {
     link: "https://github.com/esx-framework",
   },
