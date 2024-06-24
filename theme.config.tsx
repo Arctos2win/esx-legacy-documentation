@@ -44,9 +44,9 @@ function EditLink() {
   const t = useTranslation();
 
   return (
-    <span>
-      {t?.EDIT_TEXT || ''}
-    </span>
+    <a href='https://github.com/esx-framework/docs-rewrite'>
+      {t.EDIT_TEXT}
+    </a>
   );
 }  
 
@@ -84,7 +84,7 @@ const config: DocsThemeConfig = {
     },
   },
   editLink: {
-    content: EditLink
+    component: EditLink
   },
   i18n: SUPPORTED_LOCALES,
   logo: ThemedImage,
