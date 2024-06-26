@@ -28,12 +28,13 @@ function ThemedImage() {
   return (
     <div
       style={{
-        paddingLeft: '130px',
+        paddingLeft: '80px',
         lineHeight: '80px',
-        height: '80px',
+        height: '60px',
         backgroundImage: `url('${images[_theme]}')`,
         backgroundRepeat: "no-repeat",
         backgroundSize: '80px',
+        backgroundPosition: 'left center',
       }}
     >
     </div>
