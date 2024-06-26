@@ -65,6 +65,9 @@ const translations = {
     poweredBy: "Powered by",
     keywords: "ESX, docs, documentation, ESX docs, ESX documentation, fivem documentation, fivem, fivem server, ESX framework, fivem server management, fivem framework, fivem server tutorial, fivem server management, reworked",
     EDIT_TEXT: "Edit this page on GitHub →",
+    SEARCH_PLACEHOLDER: "Search documentation...",
+    ON_THIS_PAGE: "On This Page",
+    FEEDBACK: "Question? Give us feedback →",
   },
   fr: {
     title: "Documentation ESX",
@@ -74,6 +77,9 @@ const translations = {
     poweredBy: "Propulsé par",
     keywords: "ESX, docs, documentation, ESX docs, documentation ESX, documentation fivem, fivem, serveur fivem, framework ESX, gestion de serveur fivem, framework fivem, tutoriel serveur fivem, gestion de serveur fivem, remanié",
     EDIT_TEXT: "Modifier cette page sur GitHub →",
+    SEARCH_PLACEHOLDER: "Recherche documentation...",
+    ON_THIS_PAGE: "Sur cette page",
+    FEEDBACK: "Une question? Donnez-nous votre avis →",
   }
 };
 
@@ -86,6 +92,18 @@ const config: DocsThemeConfig = {
   },
   editLink: {
     component: EditLink
+  },
+  search: {
+    placeholder: () => {
+      const { SEARCH_PLACEHOLDER } = useTranslation();
+      return SEARCH_PLACEHOLDER;
+    }
+  },
+  toc: {
+    title: () => {
+      const t = useTranslation();
+      return t.ON_THIS_PAGE;
+    }
   },
   i18n: SUPPORTED_LOCALES,
   logo: ThemedImage,
@@ -130,10 +148,7 @@ const config: DocsThemeConfig = {
       <meta property="og:title" content={t.title} />
       <meta property="og:description" content={t.description} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta
-        name="keywords"
-        content={t.keywords}
-      />
+      <meta name="keywords" content={t.keywords} />
       <link
         rel="icon"
         href="https://media.discordapp.net/attachments/1141377366589976747/1141617235752919040/favicon.png?width=320&height=320"

@@ -2,12 +2,12 @@ export default {
     "index": "Introduction",
     "esx_core": "ESX Core",
     "contact": {
-        "title":"Website", 
+        "title":"Site Web", 
         "type":"page", 
         "href": "https://esx-framework.org/", 
         "newWindow":true
     }, 
-    "tutorial": "Tutorial",
-    "troubleshoot": "Common Issues"
+    "tutorial": "Tutoriels",
+    "troubleshoot": "Problèmes Communs"
 }
 
