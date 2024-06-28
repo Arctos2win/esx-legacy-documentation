@@ -67,8 +67,8 @@ function TimeStamp() {
   const date = new Date();
 
   const formattedDate = locale === 'fr'
-    ? date.toLocaleDateString('fr-FR')
-    : date.toLocaleDateString('en-US');
+  ? date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })
+  : date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
   return (
     <>
