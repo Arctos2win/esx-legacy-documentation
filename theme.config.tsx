@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'nextra/hooks';
-import { LocaleSwitch,DocsThemeConfig, useTheme } from 'nextra-theme-docs'
+import { LocaleSwitch, DocsThemeConfig, useTheme } from 'nextra-theme-docs'
 
 function useTranslation() {
   const { locale } = useRouter();
@@ -49,7 +49,17 @@ function EditLink() {
       {t.EDIT_TEXT}
     </a>
   );
-}  
+}
+
+function FeedbackLink() {
+  const t = useTranslation();
+
+  return (
+    <>
+      {t.FEEDBACK}
+    </>
+  );
+}
 
 export const SUPPORTED_LOCALES = [
   { locale: 'en', name: 'English' },
@@ -104,6 +114,9 @@ const config: DocsThemeConfig = {
       const t = useTranslation();
       return t.ON_THIS_PAGE;
     }
+  },
+  feedback: {
+    content: FeedbackLink
   },
   i18n: SUPPORTED_LOCALES,
   logo: ThemedImage,
