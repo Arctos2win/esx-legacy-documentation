@@ -61,6 +61,22 @@ function FeedbackLink() {
   );
 }
 
+function TimeStamp() {
+  const { locale } = useRouter();
+  const t = useTranslation();
+  const date = new Date();
+
+  const formattedDate = locale === 'fr'
+    ? date.toLocaleDateString('fr-FR')
+    : date.toLocaleDateString('en-US');
+
+  return (
+    <>
+    {t.TIMESTAMP} {formattedDate}
+    </>
+  )
+}
+
 export const SUPPORTED_LOCALES = [
   { locale: 'en', name: 'English' },
   { locale: 'fr', name: 'Français'}
@@ -78,6 +94,7 @@ const translations = {
     SEARCH_PLACEHOLDER: "Search documentation...",
     ON_THIS_PAGE: "On This Page",
     FEEDBACK: "Question? Give us feedback →",
+    TIMESTAMP: "Last updated on",
   },
   fr: {
     title: "Documentation ESX",
@@ -90,6 +107,7 @@ const translations = {
     SEARCH_PLACEHOLDER: "Recherche documentation...",
     ON_THIS_PAGE: "Sur cette page",
     FEEDBACK: "Une question? Donnez-nous votre avis →",
+    TIMESTAMP: "Dernière mise à jour le",
   }
 };
 
@@ -118,6 +136,7 @@ const config: DocsThemeConfig = {
   feedback: {
     content: FeedbackLink
   },
+  gitTimestamp: TimeStamp,
   i18n: SUPPORTED_LOCALES,
   logo: ThemedImage,
   navbar: {
