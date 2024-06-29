@@ -61,10 +61,10 @@ function FeedbackLink() {
   );
 }
 
-function TimeStamp() {
+function TimeStamp({ timestamp }) {
   const { locale } = useRouter();
   const t = useTranslation();
-  const date = new Date();
+  const date = new Date(timestamp);
 
   const formattedDate = locale === 'fr'
   ? date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })
@@ -136,7 +136,7 @@ const config: DocsThemeConfig = {
   feedback: {
     content: FeedbackLink
   },
-  gitTimestamp: TimeStamp,
+  gitTimestamp: (props) => <TimeStamp timestamp={props.timestamp} />,
   i18n: SUPPORTED_LOCALES,
   logo: ThemedImage,
   navbar: {
