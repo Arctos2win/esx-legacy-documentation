@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'nextra/hooks';
-import { LocaleSwitch,DocsThemeConfig, useTheme } from 'nextra-theme-docs'
+import { LocaleSwitch, DocsThemeConfig, useTheme } from 'nextra-theme-docs'
 
 function useTranslation() {
   const { locale } = useRouter();
@@ -28,12 +28,13 @@ function ThemedImage() {
   return (
     <div
       style={{
-        paddingLeft: '130px',
+        paddingLeft: '80px',
         lineHeight: '80px',
-        height: '80px',
+        height: '60px',
         backgroundImage: `url('${images[_theme]}')`,
         backgroundRepeat: "no-repeat",
         backgroundSize: '80px',
+        backgroundPosition: 'left center',
       }}
     >
     </div>
@@ -48,7 +49,33 @@ function EditLink() {
       {t.EDIT_TEXT}
     </a>
   );
-}  
+}
+
+function FeedbackLink() {
+  const t = useTranslation();
+
+  return (
+    <>
+      {t.FEEDBACK}
+    </>
+  );
+}
+
+function TimeStamp({ timestamp }) {
+  const { locale } = useRouter();
+  const t = useTranslation();
+  const date = new Date(timestamp);
+
+  const formattedDate = locale === 'fr'
+  ? date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })
+  : date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  return (
+    <>
+    {t.TIMESTAMP} {formattedDate}
+    </>
+  )
+}
 
 export const SUPPORTED_LOCALES = [
   { locale: 'en', name: 'English' },
@@ -64,6 +91,11 @@ const translations = {
     poweredBy: "Powered by",
     keywords: "ESX, docs, documentation, ESX docs, ESX documentation, fivem documentation, fivem, fivem server, ESX framework, fivem server management, fivem framework, fivem server tutorial, fivem server management, reworked",
     EDIT_TEXT: "Edit this page on GitHub →",
+    SEARCH_PLACEHOLDER: "Search documentation...",
+    ON_THIS_PAGE: "On This Page",
+    FEEDBACK: "Question? Give us feedback →",
+    TIMESTAMP: "Last updated on",
+    BACK_TO_TOP: "Scroll to top",
   },
   fr: {
     title: "Documentation ESX",
@@ -73,6 +105,11 @@ const translations = {
     poweredBy: "Propulsé par",
     keywords: "ESX, docs, documentation, ESX docs, documentation ESX, documentation fivem, fivem, serveur fivem, framework ESX, gestion de serveur fivem, framework fivem, tutoriel serveur fivem, gestion de serveur fivem, remanié",
     EDIT_TEXT: "Modifier cette page sur GitHub →",
+    SEARCH_PLACEHOLDER: "Recherche documentation...",
+    ON_THIS_PAGE: "Sur cette page",
+    FEEDBACK: "Une question? Donnez-nous votre avis →",
+    TIMESTAMP: "Dernière mise à jour le",
+    BACK_TO_TOP: "Retour en haut"
   }
 };
 
@@ -86,6 +123,22 @@ const config: DocsThemeConfig = {
   editLink: {
     component: EditLink
   },
+  search: {
+    placeholder: () => {
+      const { SEARCH_PLACEHOLDER } = useTranslation();
+      return SEARCH_PLACEHOLDER;
+    }
+  },
+  toc: {
+    title: () => {
+      const t = useTranslation();
+      return t.ON_THIS_PAGE;
+    }
+  },
+  feedback: {
+    content: FeedbackLink
+  },
+  gitTimestamp: (props) => <TimeStamp timestamp={props.timestamp} />,
   i18n: SUPPORTED_LOCALES,
   logo: ThemedImage,
   navbar: {
@@ -129,10 +182,7 @@ const config: DocsThemeConfig = {
       <meta property="og:title" content={t.title} />
       <meta property="og:description" content={t.description} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta
-        name="keywords"
-        content={t.keywords}
-      />
+      <meta name="keywords" content={t.keywords} />
       <link
         rel="icon"
         href="https://media.discordapp.net/attachments/1141377366589976747/1141617235752919040/favicon.png?width=320&height=320"
