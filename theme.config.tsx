@@ -95,6 +95,7 @@ const translations = {
     ON_THIS_PAGE: "On This Page",
     FEEDBACK: "Question? Give us feedback →",
     TIMESTAMP: "Last updated on",
+    BACK_TO_TOP: "Scroll to top",
   },
   fr: {
     title: "Documentation ESX",
@@ -108,6 +109,7 @@ const translations = {
     ON_THIS_PAGE: "Sur cette page",
     FEEDBACK: "Une question? Donnez-nous votre avis →",
     TIMESTAMP: "Dernière mise à jour le",
+    BACK_TO_TOP: "Retour en haut"
   }
 };
 
