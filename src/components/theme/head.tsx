@@ -1,11 +1,15 @@
+import { useConfig } from "nextra-theme-docs";
 import { useTranslation } from "src/hooks/useTranslaction";
 
 export function Head() {
   const t = useTranslation();
+  const config = useConfig();
+
+  const title = config.title || '';
 
   return (
     <>
-      <title>{t.title}</title>
+      <title>{t.title} - {title}</title>
       <meta name="description" content={t.description} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_US" />
