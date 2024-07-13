@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { useRouter } from 'nextra/hooks'
-import { SUPPORTED_LOCALES } from './../theme.config';
+import { SUPPORTED_LOCALES } from '../data/translations';
 
 export default function App({ Component, pageProps }) {
-
   const router = useRouter();
 
   useEffect(() => {
