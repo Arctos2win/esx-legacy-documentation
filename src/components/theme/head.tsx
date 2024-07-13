@@ -5,11 +5,11 @@ export function Head() {
   const t = useTranslation();
   const config = useConfig();
 
-  const title = config.title || '';
+  const title = config?.title ? `${t.title} - ${config.title}` : t.title;
 
-  return (
+  return title && (
     <>
-      <title>{t.title} - {title}</title>
+      <title>{title}</title>
       <meta name="description" content={t.description} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_US" />
