@@ -2,7 +2,7 @@ import { useTranslation } from "src/hooks/useTranslaction";
 
 export function Footer() {
   const t = useTranslation();
-  
+
   return (
     <span>
       <a href="https://www.esx-framework.org/" target="_blank">

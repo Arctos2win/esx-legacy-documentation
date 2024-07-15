@@ -1,6 +1,6 @@
 export default {
-    "developing": "Developing a Script",
-    "install": "Setup a Server",
-    "updating": "Updating a script",
-    "coding_practices": "Best Coding Practices"
-}
+  developing: "Developing a Script",
+  install: "Setup a Server",
+  updating: "Updating a script",
+  coding_practices: "Best Coding Practices",
+};
