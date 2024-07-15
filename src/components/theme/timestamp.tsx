@@ -6,13 +6,22 @@ export function TimeStamp({ timestamp }) {
   const t = useTranslation();
   const date = new Date(timestamp);
 
-  const formattedDate = locale === 'fr'
-  ? date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })
-  : date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  const formattedDate =
+    locale === "fr"
+      ? date.toLocaleDateString("fr-FR", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })
+      : date.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
 
   return (
     <>
-    {t.TIMESTAMP} {formattedDate}
+      {t.TIMESTAMP} {formattedDate}
     </>
-  )
+  );
 }

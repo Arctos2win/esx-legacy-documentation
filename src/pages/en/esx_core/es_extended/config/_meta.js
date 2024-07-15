@@ -1,5 +1,5 @@
 export default {
-    "main": "Main",
-    "discord": "Discord",
-    "weapon": "Weapon"
-}
+  main: "Main",
+  discord: "Discord",
+  weapon: "Weapon",
+};

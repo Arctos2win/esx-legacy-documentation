@@ -1,10 +1,10 @@
-import Document, { Head, Html, Main, NextScript } from 'next/document';
-import { SkipNavLink } from 'nextra-theme-docs';
+import Document, { Head, Html, Main, NextScript } from "next/document";
+import { SkipNavLink } from "nextra-theme-docs";
 
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang='en'>
+      <Html lang="en">
         <Head />
         <body>
           <SkipNavLink styled />
