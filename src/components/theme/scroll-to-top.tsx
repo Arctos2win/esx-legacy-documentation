@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useTranslation } from "src/hooks/useTranslaction";
+import { useTranslation } from "src/hooks/useTranslation";
 
 export function ScrollToTop() {
   const t = useTranslation();
