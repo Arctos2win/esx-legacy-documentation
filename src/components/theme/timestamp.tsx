@@ -1,5 +1,5 @@
 import { useRouter } from "nextra/hooks";
-import { useTranslation } from "src/hooks/useTranslaction";
+import { useTranslation } from "src/hooks/useTranslation";
 
 export function TimeStamp({ timestamp }) {
   const { locale } = useRouter();

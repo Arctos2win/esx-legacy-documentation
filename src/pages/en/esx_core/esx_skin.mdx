@@ -7,9 +7,10 @@ The skin managing system used by `es_extended`
 ### Get Last Skin
 Get the player's last known skin
 
+**Example**
 ```lua
-AddEventHandler("esx_skin:getLastSkin", function(cb)
-    cb(lastSkin)
+TriggerEvent("esx_skin:getLastSkin", function(lastSkin)
+    print(json.encode(lastSkin))
 end)
 ```
 
@@ -20,3 +21,41 @@ Open the skin menu
     { arg: 'submitCb', type: 'function', description: 'Callback that should be triggered when saving the skin.' }, 
     { arg: 'cancelCb', type:'function', optional: true, description: 'Callback that should be triggered when abborting.'}
 ]} />
+
+### Get the current skin
+Get the current skin
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: 'cb', type: 'function', description: 'Callback that should be triggered when the skin is received.' }
+]} />
+
+**Example**
+```lua
+ESX.TriggerServerCallback("esx_skin:getPlayerSkin", function(skin)
+    if skin == nil then
+        TriggerEvent("skinchanger:loadSkin", { sex = 0 }, OpenSaveableMenu)
+        Wait(100)
+    else
+        TriggerEvent("skinchanger:loadSkin", skin)
+        Wait(100)
+    end
+end)
+```
+
+### Open the skin menu
+Open the skin menu.
+
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: 'submitCb', type: 'function', optional: true, description: 'Callback that should be triggered when saving the skin.' }, 
+    { arg: 'cancelCb', type:'function', optional: true, description: 'Callback that should be triggered when abborting.'}
+]} />
+
+**Example**
+```lua
+TriggerEvent("esx_skin:openSaveableMenu", 
+    function()
+        finished = true
+    end, function()
+        finished = true
+end)

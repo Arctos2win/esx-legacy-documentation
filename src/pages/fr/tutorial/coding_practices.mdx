@@ -30,7 +30,7 @@ DRY stands for "Don't Repeat Yourself". It is a software development principle t
 ## Comments
 Comments are important for explaining what your code does. It is recommended to use comments to explain what your code does and why you wrote it that way.
 
-For more information check the [Annotations](/fr/tutorial/coding_practices/annotations) section.
+For more information check the [Annotations](/en/tutorial/coding_practices/annotations) section.
 
 ## Globalization and Localization
 ```lua
@@ -122,7 +122,7 @@ Optimization is important for performance. It is important to optimize your code
 Avoid unnecessary or reconcurrent calculations. If you have a calculation that is done multiple times, consider caching the result and reusing it.
 
 ### Tables
-Tables is a powerful data structure in Lua, but it is resource intensive. It is important to use tables wisely and avoid creating unnecessary tables.
+Tables are a powerful data structure in Lua, but it is resource intensive. It is important to use tables wisely and avoid creating unnecessary tables.
 And only have the data you still need in the table. Once data is not needed anymore remove it from the table.
 
 ### Use newest methods
@@ -130,17 +130,17 @@ Lua, FiveM and ESX are constantly being updated with new features and improvemen
 Make sure to keep up to date with the latest changes and use the newest methods available.
 
 **Popular outdated or replaced functions**
-- `GetPlayerPedId(-1) -> PlayerPedId()` Getting the player Ped.
-- `GetDistanceBetweenCoords(x1, y1, z1, x2, y2, z2, true) -> #(vector3(x1, y1, z1) - vector3(x2, y2, z2))` Getting the distance between two points.
-- `GetHashKey('adder') -> joaat('adder') or `adder\``
-- `table.insert(table, value) -> table[#table + 1] = value` Inserting a value into a table.
-- `table.remove(table, index) -> table[index] = nil` Removing a value from a table.
+- `GetPlayerPedId(-1)` -> `PlayerPedId()` Getting the player Ped.
+- `GetDistanceBetweenCoords(x1, y1, z1, x2, y2, z2, true)` -> `#(vector3(x1, y1, z1) - vector3(x2, y2, z2))` Getting the distance between two points.
+- `GetHashKey('adder')` -> `joaat('adder')` Getting the hash of a string/model.
+- `table.insert(table, value)` -> `table[#table + 1] = value` Inserting a value into a table.
+- `table.remove(table, index)` -> `table[index] = nil` Removing a value from a table.
 
 ## Lua 5.4
 Lua 5.4 is the latest version of Lua and it comes with some new features and improvements. If you have [Lua 5.4 enabled](https://docs.fivem.net/docs/scripting-reference/resource-manifest/resource-manifest/#lua54) you can also use it's features in your fivem script.
 
 ### Features
-- `const` & `close` keyword for defining constants.
+- `const` & `close` keyword for defining constants and making sure memory is freed safely.
 - `goto` statement.
 - Generational GC (Garbage Collector).
 - Overall faster 

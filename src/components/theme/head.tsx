@@ -1,5 +1,5 @@
 import { useConfig } from "nextra-theme-docs";
-import { useTranslation } from "src/hooks/useTranslaction";
+import { useTranslation } from "src/hooks/useTranslation";
 
 export function Head() {
   const t = useTranslation();

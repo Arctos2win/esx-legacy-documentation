@@ -1,3 +1,5 @@
+import { Tabs } from 'nextra/components'
+
 # Updating your Scripts
 Between older versions of esx and the newer releases there have been introduced some breaking changes, including but not limited to:
 - The change of the inventory limit system to weight system
@@ -39,7 +41,7 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 ### Export method
 This is perfect if you just need the ESX Object.
 
-To use the export method you simply get it by using in the file you need it:
+To use the export method you simply get it by using the export and the getSharedObject function from it:
 ```lua
 ESX = exports['es_extended']:getSharedObject()
 ```
@@ -48,7 +50,7 @@ ESX = exports['es_extended']:getSharedObject()
 <img src= "https://i.gyazo.com/b9f7213a75deeb6db3fd97d38b64e1cc.gif"></img>
 
 ### Import method
-This can be used if you need the ESX Object and also the PlayerData on the clientside.
+This is basically the same as the export method but it also adds a event listener and a function that makes sure the ESX.PlayerData is up to date.
 
 To use the import method you just add the line below to the fxmanifest, either into the client, server or shared scripts:
 ```lua
@@ -56,20 +58,35 @@ To use the import method you just add the line below to the fxmanifest, either i
 ```
 
 #### Example
-```lua
-fx_version 'cerulean'
-game 'gta5'
+<Tabs items={["fxmanifest.lua", "client.lua"]}>
+    <Tabs.Tab>
+    ```lua
+    fx_version 'cerulean'
+    game 'gta5'
 
-description 'My favourite script'
+    description 'My favourite script'
 
-shared_scripts {
-    '@es_extended/imports.lua'
-}
+    shared_scripts {
+        '@es_extended/imports.lua'
+    }
 
-server_script 'server.lua'
-client_script 'client.lua'
+    server_script 'server.lua'
+    client_script 'client.lua'
 
-dependencies {
-    'es_extended'
-}
-```
+    dependencies {
+        'es_extended'
+    }
+    ```
+    </Tabs.Tab>
+    <Tabs.Tab>
+    ```lua
+    OnPlayerData = function(key, val, last) -- Not needed but can be used with the Import method. Only on clientside of course!
+        print(("The data %s has been changed from %s to %s"):format(key, last, val))
+    end
+
+    RegisterCommand('test', function()
+        print(("Name: %s | Job: %s (%s)"):format(ESX.PlayerData.name, ESX.PlayerData.job.label, ESX.PlayerData.job.grade_label))
+    end, false)
+    ```
+    </Tabs.Tab>
+</Tabs>
