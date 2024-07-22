@@ -45,6 +45,12 @@ end)
 ### Open the skin menu
 Open the skin menu.
 
+**Arguments**
+<ArgumentsTable rows={[
+    { arg: 'submitCb', type: 'function', optional: true, description: 'Callback that should be triggered when saving the skin.' }, 
+    { arg: 'cancelCb', type:'function', optional: true, description: 'Callback that should be triggered when abborting.'}
+]} />
+
 **Example**
 ```lua
 TriggerEvent("esx_skin:openSaveableMenu", 
