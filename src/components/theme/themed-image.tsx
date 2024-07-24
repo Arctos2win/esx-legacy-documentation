@@ -30,6 +30,10 @@ export function ThemedImage({ type = "header" }) {
         "https://cdn.discordapp.com/attachments/748675208113553439/1261383966322331779/0e83be93ba8d67a6ca7fc101e29c112964a470f1.png?ex=6692c2dc&is=6691715c&hm=111d9dbd8d85fdfaeb547510d59eeb94cc4fb786cbaa70560fc5fb8053f2ec03&",
       dark: "https://dunb17ur4ymx4.cloudfront.net/webstore/logos/0e83be93ba8d67a6ca7fc101e29c112964a470f1.png",
     },
+    NXG: {
+      light: "https://cdn.discordapp.com/attachments/1115755909419909241/1265487947621335142/dzqqdd-black.png?ex=66a1b0fe&is=66a05f7e&hm=4a7332dccd09b07e6606c3d1d4462f3eec7b9fc55e3d2628fcf6e145a30b20b7&",
+      dark: "https://cdn.discordapp.com/attachments/1115755909419909241/1265394555239268605/dzqqdd.png?ex=66a15a03&is=66a00883&hm=79177fc731cdb8ca8619a9b073591ddbd9ccad1260d712658fb0130c8e3f8a1f&",
+    }
   };
 
   const style =
