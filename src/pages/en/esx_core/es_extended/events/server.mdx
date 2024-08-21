@@ -248,3 +248,22 @@ RegisterNetEvent('esx:onPlayerDeath', function (data)
     print(string.format("%s was killed by %s from %s meters away.", source, data.killerServerId, data.distance))
 end)
 ```
+
+### esx:setJob
+This event is triggered when the player's job changes.
+
+**Returns**
+<OutputTable rows={[
+    { arg: "source", type: "number", description: "	The player's player id." },
+    { arg: "job", type: "table", description: "A table with the job data." },
+    { arg: "lastJob", type: "table", description: "A table with the last job data." }
+]}/>
+
+**See more:** *[Job table structure](/en/esx_core/es_extended/playerdata/#job)*
+
+**Example**
+```lua 
+AddEventHandler('esx:setJob', function(source,job,lastJob)
+    print("Player " .. source .. " changed job! New job name: " .. job.name .. " Last job name: " .. lastJob.name)
+end)
+```

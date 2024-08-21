@@ -175,3 +175,22 @@ AddEventHandler('esx:onPlayerSpawn', function ()
     print("Player successfully loaded and his ped spawned.")
 end)
 ```
+
+### esx:setJob
+This event is triggered when the player's job changes.
+
+**Returns**
+<OutputTable rows={[
+    { arg: "job", type: "table", description: "A table with the job data." },
+    { arg: "lastJob", type: "table", description: "A table with the last job data." }
+]}/>    
+
+**See more:** *[Job table structure](/en/esx_core/es_extended/playerdata/#job)*
+
+**Example**
+```lua
+RegisterNetEvent("esx:setJob") 
+AddEventHandler('esx:setJob', function(job,lastJob)
+    print("Player changed job! New job name: " .. job.name .. " Last job name: " .. lastJob.name)
+end)
+```
