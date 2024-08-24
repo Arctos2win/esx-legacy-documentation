@@ -1,4 +1,3 @@
-import { ArgumentsTable, OutputTable } from "src/components/table";
 import { Callout } from 'nextra/components'; 
 
 # xPlayer Functions
@@ -28,10 +27,7 @@ There are some variables that contain different data about the player. For more 
 This function will trigger a client side event for the player.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "eventName", type: "string", description: "The event you want to trigger for the xPlayer." },
-    { arg: "...", type: "arguments", optional: true, description: "All arguments that you want to send."}
-]} />
+
 
 **Example**
 
@@ -48,9 +44,7 @@ xPlayer.triggerEvent('esx:showNotification', 'this is a notification', 'error', 
 This function will change the coords of the player. Making him teleport.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "coords", type: "vector3 | vector4 | table", description: "The coords the player needs to be teleported to" },
-]} />
+
 
 **Example**
 ```lua
@@ -63,9 +57,7 @@ xPlayer.setCoords(vector3(0, 0, 0))
 This function will return the coords from the player.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "vector", type: "boolean", optional: true, defaultValue: 'false',  description: "True if you want a vector3 returned or a table" },
-]} />
+
 
 **Example**
 ```lua
@@ -81,9 +73,7 @@ This function will kick the player from the Server.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "reason", type: "string", optional: true, explanation: "The reason why the player is being kicked" },
-]} />
+
 
 **Example**
 ```lua
@@ -100,9 +90,7 @@ This function will return the player's identifier.
 **Returns**
 
 The player's rockstar license.
-<OutputTable rows={[
-    { arg: "identifier", type: "string", description: "The rockstar license of the player" },
-]}/>
+
 
 **Example** 
 ```lua
@@ -114,9 +102,7 @@ local identifier = xPlayer.getIdentifier()
 This function sets the name of the player.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "name", type: "string", description: "The new name of the player." }
-]} />
+
 
 **Example**
 ```lua
@@ -131,9 +117,7 @@ This function returns the name of the fivem player.
 **Returns**
 
 Returns either a roleplay name consisting out of firstname and lastname with esx_identity or his fivem name.
-<OutputTable rows={[
-    { arg: "name", type: "string", description: "Player's name" }
-]}/>
+
 
 **Example**
 ```lua
@@ -146,10 +130,7 @@ print("Player is called: " .. xPlayer.getName())
 This function sets the players current job.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "newJob", type: "string", description: "The player's new job." },
-    { arg: "grade", type: "number", description: "The player's new grade index." },
-]} />
+
 
 **Example**
 ```lua
@@ -193,9 +174,7 @@ This function will set the money account from the player.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "amount", type: "number", description: "The amount of cash to set" },
-]} />
+
 
 **Example**
 ```lua
@@ -224,10 +203,7 @@ This function will add money to the players money account.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "amount", type: "number", description: "The amount you want to add to the player's money account." },
-    { arg: "reason", type: "string", optional: true, description: "The reason the player receives the money."}
-]} />
+
 
 **Example**
 ```lua 
@@ -243,10 +219,7 @@ This function will remove money from the player's money account.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "amount", type: "number", description: "The amount you want to remove from the player's money account." },
-    { arg: "reason", type: "string", optional: true, defaultValue: "Unknown", description: "The reason the player looses the money."}
-]} />
+
 
 **Example**
 ```lua 
@@ -258,9 +231,7 @@ xPlayer.removeMoney(900, "Bought an apple including Tax")
 This function returns all of the player's accounts.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "minimal", type: "boolean", optional: true, description: "Should only return amount of accounts." }
-]} />
+
 
 **Returns**
 
@@ -274,9 +245,7 @@ Non-Minimal:
 ]}/>
 
 Minimal:
-<OutputTable rows={[
-    { arg: "money", type: "number", description: "The account balance" }
-]}/>
+
 
 **Example**
 ```lua
@@ -296,11 +265,7 @@ This function sets the accounts balance.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "accountName", type: "string", description: "The name of the account." },
-    { arg: "money", type: "number", description: "The new account balance." },
-    { arg: "reason", type: "string", optional: true, defaultValue: "unknown", description: "The reason the player's money is set." },
-]} />
+
 
 **Example**
 ```lua
@@ -317,11 +282,7 @@ This function adds money to specified account.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "accountName", type: "string", description: "The name of the account." },
-    { arg: "money", type: "number", description: "The money to add." },
-    { arg: "reason", type: "string", optional: true, defaultValue: "Unknown", description: "The reason the player receives the money." },
-]} />
+
 
 **Example**
 ```lua
@@ -338,11 +299,7 @@ This function removes money from the account.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "accountName", type: "string", description: "The name of the account." },
-    { arg: "money", type: "number", description: "The money to remove." },
-    { arg: "reason", type: "string", optional: true, defaultValue: "Unknown", description: "The reason the player's money has lost that money." },
-]} />
+
 
 **Example**
 ```lua
@@ -358,9 +315,7 @@ xPlayer.removeAccountMoney("bank", 2400, "Dept payoff.")
 This function will set the player's group. 
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "group", type: "string", description: "The group you want to give the player" },
-]} />
+
 
 **Example**
 ```lua
@@ -375,9 +330,7 @@ This function will get the player's group.
 **Returns**
 
 The player's group.
-<OutputTable rows={[
-    { arg: "group", type: "string", description: "The players group" },
-]}/>
+
 
 ## Variables
 
@@ -385,10 +338,7 @@ The player's group.
 This function will set a variable that you can access from the xPlayer table.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "key", type: "string", description: "The key of the variable" },
-    { arg: "value", type: "any", description: "The value of the variable" }
-]} />
+
 
 **Example**
 ```lua
@@ -401,9 +351,7 @@ xPlayer.set('cool', false)
 This function will get a variable saved in the xPlayer table.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "key", type: "string", description: "The key of the variable" }
-]} />
+
 
 **Example**
 ```lua
@@ -426,9 +374,7 @@ This function returns the loadout of the player.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "minimal", type: "boolean", optional: true, description: "Should only return ammo and components." }
-]} />
+
 
 **Returns**
 
@@ -443,10 +389,7 @@ Non-Minimal:
 ]}/>
 
 Minimal:
-<OutputTable rows={[
-    { arg: "ammo", type: "number", description: "The weapon's ammo." },
-    { arg: "components", type: "table", description: "The weapon's components." },
-]}/>
+
 
 **Example**
 ```lua
@@ -466,9 +409,7 @@ This function returns the weapon table of the specified weapon.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "weaponName", type: "string", description: "The weapon name." }
-]} />
+
 
 **Returns**
 
@@ -489,10 +430,7 @@ This function gives the player the specified weapon.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "weaponName", type: "string", description: "The weapon name." },
-    { arg: "ammo", type: "number", description: "The weapon's ammo." },
-]} />
+
 
 **Example**
 ```lua
@@ -509,10 +447,7 @@ This function gives the player specified components on the specified weapon.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "weaponName", type: "string", description: "The weapon name." },
-    { arg: "weaponComponent", type: "string", description: "The component to add." },
-]} />
+
 
 **Example**
 ```lua
@@ -529,10 +464,7 @@ This function adds ammo to the specified weapon.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "weaponName", type: "string", description: "The weapon name." },
-    { arg: "ammoCount", type: "number", description: "The ammo count to add." },
-]} />
+
 
 **Example**
 ```lua
@@ -549,10 +481,7 @@ This function sets the weapon's ammo to the specified count.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "weaponName", type: "string", description: "The weapon name." },
-    { arg: "ammoCount", type: "number", description: "The ammo count to set." },
-]} />
+
 
 **Example**
 ```lua
@@ -569,10 +498,7 @@ This function sets the specified weapon's tint to the specified tint.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "weaponName", type: "string", description: "The weapon name." },
-    { arg: "weaponTintIndex", type: "number", description: "The weapon tint index to set to." },
-]} />
+
 
 **Example**
 ```lua
@@ -589,16 +515,12 @@ This function returns the specified weapon's tint.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "weaponName", type: "string", description: "The weapon name." }
-]} />
+
 
 **Returns**
 
 Returns the specified weapon's tint.
-<OutputTable rows={[
-    { arg: "tintIndex", type: "number", description: "Specified weapon's current tint index." }
-]}/>
+
 
 **Example**
 ```lua
@@ -615,9 +537,7 @@ This function removes a weapon from the player's loadout.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "weaponName", type: "string", description: "The weapon name." }
-]} />
+
 
 **Example**
 ```lua
@@ -634,10 +554,7 @@ This function removes a component from a weapon.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "weaponName", type: "string", description: "The weapon name." },
-    { arg: "weaponComponent", type: "string", description: "The weapon component to remove." },
-]} />
+
 
 **Example**
 ```lua
@@ -654,10 +571,7 @@ This function removes specified ammo count from specified weapon.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "weaponName", type: "string", description: "The weapon name." },
-    { arg: "ammoCount", type: "string", description: "The amount of ammo to remove." },
-]} />
+
 
 **Example**
 ```lua
@@ -674,17 +588,12 @@ This function removes specified component from specified weapon.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "weaponName", type: "string", description: "The weapon name." },
-    { arg: "weaponComponent", type: "string", description: "The weapon component that should be checked." }
-]} />
+
 
 **Returns**
 
 Returns a boolean if the player has specified weapon component.
-<OutputTable rows={[
-    { arg: "hasComponent", type: "boolean", description: "Does the player have specified weapon component." }
-]}/>
+
 
 **Example**
 ```lua
@@ -705,16 +614,12 @@ This function checks if player has given weapon.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "weaponName", type: "string", description: "The weapon name." }
-]} />
+
 
 **Returns**
 
 Returns a boolean if the player has specified weapon.
-<OutputTable rows={[
-    { arg: "hasWeapon", type: "boolean", description: "Does the player have specified weapon." }
-]}/>
+
 
 **Example**
 ```lua
@@ -738,9 +643,7 @@ This function returns the inventory of the player.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "minimal", type: "boolean", optional: true, description: "Should only return count of items." }
-]} />
+
 
 **Returns**
 
@@ -757,9 +660,7 @@ Non-Minimal:
 ]}/>
 
 Minimal:
-<OutputTable rows={[
-    { arg: "count", type: "number", description: "The item count" }
-]}/>
+
 
 **Example**
 ```lua
@@ -776,9 +677,7 @@ This function returns the player's current inventory weight.
 **Returns**
 
 Returns the player's inventory weight
-<OutputTable rows={[
-    { arg: "weight", type: "number", description: "The inventories weight" }
-]}/>
+
 
 **Example**
 ```lua
@@ -793,9 +692,7 @@ This function returns the player's max inventory weight.
 **Returns**
 
 Returns the player's inventory max weight.
-<OutputTable rows={[
-    { arg: "maxWeight", type: "number", description: "The inventories max weight" }
-]}/>
+
 
 **Example**
 ```lua
@@ -808,9 +705,7 @@ print("The player can hold a max of " .. xPlayer.getMaxWeight())
 This function sets the max weight that can be carried.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "newWeight", type: "number", description: "The new max weight." },
-]} />
+
 
 **Example**
 ```lua
@@ -833,17 +728,12 @@ This function returns a boolean if the player can carry specified item with amou
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "itemName", type: "string", description: "The name of the item." },
-    { arg: "count", type: "number", description: "How many items it should check for." },
-]} />
+
 
 **Returns**
 
 Returns if player can carry specified item with amount of times.
-<OutputTable rows={[
-    { arg: "canCarry", type: "boolean", description: "Can player carry items." }
-]}/>
+
 
 **Example**
 ```lua
@@ -866,19 +756,12 @@ This function returns a boolean if the player can swap specified items with the 
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "firstItem", type: "string", description: "The name of the item that will be checked." },
-    { arg: "firstItemCount", type: "number", description: "How many items it should checked for." },
-    { arg: "secondItemName", type: "string", description: "The name of the item that should be swapped out." },
-    { arg: "secondItemCount", type: "number", description: "How many items it should checked for to swap out." },
-]} />
+
 
 **Returns**
 
 Returns if the player can swap specified items with the specified amounts.
-<OutputTable rows={[
-    { arg: "canSwapItem", type: "boolean", description: "Can player spaw items." }
-]}/>
+
 
 **Example**
 ```lua
@@ -901,12 +784,7 @@ This function syncs weight, items and account money from ox_iventory with esx.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "weight", type: "number", description: "The weight of the player" },
-    { arg: "maxWeight", type: "number", description: "The max weight of the player" },
-    { arg: "items", type: "table", description: "The items of the player" },
-    { arg: "money", type: "table", description: "The account's of the player" },
-]} />
+
 
 ## Item
 
@@ -919,16 +797,12 @@ This function checks if player has item.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "item", type: "string", description: "The item name." }
-]} />
+
 
 **Returns**
 
 Returns a boolean if the player has specified item.
-<OutputTable rows={[
-    { arg: "hasItem", type: "boolean", description: "Does the player have specified item." }
-]}/>
+
 
 **Example**
 ```lua
@@ -950,9 +824,7 @@ This function returns the specified item from the player's inventory.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "itemName", type: "string", description: "The name of the item." }
-]} />
+
 
 **Returns**
 
@@ -984,10 +856,7 @@ This function gives the player specified item, speciefied count of times.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "itemName", type: "string", description: "The name of the item." },
-    { arg: "count", type: "number", description: "How many items it should add." },
-]} />
+
 
 **Example**
 ```lua
@@ -1005,10 +874,7 @@ This function removes the item from the player's inventory specified count of ti
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "itemName", type: "string", description: "The name of the item." },
-    { arg: "count", type: "number", description: "How many items it should be removed." },
-]} />
+
 
 **Example**
 ```lua
@@ -1025,10 +891,7 @@ This function sets the item in the player's inventory to the specified count.
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "itemName", type: "string", description: "The name of the item." },
-    { arg: "count", type: "number", description: "How many items it should be set to." },
-]} />
+
 
 **Example**
 ```lua
@@ -1044,11 +907,7 @@ xPlayer.setInventoryItem("bread", 5) -- Sets bread count to 5
 This function triggers a notification.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "msg", type: "string", description: "The message that should be displayed." },
-    { arg: "notifyType", type: "string", description: "The notification type." },
-    { arg: "length", type: "number", description: "The length the notification should be displayed in milliseconds." },
-]} />
+
 
 **Example**
 ```lua
@@ -1061,16 +920,7 @@ xPlayer.showNotification("You have been invited to a round of DnD", "info", 3000
 This function shows a advanced notification.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "sender", type: "string", description: "The notification's sender." },
-    { arg: "subject", type: "string", description: "The notification's subject." },
-    { arg: "msg", type: "string", description: "The notification's message." },
-    { arg: "textureDict", type: "string", description: "The notification's texture dictionary." },
-    { arg: "iconType", type: "string", description: "The notification's icon type." },
-    { arg: "flash", type: "boolean", description: "Flash notification." },
-    { arg: "saveToBrief", type: "boolean", description: "Save notification to brief menu?" },
-    { arg: "hudColorIndex", type: "number", description: "The hud color of the notification" }
-]} />
+
 
 **Example**
 ```lua
@@ -1084,12 +934,7 @@ xPlayer.showAdvancedNotification('title', 'subject', 'msg', 'CHAR_BANK_MAZE', 9)
 This function shows a help notification.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "msg", type: "string", description: "The message that should be displayed." },
-    { arg: "thisFrame", type: "boolean", optional: true, description: "Should it only be displayed this frame. (Do it on client instead)" },
-    { arg: "beep", type: "boolean", optional: true, description: "Play the beep sound?" },
-    { arg: "duration", type: "number", optional: true, defaultValue: "-1 (5000)", description: "Duration to show the help notification in milliseconds." },
-]} />
+
 
 **Example**
 ```lua
@@ -1105,11 +950,7 @@ xPlayer.showHelpNotification('TIP: If you find 10 pieces you win!', false, false
 This function sets the value of the specified meta.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "index", type: "string", description: "The key of the meta." },
-    { arg: "value", type: "string | number | table", description: "The key value of the meta." },
-    { arg: "subIndex", type: "string", optional: true, description: "The sub index/key if meta is a table" }
-]} />
+
 
 **Example**
 ```lua
@@ -1121,10 +962,7 @@ xPlayer.setMeta("title", "Sr. Doctor")
 This function returns the value of the specified meta.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "index", type: "string", optional: true, description: "The key of the meta." },
-    { arg: "subIndex", type: "string", optional: true, description: "The sub index/key if meta is a table" }
-]} />
+
 
 **Returns**
 
@@ -1141,10 +979,7 @@ print("Player has the " .. xPlayer.getMeta("title") .. " title!")
 This function clears the specified meta.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "index", type: "string", description: "The key of the meta." },
-    { arg: "subIndex", type: "string", optional: true, description: "The sub index/key if meta is a table" }
-]} />
+
 
 **Example**
 ```lua

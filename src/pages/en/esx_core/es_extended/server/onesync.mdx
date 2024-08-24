@@ -1,5 +1,4 @@
 import { Callout } from 'nextra/components';
-import { ArgumentsTable, OutputTable } from "src/components/table";
 
 # Serverside OneSync Functions
 Functions used to get data that normally is available on the client. And functions to spawn synced entities.
@@ -8,11 +7,7 @@ Functions used to get data that normally is available on the client. And functio
 This function gets all players in the given radius. 
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "playerId", type: "number", optional: false, description: "The id from the player you want the near players from" },
-    { arg: "radius", type: "number", optional: true, defaultValue: '100', description: "The radius to search for players" },
-    { arg: "ignore", type: "table", optional: true, description: "A table with server id's that should be ignored" },
-]} />
+
 
 **Returns**
 
@@ -39,11 +34,7 @@ end
 This function returns the closest player from the given player. 
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "playerId", type: "number", optional: false, description: "The id from the player you want the nearest player from" },
-    { arg: "radius", type: "number", optional: true, defaultValue: '100', description: "The radius to search for the nearest player" },
-    { arg: "ignore", type: "table", optional: true, description: "A table with server id's as keys that should be ignored" },
-]} />
+
 
 **Returns**
 
@@ -72,13 +63,7 @@ the vehicle will belong to the server and won't be removed when no clients are a
 </Callout>
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "model", type: "string", optional: false, description: "The model that you want to spawn" },
-    { arg: "coords", type: "number", optional: false, description: "The coords where you want the vehicle to spawn" },
-    { arg: "heading", type: "number", optional: false, description: "The heading you want the vehicle to spawn with" },
-    { arg: "properties", type: "table", optional: false, description: "The vehicle properties"}, 
-    { arg: "cb", type: "function", optional: false, description: "The callback function"}
-]} />
+
 
 **Example**
 ```lua
@@ -91,12 +76,7 @@ end)
 This function will spawn an object from the Serverside. 
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "model", type: "number | string", optional: false, description: "The model that you want to spawn" },
-    { arg: "coords", type: "vector3 | table", optional: false, description: "The coords where you want the object to spawn" },
-    { arg: "heading", type: "number", optional: false, description: "The heading you want the object to spawn with" },
-    { arg: "cb", type: "function", optional: false, description: "The callback function"}
-]} />
+
 
 **Example**
 ```lua
@@ -109,12 +89,7 @@ end)
 This function will spawn a ped.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "model", type: "string", optional: false, description: "The model that you want to spawn" },
-    { arg: "coords", type: "number", optional: false, description: "The coords where you want the ped to spawn" },
-    { arg: "heading", type: "number", optional: false, description: "The heading you want the ped to spawn with" },
-    { arg: "cb", type: "function", optional: false, description: "The callback function"}
-]} />
+
 
 **Example**
 ```lua
@@ -127,12 +102,7 @@ end)
 This function will spawn a ped inside a vehicle.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "model", type: "string", optional: false, description: "The model that you want to spawn" },
-    { arg: "vehicle", type: "number", optional: false, description: "The vehicle handle the ped should to be spawned in" },
-    { arg: "seat", type: "number", optional: false, description: "The seat where the ped should be seated in" },
-    { arg: "cb", type: "function", optional: false, description: "The callback function"}
-]} />
+
 
 **Example**
 ```lua
@@ -148,11 +118,7 @@ end)
 This function will get all peds in given area.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "coords", type: "vector3", optional: false, description: "The coords of the area" },
-    { arg: "radius", type: "number", optional: false, description: "The radius to search for the peds" },
-    { arg: "modelFilter", type: "table", optional: false, description: "A table with model's that should be ignored" },
-]} />
+
 
 **Returns**
 
@@ -174,11 +140,7 @@ end
 This function will get all objects in given area.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "coords", type: "vector3", optional: false, description: "The coords of the area" },
-    { arg: "radius", type: "number", optional: false, description: "The radius to search for the objects" },
-    { arg: "modelFilter", type: "table", optional: false, description: "A table with model's that should be ignored" },
-]} />
+
 
 **Returns**
 
@@ -199,11 +161,7 @@ end
 This function will get all vehicles in given area.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "coords", type: "vector3", optional: false, description: "The coords of the area" },
-    { arg: "radius", type: "number", optional: false, description: "The radius to search for the vehicles" },
-    { arg: "modelFilter", type: "table", optional: false, description: "A table with model's that should be ignored" },
-]} />
+
 
 **Returns**
 
@@ -224,10 +182,7 @@ end
 This function will return the closest object to given coords.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "coords", type: "vector3", optional: false, description: "The coords of the area" },
-    { arg: "modelFilter", type: "table", optional: false, description: "A table with model's that should be ignored" },
-]} />
+
 
 
 **Example**
@@ -241,10 +196,7 @@ local networkId, distance, closestCoords = ESX.OneSync.GetClosestPed(vector3(0,0
 This function will return the closest object to given coords.
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "coords", type: "vector3", optional: false, description: "The coords of the area" },
-    { arg: "modelFilter", type: "table", optional: false, description: "A table with model's that should be ignored" },
-]} />
+
 
 **Example**
 ```lua
@@ -257,10 +209,7 @@ local networkId, distance, closestCoords = ESX.OneSync.GetClosestObject(vector3(
 This function will return the closest vehicle to given coords
 
 **Arguments**
-<ArgumentsTable rows={[
-    { arg: "coords", type: "vector3", optional: false, description: "The coords of the area" },
-    { arg: "modelFilter", type: "table", optional: false, description: "A table with model's that should be ignored" },
-]} />
+
 
 **Example**
 ```lua

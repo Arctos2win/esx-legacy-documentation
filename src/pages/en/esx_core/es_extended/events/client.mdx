@@ -1,5 +1,4 @@
 import { Callout } from 'nextra/components';
-import { ArgumentsTable, OutputTable } from "src/components/table";
 
 # Clientsided Events
 This page is dedicated to the client events introduced by the es_extended script.
@@ -20,10 +19,7 @@ This page is dedicated to the client events introduced by the es_extended script
 This event gets triggered when the player has received an item. *This is a server triggered event*
 
 **Returns**
-<OutputTable rows={[
-    { arg: "itemName", type: "string", description: "The vehicle's entity handle." },
-    { arg: "itemCount", type: "number", description: "The vehicle's plate." },
-]}/>
+
 
 **Example**
 ```lua 
@@ -36,10 +32,7 @@ end)
 This event gets triggered when the player has finished loading
 
 **Arguments**
-<OutputTable rows={[
-    { arg: "xPlayer", type: "string", description: "The xPlayer object of the player that connected. (Only PlayerData)" },
-    { arg: "skin", type: "table", description: "The skin of the player." }
-]}/>
+
 
 **Example**
 ```lua
@@ -83,12 +76,7 @@ end)
 This is a listen only event and should not be triggered. This event gets triggered when the player is entering a vehicle.
 
 **Returns**
-<OutputTable rows={[
-    { arg: "vehicle", type: "number", description: "The vehicle's entity handle." },
-    { arg: "plate", type: "string", description: "The vehicle's plate." },
-    { arg: "seat", type: "number", description: "The seat the player is entering." },
-    { arg: "netId", type: "number", description: "The vehicle's net id." },
-]}/>
+
 
 **Example**
 ```lua 
@@ -112,13 +100,7 @@ end)
 This is a listen only event and should not be triggered. This event gets triggered when the player has succesfully entered a vehicle.
 
 **Returns**
-<OutputTable rows={[
-    { arg: "vehicle", type: "number", description: "The vehicle's entity handle." },
-    { arg: "plate", type: "string", description: "The vehicle's plate." },
-    { arg: "seat", type: "number", description: "The seat the player has entered." },
-    { arg: "displayName", type: "string", description: "The vehicle's display name." },
-    { arg: "netId", type: "number", description: "The vehicle's net id." },
-]}/>
+
 
 **Example**
 ```lua 
@@ -132,13 +114,7 @@ end)
 This is a listen only event and should not be triggered. This event gets triggered when the player has exited a vehicle.
 
 **Returns**
-<OutputTable rows={[
-    { arg: "vehicle", type: "number", description: "The vehicle's entity handle." },
-    { arg: "plate", type: "string", description: "The vehicle's plate." },
-    { arg: "seat", type: "number", description: "The seat the player has exited out of." },
-    { arg: "displayName", type: "string", description: "The vehicle's display name." },
-    { arg: "netId", type: "number", description: "The vehicle's net id." },
-]}/>
+
 
 **Example**
 ```lua 
@@ -151,9 +127,7 @@ end)
 This event gets triggered when the player hdies
 
 **Data**
-<OutputTable rows={[
-    { arg: "isPauseMenu", type: "boolean", description: "Is the player in the pause menu." }
-]}/>
+
 
 **Example**
 ```lua
@@ -180,10 +154,7 @@ end)
 This event is triggered when the player's job changes.
 
 **Returns**
-<OutputTable rows={[
-    { arg: "job", type: "table", description: "A table with the job data." },
-    { arg: "lastJob", type: "table", description: "A table with the last job data." }
-]}/>    
+    
 
 **See more:** *[Job table structure](/en/esx_core/es_extended/playerdata/#job)*
 
