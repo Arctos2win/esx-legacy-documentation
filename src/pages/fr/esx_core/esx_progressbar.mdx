@@ -11,21 +11,20 @@ The Progress bar system used by `es_extended`
   - The lenght of the progressbar in ms
 - Options: table
   - The progressbar options
-
-***Options table*** 
-<ArgumentsTable isTable='true' rows={[
-    { arg: 'animation', type: 'table', description: 'A table with animation data' }, 
-    { arg: 'FreezePlayer', type:'boolean', description: 'Should the player be frozen?' }, 
-    { arg: 'onFinish', type:'function', description: 'A function that will be executed on finish' }, 
-    { arg: 'onCancel', type:'function', optional: true, description: 'A function that will be executed on cancel' }
-]} />
-
-***Animation table***
-<ArgumentsTable isTable='true' rows={[
-    { arg: 'type', type: 'string', description: 'anim or scenario' }, 
-    { arg: 'lib', type:'string', description: 'The animation lib' }, 
-    { arg: 'dict', type:'string', description: 'The animation dict' } 
-]} />
+  - animation: table
+    - A table with animation data
+    - type: string
+      - anim or scenario
+    - lib: string 
+      - The animation lib
+    - dict: string
+      - The animation dict
+  - FreezePlayer: boolean
+    - Should the player be frozen?
+  - onFinish: function
+    - A function that will be executed on finish
+  - onCancel: function
+    - A function that will be executed on cancel
 
 **ESX Example**
 ```lua

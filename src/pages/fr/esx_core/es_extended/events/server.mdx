@@ -19,7 +19,12 @@ This page is dedicated to the server events introduced by the es_extended script
 This event gets triggered when the player has successfully loaded / the character was chosen and loaded.
 
 **Arguments**
-
+- playerId: number
+  - The player's server id.
+- xPlayer: table
+  - The xPlayer object of the player that connected.
+- isNew: boolean
+  - Is the player's character new.
 
 **Example**
 ```lua
@@ -36,7 +41,8 @@ end)
 This event gets triggered when the player has logged out. This happens when a player used `/logout`
 
 **Arguments**
-
+- playerId: number
+  - The player's server id.
 
 **Example**
 ```lua
@@ -49,7 +55,8 @@ end)
 This event gets triggered when the player disconnected.
 
 **Arguments**
-
+- playerId: number
+  - The player's server id.
 
 **Example**
 ```lua
@@ -62,7 +69,12 @@ end)
 This event gets triggered when the player has successfully loaded / the character was chosen and loaded.
 
 **Returns**
-
+- playerId: number
+  - The player's server id.
+- xPlayer: table
+  - The xPlayer object of the player that connected.
+- isNew: boolean
+  - Is the player's character new.
 
 ```lua
 AddEventHandler('esx:playerLoaded', function (playerId, xPlayer, isNew)
@@ -88,7 +100,12 @@ end)
 This event gets triggered when the player is entering a vehicle. *This is a client triggered event*
 
 **Returns**
-
+- plate: string
+  - The vehicle's plate.
+- seat: number
+  - The seat index of the vehicle the player is entering.
+- netId: number
+  - The vehicle's network id.
 
 **Example**
 ```lua 
@@ -111,7 +128,14 @@ end)
 This event gets triggered when the player has succesfully entered a vehicle. *This is a client triggered event*
 
 **Returns**
-
+- plate: string
+  - The vehicle's plate.
+- seat: number
+  - The seat index of the vehicle the player is entering.
+- displayName: string
+  - The vehicle's display name.
+- netId: number
+  - The vehicle's network id.
 
 **Example**
 ```lua 
@@ -124,7 +148,14 @@ end)
 This event gets triggered when the player has exited a vehicle. *This is a client triggered event*
 
 **Returns**
-
+- plate: string
+  - The vehicle's plate.
+- seat: number
+  - The seat index of the vehicle the player is entering.
+- displayName: string
+  - The vehicle's display name.
+- netId: number
+  - The vehicle's network id.
 
 **Example**
 ```lua 
@@ -137,7 +168,10 @@ end)
 Can be used to update weapon ammo or listen to ammo updates. *This is a client triggered event*
 
 **Returns**
-
+- weaponName: string
+  - The weapon name.
+- ammoCount: number
+  - The new ammo count.
 
 **Example**
 ```lua 
@@ -150,7 +184,12 @@ end)
 Gets triggered when an inventory item gets added.
 
 **Returns**
-
+- source: number
+  - The player's server id.
+- itemName: string
+  - The item that got added.
+- itemCount: number
+  - The new item count.
 
 **Example**
 ```lua 
@@ -164,7 +203,12 @@ end)
 Gets triggered when an inventory item gets removed.
 
 **Returns**
-
+- source: number
+  - The player's server id.
+- itemName: string
+  - The item that got removed.
+- itemCount: number
+  - The new item count.
 
 **Example**
 ```lua 
@@ -178,7 +222,10 @@ end)
 Gets triggered when a single player was saved.
 
 **Returns**
-
+- source: number
+  - The player's server id.
+- xPlayer: table
+  - The xPlayer object of the player that was saved.
 
 **Example**
 ```lua 
@@ -188,7 +235,7 @@ end)
 ```
 
 ### esx:onPlayerDeath
-This event gets triggered when the player hdies
+This event gets triggered when the player dies
 
 **Data**
 - victimCoords: vector3
@@ -206,9 +253,30 @@ This event gets triggered when the player hdies
 - killerClientId: string
   - The killer's local id.
 
+
 **Example**
 ```lua
 RegisterNetEvent('esx:onPlayerDeath', function (data)
     print(string.format("%s was killed by %s from %s meters away.", source, data.killerServerId, data.distance))
+end)
+```
+
+### esx:setJob
+This event is triggered when the player's job changes.
+
+**Returns**
+- source: number
+  - The player's server id.
+- job: table
+  - The new job table.
+- lastJob: table
+  - The last job table.
+
+**See more:** *[Job table structure](/en/esx_core/es_extended/playerdata/#job)*
+
+**Example**
+```lua 
+AddEventHandler('esx:setJob', function(source,job,lastJob)
+    print("Player " .. source .. " changed job! New job name: " .. job.name .. " Last job name: " .. lastJob.name)
 end)
 ```

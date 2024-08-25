@@ -19,7 +19,10 @@ This page is dedicated to the client events introduced by the es_extended script
 This event gets triggered when the player has received an item. *This is a server triggered event*
 
 **Returns**
-
+- itemName: string
+  - The name of the item.
+- count: number
+  - The amount of the item.
 
 **Example**
 ```lua 
@@ -32,7 +35,10 @@ end)
 This event gets triggered when the player has finished loading
 
 **Arguments**
-
+- xPlayer: table
+  - The player object.
+- skin: table
+  - The player's skin.
 
 **Example**
 ```lua
@@ -82,7 +88,14 @@ end)
 This is a listen only event and should not be triggered. This event gets triggered when the player is entering a vehicle.
 
 **Returns**
-
+- vehicle: number
+  - The vehicle entity handle.
+- plate: string
+  - The vehicle's plate.
+- seat: number
+  - The seat index.
+- netId: number
+  - The vehicle's network id.
 
 **Example**
 ```lua 
@@ -106,7 +119,16 @@ end)
 This is a listen only event and should not be triggered. This event gets triggered when the player has succesfully entered a vehicle.
 
 **Returns**
-
+- vehicle: number
+  - The vehicle entity handle.
+- plate: string
+  - The vehicle's plate.
+- seat: number
+  - The seat the player entered.
+- displayName: string
+  - The vehicle's display name.
+- netId: number
+  - The vehicle's network id.
 
 **Example**
 ```lua 
@@ -120,7 +142,16 @@ end)
 This is a listen only event and should not be triggered. This event gets triggered when the player has exited a vehicle.
 
 **Returns**
-
+- vehicle: number
+  - The vehicle entity handle.
+- plate: string
+  - The vehicle's plate.
+- seat: number
+  - The seat the player exited.
+- displayName: string
+  - The vehicle's display name.
+- netId: number
+  - The vehicle's network id.
 
 **Example**
 ```lua 
@@ -133,7 +164,8 @@ end)
 This event gets triggered when the player hdies
 
 **Data**
-
+- isPauseMenu: boolean
+  - Is the pause menu active.
 
 **Example**
 ```lua

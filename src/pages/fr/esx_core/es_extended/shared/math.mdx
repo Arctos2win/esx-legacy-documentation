@@ -4,7 +4,10 @@
 This function rounds the number to the specified amount of decimal places.
 
 **Arguments**
-
+- number: number
+  - The number to round.
+- numDecimalPlaces: number
+  - The amount of decimal places to round to.
 
 **Example**
 ```lua
@@ -19,7 +22,8 @@ print('value rounded: ' .. ESX.Math.Round(value, 1)) -- returns 5.4
 This function groups numbers, making them easier to understand by humans. Used in most nofications when money is showed, for example when buying a new car at the vehicle shop.
 
 **Arguments**
-
+- number: number
+  - The number to group.
 
 **Example**
 ```lua
@@ -33,7 +37,8 @@ print(value, valueGrouped) -- returns 5555, 5,555
 This function trims a string, removing all trailing whitespaces. Often used when sanitizing the `GetVehicleNumberPlateText()` native.
 
 **Arguments**
-
+- value: string
+  - The string to trim.
 
 **Example**
 ```lua

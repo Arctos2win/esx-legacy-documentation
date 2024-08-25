@@ -5,13 +5,13 @@ import { Callout } from 'nextra/components';
 ## Globals
 These global variables are saved in the ESX table. You can freely use their data.
 
-- Players: table
+- Players
   - All loaded players.
-- Jobs: table
+- Jobs
   - All registered Jobs.
-- JobsPlayerCount: table
+- JobsPlayerCount
   - All registered Jobs and their player count.
-- Items: table
+- Items
   - All registered Items.
 
 
@@ -19,7 +19,8 @@ These global variables are saved in the ESX table. You can freely use their data
 This function prints a message to the console when Debug is enabled in the ESX Config.
 
 **Arguments**
-
+- msg: string
+  - The message to print.
 
 **Example**
 
@@ -34,10 +35,15 @@ end
 ## RegisterServerCallback
 This function registers a server callback, which is used for sending Server Data, to a client.
 
-See [*TriggerClientCallback*](../client/functions/#triggerservercallback)
+See [*TriggerServerCallback*](../client/functions/#triggerservercallback)
 
 **Arguments**
-
+- name: string
+  - The name of the callback.
+- cb: function
+  - The callback function.
+- ...: any
+  - The arguments to pass to the callback function.
 
 **Example**
 ```lua
@@ -63,7 +69,14 @@ This function triggers a client callback, which is used to get data from the cli
 </Callout>
 
 **Arguments**
-
+- player: number
+  - The player source that the callback should get triggered for.
+- eventName: string
+  - The name of the callback.
+- cb: function
+  - The callback to trigger when the client responds.
+- ...: any
+  - The arguments that should be send to the client.
 
 **Example**
 ```lua
@@ -76,21 +89,32 @@ end, "bati")
 This function registers a command.
 
 **Arguments**
-
-
-**Callback**
-
-
-**Suggestion**
-
-
-**Suggestion Arguments**
-- name: string
-  - The argument key.
-- help: string
-  - Explanation of the argument.
-- type: string
-  - Type of the argument. Possible Types: number, playerId, string, item, weapon, any, merge, coordinate.
+- name: string|table
+  - The name of the command.
+- group: string|table
+  - The group able to run this command.
+- cb: function
+  - The callback function that gets ran.
+  - xPlayer: table
+    - The xPlayer object of the client.
+  - args: table
+    - The arguments the player has put in.
+  - showError: function
+    - The function to show an error message to the player.
+- allowConsole?: boolean
+  - If the command should be allowed to be run from the console?
+- suggestion?: table
+  - The suggestion that gets added to the chat.
+  - help: string
+    - The description of the command.
+  - arguments: table
+    - The arguments of the command.
+    - name: string
+      - The argument key.
+    - help: string
+      - Explanation of the argument.
+    - type: string
+      - Type of the argument. Possible Types: number, playerId, string, item, weapon, any, merge, coordinate.
 
 **Example**
 ```lua
@@ -111,10 +135,12 @@ end, false, {
 This function returns all loaded xPlayers and if a filter is applied that match the filter. 
 
 **Arguments**
-
+- key?: string
+  - The key to filter players from.
+- value?: any
+  - The value to filter players from.
 
 **Returns**
-
 A table with the xPlayer objects.
 
 **Example**
@@ -130,10 +156,12 @@ end
 This function returns the amount of players online and if a filter is applied that match the filter. 
 
 **Arguments**
-
+- key?: string
+  - The key to filter players from.
+- value?: any
+  - The value to filter players from.
 
 **Returns**
-
 A number with the players online matching the filter.
 
 **Example**
@@ -147,7 +175,8 @@ print("There are " .. officersOnline .. " officers online.")
 This function returns the xPlayer object of the specified playerId.
 
 **Arguments**
-
+- source: number
+  - The player's server id.
 
 **Returns**
 
@@ -164,10 +193,10 @@ print("Player 5 is called " .. xPlayer.getName())
 This function returns the xPlayer object of the specified identifier.
 
 **Arguments**
-
+- identifier: string
+  - The player's identifier.
 
 **Returns**
-
 The xPlayer object of the specified player.
 
 **Example**
@@ -184,10 +213,10 @@ end)
 This function returns the identifier of the specified player. If in Cfx.re Development Kit will return "ESX-DEBUG-LICENSE"
 
 **Arguments**
-
+- playerId: number
+  - The player's server id.
 
 **Returns**
-
 The identifier of the specified player.
 
 **Example**
@@ -207,7 +236,12 @@ This function returns the vehicle type of the speicified vehicle.
 </Callout>
 
 **Arguments**
-
+- model: string|number
+  - The vehicle model as string or hash.
+- source: number
+  - The player's server id that should be used to check the model.
+- cb: function
+  - The callback function that gets ran when the function finishes.
 
 **Example**
 ```lua
@@ -220,7 +254,14 @@ end)
 This function sends a discord log.
 
 **Arguments**
-
+- name: string
+  - Webhook Name (found in Config.logs.lua)
+- title: string
+  - The title of the message.
+- color: string
+  - The color of the message. (found in Config.logs.lua)
+- message: table
+  - The message to log.
 
 **Example**
 ```lua
@@ -236,7 +277,14 @@ ESX.DiscordLog(
 This function sends a discord log with fields.
 
 **Arguments**
-
+- name: string
+  - Webhook Name (found in Config.logs.lua)
+- title: string
+  - The title of the message.
+- color: string
+  - The color of the message. (found in Config.logs.lua)
+- fields: table
+  - The fields to log.
 
 **Example**
 ```lua
@@ -251,7 +299,12 @@ ESX.DiscordLogFields("UserActions", "/car Triggered", "pink", {
 This function creates a new job and inserts it into the database.
 
 **Arguments**
-
+- name: string
+  - The job's name.
+- label: string
+  - The job's label.
+- grades: table
+  - The job's grades.
 
 **Example**
 ```lua
@@ -276,7 +329,10 @@ ESX.RefreshJobs()
 This function registers a usable item.
 
 **Arguments**
-
+- item: string
+  - The item to register.
+- cb: function(playerId: number)
+  - The callback function that gets ran when the item is used.
 
 **Example**
 ```lua
@@ -291,7 +347,12 @@ end)
 This function forces a player to use a item.
 
 **Arguments**
-
+- source: number
+  - The player's server id.
+- item: string
+  - The item to use.
+- ...?
+  - The arguments to pass to the callback function of the item.
 
 **Example**
 ```lua
@@ -306,7 +367,10 @@ With this function you can override existing functions in the player object or a
 </Callout>
 
 **Arguments**
-
+- index: string
+  - The index of the override.
+- overrides: table
+  - The table with the functions to be overriden with.
 
 **Example**
 ```lua
@@ -330,7 +394,8 @@ This function switches the function overrides.
 </Callout>
 
 **Arguments**
-
+- index: string
+  - The index of the override.
 
 **Example**
 ```lua
@@ -341,12 +406,12 @@ ESX.SetPlayerFunctionOverride("myOverrides")
 This function returns the item label of the given item.
 
 **Arguments**
-
+- item: string
+  - The item to get the label from.
 
 **Returns**
-
-The item label of the given item.
-
+- label: string
+  - The item label of the given item.
 
 **Example**
 ```lua
@@ -361,20 +426,23 @@ This function returns all registered jobs.
 **Returns**
 
 A table of all the registered jobs.
-- name: string
+- name
   - The job's name.
-- label: string
+- label
   - The job's label.
-- grades: table
+- grades
   - The job's grades.
-  - grade: number
-    - The grade index.
-  - name: string
-    - The grade's name.
-  - label: string
-    - The grade's label.
-  - salary: number
-    - The grade's salary.
+
+Grades:
+- grade
+  - The grade index.
+- name
+  - The grade's name.
+- label
+  - The grade's label.
+- salary
+  - The grade's salary.
+
 
 **Example**
 ```lua
@@ -413,7 +481,20 @@ This function creates a pickup.
 </Callout>
 
 **Arguments**
-
+- itemType: string
+  - The type of the item. Valid inputs: "item_standard", "item_money", "item_account", "item_weapon"
+- name: string
+  - The name of either the item, account or weapon.
+- count: number
+  - The amount of the item, account or weapon ammo.
+- label: string
+  - The label of the pickup.
+- playerId: number
+  - The player's server that created the pickup, used to determine pickup spawn point.
+- components?: table
+  - Only used when itemType is "item_weapon". An index-value table with the weapon components.
+- tintIndex?: number
+  - Only used when itemType is "item_weapon". The tint index of the weapon.
 
 **Example**
 ```lua
@@ -426,11 +507,14 @@ end
 This function returns if the specified job and grade exist.
 
 **Arguments**
-
+- job: string
+  - The job to check.
+- grade: number
+  - The grade to check.
 
 **Returns**
-
-Returns a boolean if the given job and grade exist.
+- exists: boolean
+  - Does the job and grade exist.
 
 
 **Example**
