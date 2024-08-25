@@ -143,17 +143,25 @@ xPlayer.setJob("police", 4) -- Set the player the police boss.
 This function returns the job of the player.
 
 **Returns**
-<OutputTable isTable={true} rows={[
-    { arg: "id", type: "number", description: "The job's id from the database" },
-    { arg: "name", type: "string", description: "The job's name" },
-    { arg: "label", type: "string", description: "The job's label" },
-    { arg: "grade", type: "string", description: "The job's grade" },
-    { arg: "grade_name", type: "string", description: "The job's grade name" },
-    { arg: "grade_label", type: "string", description: "The job's grade label" },
-    { arg: "grade_salary", type: "string", description: "The job's grade salary" },
-    { arg: "skin_male", type: "table", description: "The job's male grade skin/outfit" },
-    { arg: "skin_female", type: "table", description: "The job's female grade skin/outfit" },
-]}/>
+- id: number
+  - The job's id from the database
+- name: string
+  - The job's name
+- label: string
+  - The job's label
+- grade: string
+  - The job's grade
+- grade_name: string
+  - The job's grade name
+- grade_label: string
+  - The job's grade label
+- grade_salary: string
+  - The job's grade salary
+- skin_male: table
+  - The job's male grade skin/outfit
+- skin_female: table
+  - The job's female grade skin/outfit
+
 
 **Example**
 ```lua
@@ -238,11 +246,12 @@ This function returns all of the player's accounts.
 A **`table`** with the key being the account name and the value either being a table or a number with the accounts balance amount when minimal.
 
 Non-Minimal:
-<OutputTable isTable={true} rows={[
-    { arg: "name", type: "string", description: "The account name" },
-    { arg: "money", type: "number", description: "The account balance" },
-    { arg: "label", type: "string", description: "The account label" },
-]}/>
+- name: string
+  - The account name
+- money: number
+  - The account balance
+- label: string
+  - The account label
 
 Minimal:
 
@@ -380,13 +389,16 @@ This function returns the loadout of the player.
 
 A **`table`** with the key being the weapon name and the value either being a table.
 Non-Minimal:
-<OutputTable isTable={true} rows={[
-    { arg: "name", type: "string", description: "The weapon's name." },
-    { arg: "ammo", type: "number", description: "The weapon's ammo." },
-    { arg: "label", type: "string", description: "The weapon's label." },
-    { arg: "components", type: "table", description: "The weapon's components." },
-    { arg: "tintIndex", type: "number", description: "The weapon's tint." },
-]}/>
+- name: string
+  - The weapon's name
+- ammo: number
+  - The weapon's ammo
+- label: string
+  - The weapon's label
+- components: table
+  - The weapon's components
+- tintIndex: number
+  - The weapon's tint
 
 Minimal:
 
@@ -414,13 +426,16 @@ This function returns the weapon table of the specified weapon.
 **Returns**
 
 Returns the weapon table of the specified weapon.
-<OutputTable isTable={true} rows={[
-    { arg: "name", type: "string", description: "The weapon's name." },
-    { arg: "ammo", type: "number", description: "The weapon's ammo." },
-    { arg: "label", type: "string", description: "The weapon's label." },
-    { arg: "components", type: "table", description: "The weapon's components." },
-    { arg: "tintIndex", type: "number", description: "The weapon's tint." },
-]}/>
+- name: string
+  - The weapon's name
+- ammo: number
+  - The weapon's ammo
+- label: string
+  - The weapon's label
+- components: table
+  - The weapon's components
+- tintIndex: number
+  - The weapon's tint
 
 ### addWeapon
 This function gives the player the specified weapon.
@@ -649,15 +664,20 @@ This function returns the inventory of the player.
 
 A **`table`** with the key being the item name and the value either being a table or a number with the item count when minimal.
 Non-Minimal:
-<OutputTable isTable={true} rows={[
-    { arg: "name", type: "string", description: "The item name" },
-    { arg: "count", type: "number", description: "The item count" },
-    { arg: "label", type: "string", description: "The item label" },
-    { arg: "weight", type: "number", description: "The item weight" },
-    { arg: "usable", type: "boolean", description: "Does the item have a use callback?" },
-    { arg: "rare", type: "boolean", description: "Is the item rare?" },
-    { arg: "canRemove", type: "boolean", description: "Can the item be removed?" }
-]}/>
+- name: string
+  - The item name
+- count: number
+  - The item count
+- label: string
+  - The item label
+- weight: number
+  - The item weight
+- usable: boolean
+  - Does the item have a use callback?
+- rare: boolean
+  - Is the item rare?
+- canRemove: boolean
+  - Can the item be removed?
 
 Minimal:
 
@@ -829,15 +849,20 @@ This function returns the specified item from the player's inventory.
 **Returns**
 
 Returns the item data from player's inventory.
-<OutputTable isTable={true} rows={[
-    { arg: "name", type: "string", description: "The item name" },
-    { arg: "count", type: "number", description: "The item count" },
-    { arg: "label", type: "string", description: "The item label" },
-    { arg: "weight", type: "number", description: "The item weight" },
-    { arg: "usable", type: "boolean", description: "Does the item have a use callback?" },
-    { arg: "rare", type: "boolean", description: "Is the item rare?" },
-    { arg: "canRemove", type: "boolean", description: "Can the item be removed?" }
-]}/>
+- name: string
+  - The item name
+- count: number
+  - The item count
+- label: string
+  - The item label
+- weight: number
+  - The item weight
+- usable: boolean
+  - Does the item have a use callback?
+- rare: boolean
+  - Is the item rare?
+- canRemove: boolean
+  - Can the item be removed?
 
 **Example**
 ```lua

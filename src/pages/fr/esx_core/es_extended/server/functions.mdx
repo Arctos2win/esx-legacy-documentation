@@ -5,12 +5,15 @@ import { Callout } from 'nextra/components';
 ## Globals
 These global variables are saved in the ESX table. You can freely use their data.
 
-<OutputTable isTable={true} rows={[
-    { arg: "Players", type: "table", description: "All loaded players." },
-    { arg: "Jobs", type: "table", description: "All registered Jobs." },
-    { arg: "JobsPlayerCount", type: "table", description: "All registered Jobs and their player count." },
-    { arg: "Items", type: "table", description: "All registered Items." }
-]}/>
+- Players: table
+  - All loaded players.
+- Jobs: table
+  - All registered Jobs.
+- JobsPlayerCount: table
+  - All registered Jobs and their player count.
+- Items: table
+  - All registered Items.
+
 
 ## Print a Trace
 This function prints a message to the console when Debug is enabled in the ESX Config.
@@ -82,11 +85,12 @@ This function registers a command.
 
 
 **Suggestion Arguments**
-<ArgumentsTable isTable={true} rows={[
-    { arg: "name", type: "string", description: "The argument key." },
-    { arg: "help", type: "string", description: "Explanation of the argument." },
-    { arg: "type", type: "string", description: "Type of the argument. Possible Types: number, playerId, string, item, weapon, any, merge, coordinate." },
-]}/>
+- name: string
+  - The argument key.
+- help: string
+  - Explanation of the argument.
+- type: string
+  - Type of the argument. Possible Types: number, playerId, string, item, weapon, any, merge, coordinate.
 
 **Example**
 ```lua
@@ -357,18 +361,20 @@ This function returns all registered jobs.
 **Returns**
 
 A table of all the registered jobs.
-<OutputTable isTable={true} rows={[
-    { arg: "name", type: "string", description: "The job's name" },
-    { arg: "label", type: "string", description: "The job's label" },
-    { arg: "grades", type: "table", description: "The job's grades" },
-]}/>
-Grades:
-<OutputTable isTable={true} rows={[
-    { arg: "grade", type: "number", description: "The grade index" },
-    { arg: "name", type: "string", description: "The grade's name" },
-    { arg: "label", type: "string", description: "The grade's label" },
-    { arg: "salary", type: "number", description: "The grade's salary" },
-]}/>
+- name: string
+  - The job's name.
+- label: string
+  - The job's label.
+- grades: table
+  - The job's grades.
+  - grade: number
+    - The grade index.
+  - name: string
+    - The grade's name.
+  - label: string
+    - The grade's label.
+  - salary: number
+    - The grade's salary.
 
 **Example**
 ```lua

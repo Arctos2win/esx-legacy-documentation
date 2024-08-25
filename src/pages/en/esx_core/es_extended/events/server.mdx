@@ -191,15 +191,21 @@ end)
 This event gets triggered when the player hdies
 
 **Data**
-<OutputTable isTable={true} rows={[
-    { arg: "victimCoords", type: "vector3", description: "The coords of the victim." },
-    { arg: "killerCoords", type: "vector3", description: "The coords of the killer." },
-    { arg: "distance", type: "number", description: "The distance between the victim and the killer." },
-    { arg: "killedByPlayer", type: "boolean", description: "Is the killer a player." },
-    { arg: "deathCause", type: "string", description: "The death cause." },
-    { arg: "killerServerId", type: "number", description: "The killer's server id." },
-    { arg: "killerClientId", type: "string", description: "The killer's local id." },
-]}/>
+- victimCoords: vector3
+  - The coords of the victim.
+- killerCoords: vector3
+  - The coords of the killer.
+- distance: number
+  - The distance between the victim and the killer.
+- killedByPlayer: boolean
+  - Is the killer a player.
+- deathCause: string
+  - The death cause.
+- killerServerId: number
+  - The killer's server id.
+- killerClientId: string
+  - The killer's local id.
+
 
 **Example**
 ```lua
