@@ -10,36 +10,36 @@ ESX.UI.Menu.Open(type, namespace, name, data, onSelect, cancel )
 ```
 
 **Arguments**
-- type: string
+- type: `string`
   - the menu to open `default` in this case
-- namespace: string
+- namespace: `string`
   - The namespace of the menu, usually ```GetResourceName()```is used
-- name: string
+- name: `string`
   - The name of the menu
-- data: table
+- data: `table`
   - The table with the elements to show in the menu
-- onSelect: function
+- onSelect: `function`
   - Function that gets ran when an element is selected.
-- cancel: function
+- cancel: `function`
   - Function that gets ran when the menu gets closed 
 
 **Data table**
-- title: title of the menu
-- align: position (top-left | top-right | bottom-left | bottom-right | center)
-- elements: selectable elements table
+- title: `title` of the menu
+- align: `position` (top-left | top-right | bottom-left | bottom-right | center)
+- elements: `selectable` elements table
 
 **Elements**
-- label: string
+- label: `string`
   - label name to show, supports HTML
-- name: string
+- name: `string`
   - name of the element
-- value: number|string
+- value: `number` | `string`
   - value of the element/slider
-- type: string
+- type: `string`
   - Type of the element
-- min: number
+- min: `number`
   - minimum slider value
-- max: number
+- max: `number`
   - Maximum slider value
 
 ### onSelect

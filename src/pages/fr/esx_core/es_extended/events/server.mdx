@@ -19,11 +19,11 @@ This page is dedicated to the server events introduced by the es_extended script
 This event gets triggered when the player has successfully loaded / the character was chosen and loaded.
 
 **Arguments**
-- playerId: number
+- playerId: `number`
   - The player's server id.
-- xPlayer: table
+- xPlayer: `table`
   - The xPlayer object of the player that connected.
-- isNew: boolean
+- isNew: `boolean`
   - Is the player's character new.
 
 **Example**
@@ -41,7 +41,7 @@ end)
 This event gets triggered when the player has logged out. This happens when a player used `/logout`
 
 **Arguments**
-- playerId: number
+- playerId: `number`
   - The player's server id.
 
 **Example**
@@ -55,7 +55,7 @@ end)
 This event gets triggered when the player disconnected.
 
 **Arguments**
-- playerId: number
+- playerId: `number`
   - The player's server id.
 
 **Example**
@@ -69,11 +69,11 @@ end)
 This event gets triggered when the player has successfully loaded / the character was chosen and loaded.
 
 **Returns**
-- playerId: number
+- playerId: `number`
   - The player's server id.
-- xPlayer: table
+- xPlayer: `table`
   - The xPlayer object of the player that connected.
-- isNew: boolean
+- isNew: `boolean`
   - Is the player's character new.
 
 ```lua
@@ -100,11 +100,11 @@ end)
 This event gets triggered when the player is entering a vehicle. *This is a client triggered event*
 
 **Returns**
-- plate: string
+- plate: `string`
   - The vehicle's plate.
-- seat: number
+- seat: `number`
   - The seat index of the vehicle the player is entering.
-- netId: number
+- netId: `number`
   - The vehicle's network id.
 
 **Example**
@@ -128,13 +128,13 @@ end)
 This event gets triggered when the player has succesfully entered a vehicle. *This is a client triggered event*
 
 **Returns**
-- plate: string
+- plate: `string`
   - The vehicle's plate.
-- seat: number
+- seat: `number`
   - The seat index of the vehicle the player is entering.
-- displayName: string
+- displayName: `string`
   - The vehicle's display name.
-- netId: number
+- netId: `number`
   - The vehicle's network id.
 
 **Example**
@@ -148,13 +148,13 @@ end)
 This event gets triggered when the player has exited a vehicle. *This is a client triggered event*
 
 **Returns**
-- plate: string
+- plate: `string`
   - The vehicle's plate.
-- seat: number
+- seat: `number`
   - The seat index of the vehicle the player is entering.
-- displayName: string
+- displayName: `string`
   - The vehicle's display name.
-- netId: number
+- netId: `number`
   - The vehicle's network id.
 
 **Example**
@@ -168,9 +168,9 @@ end)
 Can be used to update weapon ammo or listen to ammo updates. *This is a client triggered event*
 
 **Returns**
-- weaponName: string
+- weaponName: `string`
   - The weapon name.
-- ammoCount: number
+- ammoCount: `number`
   - The new ammo count.
 
 **Example**
@@ -184,11 +184,11 @@ end)
 Gets triggered when an inventory item gets added.
 
 **Returns**
-- source: number
+- source: `number`
   - The player's server id.
-- itemName: string
+- itemName: `string`
   - The item that got added.
-- itemCount: number
+- itemCount: `number`
   - The new item count.
 
 **Example**
@@ -203,11 +203,11 @@ end)
 Gets triggered when an inventory item gets removed.
 
 **Returns**
-- source: number
+- source: `number`
   - The player's server id.
-- itemName: string
+- itemName: `string`
   - The item that got removed.
-- itemCount: number
+- itemCount: `number`
   - The new item count.
 
 **Example**
@@ -222,9 +222,9 @@ end)
 Gets triggered when a single player was saved.
 
 **Returns**
-- source: number
+- source: `number`
   - The player's server id.
-- xPlayer: table
+- xPlayer: `table`
   - The xPlayer object of the player that was saved.
 
 **Example**
@@ -238,19 +238,19 @@ end)
 This event gets triggered when the player dies
 
 **Data**
-- victimCoords: vector3
+- victimCoords: `vector3`
   - The coords of the victim.
-- killerCoords: vector3
+- killerCoords: `vector3`
   - The coords of the killer.
-- distance: number
+- distance: `number`
   - The distance between the victim and the killer.
-- killedByPlayer: boolean
+- killedByPlayer: `boolean`
   - Is the killer a player.
-- deathCause: string
+- deathCause: `string`
   - The death cause.
-- killerServerId: number
+- killerServerId: `number`
   - The killer's server id.
-- killerClientId: string
+- killerClientId: `string`
   - The killer's local id.
 
 
@@ -265,14 +265,14 @@ end)
 This event is triggered when the player's job changes.
 
 **Returns**
-- source: number
+- source: `number`
   - The player's server id.
-- job: table
+- job: `table`
   - The new job table.
-- lastJob: table
+- lastJob: `table`
   - The last job table.
 
-**See more:** *[Job table structure](/en/esx_core/es_extended/playerdata/#job)*
+**See more:** *[Job table structure](/fr/esx_core/es_extended/playerdata/#job)*
 
 **Example**
 ```lua 

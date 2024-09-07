@@ -8,23 +8,23 @@ This function gets all players in the given radius.
 
 **Arguments**
 
-- playerId?: number
+- playerId?: `number`
   - The server id of the player you want to get the near players from.
-- radius?: number (Default: 100)
+- radius?: `number` (Default: `100`)
   - The radius to search for players.
-- ignore?: table
+- ignore?: `table`
   - A table with server id's that should be ignored.
 
 **Returns**
 
 This function will return a **`table`** with data or an empty **`table`** if no player was found. 
-- id: number
+- id: `number`
   - The id from the player.
-- ped: string
+- ped: `string`
   - The ped handle of the player.
-- coords: vector3
+- coords: `vector3`
   - The coordinates of the player.
-- dist: number
+- dist: `number`
   - The distance to the player.
 
 
@@ -44,23 +44,23 @@ This function returns the closest player from the given player.
 
 **Arguments**
 
-- playerId?: number
+- playerId?: `number`
   - The server id of the player you want to get the closest player from.
-- radius?: number (Default: 100)
+- radius?: `number` (Default: `100`)
   - The radius to search for players.
-- ignore?: table
+- ignore?: `table`
   - A table with server id's that should be ignored.
 
 **Returns**
 
 This function will return a **`table`** with data or an empty **`table`** if no player was found.
-- id: number
+- id: `number`
   - The id from the player.
-- ped: string
+- ped: `string`
   - The ped handle of the player.
-- coords: vector3
+- coords: `vector3`
   - The coordinates of the player.
-- dist: number
+- dist: `number`
   - The distance to the player.
 
 **Example**
@@ -80,15 +80,15 @@ the vehicle will belong to the server and won't be removed when no clients are a
 </Callout>
 
 **Arguments**
-- model: string
+- model: `string`
   - The model name of the vehicle.
-- coords: vector3
+- coords: `vector3`
   - The coordinates where the vehicle should spawn.
-- heading: number
+- heading: `number`
   - The heading of the vehicle.
-- properties: table
+- properties: `table`
   - A table with properties that should be set on the vehicle.
-- cb: function(networkId: number)
+- cb: `function`(networkId: number)
   - A callback function that will be called when the vehicle is spawned.
 
 **Example**
@@ -102,13 +102,13 @@ end)
 This function will spawn an object from the Serverside. 
 
 **Arguments**
-- model: number|string
+- model: `number` | `string`
   - The model name or hash of the object.
-- coords: vector3
+- coords: `vector3`
   - The coordinates where the object should spawn.
-- heading: number
+- heading: `number`
   - The heading of the object.
-- cb: function(networkId: number)
+- cb: `function`(networkId: number)
   - A callback function that will be called when the object is spawned.
 
 **Example**
@@ -122,13 +122,13 @@ end)
 This function will spawn a ped.
 
 **Arguments**
-- model: string
+- model: `string`
   - The model name of the ped.
-- coords: vector3
+- coords: `vector3`
   - The coordinates where the ped should spawn.
-- heading: number
+- heading: `number`
   - The heading of the ped.
-- cb: function(networkId: number)
+- cb: `function`(networkId: number)
   - A callback function that will be called when the ped is spawned.
 
 **Example**
@@ -142,13 +142,13 @@ end)
 This function will spawn a ped inside a vehicle.
 
 **Arguments**
-- model: string
+- model: `string`
   - The model name of the ped.
-- vehicle: number
+- vehicle: `number`
   - The network id of the vehicle.
-- seat: number
+- seat: `number`
   - The seat where the ped should spawn in.
-- cb: function(networkId: number)
+- cb: `function`(networkId: number)
   - A callback function that will be called when the ped is spawned.
 
 **Example**
@@ -166,11 +166,11 @@ This function will get all peds in given area.
 
 **Arguments**
 
-- coords: vector3
+- coords: `vector3`
   - The coordinates where the peds should be searched.
-- radius: number
+- radius: `number`
   - The radius to search for peds.
-- modelFilter?: table
+- modelFilter?: `table`
   - A table with model's that should be ignored.
 
 **Returns**
@@ -194,11 +194,11 @@ This function will get all objects in given area.
 
 **Arguments**
 
-- coords: vector3
+- coords: `vector3`
   - The coordinates where the objects should be searched.
-- radius: number
+- radius: `number`
   - The radius to search for objects.
-- modelFilter?: table
+- modelFilter?: `table`
   - A table with model's that should be ignored.
 
 **Returns**
@@ -220,11 +220,11 @@ end
 This function will get all vehicles in given area.
 
 **Arguments**
-- coords: vector3
+- coords: `vector3`
   - The coordinates where the vehicles should be searched.
-- radius: number
+- radius: `number`
   - The radius to search for vehicles.
-- modelFilter?: table
+- modelFilter?: `table`
   - A table with model's that should be ignored.
 
 **Returns**
@@ -246,9 +246,9 @@ end
 This function will return the closest object to given coords.
 
 **Arguments**
-- coords: vector3
+- coords: `vector3`
   - The coordinates where the closest ped should be searched.
-- modelFilter?: table
+- modelFilter?: `table`
   - A table with model's that should be ignored.
 
 
@@ -263,9 +263,9 @@ local networkId, distance, closestCoords = ESX.OneSync.GetClosestPed(vector3(0,0
 This function will return the closest object to given coords.
 
 **Arguments**
-- coords: vector3
+- coords: `vector3`
   - The coordinates where the closest object should be searched.
-- modelFilter?: table
+- modelFilter?: `table`
   - A table with model's that should be ignored.
 
 **Example**
@@ -279,9 +279,9 @@ local networkId, distance, closestCoords = ESX.OneSync.GetClosestObject(vector3(
 This function will return the closest vehicle to given coords
 
 **Arguments**
-- coords: vector3
+- coords: `vector3`
   - The coordinates where the closest vehicle should be searched.
-- modelFilter?: table
+- modelFilter?: `table`
   - A table with model's that should be ignored.
 
 **Example**

@@ -5,7 +5,7 @@ Functions that can be used on both server and client.
 This function returns a random string in the specified length.
 
 **Arguments**
-- length: number
+- length: `number`
   - The length of the string to be generated.
 
 **Example**
@@ -21,13 +21,13 @@ This function returns the esx config.
 Get the weapon from the weapons config and it's index in it using the weapon name.
 
 **Arguments**
-- weaponName: string
+- weaponName: `string`
   - The name of the weapon to get.
 
 **Returns**
-- index: number
+- index: `number`
   - The index of the weapon in the weapons config.
-- weapon: table
+- weapon: `table`
   - The weapon data from the weapons config.
 
 **Example**
@@ -41,13 +41,13 @@ print("The weapon is called " .. weapon.label .. " and can have a max of " .. we
 Get the weapon from the weapons config and it's index using the weapon's hash.
 
 **Arguments**
-- weaponHash: number
+- weaponHash: `number`
   - The hash of the weapon to get.
 
 **Returns**
-- index: number
+- index: `number`
   - The index of the weapon in the weapons config.
-- weapon: table
+- weapon: `table`
   - The weapon data from the weapons config.
 
 **Example**
@@ -61,18 +61,18 @@ print("The weapon is called " .. weapon.label .. " and can have a max of " .. we
 Get all weapons either with the name or hash as key.
 
 **Arguments**
-- byHash: boolean
+- byHash: `boolean`
   - Should it return the weapon hashes instead of the key.
 
 ## GetWeaponLabel
 Get the specified weapon's label
 
 **Arguments**
-- weaponName: string
+- weaponName: `string`
   - The name of the weapon to get the label of.
 
 **Returns**
-- label: string
+- label: `string`
   - The label of the weapon.
 
 **Example**
@@ -86,11 +86,11 @@ print("Weapon is a: " .. weaponLabel)
 This function returns the possible data of the specified component for the specified weapon.
 
 **Arguments**
-- weaponName: string
+- weaponName: `string`
   - The name of the weapon to get the component data for.
-- componentName: string
+- componentName: `string`
   - The name of the component to get the data for.
 
 **Returns**
-- component: table
+- component: `table`
   - The component data from the weapons config.

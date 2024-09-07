@@ -27,7 +27,7 @@ There are some variables that contain different data about the player. For more 
 This function will trigger a client side event for the player.
 
 **Arguments**
-- eventName: string
+- eventName: `string`
   - The event name you want to trigger for the player.
 - ...
   - The arguments you want to pass to the client side event.
@@ -48,7 +48,7 @@ xPlayer.triggerEvent('esx:showNotification', 'this is a notification', 'error', 
 This function will change the coords of the player. Making him teleport.
 
 **Arguments**
-- coords: vector3|vector4|table
+- coords: `vector3` | `vector4` | `table`
   - The coords you want to teleport the player to.
 
 **Example**
@@ -62,7 +62,7 @@ xPlayer.setCoords(vector3(0, 0, 0))
 This function will return the coords from the player.
 
 **Arguments**
-- vector?: boolean (Default: false)
+- vector?: `boolean` (Default: `false`)
   - If you want the coords as a vector3 or as a table
 
 **Example**
@@ -79,7 +79,7 @@ This function will kick the player from the Server.
 </Callout>
 
 **Arguments**
-- reason?: string
+- reason?: `string`
   - The reason why the player is kicked.
 
 **Example**
@@ -109,7 +109,7 @@ local identifier = xPlayer.getIdentifier()
 This function sets the name of the player.
 
 **Arguments**
-- name: string
+- name: `string`
   - The name you want to set for the player.
 
 **Example**
@@ -125,7 +125,7 @@ This function returns the name of the fivem player.
 **Returns**
 
 Returns either a roleplay name consisting out of firstname and lastname with esx_identity or his fivem name.
-- name: string
+- name: `string`
   - The player's name.
 
 **Example**
@@ -139,9 +139,9 @@ print("Player is called: " .. xPlayer.getName())
 This function sets the players current job.
 
 **Arguments**
-- newJob: string
+- newJob: `string`
   - The job you want to set for the player.
-- grade: number
+- grade: `number`
   - The grade you want to set for the player.
 
 **Example**
@@ -155,21 +155,21 @@ xPlayer.setJob("police", 4) -- Set the player the police boss.
 This function returns the job of the player.
 
 **Returns**
-- id: number
+- id: `number`
   - The job's id from the database.
-- name: string
+- name: `string`
   - The job's name.
-- label: string
+- label: `string`
   - The job's label.
-- grade: string 
+- grade: `string` 
   - The job's grade.
-- grade_name: string
+- grade_name: `string`
   - The job's grade name.
-- grade_label: string
+- grade_label: `string`
   - The job's grade label.
-- grade_salary: string
+- grade_salary: `string`
   - The job's grade grade_salary
-- skin_male: table
+- skin_male: `table`
   - The job's male grade skin/outfit.
 - skin_female
   - The job's female grade skin/outfit.
@@ -193,7 +193,7 @@ This function will set the money account from the player.
 </Callout>
 
 **Arguments**
-- amount: number
+- amount: `number`
   - The amount you want to set the player's money to.
 
 **Example**
@@ -223,9 +223,9 @@ This function will add money to the players money account.
 </Callout>
 
 **Arguments**
-- amount: number
+- amount: `number`
   - The amount you want to add to the player's money account.
-- reason: string
+- reason: `string`
   - The reason why the player got the money.
 
 **Example**
@@ -242,9 +242,9 @@ This function will remove money from the player's money account.
 </Callout>
 
 **Arguments**
-- amount: number
+- amount: `number`
   - The amount you want to remove from the player's money account.
-- reason: string
+- reason: `string`
   - The reason why the player lost the money.
 
 **Example**
@@ -257,7 +257,7 @@ xPlayer.removeMoney(900, "Bought an apple including Tax")
 This function returns all of the player's accounts.
 
 **Arguments**
-- minimal?: boolean (Default: false)
+- minimal?: `boolean` (Default: `false`)
   - Should only return amount of accounts.
 
 **Returns**
@@ -265,15 +265,15 @@ This function returns all of the player's accounts.
 A **`table`** with the key being the account name and the value either being a table or a number with the accounts balance amount when minimal.
 
 Non-Minimal:
-- name: string
+- name: `string`
   - The account name.
-- money: number
+- money: `number`
   - The account balance.
-- label: string
+- label: `string`
   - The account label.
 
 Minimal:
-- money: number
+- money: `number`
   - The cash balance.
 
 **Example**
@@ -294,11 +294,11 @@ This function sets the accounts balance.
 </Callout>
 
 **Arguments**
-- accountName: string
+- accountName: `string`
   - The account name you want to set the balance for.
-- amount: number
+- amount: `number`
   - The amount you want to set the account balance to.
-- reason?: string (Default: "Unknown")
+- reason?: `string` (Default: `"Unknown"`)
   - The reason why the account balance was set.
 
 **Example**
@@ -316,11 +316,11 @@ This function adds money to specified account.
 </Callout>
 
 **Arguments**
-- accountName: string
+- accountName: `string`
   - The account name you want to add the money to.
-- amount: number
+- amount: `number`
   - The amount you want to add to the account balance.
-- reason?: string (Default: "Unknown")
+- reason?: `string` (Default: `"Unknown"`)
   - The reason why the account balance was added.
 
 **Example**
@@ -338,11 +338,11 @@ This function removes money from the account.
 </Callout>
 
 **Arguments**
-- accountName: string
+- accountName: `string`
   - The account name you want to remove the money from.
-- amount: number
+- amount: `number`
   - The amount you want to remove from the account balance.
-- reason?: string (Default: "Unknown")
+- reason?: `string` (Default: `"Unknown"`)
   - The reason why the account balance was removed.
 
 **Example**
@@ -359,7 +359,7 @@ xPlayer.removeAccountMoney("bank", 2400, "Dept payoff.")
 This function will set the player's group. 
 
 **Arguments**
-- group: string
+- group: `string`
   - The group you want to set the player to.
 
 **Example**
@@ -375,7 +375,7 @@ This function will get the player's group.
 **Returns**
 
 The player's group.
-- group: string
+- group: `string`
   - The player's group.
 
 ## Variables
@@ -384,9 +384,9 @@ The player's group.
 This function will set a variable that you can access from the xPlayer table.
 
 **Arguments**
-- key: string
+- key: `string`
   - The key you want to set.
-- value: any
+- value: `any`
   - The value you want to set the key to.
 
 **Example**
@@ -400,7 +400,7 @@ xPlayer.set('cool', false)
 This function will get a variable saved in the xPlayer table.
 
 **Arguments**
-- key: string
+- key: `string`
   - The key you want to get.
 
 **Example**
@@ -424,28 +424,28 @@ This function returns the loadout of the player.
 </Callout>
 
 **Arguments**
-- minimal?: boolean (Default: true)
+- minimal?: `boolean` (Default: `true`)
   - Should only return the ammo and components.
 
 **Returns**
 
 A **`table`** with the key being the weapon name and the value either being a table.
 Non-Minimal:
-- name: string
+- name: `string`
   - The weapon's name.
-- ammo: number
+- ammo: `number`
   - The weapon's ammo.
-- label: string
+- label: `string`
   - The weapon's label.
-- components: table
+- components: `table`
   - The weapon's components.
-- tintIndex: number
+- tintIndex: `number`
   - The weapon's tint.
 
 Minimal:
-- ammo: number
+- ammo: `number`
   - The weapon's ammo.
-- components: table
+- components: `table`
   - The weapon's components.
 
 **Example**
@@ -466,21 +466,21 @@ This function returns the weapon table of the specified weapon.
 </Callout>
 
 **Arguments**
-- weaponName: string
+- weaponName: `string`
   - The weapon's name.
 
 **Returns**
 
 Returns the weapon table of the specified weapon.
-- name: string
+- name: `string`
   - The weapon's name.
-- ammo: number
+- ammo: `number`
   - The weapon's ammo.
-- label: string
+- label: `string`
   - The weapon's label.
-- components: table
+- components: `table`
   - The weapon's components.
-- tintIndex: number
+- tintIndex: `number`
   - The weapon's tint.
 
 ### addWeapon
@@ -491,9 +491,9 @@ This function gives the player the specified weapon.
 </Callout>
 
 **Arguments**
-- weaponName: string
+- weaponName: `string`
   - The weapon's name.
-- ammo: number
+- ammo: `number`
   - The weapon's ammo.
 
 **Example**
@@ -511,9 +511,9 @@ This function gives the player specified components on the specified weapon.
 </Callout>
 
 **Arguments**
-- weaponName: string
+- weaponName: `string`
   - The weapon's name.
-- component: string
+- component: `string`
   - The component you want to add.
 
 **Example**
@@ -531,9 +531,9 @@ This function adds ammo to the specified weapon.
 </Callout>
 
 **Arguments**
-- weaponName: string
+- weaponName: `string`
   - The weapon's name.
-- ammo: number
+- ammo: `number`
   - The ammo you want to add.
 
 **Example**
@@ -551,9 +551,9 @@ This function sets the weapon's ammo to the specified count.
 </Callout>
 
 **Arguments**
-- weaponName: string
+- weaponName: `string`
   - The weapon's name.
-- ammo: number
+- ammo: `number`
   - The ammo you want to set.
 
 **Example**
@@ -571,9 +571,9 @@ This function sets the specified weapon's tint to the specified tint.
 </Callout>
 
 **Arguments**
-- weaponName: string
+- weaponName: `string`
   - The weapon's name.
-- weaponTintIndex: number
+- weaponTintIndex: `number`
   - The tint you want to set.
 
 **Example**
@@ -591,13 +591,13 @@ This function returns the specified weapon's tint.
 </Callout>
 
 **Arguments**
-- weaponName: string
+- weaponName: `string`
   - The weapon's name.
 
 **Returns**
 
 Returns the specified weapon's tint.
-- tintIndex: number
+- tintIndex: `number`
   - Specified weapon's current tint index.
 
 **Example**
@@ -615,7 +615,7 @@ This function removes a weapon from the player's loadout.
 </Callout>
 
 **Arguments**
-- weaponName: string
+- weaponName: `string`
   - The weapon's name.
 
 **Example**
@@ -633,9 +633,9 @@ This function removes a component from a weapon.
 </Callout>
 
 **Arguments**
-- weaponName: string
+- weaponName: `string`
   - The weapon's name.
-- weaponComponent: string
+- weaponComponent: `string`
   - The component you want to remove.
 
 **Example**
@@ -653,9 +653,9 @@ This function removes specified ammo count from specified weapon.
 </Callout>
 
 **Arguments**
-- weaponName: string
+- weaponName: `string`
   - The weapon's name.
-- ammoCount: number
+- ammoCount: `number`
   - The ammo you want to remove.
 
 **Example**
@@ -673,15 +673,15 @@ This function removes specified component from specified weapon.
 </Callout>
 
 **Arguments**
-- weaponName: string
+- weaponName: `string`
   - The weapon's name.
-- weaponComponent: string
+- weaponComponent: `string`
   - The component you want to remove.
 
 **Returns**
 
 Returns a boolean if the player has specified weapon component.
-- hasComponent: boolean
+- hasComponent: `boolean`
   - If the player has specified weapon component.
 
 **Example**
@@ -703,13 +703,13 @@ This function checks if player has given weapon.
 </Callout>
 
 **Arguments**
-- weaponName: string
+- weaponName: `string`
   - The weapon's name.
 
 **Returns**
 
 Returns a boolean if the player has specified weapon.
-- hasWeapon: boolean
+- hasWeapon: `boolean`
   - If the player has specified weapon.
 
 **Example**
@@ -734,30 +734,30 @@ This function returns the inventory of the player.
 </Callout>
 
 **Arguments**
-- minimal?: boolean (Default: true)
+- minimal?: `boolean` (Default: `true`)
   - Should only return the item count.
 
 **Returns**
 
 A **`table`** with the key being the item name and the value either being a table or a number with the item count when minimal.
 Non-Minimal:
-- name: string
+- name: `string`
   - The item name.
-- count: number
+- count: `number`
   - The item count.
-- label: string
+- label: `string`
   - The item label.
-- weight: number
+- weight: `number`
   - The item weight.
-- usable: boolean
+- usable: `boolean`
   - Does the item have a use callback?
-- rare: boolean
+- rare: `boolean`
   - Is the item rare?
-- canRemove: boolean
+- canRemove: `boolean`
   - Can the item be removed?
 
 Minimal:
-- count: number
+- count: `number`
   - The item count.
 
 **Example**
@@ -775,7 +775,7 @@ This function returns the player's current inventory weight.
 **Returns**
 
 Returns the player's inventory weight
-- weight: number
+- weight: `number`
   - The player's inventory weight.
 
 **Example**
@@ -791,7 +791,7 @@ This function returns the player's max inventory weight.
 **Returns**
 
 Returns the player's inventory max weight.
-- maxWeight: number
+- maxWeight: `number`
   - The player's max inventory weight.
 
 **Example**
@@ -805,7 +805,7 @@ print("The player can hold a max of " .. xPlayer.getMaxWeight())
 This function sets the max weight that can be carried.
 
 **Arguments**
-- newWeight: number
+- newWeight: `number`
   - The new max weight.
 
 **Example**
@@ -829,15 +829,15 @@ This function returns a boolean if the player can carry specified item with amou
 </Callout>
 
 **Arguments**
-- itemName: string
+- itemName: `string`
   - The item name.
-- count: number
+- count: `number`
   - The amount of times the item is carried.
 
 **Returns**
 
 Returns if player can carry specified item with amount of times.
-- canCarry: boolean
+- canCarry: `boolean`
   - If the player can carry the specified item.
 
 **Example**
@@ -861,19 +861,19 @@ This function returns a boolean if the player can swap specified items with the 
 </Callout>
 
 **Arguments**
-- firstItem: string
+- firstItem: `string`
   - The name of the item that will be checked.
-- firstItemCount: number
+- firstItemCount: `number`
   - The amount of the first item that will be checked.
-- secondItem: string
+- secondItem: `string`
   - The name of the item that will be checked.
-- secondItemCount: number
+- secondItemCount: `number`
   - The amount of the second item that will be checked.
 
 **Returns**
 
 Returns if the player can swap specified items with the specified amounts.
-- canSwapItem: boolean
+- canSwapItem: `boolean`
   - If the player can swap the specified items.
 
 **Example**
@@ -897,13 +897,13 @@ This function syncs weight, items and account money from ox_iventory with esx.
 </Callout>
 
 **Arguments**
-- weight: number
+- weight: `number`
   - The player's inventory weight.
-- maxWeight: number
+- maxWeight: `number`
   - The player's max inventory weight.
-- items: table
+- items: `table`
   - The player's items.
-- money: number
+- money: `number`
   - The player's money.
 
 ## Item
@@ -917,13 +917,13 @@ This function checks if player has item.
 </Callout>
 
 **Arguments**
-- item: string
+- item: `string`
   - The item name.
 
 **Returns**
 
 Returns a boolean if the player has specified item.
-- hasItem: boolean
+- hasItem: `boolean`
   - If the player has specified item.
 
 **Example**
@@ -946,25 +946,25 @@ This function returns the specified item from the player's inventory.
 </Callout>
 
 **Arguments**
-- itemName: string
+- itemName: `string`
   - The item name.
 
 **Returns**
 
 Returns the item data from player's inventory.
-- name: string
+- name: `string`
   - The item name.
-- count: number
+- count: `number`
   - The item count.
-- label: string
+- label: `string`
   - The item label.
-- weight: number
+- weight: `number`
   - The item weight.
-- usable: boolean
+- usable: `boolean`
   - Does the item have a use callback?
-- rare: boolean
+- rare: `boolean`
   - Is the item rare?
-- canRemove: boolean
+- canRemove: `boolean`
   - Can the item be removed?
 
 **Example**
@@ -984,9 +984,9 @@ This function gives the player specified item, speciefied count of times.
 </Callout>
 
 **Arguments**
-- itemName: string
+- itemName: `string`
   - The item name.
-- count: number
+- count: `number`
   - The amount of times the item is given.
 
 **Example**
@@ -1005,9 +1005,9 @@ This function removes the item from the player's inventory specified count of ti
 </Callout>
 
 **Arguments**
-- itemName: string
+- itemName: `string`
   - The item name.
-- count: number
+- count: `number`
   - The amount of times the item is removed.
 
 **Example**
@@ -1025,9 +1025,9 @@ This function sets the item in the player's inventory to the specified count.
 </Callout>
 
 **Arguments**
-- itemName: string
+- itemName: `string`
   - The item name.
-- count: number
+- count: `number`
   - The amount of times the item is set.
 
 **Example**
@@ -1043,11 +1043,11 @@ xPlayer.setInventoryItem("bread", 5) -- Sets bread count to 5
 This function triggers a notification.
 
 **Arguments**
-- msg: string
+- msg: `string`
   - The message you want to be displayed.
-- type: string
+- type: `string`
   - The type of the notification.
-- length: number
+- length: `number`
   - The length of the notification.
 
 **Example**
@@ -1061,21 +1061,21 @@ xPlayer.showNotification("You have been invited to a round of DnD", "info", 3000
 This function shows a advanced notification.
 
 **Arguments**
-- sender: string
+- sender: `string`
   - The sender of the notification.
-- subject: string
+- subject: `string`
   - The subject of the notification.
-- msg: string
+- msg: `string`
   - The message of the notification.
-- textureDict: string
+- textureDict: `string`
   - The texture dictionary of the notification.
-- iconType: string
+- iconType: `string`
   - The icon type of the notification.
-- flash?: boolean
+- flash?: `boolean`
   - Should the notification flash?
-- saveToBrief?: boolean
+- saveToBrief?: `boolean`
   - Should the notification be saved to the brief?
-- hudColorIndex?: number
+- hudColorIndex?: `number`
   - The hud color of the notification.
 
 **Example**
@@ -1090,13 +1090,13 @@ xPlayer.showAdvancedNotification('title', 'subject', 'msg', 'CHAR_BANK_MAZE', 9)
 This function shows a help notification.
 
 **Arguments**
-- msg: string
+- msg: `string`
   - The message you want to be displayed.
-- thisFrame?: boolean
+- thisFrame?: `boolean`
   - Should the notification be displayed in this frame? (Do it on client instead)
-- beep?: boolean
+- beep?: `boolean`
   - Should the notification beep?
-- duration?: number (Default: 5000)
+- duration?: `number` (Default: `5000`)
   - The duration of the notification.
 
 **Example**
@@ -1113,11 +1113,11 @@ xPlayer.showHelpNotification('TIP: If you find 10 pieces you win!', false, false
 This function sets the value of the specified meta.
 
 **Arguments**
-- index: string
+- index: `string`
   - The meta you want to set.
-- value: string|number|table
+- value: `string` | `number` | `table`
   - The value you want to set the meta to.
-- subIndex?: string
+- subIndex?: `string`
   - The sub index/key you want to set the meta to.
 
 **Example**
@@ -1130,9 +1130,9 @@ xPlayer.setMeta("title", "Sr. Doctor")
 This function returns the value of the specified meta.
 
 **Arguments**
-- index: string
+- index: `string`
   - The meta you want to get.
-- subIndex?: string
+- subIndex?: `string`
   - The sub index/key you want to get the meta from.
 
 
@@ -1151,9 +1151,9 @@ print("Player has the " .. xPlayer.getMeta("title") .. " title!")
 This function clears the specified meta.
 
 **Arguments**
-- index: string
+- index: `string`
   - The meta you want to clear.
-- subIndex?: string
+- subIndex?: `string`
   - The sub index/key you want to clear the meta from.
 
 **Example**

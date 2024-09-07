@@ -8,11 +8,11 @@ ESX offers multiple menu's by default; `esx_menu_default`, `esx_menu_dialog` and
 Register a custom Menu Type
 
 **Arguments**
-- type: string
+- type: `string`
   - The menu key for the type.
-- open: function
+- open: `function`
   - Function that gets ran when it should be opened.
-- close: function
+- close: `function`
   - Function that gets ran when it should be closed. 
 
 **Example**
@@ -24,53 +24,53 @@ ESX.UI.Menu.RegisterType("my_menu", myOpenFunction, myCloseFunction)
 Open menu of given type and data.
 
 **Arguments**
-- type: string
+- type: `string`
   - The menu key for the type.
-- namespace: string
+- namespace: `string`
   - The namespace for the menu. (Usually script name)
-- name: string
+- name: `string`
   - The name of the menu
-- data: table
+- data: `table`
   - The options for the menu
-- submit: function
+- submit: `function`
   - The function that gets ran when triggering a button.
-- cancel: function
+- cancel: `function`
   - The function that gets ran when canceling the menu.
-- change: function
+- change: `function`
   - The function that gets ran when data changes.
-- close: function
+- close: `function`
   - The function that gets ran when the menu closes.
 
 **Returns**
-- type: string
+- type: `string`
   - The menu key for the type.
-- namespace: string
+- namespace: `string`
   - The namespace for the menu. (Usually script name)
-- resourceName: string
+- resourceName: `string`
   - The script that created it or Unknown
-- name: string
+- name: `string`
   - The name of the menu
-- data: table
+- data: `table`
   - The options for the menu
-- submit: function
+- submit: `function`
   - Trigger to force the submit function.
-- cancel: function
+- cancel: `function`
   - Trigger to force the cancel function.
-- change: function
+- change: `function`
   - Trigger to force the change function.
-- close: function
+- close: `function`
   - Closes the menu.
-- update: function
+- update: `function`
   - Updates the menu.
-- refresh: function
+- refresh: `function`
   - Refreshes the menu.
-- setElement: function
+- setElement: `function`
   - Set element data.
-- setElements: function
+- setElements: `function`
   - Set elements.
-- setTitle: function
+- setTitle: `function`
   - Set title of menu
-- removeElement: function
+- removeElement: `function`
   - Remove element by given query
 
 
@@ -99,11 +99,11 @@ end)
 Close the menu of given type, namespace and name
 
 **Arguments**
-- menuType: string
+- menuType: `string`
   - The type of the menu.
-- namespace: string
+- namespace: `string`
   - The namespace for the menu. (Usually script name)
-- name: string
+- name: `string`
   - The name of the menu 
 
 **Example**
@@ -128,11 +128,11 @@ end)
 Get Menu table of given type, namespace and name. Refer to the docs for `ESX.UI.Menu.Open` for detailed infos to the menu data.
 
 **Arguments**
-- menuType: string
+- menuType: `string`
   - The type of the menu.
-- namespace: string
+- namespace: `string`
   - The namespace for the menu. (Usually script name)
-- name: string
+- name: `string`
   - The name of the menu 
 
 **Example**
@@ -152,11 +152,11 @@ Get all open menus. Refer to the docs for `ESX.UI.Menu.Open` for detailed infos 
 Check if menu of given type, namespace and name is open.
 
 **Arguments**
-- menuType: string
+- menuType: `string`
   - The type of the menu.
-- namespace: string
+- namespace: `string`
   - The namespace for the menu. (Usually script name)
-- name: string
+- name: `string`
   - The name of the menu 
 
 **Example**

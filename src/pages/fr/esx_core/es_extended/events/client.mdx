@@ -19,9 +19,9 @@ This page is dedicated to the client events introduced by the es_extended script
 This event gets triggered when the player has received an item. *This is a server triggered event*
 
 **Returns**
-- itemName: string
+- itemName: `string`
   - The name of the item.
-- count: number
+- count: `number`
   - The amount of the item.
 
 **Example**
@@ -35,9 +35,9 @@ end)
 This event gets triggered when the player has finished loading
 
 **Arguments**
-- xPlayer: table
+- xPlayer: `table`
   - The player object.
-- skin: table
+- skin: `table`
   - The player's skin.
 
 **Example**
@@ -51,19 +51,19 @@ end)
 This event gets triggered when the player hdies
 
 **Data**
-- victimCoords: vector3
+- victimCoords: `vector3`
   - The coords of the victim.
-- killerCoords: vector3
+- killerCoords: `vector3`
   - The coords of the killer.
-- distance: number
+- distance: `number`
   - The distance between the victim and the killer.
-- killedByPlayer: boolean
+- killedByPlayer: `boolean`
   - Is the killer a player.
-- deathCause: string
+- deathCause: `string`
   - The death cause.
-- killerServerId: number
+- killerServerId: `number`
   - The killer's server id.
-- killerClientId: string
+- killerClientId: `string`
   - The killer's local id.
 
 
@@ -88,13 +88,13 @@ end)
 This is a listen only event and should not be triggered. This event gets triggered when the player is entering a vehicle.
 
 **Returns**
-- vehicle: number
+- vehicle: `number`
   - The vehicle entity handle.
-- plate: string
+- plate: `string`
   - The vehicle's plate.
-- seat: number
+- seat: `number`
   - The seat index.
-- netId: number
+- netId: `number`
   - The vehicle's network id.
 
 **Example**
@@ -119,15 +119,15 @@ end)
 This is a listen only event and should not be triggered. This event gets triggered when the player has succesfully entered a vehicle.
 
 **Returns**
-- vehicle: number
+- vehicle: `number`
   - The vehicle entity handle.
-- plate: string
+- plate: `string`
   - The vehicle's plate.
-- seat: number
+- seat: `number`
   - The seat the player entered.
-- displayName: string
+- displayName: `string`
   - The vehicle's display name.
-- netId: number
+- netId: `number`
   - The vehicle's network id.
 
 **Example**
@@ -142,15 +142,15 @@ end)
 This is a listen only event and should not be triggered. This event gets triggered when the player has exited a vehicle.
 
 **Returns**
-- vehicle: number
+- vehicle: `number`
   - The vehicle entity handle.
-- plate: string
+- plate: `string`
   - The vehicle's plate.
-- seat: number
+- seat: `number`
   - The seat the player exited.
-- displayName: string
+- displayName: `string`
   - The vehicle's display name.
-- netId: number
+- netId: `number`
   - The vehicle's network id.
 
 **Example**
@@ -164,7 +164,7 @@ end)
 This event gets triggered when the player hdies
 
 **Data**
-- isPauseMenu: boolean
+- isPauseMenu: `boolean`
   - Is the pause menu active.
 
 **Example**

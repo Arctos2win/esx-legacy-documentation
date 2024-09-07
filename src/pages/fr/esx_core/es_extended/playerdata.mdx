@@ -67,13 +67,13 @@ end)
 ### coords
 The player's last known coords and heading.
 
-- x: number
+- x: `number`
   - The players coords on the x axis.
-- y: number
+- y: `number`
   - The players coords on the y axis.
-- z: number
+- z: `number`
   - The players coords on the z axis.
-- heading: number
+- heading: `number`
   - The players heading.
 
 **Server Example**
@@ -149,20 +149,21 @@ print("The player's identifier is: " .. ESX.PlayerData.identifier)
 The player's inventory `table`. This also includes items the player doesn't have but the item count will be 0, so make sure to always check for the count.
 
 **Values**
-- name: string
+- name: `string`
   - The item name.
-- count: number
+- count: `number`
   - The item count.
-- label: string
+- label: `string`
   - The item label.
-- weight: number
+- weight: `number`
   - The item weight.
-- usable: boolean
+- usable: `boolean`
   - Does the item have a use callback?
-- rare: boolean
+- rare: `boolean`
   - Is the item rare?
-- canRemove: boolean
+- canRemove: `boolean`
   - Can the item be removed?
+
 
 **Server Example**
 ```lua 
@@ -184,24 +185,24 @@ end
 The player's job `table`.
 
 **Values**
-- id: number
+- id: `number`
   - The job's id from the database.
-- name: string
+- name: `string`
   - The job's name.
-- label: string
+- label: `string`
   - The job's label.
-- grade: string
+- grade: `string`
   - The job's grade.
-- grade_name: string
+- grade_name: `string`
   - The job's grade name.
-- grade_label: string
+- grade_label: `string`
   - The job's grade label.
-- grade_salary: string
+- grade_salary: `string`
   - The job's grade salary
-- skin_male: table
-  - The job's male grade skin/outfit.
-- skin_female: table
-  - The job's female grade skin/outfit.
+- skin_male: `table`
+  - The job's male grade skin/outfit
+- skin_female: `table`
+  - The job's female grade skin/outfit
 
 **Server Example**
 ```lua 
@@ -221,16 +222,17 @@ end
 The player's loadout.
 
 **Values**
-- name: string
+- name: `string`
   - The weapon's name.
-- ammo: number
+- ammo: `number`
   - The weapon's ammo.
-- label: string
+- label: `string`
   - The weapon's label.
-- components: table
+- components: `table`
   - The weapon's components.
-- tintIndex: number
+- tintIndex: `number`
   - The weapon's tint.
+
 
 **Client Example**
 ```lua
@@ -492,12 +494,13 @@ print("The player has $" .. ESX.PlayerData.money .. " cash")
 The player's accounts. A table
 
 **Values**
-- name: string
+- name: `string`
   - The account name.
-- money: number
+- money: `number`
   - The account balance.
-- label: string
+- label: `string`
   - The account label.
+
 
 **Server Example**
 ```lua 
