@@ -28,6 +28,20 @@ Config.Animations = {
 }
 ```
 
+## Exports
+
+- `GetConfig`
+  - ```lua
+    local animations = exports['esx_animations']:GetConfig()
+    ```
+  - returns the configuration table
+
+- `SetConfig`
+  - ```lua
+    exports['esx_animations']:SetConfig(animations)
+    ```
+  - sets the configuration table
+
 ## Requirements
 - [es_extended](../esx_core/es_extended)
 - [esx_context](../esx_core/esx_context)
