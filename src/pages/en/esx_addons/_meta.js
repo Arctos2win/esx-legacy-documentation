@@ -1,7 +1,7 @@
 export default {
     esx_shops: "Shops",
     esx_weaponshop: "Weapon Shop",
-    esx_clotheshop: "Clotheshop",
+    esx_clotheshop: "Clothe Shop",
     esx_vehicleshop: "Vehicle Shop",
     esx_accessories: "Accessories",
     esx_hud: "HUD",
