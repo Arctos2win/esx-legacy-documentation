@@ -3,6 +3,7 @@ export default {
     title: "Introduction",
   },
   esx_core: "ESX Core",
+  esx_addons: "ESX Addons",
   contact: {
     title: "Website",
     type: "page",
