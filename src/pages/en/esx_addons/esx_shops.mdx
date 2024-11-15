@@ -7,9 +7,9 @@ You Configure everything within the Config.lua, and don't worry about those pesk
 ## Configuration
 
 - `Config.DrawDistance`
-- How far away you can see the marker
-- Default: `7.5`
-- type: number
+    - How far away you can see the marker
+    - Default: `7.5`
+    - type: number
 
 - `Config.MarkerSize`
   - The size of the marker
@@ -36,12 +36,13 @@ You Configure everything within the Config.lua, and don't worry about those pesk
 shopName: string = {
   Items = {
       {
-          name = string,
-          label = string,
-          price = number
+          name: string = "bread",
+          label: string = "Bread",
+          price: number = 5
       }
   },
   Pos: vector3[] = {
+        vector3(0.0, 0.0, 0.0)
   },
   Size: number = 0.8 -- Blip Size
   Type: number = 59 -- Blip Type
