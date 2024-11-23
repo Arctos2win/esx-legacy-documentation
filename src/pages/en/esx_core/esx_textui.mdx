@@ -34,7 +34,7 @@ This function will hide the TextUI.
     This will close any TextUI that is currently open.
 </Callout>
 
-**Example** 
+**ESX Example** 
 ```lua
 local interactCoords = vector3(0, 0, 0)
 CreateThread(function()
@@ -46,6 +46,24 @@ CreateThread(function()
             ESX.TextUI('Press [E] to interact')
         elseif inDist and TextUI then 
             ESX.HideUI() 
+        end
+        Wait(500)
+    end 
+end) 
+```
+
+**Export Example** 
+```lua
+local interactCoords = vector3(0, 0, 0)
+CreateThread(function()
+    local TextUI
+    while true do
+        local coords = GetEntityCoords(PlayerPedId())
+        local inDist = #(coords - interactCoords) < 2.0
+        if inDist and not TextUI then 
+            exports['esx_textui']:TextUI('Press [E] to interact')
+        elseif inDist and TextUI then 
+            exports['esx_textui']:HideUI()
         end
         Wait(500)
     end 

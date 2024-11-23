@@ -3,6 +3,7 @@ The Progress bar system used by `es_extended`
 **Only available on clientside**
 
 ### ESX.Progressbar
+Display a progressbar
 
 **Arguments** 
 - text: `string`
@@ -58,4 +59,17 @@ exports['esx_progressbar']:Progressbar('test', 25000, {
         -- Code that should run when progressbar was cancelled
     end
 })
+```
+
+### ESX.CancelProgressbar
+Cancel the current shown progressbar
+
+**ESX Example**
+```lua
+ESX.CancelProgressbar()
+```
+
+**Export Example**
+```lua
+exports['esx_progressbar']:CancelProgressbar()
 ```
