@@ -26,6 +26,30 @@ local playerData = ESX.GetPlayerData()
 print("The client's identifier: " .. playerData.identifier)
 ```
 
+## SecureNetEvent
+This function will register a client net event that is only triggerable by actual scripts.
+
+**Arguments**
+- name: `string`
+  - The name of the net event.
+- func: `function`
+  - The function that will be executed when the net event is triggered.
+
+**Example**
+```lua
+ESX.SecureNetEvent("esx:requestModel", function(model)
+    ESX.Streaming.RequestModel(model)
+end)
+```
+
+## DisableSpawnManager
+This function will disable the spawn manager provided by FiveM.
+
+**Example**
+```lua
+ESX.DisableSpawnManager()
+```
+
 ## SearchInventory 
 Can be used to check for items in the player's Inventory
 
@@ -75,11 +99,14 @@ ESX.SetPlayerData('test', 'a nice test')
 print(ESX.PlayerData.test) -- this will print 'a nice test'
 ```
 
-## Context
-ESX has a context system by default as a seperate resource. See more at [esx_context](../../esx_context.mdx)
+## SpawnPlayer
+This function will spawn the player at the given coords and set the given skin.
 
 ## Progressbar 
 ESX has a progress bar system by default as a seperate resource. See more at [esx_progressbar](../../esx_progressbar.mdx)
+
+## Context
+ESX has a context system by default as a seperate resource. See more at [esx_context](../../esx_context.mdx)
 
 ## ShowNotification 
 ESX has a custom notification system as a seperate resource. See more at [esx_notify](../../esx_notify.mdx)
@@ -176,8 +203,22 @@ CreateThread(function()
 end)
 ```
 
+## DrawMissionText
+This function will draw a Rockstar style mission text.
+
+**Arguments**
+- msg: `string`
+  - The message that should be displayed.
+- time: `number`
+  - The time the message should be displayed.
+
+**Example**
+```lua
+ESX.DrawMissionText('This is a mission text that is shown for 5 seconds', 5000)
+```
+
 ## HashString
-This function will turn a string into a (rockstar) hash. Which for example could be used to display a key of a custom keybind.
+Wrongly named function but this function will return you the input hash/mapping of a command. Giving you the ability to display it inside of a [`ShowHelpNotification`](#showhelpnotification)
 
 **Arguments**
 - str: `string`
@@ -186,7 +227,7 @@ This function will turn a string into a (rockstar) hash. Which for example could
 **Example** 
 ```lua
 RegisterCommand('howtosit', function (source, args, raw)
-    local inputMapping = string.format("~INPUT_%s~"):format(ESX.HashString("sit"))
+    local inputMapping = ESX.HashString("sit")
     ESX.ShowHelpNotification("You can sit down using "..inputMapping , false, true, 3500)
 end)
 ```
@@ -217,28 +258,6 @@ ESX.RegisterInput('testinput', 'Test', 'keyboard', 'f6', function()
 end, function() 
     print('released')
 end)  
-```
-
-## TriggerServerCallback
-
-This function trigger a previously registered server callback
-
-*See [RegisterServerCallback](../server/functions/#registerservercallback)*
-
-**Arguments**
-- name: `string`
-  - The server callback's name.
-- cb: `function`
-  - The callback function passed from the server.
-- ...
-  - The arguments that should be passed to the server callback.
-
-
-
-```lua
-ESX.TriggerServerCallback('myScript:getMeme', function(cb)
-  print(cb) --output: "Meme data string"
-end)
 ```
 
 ## Game
@@ -290,20 +309,27 @@ This function will spawn an object with given model at given coords. And can be 
 
 **Arguments**
 - model: `string` or hash
-  - the model name or hash of the object
+  - The model name or hash of the object
 - coords: `vector3`
-  - where the object needs to be spawned
+  - Where the object should be spawned
 - cb?: `function`
   - the callback function
 - networked?: `boolean` (Default: `true`)
-  - if the object needs to be networked or not
+  - If the object should be networked(Sent to other players) or not
 
-**Example** 
+**Callback Example** 
 ```lua
 local coords = GetEntityCoords(PlayerPedId()) 
 ESX.Game.SpawnObject('prop_tool_bluepnt', coords, function() 
-  print('object is spawned') 
+  print(("object was spawned with the id %s"):format(object)) 
 end, true)
+```
+
+**Return-Based Example** 
+```lua
+local coords = GetEntityCoords(PlayerPedId())
+local object = ESX.Game.SpawnObject('prop_tool_bluepnt', coords, nil, false)
+print(("object was spawned with the id %s"):format(object)) 
 ```
 
 ### SpawnLocalObject 
@@ -410,12 +436,12 @@ This function will return a `boolean` if the vehicle is empty.
 
 **Example** 
 ```lua
-    local vehicle = GetVehiclePedIsIn(PlayerPedId(), true) 
-    local isEmpty = ESX.Game.IsVehicleEmpty(vehicle)
+local vehicle = GetVehiclePedIsIn(PlayerPedId(), true) 
+local isEmpty = ESX.Game.IsVehicleEmpty(vehicle)
 
-    if isEmpty then
-        print('Vehicle is empty!')
-    end
+if isEmpty then
+    print('Vehicle is empty!')
+end
 ```
 
 ### GetObjects
@@ -433,7 +459,6 @@ for i=1, #objects do
     local object = objects[i] 
 end 
 ```
-
 
 ### GetPeds
 Returns all peds the client has currently loaded.
@@ -657,6 +682,68 @@ RegisterCommand('spawnCoolVehicle', function()
 end)
 ```
 
+### GetShapeTestResultSync
+Returns the result of a shape test/raycast.
+
+**Arguments**
+- shape: `number`
+  - The return of the shape test probe.
+
+**Returns**
+- hit: `boolean`
+  - Did the shape test hit something?
+- coords: `vec3`
+  - The coords of the hit.
+- normal: `number`
+  - The surface normal of the hit.
+- material: `number`
+  - The material of the thing hit.
+- entity: `number`
+  - The entity that was hit(if one was hit).
+
+**Example**
+```lua
+--- Taken straight from ESX
+function ESX.Game.RaycastScreen(depth, ...)
+	local world, normal = GetWorldCoordFromScreenCoord(.5, .5)
+	local origin = world + normal
+	local target = world + normal * depth
+	return target, ESX.Game.GetShapeTestResultSync(StartShapeTestLosProbe(origin.x, origin.y, origin.z, target.x, target.y, target.z, ...))
+end
+```
+
+### RaycastScreen
+Returns the result of a raycast from the screen.
+
+**Trace flags**
+-1. Intersect with everything
+0. Don't intersect with anything
+1. Intersects with the World
+2. Intersects with Vehicles
+4. Intersects with Peds
+8. Intersects with Ragdolls
+16. Intersects with Objects
+32. Intersects with Water
+64. Intersects with Glass
+128. Intersects with Rivers
+256. Intersects with Foliage
+
+**Arguments**
+- depth: `number`
+  - The depth of the raycast.
+- traceFlags?: `number`
+  - The trace flags that define what the shape test will intersect with
+- entity?: `number`
+  - The entity that should be ignored.
+- options?: `number`
+  - The options for the shape test. Either 1, 2, 4 or 7. Usually 4 or 7.
+
+**Example**
+```lua
+local _, hit, coords, _, _ = ESX.Game.RaycastScreen(10.0, -1, PlayerPedId(), 7)
+print(("There is %s infront of the player at %s"):format(hit, coords))
+```
+
 ### GetVehicleInDirection
 Returns vehicle in front of player.
 
@@ -834,7 +921,7 @@ ESX.Game.SetVehicleProperties(vehicle, {
 This function draws a 3D Text
 
 **Arguments**
-- coords: `vector`
+- coords: `vec3`
   - The coords of where it should be displayed.
 - text: `string`
   - Text that should be displayed.
@@ -871,7 +958,7 @@ print("The client has " .. account.money .. ' currently in his purse!')
 ## ShowInventory
 Opens the player's inventory. (Default es_extended inventory)
 
-## GetVehicleType
+## GetVehicleTypeClient
 Returns the vehicle type of the given model.
 
 **Arguments**
@@ -882,6 +969,7 @@ Returns the vehicle type of the given model.
   - The type of the vehicle.
 
 **Vehicle Types**
+- automobile
 - bike
 - trailer
 - bike

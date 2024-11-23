@@ -137,7 +137,7 @@ Get Menu table of given type, namespace and name. Refer to the docs for `ESX.UI.
 
 **Example**
 ```lua
-RegisterCommand('closeAllMenus', function()
+RegisterCommand('closeMyMenu', function()
     -- Using the menu from the script `esx_menu_default`
     local myMenu = ESX.UI.Menu.GetOpened('default', GetCurrentResourceName(), 'my_default_menu')
 
@@ -168,3 +168,6 @@ RegisterCommand('isMenuOpen', function()
     end
 end)
 ```
+
+## ShowInventoryItemNotification
+Show a notification for the item in the inventory. (Used mainly by the built-in inventory)
