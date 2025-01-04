@@ -18,14 +18,14 @@ An addon inventory must be configured in the `database` before using it. you **m
 **Table Structure**
 
 - `name`
-- type: `string`
-- description: name of the account
+    - type: `string`
+    - description: name of the inventory
 - `label`
-- type: `string`
-- description: label of the account (not used)
+    - type: `string`
+    - description: label of the inventory (not used)
 - `shared`
-  - type: `boolean`
-  - description:  is the inventory shared with others? (boolean either `0` or `1`)
+    - type: `boolean`
+    - description:  is the inventory shared with others? (boolean either `0` or `1`)
 
 ### API
 
@@ -38,7 +38,7 @@ An addon inventory must be configured in the `database` before using it. you **m
     TriggerEvent('esx_addoninventory:getInventory', 'property', 'steam:0123456789', function(inventory)
         inventory.removeItem('water', 1)
     end)
-    ```
+  ```
 
 #### getSharedInventory
 
@@ -49,4 +49,4 @@ An addon inventory must be configured in the `database` before using it. you **m
     TriggerEvent('esx_addoninventory:getSharedInventory', 'society_police', function(inventory)
       inventory.addItem('bread', 1)
     end)
-    ```
+  ```
