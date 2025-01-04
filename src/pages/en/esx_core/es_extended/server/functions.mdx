@@ -5,6 +5,15 @@ import { Callout } from 'nextra/components';
 ## Globals
 These global variables are saved in the ESX table. You can freely use their data.
 
+<Callout type="warning">
+Directly accessing the global tables is strongly discouraged. These tables will be **empty** upon server startup, and any changes made to them **will not propagate** to importing resources. Instead, please utilize the provided backing functions to ensure proper data handling and synchronization:
+
+- [ESX.GetExtendedPlayers](#getextendedplayers)
+- [ESX.GetJobs](#getjobs)
+- [ESX.GetNumPlayers](#getnumplayers)
+- [ESX.GetItems](#getitems)
+</Callout>
+
 - Players
   - All loaded players.
 - Jobs
