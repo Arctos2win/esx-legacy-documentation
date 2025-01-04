@@ -93,8 +93,7 @@ Request a scaleform movie.
 function ESX.Scaleform.ShowTrafficMovie(sec)
     local scaleform = ESX.Scaleform.Utils.RequestScaleformMovie("TRAFFIC_CAM")
 
-    BeginScaleformMovieMethod(scaleform, "PLAY_CAM_MOVIE")
-    EndScaleformMovieMethod()
+    ESX.Scaleform.Utils.RunMethod(scaleform, "PLAY_CAM_MOVIE")
 
     while sec > 0 do
         Wait(0)
@@ -106,3 +105,44 @@ function ESX.Scaleform.ShowTrafficMovie(sec)
     SetScaleformMovieAsNoLongerNeeded(scaleform)
 end
 ```
+
+#### RunMethod
+
+Run a method on a scaleform movie.
+
+**Arguments**
+
+- scaleform: `number`
+  - The handle of the scaleform movie.
+- method: `string`
+    - The name of the method to run.
+- returnValue: `boolean`
+    - Whether the method returns a value.
+- ...: `any`
+    - The arguments to pass to the method.
+
+**Returns**
+- `scaleform`
+    - The handle of the scaleform movie.
+- returnValue: `any`
+    - The return value of the method if `returnValue` is true.
+
+**Example**
+
+```lua
+function ESX.Scaleform.ShowBreakingNews(title, msg, bottom, sec)
+    local scaleform = ESX.Scaleform.Utils.RunMethod("BREAKING_NEWS", "SET_TEXT", false, msg, bottom)
+    ESX.Scaleform.Utils.RunMethod(scaleform, "SET_SCROLL_TEXT", false, 0, 0, title)
+    ESX.Scaleform.Utils.RunMethod(scaleform, "DISPLAY_SCROLL_TEXT", false, 0, 0)
+
+    while sec > 0 do
+        Wait(0)
+        sec = sec - 0.01
+
+        DrawScaleformMovieFullscreen(scaleform, 255, 255, 255, 255, 0)
+    end
+
+    SetScaleformMovieAsNoLongerNeeded(scaleform)
+end
+```
+
