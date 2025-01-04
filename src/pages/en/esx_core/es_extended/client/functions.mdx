@@ -381,26 +381,36 @@ ESX.Game.DeleteObject(object)
 ```
 
 ### SpawnVehicle
-This function will spawn given vehicle with given model at given coords. And can be networked.
+This function spawns the given vehicle model at the specified coordinates. If a callback is provided, it will be called once the vehicle is spawned.
 
 **Arguments**
-- vehicleModel: `string`| `number`
-  - The model name or hash.
+- vehicleModel: `string` | `number`
+  - The model name or hash of the vehicle to spawn.
 - coords: `vector3`
-  - Where the vehicle needs to be spawned.
+  - The coordinates where the vehicle needs to be spawned.
 - heading: `number`
-  - The heading of the vehicle
-- cb: `function`
-  - The callback function
-- networked: `boolean`
-  - If the vehicle should to be networked or local
+  - The heading of the vehicle.
+- cb: `function?`
+  - The callback function to be invoked once the vehicle is spawned. If not provided, a promise is used instead, and it resolves when the vehicle is spawned.
+- networked: `boolean?`
+  - If the vehicle should be networked or local. Default is `true` (networked) if not provided.
 
-**Example** 
+**Returns**
+- `number?` vehicle
+  - The vehicle entity handle. This is returned if no callback is provided and a promise is used instead.
+
+**Example**
 ```lua
 local coords = GetEntityCoords(PlayerPedId())
+
+-- Example with callback:
 ESX.Game.SpawnVehicle('blista', coords, 0.0, function(vehicle)
-    print(vehicle) 
-end, true)  
+    print("Vehicle spawned with callback:", vehicle) -- prints the vehicle entity handle
+end, true)
+
+-- Example with promise (no callback):
+local vehicle = ESX.Game.SpawnVehicle('blista', coords, 0.0, nil, true)
+print("Vehicle spawned with promise:", vehicle) -- prints the vehicle entity handle
 ```
 
 ### SpawnLocalVehicle
