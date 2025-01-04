@@ -186,3 +186,16 @@ Sorts the table, custom sorting alogrithm can also be specified.
   - The table to sort.
 - order: `function`
   - The custom sorting function.
+
+**Example**
+```lua
+local fruits = { "apple", "orange", "banana" }
+
+local sortedByKeyDesc = ESX.Table.Sort(fruits, function(t, a, b)
+    return a > b
+end)
+
+for key, value in sortedByKeyDesc do
+    print(key, value) -- prints: 3 banana, 2 orange, 1 apple
+end
+```
