@@ -41,6 +41,24 @@ local xPlayer = ESX.GetPlayerFromId(playerId)
 xPlayer.triggerEvent('esx:showNotification', 'this is a notification', 'error', 4000) 
 ```
 
+### getPlayTime
+This function will return the player's total playtime with their current character.
+
+#### Returns
+- playTime: `number`
+  - The player's total playtime in seconds.
+
+**Example**
+
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId)
+
+local playtime = xPlayer.getPlayTime()
+local days = math.floor(playtime / 86400)
+local hours = math.floor((playtime % 86400) / 3600)
+local minutes = math.floor((playtime % 3600) / 60)
+print(("Playtime: ^5%s^0 Days | ^5%s^0 Hours | ^5%s^0 Minutes"):format(days, hours, minutes))
+```
 
 ### setCoords 
 This function will change the coords of the player. Making him teleport.
@@ -355,6 +373,37 @@ This function removes money from the account.
 local xPlayer = ESX.GetPlayerFromId(playerId)
 
 xPlayer.removeAccountMoney("bank", 2400, "Dept payoff.")
+```
+
+### togglePaycheck
+This function will toggle the player's paycheck.
+
+**Arguments**
+- toggle: `boolean`
+  - Set if the player should receive a paycheck or not.
+
+**Example**
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId)
+-- Disable paycheck
+xPlayer.togglePaycheck(false)
+-- Enable paycheck
+xPlayer.togglePaycheck(true)
+```
+
+### isPaycheckEnabled
+This function will return if the player's paycheck is enabled.
+
+**Returns**
+- enabled: `boolean`
+  - If the player's paycheck is enabled.
+
+**Example**
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId)
+local paycheckEnabled = xPlayer.isPaycheckEnabled()
+
+print("Player's paycheck is " .. (paycheckEnabled and "enabled" or "disabled"))
 ```
 
 
