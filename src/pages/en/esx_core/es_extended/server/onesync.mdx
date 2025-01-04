@@ -70,13 +70,11 @@ local player = ESX.OneSync.GetClosestPlayer(1, 10.0, {
 })
 ```
 
-## SpawnVehicle 
-This function will spawn a vehicle with the vehicle server setter, which means 
-the vehicle will belong to the server and won't be removed when no clients are active.
+## SpawnVehicle
+This function will spawn a vehicle with the vehicle server setter, meaning the vehicle will belong to the server and won't be removed when no clients are active.
 
 <Callout type="warning">
-    When there is no player in a radius of 300 from the coords, the vehicle will NOT spawn. 
-    also vehicle deformation will not be synced anymore once no player is in it's scope.
+    When there is no player within a 300-meter radius of the coordinates, the vehicle will NOT spawn. Also, vehicle deformation will not be synced anymore once no player is in its scope.
 </Callout>
 
 **Arguments**
@@ -88,14 +86,19 @@ the vehicle will belong to the server and won't be removed when no clients are a
   - The heading of the vehicle.
 - properties: `table`
   - A table with properties that should be set on the vehicle.
-- cb: `function`(networkId: number)
-  - A callback function that will be called when the vehicle is spawned.
+- cb: `fun(networkId: number)?` 
+  - A callback function that will be called when the vehicle is spawned. If not provided, a promise is used instead, and it resolves when the vehicle is spawned.
 
 **Example**
 ```lua
+-- With callback
 ESX.OneSync.SpawnVehicle('blista', vector3(0, 0, 0), 0, {}, function(networkId)     
     local vehicle = NetworkGetEntityFromNetworkId(networkId)
 end)  
+
+-- With promise (no callback)
+local networkId = ESX.OneSync.SpawnVehicle('blista', vector3(0, 0, 0), 0, {})
+local vehicle = NetworkGetEntityFromNetworkId(networkId)
 ```
 
 ## SpawnObject 
