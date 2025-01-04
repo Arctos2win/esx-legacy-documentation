@@ -552,3 +552,24 @@ if ESX.DoesJobExist(Job, Grade) then -- make sure the Job and Grade are both def
   xPlayer.setJob(Job, Grade)
 end
 ```
+
+## TriggerClientEvent
+Triggers an event for one or more clients.
+
+**Arguments**
+- eventName: `string`
+  - The name of the event to trigger.
+- playerIds: `Array|number`
+  - If a number, represents a single player ID. If a table, represents an array of player IDs.
+- ...: `any`
+  - Additional arguments to pass to the event handler. These arguments will be packed and sent to the client.
+
+**Example**
+```lua
+local jobPlayerIds = { 10, 15, 12, 5 }
+local notifyTitle = "New Job Notification"
+local notifyMessage = "Hello, World!"
+
+-- Triggers 'resource:client:showJobNotification' for all players in the jobPlayerIds array.
+ESX.TriggerClientEvent("resource:client:showJobNotification", jobPlayerIds, notifyTitle, notifyMessage) 
+```
