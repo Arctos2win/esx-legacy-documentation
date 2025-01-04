@@ -184,18 +184,18 @@ Sorts the table, custom sorting alogrithm can also be specified.
 **Arguments**
 - table: `table`
   - The table to sort.
-- order: `function` *(optional)*
-  - The custom sorting function. Sorts the keys in ascending order if none is provided.
+- order: `fun(t:table, a:unknown, b:unknown)?`
+  - The custom sorting function. Sorts the values in ascending order if none is provided.
 
 **Example**
 ```lua
 local fruits = { "apple", "orange", "banana" }
 
-local sortedByKeyDesc = ESX.Table.Sort(fruits, function(t, a, b)
+local sortedDesc = ESX.Table.Sort(fruits, function(t, a, b)
     return a > b
 end)
 
-for key, value in sortedByKeyDesc do
+for key, value in sortedDesc do
     print(key, value) -- prints: 3 banana, 2 orange, 1 apple
 end
 ```

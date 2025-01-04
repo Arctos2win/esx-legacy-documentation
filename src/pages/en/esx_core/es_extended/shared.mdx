@@ -107,9 +107,9 @@ This function is a simple wrapper, that allows you to await a condition.
 **Arguments**
 - condition: `function`
   - A function that is repeatedly called until it returns a truthy value or the timeout is exceeded.
-- errorMessage: `string` *(optional)*
+- errorMessage: `string?`
   - If set, an error will be thrown with this message if the condition is not met within the timeout. If not set, no error will be thrown.
-- timeoutMs: `number` *(optional)*
+- timeoutMs: `number?`
   - The maximum time to wait (in milliseconds) for the condition to be met. Defaults to 1000ms.
 
 **Returns**

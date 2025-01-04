@@ -159,8 +159,8 @@ This function sets the players current job.
   - The job you want to set for the player.
 - grade: `number`
   - The grade you want to set for the player.
-- onDuty: `boolean` *(optional)*
-  - Set the player on duty or off duty.
+- onDuty: `boolean?`
+  - Set the player on duty or off duty. Uses `Config.DefaultJobDuty` if not provided. 
 
 **Example**
 ```lua
