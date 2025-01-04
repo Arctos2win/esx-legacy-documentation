@@ -112,17 +112,17 @@ Run a method on a scaleform movie.
 
 **Arguments**
 
-- scaleform: `number`
-  - The handle of the scaleform movie.
+- scaleform: `number` | `string`
+  - The handle (or name) of the scaleform movie.
 - method: `string`
     - The name of the method to run.
 - returnValue: `boolean`
     - Whether the method returns a value.
-- ...: `any`
+- ...: `number` | `string` | `boolean`
     - The arguments to pass to the method.
 
 **Returns**
-- `scaleform`
+- `scaleform`: `number`
     - The handle of the scaleform movie.
 - returnValue: `any`
     - The return value of the method if `returnValue` is true.
