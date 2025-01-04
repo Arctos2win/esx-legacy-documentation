@@ -52,3 +52,26 @@ local trimmedPlate = ESX.Math.Trim(licencePlate)
 
 print(trimmedPlate) -- prints "ESX123"
 ```
+
+### GetHeadingFromCoords
+This function calculates the heading (angle) between two 3D coordinates in the XY plane.
+
+**Arguments**
+- origin: `vector`
+  - The starting point (origin) in 3D space.
+- target: `vector`
+  - The target point in 3D space.
+
+**Returns**
+- `number`
+  - The heading in degrees, ranging from 0 to 360.
+
+**Example**
+```lua
+local origin = vector2(100, 200)
+local target = vector2(150, 250)
+
+local heading = ESX.Math.GetHeadingFromCoords(origin, target)
+
+print(heading) -- prints the heading in degrees, e.g., 315.0
+```
