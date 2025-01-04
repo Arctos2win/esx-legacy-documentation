@@ -473,6 +473,22 @@ for item, usable in pairs(usableItems) do
 end
 ```
 
+## GetItems
+This function returns all items.
+
+**Returns**
+
+Returns a table with all items.
+
+**Example**
+```lua
+local items = ESX.GetItems()
+
+for item, data in pairs(items) do
+    print("Item " .. item .. " has a weight of " .. data.weight)
+end
+```
+
 ## CreatePickup
 This function creates a pickup.
 
