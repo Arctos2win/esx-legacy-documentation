@@ -3,7 +3,7 @@ import { Callout } from 'nextra/components';
 # xPlayer Functions
 Used to set and manipulate data from the player. It consists out of multiple functions and multiple variables.
 
-## Getting the xPlayer
+## Retrieving xPlayer
 You can get the xPlayer by using the `ESX.GetPlayerFromId` function.
 
 <Callout type="warning">
@@ -17,9 +17,8 @@ local xPlayer = ESX.GetPlayerFromId(playerId)
 if xPlayer then ... end  --Always check for nil
 ```
 
-## Playerdata
-There are some variables that contain different data about the player. For more information about the playerdata, check the [Player Data](#player-data) section.
-
+## PlayerData
+There are some variables that contain different data about the player. For more information about the player data, check the [Player Data](#player-data) section.
 
 ## Miscellaneous
 
@@ -41,7 +40,6 @@ local xPlayer = ESX.GetPlayerFromId(playerId)
 
 xPlayer.triggerEvent('esx:showNotification', 'this is a notification', 'error', 4000) 
 ```
-
 
 
 ### setCoords 
@@ -143,12 +141,14 @@ This function sets the players current job.
   - The job you want to set for the player.
 - grade: `number`
   - The grade you want to set for the player.
+- onDuty: `boolean` *(optional)*
+  - Set the player on duty or off duty.
 
 **Example**
 ```lua
 local xPlayer = ESX.GetPlayerFromId(playerId)
 
-xPlayer.setJob("police", 4) -- Set the player the police boss.
+xPlayer.setJob("police", 4, true) -- Set the player the police boss.
 ```
 
 ### getJob
@@ -173,17 +173,22 @@ This function returns the job of the player.
   - The job's male grade skin/outfit.
 - skin_female
   - The job's female grade skin/outfit.
+- onDuty: `boolean`
+  - If the player is on duty.
 
 **Example**
 ```lua
 local xPlayer = ESX.GetPlayerFromId(playerId)
 local job = xPlayer.getJob()
+local jobName = job.label
+local onDuty = job.onDuty
+local salary = job.grade_salary
 
-print("Player is a " .. job.label .. " with a salary of " .. job.grade_salary)
+print(("Player is a %s %s and earns %s"):format(onDuty and "on duty" or "off duty", jobName,  salary))
 ```
 
 
-## Handling Money
+## Money Functions
 
 ### setMoney 
 This function will set the money account from the player.
@@ -353,7 +358,7 @@ xPlayer.removeAccountMoney("bank", 2400, "Dept payoff.")
 ```
 
 
-## Permission Groups
+## Permissions
 
 ### setGroup 
 This function will set the player's group. 
@@ -414,7 +419,7 @@ else
 end
 ```
 
-## Handling Weapons
+## Weapon Functions
 
 ### getLoadout
 This function returns the loadout of the player.
@@ -723,7 +728,7 @@ else
 end
 ```
 
-## Inventory
+## Inventory Functions
 
 ### getInventory
 This function returns the inventory of the player.
@@ -906,7 +911,7 @@ This function syncs weight, items and account money from ox_iventory with esx.
 - money: `number`
   - The player's money.
 
-## Item
+## Item Functions
 
 ### hasItem
 This function checks if player has item.
@@ -1037,7 +1042,7 @@ local xPlayer = ESX.GetPlayerFromId(playerId)
 xPlayer.setInventoryItem("bread", 5) -- Sets bread count to 5
 ```
 
-## Notifications
+## Notification Functions
 
 ### showNotification
 This function triggers a notification.
@@ -1107,7 +1112,7 @@ xPlayer.showHelpNotification('TIP: If you find 10 pieces you win!', false, false
 ```
 
 
-## Metadata
+## Metadata Functions
 
 ### setMeta
 This function sets the value of the specified meta.
