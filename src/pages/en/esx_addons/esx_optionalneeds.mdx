@@ -1,3 +1,23 @@
 # esx_optionalneeds
 
 https://github.com/esx-framework/esx_optionalneeds
+
+ESX Optional Needs, is a system that adds a new layer of realism to your server. What does it add? Alcoholism!
+
+## Configuration
+
+- `Config.TickTime`
+    - type: `integer`
+    - default: `100`
+    - description: The time in ms between each tick of the system.
+- `Config.UpdateClientTime`
+    - type: `integer`
+    - default: `5000`
+    - description: The time in ms between each update of the client.
+
+### Usage
+
+```lua
+TriggerEvent("esx_status:add", "drunk", 250000)
+```
+
