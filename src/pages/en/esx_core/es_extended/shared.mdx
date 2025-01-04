@@ -1,3 +1,5 @@
+import { Callout } from "nextra/components";
+
 # Shared Functions
 Functions that can be used on both server and client.
 
@@ -97,6 +99,10 @@ This function returns the possible data of the specified component for the speci
 
 ## Await
 This function is a simple wrapper, that allows you to await a condition.
+
+<Callout type="warning">
+  It is not recommended to rely on this function on the server side.
+</Callout>
 
 **Arguments**
 - condition: `function`
