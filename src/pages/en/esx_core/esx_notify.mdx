@@ -1,36 +1,39 @@
 # esx_notify
 The notification system used by `es_extended`
-**Only available on clientside**
-
-### ShowNotifation
 
 **Arguments**
 - message: `string`
-  - The notification message.
+- The notification message.
 - type: `string`
-  - The notification type
+- The notification type
 - length: `number`
-  - The progressbar options
+- The progressbar options
 
-**Notification Types** 
-- success 
-- error 
+**Notification Types**
+- success
+- error
 - info
 
-**ESX Example** 
+## Client Triggers
+
+### ESX Function
+
+**Example**
 ```lua
 ESX.ShowNotification('This is my new test.', 'error', 1500) 
 ```
 
-**Arguments**
-- type: `string`
-  - The notification type
-- message: `string`
-  - The notification message.
-- length: `number`
-  - The progressbar options
+### Export
 
-**Export Example** 
+**Example**
 ```lua
 exports['esx_notify']:Notify('error', 'This is my new test.',  1500) 
+```
+
+## Server Triggers
+
+**Example**
+```lua
+TriggerClientEvent("esx:showNotification", playerId, "This is my new test.", "error", 1500)
+```
 ```
