@@ -199,3 +199,23 @@ for key, value in sortedByKeyDesc do
     print(key, value) -- prints: 3 banana, 2 orange, 1 apple
 end
 ```
+
+### ToArray
+Converts a table into an array, keeping only the values and discarding the keys.
+
+**Arguments**
+- table: `table`
+  - The table to convert into an array.
+
+**Returns**
+- `array`: `Array`
+  - A new table that contains only the values from the original table, with the keys discarded.
+
+**Example**
+```lua
+local lobby = { hostSrc = 5, playerASrc = 12, playerBSrc = 3 }
+
+local serverIdsArray = ESX.Table.ToArray(lobby)
+
+ESX.TriggerClientEvent("resource:client:startLobby", serverIdsArray)
+```
