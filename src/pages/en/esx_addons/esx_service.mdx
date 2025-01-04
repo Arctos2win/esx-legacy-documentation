@@ -1,3 +1,27 @@
 # esx_service
 
 https://github.com/esx-framework/esx_service
+
+ESX Service is a basic script, that allows for on/off duty switching for players. It is a simple script that can be used for any type of service, such as police, ambulance, taxi, etc.
+
+## Usage
+
+### Enable Service
+
+```lua
+ESX.TriggerServerCallback('esx_service:enableService', function(canTakeService, maxInService, inServiceCount)
+
+  if canTakeService then
+    ESX.ShowNotification('You enabled service')
+  else
+    ESX.ShowNotification('Service is full: ' .. inServiceCount .. '/' .. maxInService)
+  end
+
+end, 'taxi')
+```
+
+### Disable Service
+
+```lua
+TriggerServerEvent('esx_service:disableService', 'taxi')
+```
