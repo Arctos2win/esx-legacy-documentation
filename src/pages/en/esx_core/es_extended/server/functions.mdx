@@ -180,9 +180,13 @@ local officersOnline = ESX.GetNumPlayers('job', 'police')
 print("There are " .. officersOnline .. " officers online.")
 ```
 
+
+
 ## GetPlayerFromId
 This function returns the xPlayer object of the specified playerId.
-
+<Callout type="warning">
+    This is no longer the prefered method to handle ESX player objects. Please refer to [ESX.Player](#player)
+</Callout>
 **Arguments**
 - source: `number`
   - The player's server id.
@@ -198,9 +202,12 @@ local xPlayer = ESX.GetPlayerFromId(5) -- Returns the xPlayer object of player 5
 print("Player 5 is called " .. xPlayer.getName())
 ```
 
+
 ## GetPlayerFromIdentifier
 This function returns the xPlayer object of the specified identifier.
-
+<Callout type="warning">
+    This is no longer the prefered method to handle ESX player objects. Please refer to [ESX.Player](#player)
+</Callout>
 **Arguments**
 - identifier: `string`
   - The player's identifier.
@@ -215,6 +222,28 @@ AddEventHandler('esx:onPlayerJoined', function ()
     if ESX.GetPlayerFromIdentifier(identifier) then
         print("Player with the same identifier is already on the server.")
     end
+end)
+```
+
+## Player
+This function is the new preferred alternative to handle ESX player objects. It returns a lightweight table containing only the player's serverId. Subsequent function calls result in export calls, which can be more efficient.
+
+**Arguments**
+- source: `number` | `string`
+  - The player's serverId or identifier.
+
+**Returns**
+A callable table representing the xPlayer object, which allows you to call player-related functions.
+
+**Example**
+```lua
+AddEventHandler('esx:onPlayerJoined', function ()
+    local xPlayer = ESX.Player(source)
+    if not xPlayer then
+        return
+    end
+    
+    print(("Welcome %s!"):format(xPlayer.getName()))
 end)
 ```
 
