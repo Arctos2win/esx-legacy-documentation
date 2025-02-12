@@ -2,8 +2,8 @@ import { Callout } from 'nextra/components';
 
 # Discord Logging Config
 <Callout type="warning">
-    Logging to discord is inefficient and should not be used on larger scale servers.
-    Also keep in mind if you log to much in a short time span the webhook might get rate limited for a while by Discord.
+    It is not recommended to use discord logging for production servers.
+    Discord logging can be slow and unreliable, with often rate limits.
     So try looking at options like Datadog or Grafana.
 </Callout>
 
