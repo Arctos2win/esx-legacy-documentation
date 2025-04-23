@@ -94,6 +94,28 @@ ESX.TriggerClientCallback(player, "esx:GetVehicleType", function(vehicleType)
 end, "bati")
 ```
 
+## AwaitClientCallback
+This function trigger a previously registered client callback, but it will wait for the callback to return before continuing the script.
+
+<Callout type="warning">
+    This should be used with caution! You should never trust data from the client.
+    So don't use it to get sensitive data, like money amount the player should receive.
+</Callout>
+
+**Arguments**
+- player: `number`
+  - The player source that the callback should get triggered for.
+- eventName: `string`
+  - The name of the callback.
+- ...: `any`
+  - The arguments that should be sent to the client.
+
+**Example**
+```lua
+local vehicleType = ESX.AwaitClientCallback(player, "esx:getVehicleType", "bati")
+print(("The bati is a %s"):format(vehicleType))
+```
+
 ## RegisterCommand
 This function registers a command.
 
