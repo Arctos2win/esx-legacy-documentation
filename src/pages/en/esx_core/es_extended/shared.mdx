@@ -125,3 +125,52 @@ local success, result = ESX.Await(function()
   return PlayerPedId() ~= 0
 end, "Player ped was not found")
 ```
+
+## ValidateType  
+Validates whether a given value matches any of the expected Lua types.
+
+**Arguments**  
+- `value`: any  
+  The value to validate.  
+- `...types`: string  
+  One or more strings representing the Lua types to check against (e.g., `"string"`, `"number"`).
+
+**Returns**  
+- `success`: boolean  
+  Returns `true` if the value matches one of the given types, otherwise `false`.  
+- `errorMessage`: string?  
+  An optional error message describing the mismatch, returned only if the validation fails.
+
+**Example**
+```lua
+local success, err = ESX.ValidateType("hello", "string", "number") -- true
+local success, err = ESX.ValidateType(123, "string") -- false, "bad value (string expected, got number)"
+```
+
+## IsValidLocaleString  
+Checks whether a string contains only valid characters according to the current locale and optional digit allowance.
+
+**Arguments**  
+- `str`: string  
+  The input string to validate.
+- `allowDigits`: boolean?  
+  Whether to allow numeric characters (`0-9`) in the string. Optional.
+
+**Returns**  
+- `isValid`: boolean  
+  Returns `true` if all characters in the string are valid according to the locale and configuration, `false` otherwise.
+
+**Behavior**
+- Valid characters always include:  
+  - Basic Latin letters (A-Z, a-z), space, dash (`-`), and Latin extended characters.
+- Digits (`0-9`) are allowed only if `allowDigits` is `true`.
+- Locale-specific ranges are used based on `Config.Locale` (e.g., Greek, Cyrillic, Arabic, Chinese).
+- Additional locales can be enabled via `Config.ValidCharacterSets`.
+
+**Example**
+```lua
+local ok = ESX.IsValidLocaleString("Test-Αθήνα") -- true for Greek locale
+local ok = ESX.IsValidLocaleString("123Name", true) -- true if digits are allowed
+local ok = ESX.IsValidLocaleString("名字") -- true for zh-cn locale
+local ok = ESX.IsValidLocaleString("invalid_字符") -- false if underscore isn't allowed
+```
