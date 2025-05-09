@@ -3,16 +3,19 @@ The notification system used by `es_extended`
 
 **Arguments**
 - message: `string`
-- The notification message.
+- The notification message
 - type: `string`
 - The notification type
 - length: `number`
-- The progressbar options
+- The notification length
+- title: `string?`
+- The notification title (optional)
 
 **Notification Types**
 - success
 - error
 - info
+- warning
 
 ## Client Triggers
 
@@ -20,20 +23,20 @@ The notification system used by `es_extended`
 
 **Example**
 ```lua
-ESX.ShowNotification('This is my new test.', 'error', 1500) 
+ESX.ShowNotification("message here", "success", 3000, "title here")
 ```
 
 ### Export
 
 **Example**
 ```lua
-exports['esx_notify']:Notify('error', 'This is my new test.',  1500) 
+exports['esx_notify']:Notify('error', 'This is my new test.',  1500, "Test Notification") 
 ```
 
 ## Server Triggers
 
 **Example**
 ```lua
-TriggerClientEvent("esx:showNotification", playerId, "This is my new test.", "error", 1500)
+TriggerClientEvent("esx:showNotification", playerId, "This is my new test.", "error", 1500, "Test Notification")
 ```
 ```
