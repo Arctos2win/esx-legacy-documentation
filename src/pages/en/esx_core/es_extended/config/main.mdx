@@ -116,3 +116,32 @@ This config property specifies what the max distance is for a player to give som
 ### AdminLogging
 This config property specifies if certain admin commands should be logged to discord using the `UserActions` webhook. 
 Set to `true` if you want to enable it and `false` to disable.
+
+### ValidCharacterSets  
+This config option allows you to manually enable support for additional character sets if your server is multilingual.  
+By default, all values are `false` to restrict input to basic Latin characters and the currently active locale.
+
+<Callout type="info">
+  Based on the `esx:locale` ConVar, one character set is automatically allowed to match the current server locale.  
+  You do not need to enable your locale's character set here manually.
+</Callout>
+
+Enable only if players need to input characters from multiple locales (e.g., Greek + Arabic).
+
+**Available Character Sets**
+- `'el'` – Greek  
+- `'sr'` – Cyrillic  
+- `'he'` – Hebrew  
+- `'ar'` – Arabic  
+- `'zh-cn'` – Chinese, Japanese, Korean (CJK)
+
+**Example**
+```lua
+Config.ValidCharacterSets = {
+  ['el'] = true,   -- Allow Greek characters in addition to the locale
+  ['sr'] = false,  -- Disallow Cyrillic
+  ['he'] = false,  -- Disallow Hebrew
+  ['ar'] = false,  -- Disallow Arabic
+  ['zh-cn'] = true -- Allow CJK characters
+}
+```
