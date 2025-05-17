@@ -20,4 +20,13 @@ export default withNextra({
     locales: ["en"],
     defaultLocale: "en",
   },
+   async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/en',
+        permanent: true,
+      },
+    ];
+  },
 });
