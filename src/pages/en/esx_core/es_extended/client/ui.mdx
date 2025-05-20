@@ -81,7 +81,8 @@ RegisterCommand('testOpen', function()
     ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'my_default_menu', {
         title = "My title",
         align = 'bottom-left',
-        elements = elements
+        elements = elements,
+        locales = locales
     }, function(data, menu)
         print("Submit data", data, menu)
     end, function(data, menu)
