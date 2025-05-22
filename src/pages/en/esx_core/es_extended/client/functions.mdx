@@ -774,134 +774,115 @@ if vehicle then
 end
 ```
 
-### GetVehicleProperties
-Returns different properties about the given vehicle.
+### GetVehicleProperties  
+Returns detailed properties about the given vehicle.
 
 **Arguments**
-- vehicle: `number`(vehicle handle)
+- vehicle: `number` (vehicle handle)  
   - The handle of the vehicle.
 
 **Returns**
-- model: `string`
-  - The model of the vehicle.
-- doorsBroken: `table`
+- model: `number`  
+  - The model hash of the vehicle.
+- doorsBroken: `table`  
   - The vehicle doors and if they are broken.
-- windowsBroken: `table`
+- windowsBroken: `table`  
   - The vehicle windows and if they are broken.
-- tyreBurst: `table`
-  - The vehicle tyres and if they are broken.
-- tyresCanBurst: `boolean`
+- tyreBurst: `table`  
+  - The vehicle tyres and if they are burst.
+- tyresCanBurst: `boolean`  
   - Can the tyres burst?
-- plate: `string`
+- plate: `string`  
   - The vehicle plate.
-- wheels: `number`
+- plateIndex: `number`  
+  - The plate style index.
+- bodyHealth: `number`  
+  - The body health of the vehicle.
+- engineHealth: `number`  
+  - The engine health of the vehicle.
+- tankHealth: `number`  
+  - The petrol tank health.
+- fuelLevel: `number`  
+  - The vehicle's fuel level.
+- dirtLevel: `number`  
+  - The level of dirt on the vehicle.
+- color1: `number | table`  
+  - Primary color of the vehicle. Can be a color index or an RGB table like `{255, 255, 255}`.
+- color2: `number | table`  
+  - Secondary color of the vehicle. Can be a color index or an RGB table like `{255, 255, 255}`.
+- pearlescentColor: `number`  
+  - The pearlescent color index.
+- wheelColor: `number`  
+  - The wheel color index.
+- dashboardColor: `number`  
+  - The dashboard color index.
+- interiorColor: `number`  
+  - The interior color index.
+- wheels: `number`  
   - The wheel type of the vehicle.
-- windowTint: `number`
+- windowTint: `number`  
   - The window tint of the vehicle.
-- neonEnabled: `boolean`
-  - Does the vehicle have neons?
-- extras: `table`
-  - The extras of the vehicle
-- tyreSmokeColor: `table`
-  - The color of the tyre smoke
-- modSpoilers: `number`
-  - 
-- modFrontBumper: `number`
-  - 
-- modRearBumper: `number`
-  - 
-- modSideSkirt: `number`
-  - 
-- modExhaust: `number`
-  - 
-- modFrame: `number`
-  - 
-- modGrille: `number`
-  - 
-- modHood: `number`
-  - 
-- modFender: `number`
-  - 
-- modRightFender: `number`
-  - 
-- modRoof: `number`
-  - 
-- modRoofLivery: `number`
-  - 
-- modEngine: `number`
-  - 
-- modBrakes: `number`
-  - 
-- modTransmisson: `number`
-  - 
-- modHorns: `number`
-  - 
-- modSuspension: `number`
-  - 
-- modArmor: `number`
-  - 
-- modTurbo: `number`
-  - 
-- modSmokeEnabled: `number`
-  - 
-- modXenon: `number`
-  - 
-- modFrontWheels: `number`
-  - 
-- modCustomFrontWheels: `number`
-  - 
-- modBackWheels: `number`
-  - 
-- modCustomBackWheels: `number`
-  - 
-- modPlateHolder: `number`
-  - 
-- modVanityPlate: `number`
-  - 
-- modTrimA: `number`
-  - 
-- modOrnaments: `number`
-  - 
-- modDashboard: `number`
-  - 
-- modDial: `number`
-  - 
-- modDoorSpeaker: `number`
-  - 
-- modSeats: `number`
-  - 
-- modSteeringWheel: `number`
-  - 
-- modShifterLeavers: `number`
-  - 
-- modAPlate: `number`
-  - 
-- modSpeakers: `number`
-  - 
-- modTrunk: `number`
-  - 
-- modHydrolic: `number`
-  - 
-- modEngineBlock: `number`
-  - 
-- modAirFilter: `number`
-  - 
-- modStruts: `number`
-  - 
-- modArchCover: `number`
-  - 
-- modAerials: `number`
-  - 
-- modTrimB: `number`
-  - 
-- modTank: `number`
-  - 
-- modWindows: `number`
-  - 
-- modLivery: `number`
-  - 
-- modLightbar: `number`
-  - 
+- xenonColor: `number`  
+  - The xenon lights color index.
+- customXenonColor: `table`  
+  - The custom xenon light RGB color `{255, 255, 255}`.
+- neonEnabled: `table`  
+  - Boolean table `{true, true, false, false}` for each neon side (LF, RF, LR, RR).
+- neonColor: `table`  
+  - The RGB color of the neon lights.
+- extras: `table`  
+  - The extras of the vehicle.
+- tyreSmokeColor: `table`  
+  - The color of the tyre smoke in RGB format.
+- modSpoilers: `number`  
+- modFrontBumper: `number`  
+- modRearBumper: `number`  
+- modSideSkirt: `number`  
+- modExhaust: `number`  
+- modFrame: `number`  
+- modGrille: `number`  
+- modHood: `number`  
+- modFender: `number`  
+- modRightFender: `number`  
+- modRoof: `number`  
+- modRoofLivery: `number`  
+- modEngine: `number`  
+- modBrakes: `number`  
+- modTransmisson: `number`  
+- modHorns: `number`  
+- modSuspension: `number`  
+- modArmor: `number`  
+- modTurbo: `boolean`  
+- modSmokeEnabled: `boolean`  
+- modXenon: `boolean`  
+- modFrontWheels: `number`  
+- modCustomFrontWheels: `boolean`  
+- modBackWheels: `number`  
+- modCustomBackWheels: `boolean`  
+- modPlateHolder: `number`  
+- modVanityPlate: `number`  
+- modTrimA: `number`  
+- modOrnaments: `number`  
+- modDashboard: `number`  
+- modDial: `number`  
+- modDoorSpeaker: `number`  
+- modSeats: `number`  
+- modSteeringWheel: `number`  
+- modShifterLeavers: `number`  
+- modAPlate: `number`  
+- modSpeakers: `number`  
+- modTrunk: `number`  
+- modHydrolic: `number`  
+- modEngineBlock: `number`  
+- modAirFilter: `number`  
+- modStruts: `number`  
+- modArchCover: `number`  
+- modAerials: `number`  
+- modTrimB: `number`  
+- modTank: `number`  
+- modWindows: `number`  
+- modLivery: `number`  
+- modLightbar: `number`  
 
 **Example**
 ```lua
