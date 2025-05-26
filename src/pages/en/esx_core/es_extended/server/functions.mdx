@@ -509,7 +509,7 @@ Grades:
 local jobs = ESX.GetJobs()
 
 for jobName, jobData in pairs(jobs) do
-    print(jobName .. " found with grade 0 called: " .. jobData.grade[0].label)
+    print(jobName .. " found with grade 0 called: " .. jobData.grades["0"].label)
 end
 ```
 
