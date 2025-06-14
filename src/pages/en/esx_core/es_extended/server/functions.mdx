@@ -300,14 +300,19 @@ This function returns the vehicle type of the speicified vehicle.
   - The vehicle model as string or hash.
 - source: `number`
   - The player's server id that should be used to check the model.
-- cb: `function`
-  - The callback function that gets ran when the function finishes.
+- cb: `function?`
+  - Optional: The callback function that gets ran when the function finishes.
 
 **Example**
 ```lua
-local vehicleType = ESX.GetVehicleType("t20", 5, function(vehicleType)
+-- Using cb
+ESX.GetVehicleType("t20", 5, function(vehicleType)
     print("Vehicle type " .. vehicleType)
 end)
+
+-- Using promise
+local vehicleType = ESX.GetVehicleType("t20", 5)
+print("Vehicle type " .. vehicleType)
 ```
 
 ## DiscordLog
@@ -486,21 +491,21 @@ This function returns all registered jobs.
 **Returns**
 
 A table of all the registered jobs.
-- name: `string`
+- name
   - The job's name.
-- label: `string`
+- label
   - The job's label.
-- grades: `table`
+- grades
   - The job's grades.
 
 Grades:
-- grade: `number`
+- grade
   - The grade index.
-- name: `string`
+- name
   - The grade's name.
-- label: `string`
+- label
   - The grade's label.
-- salary: `number`
+- salary
   - The grade's salary.
 
 
@@ -509,7 +514,7 @@ Grades:
 local jobs = ESX.GetJobs()
 
 for jobName, jobData in pairs(jobs) do
-    print(jobName .. " found with grade 0 called: " .. jobData.grades["0"].label)
+    print(jobName .. " found with grade 0 called: " .. jobData.grade[0].label)
 end
 ```
 

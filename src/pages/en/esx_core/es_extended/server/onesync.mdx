@@ -88,6 +88,8 @@ This function will spawn a vehicle with the vehicle server setter, meaning the v
   - A table with properties that should be set on the vehicle.
 - cb: `fun(networkId: number)?` 
   - A callback function that will be called when the vehicle is spawned. If not provided, a promise is used instead, and it resolves when the vehicle is spawned.
+- vehType: `string?`
+  - Optional: The vehicle type (automobile, bike, boat, heli, plane, submarine, trailer, train). If specified, allows vehicle to spawn even without a player in onesync range.
 
 **Example**
 ```lua
@@ -98,6 +100,10 @@ end)
 
 -- With promise (no callback)
 local networkId = ESX.OneSync.SpawnVehicle('blista', vector3(0, 0, 0), 0, {})
+local vehicle = NetworkGetEntityFromNetworkId(networkId)
+
+-- With vehicle type
+local networkId = ESX.OneSync.SpawnVehicle('blista', vector3(0, 0, 0), 0, {}, nil, "automboile")
 local vehicle = NetworkGetEntityFromNetworkId(networkId)
 ```
 
