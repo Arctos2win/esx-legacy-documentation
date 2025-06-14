@@ -2,7 +2,7 @@
   "name": "esx-legacy-docs",
   "type": "module",
   "version": "1.10.2",
-  "description": "ESX Legacy Framework Documentation",
+  "description": "ESX: Legacy Documentation",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/esx-framework/docs-rewrite"
+    "url": "git+https://github.com/esx-framework/esx-legacy-documenation"
   },
   "author": "Knoblauchbrot",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/esx-framework/docs-rewrite/issues"
+    "url": "https://github.com/esx-framework/esx-legacy-documenation/issues"
   },
   "dependencies": {
     "next": "^13.5.6",

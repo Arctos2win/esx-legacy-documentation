@@ -44,7 +44,7 @@ const config: DocsThemeConfig = {
   chat: {
     link: "https://discord.esx-framework.org",
   },
-  docsRepositoryBase: "https://github.com/esx-framework/docs-rewrite",
+  docsRepositoryBase: "https://github.com/esx-framework/esx-legacy-documenation",
   footer: {
     content: Footer,
   },

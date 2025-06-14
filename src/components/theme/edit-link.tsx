@@ -4,6 +4,6 @@ export function EditLink() {
   const t = useTranslation();
 
   return (
-    <a href="https://github.com/esx-framework/docs-rewrite">{t.EDIT_TEXT}</a>
+    <a href="https://github.com/esx-framework/esx-legacy-documenation">{t.EDIT_TEXT}</a>
   );
 }
