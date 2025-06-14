@@ -303,17 +303,15 @@ Minimal:
 ```lua
 local xPlayer = ESX.GetPlayerFromId(playerId)
 local accounts = xPlayer.getAccounts()
-local accountsMinimal = xPlayer.getAccounts(true) -- Minimal data
 
-print("Player has " .. accounts["bank"].money .. " on his " .. accounts["bank"].name .. " account.")
-print("Player has " .. accounts["black_money"] .. "on his black_money account") 
+print("Player has " .. accounts.bank.money .. " in their " .. accounts.bank.name .. " account.")
 ```
 
 ### setAccountMoney
 This function sets the accounts balance.
 
 <Callout type="info">
-    This function has different behaviour with ox_inventory installed. But it's nothing to worry about.
+    This function may have different behaviour with a 3rd party inventory installed.
 </Callout>
 
 **Arguments**
@@ -335,7 +333,7 @@ xPlayer.setAccountMoney("bank", 5000, "5000$ Limit reached")
 This function adds money to specified account.
 
 <Callout type="info">
-    This function has different behaviour with ox_inventory installed. But it's nothing to worry about.
+    This function may have different behaviour with a 3rd party inventory installed.
 </Callout>
 
 **Arguments**
@@ -357,7 +355,7 @@ xPlayer.addAccountMoney("bank", 5000, "Paycheck recieved")
 This function removes money from the account.
 
 <Callout type="info">
-    This function has different behaviour with ox_inventory installed. But it's nothing to worry about.
+    This function may have different behaviour with a 3rd party inventory installed.
 </Callout>
 
 **Arguments**

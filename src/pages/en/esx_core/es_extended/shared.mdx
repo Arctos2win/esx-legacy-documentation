@@ -16,6 +16,20 @@ local randomName = ESX.GetRandomString(5)
 print("Pomni's name could have been: " .. randomName)
 ```
 
+## IsFunctionReference
+This function valids if the inputted value is a function reference, useful for ensuring users do not pass in unexpected values
+
+**Arguments**
+- val: `any`
+  - the varaiable to validate
+
+**Example**
+```lua
+if not ESX.IsFunctionReference(conditionFunc) then
+  error("Condition Function should be a function reference.")
+end
+```
+
 ## GetConfig
 This function returns the esx config.
 
