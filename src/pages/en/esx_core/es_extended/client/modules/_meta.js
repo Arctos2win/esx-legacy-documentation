@@ -3,4 +3,5 @@ export default {
   interactions: "Interactions",
   scaleform: "Scaleform",
   streaming: "Streaming",
+  game: "ESX.Game",
 };

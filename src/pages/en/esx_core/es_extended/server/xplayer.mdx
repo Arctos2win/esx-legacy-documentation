@@ -91,7 +91,7 @@ local playerCoords = xPlayer.getCoords(true)
 This function will kick the player from the Server. 
 
 <Callout type="info">
-    This function only exits for backwards compatibility. You should use `DropPlayer(playerId)` instead.
+    This function is only provided for backwards compatibility. You should use `DropPlayer(playerId)` instead.
 </Callout>
 
 **Arguments**
@@ -212,7 +212,7 @@ print(("Player is a %s %s and earns %s"):format(onDuty and "on duty" or "off dut
 This function will set the money account from the player.
 
 <Callout type="info">
-    This function only exits for backwards compatibility. You should use `xPlayer.setAccountMoney('money', amount)` instead.
+    This function is only provided for backwards compatibility. You should use `xPlayer.setAccountMoney('money', amount)` instead.
 </Callout>
 
 **Arguments**
@@ -229,7 +229,7 @@ xPlayer.setMoney(100)
 This function will return the amount of money the player has. 
 
 <Callout type="info">
-    This function only exits for backwards compatibility. You should use `xPlayer.getAccount('money').money` instead.
+    This function is only provided for backwards compatibility. You should use `xPlayer.getAccount('money').money` instead.
 </Callout>
 
 **Example**
@@ -242,7 +242,7 @@ local money = xPlayer.getMoney()
 This function will add money to the players money account. 
 
 <Callout type="info">
-    This function only exits for backwards compatibility. You should use `xPlayer.addAccountMoney('money', amount, reason)` instead.
+    This function is only provided for backwards compatibility. You should use `xPlayer.addAccountMoney('money', amount, reason)` instead.
 </Callout>
 
 **Arguments**
@@ -261,7 +261,7 @@ xPlayer.addMoney(100, "Sold an apple")
 This function will remove money from the player's money account.
 
 <Callout type="info">
-    This function only exits for backwards compatibility. You should use `xPlayer.removeAccountMoney('money', amount, reason)` instead.
+    This function is only provided for backwards compatibility. You should use `xPlayer.removeAccountMoney('money', amount, reason)` instead.
 </Callout>
 
 **Arguments**
@@ -472,7 +472,7 @@ end
 This function returns the loadout of the player.
 
 <Callout type="error">
-    This function does **not** exist with ox_inventory installed. You should use `xPlayer.getInventory` as a fallback when ox_inventory is active.
+  This function may **not** exist with a 3rd party inventory installed. You should use `xPlayer.getInventory` as a fallback when one is active.
 </Callout>
 
 **Arguments**
@@ -514,7 +514,7 @@ end
 This function returns the weapon table of the specified weapon.
 
 <Callout type="error">
-    This function does **not** exist with ox_inventory installed. You should use `xPlayer.hasItem` as a fallback when ox_inventory is active.
+    This function may **not** exist with a 3rd party inventory installed. You should use `xPlayer.hasItem` as a fallback when one is active.
 </Callout>
 
 **Arguments**
@@ -539,7 +539,7 @@ Returns the weapon table of the specified weapon.
 This function gives the player the specified weapon.
 
 <Callout type="error">
-    This function does **not** exist with ox_inventory installed. You should use `xPlayer.addInventoryItem` as a fallback when ox_inventory is active.
+    This function may **not** exist with a 3rd party inventory installed. You should use `xPlayer.addInventoryItem` as a fallback when one is active.
 </Callout>
 
 **Arguments**
@@ -559,7 +559,7 @@ xPlayer.addWeapon("weapon_pistol50", 200) -- Give the player a 50. cal with 200 
 This function gives the player specified components on the specified weapon.
 
 <Callout type="error">
-    This function does **not** exist with ox_inventory installed. You should use ox_inventories metadata system as a fallback when ox_inventory is active.
+    This function may **not** exist with a 3rd party inventory installed. You should use their metadata system as a fallback when one is active.
 </Callout>
 
 **Arguments**
@@ -579,7 +579,7 @@ xPlayer.addWeaponComponent("weapon_pistol50", "suppressor") -- Give the player's
 This function adds ammo to the specified weapon.
 
 <Callout type="error">
-    This function does **not** exist with ox_inventory installed. You should use ox_inventories metadata system as a fallback when ox_inventory is active.
+   This function may **not** exist with a 3rd party inventory installed. You should use their metadata system as a fallback when one is active.
 </Callout>
 
 **Arguments**
@@ -599,7 +599,7 @@ xPlayer.addWeaponAmmo("weapon_pistol50", 250) -- Give the player's 50. cal 250 m
 This function sets the weapon's ammo to the specified count.
 
 <Callout type="error">
-    This function does **not** exist with ox_inventory installed. You should use ox_inventories metadata system as a fallback when ox_inventory is active.
+    This function may **not** exist with a 3rd party inventory installed. You should use their metadata system as a fallback when one is active.
 </Callout>
 
 **Arguments**
@@ -619,7 +619,7 @@ xPlayer.updateWeaponAmmo("weapon_pistol50", 50) -- Set the player's 50. cal to 5
 This function sets the specified weapon's tint to the specified tint.
 
 <Callout type="error">
-    This function does **not** exist with ox_inventory installed. You should use ox_inventories metadata system as a fallback when ox_inventory is active.
+    This function may **not** exist with a 3rd party inventory installed. You should use their metadata system as a fallback when one is active.
 </Callout>
 
 **Arguments**
@@ -639,7 +639,7 @@ xPlayer.setWeaponTint("weapon_pistol50", 23) -- Set the player's 50. cal tint to
 This function returns the specified weapon's tint.
 
 <Callout type="error">
-    This function does **not** exist with ox_inventory installed. You should use ox_inventories metadata system as a fallback when ox_inventory is active.
+    This function may **not** exist with a 3rd party inventory installed. You should use their metadata system as a fallback when one is active.
 </Callout>
 
 **Arguments**
@@ -663,7 +663,7 @@ print("Player's 50. Caliber has tint index " .. xPlayer.getWeaponTint("weapon_pi
 This function removes a weapon from the player's loadout.
 
 <Callout type="error">
-    This function does **not** exist with ox_inventory installed. You should use ox_inventories metadata system as a fallback when ox_inventory is active.
+  This function may **not** exist with a 3rd party inventory installed. You should use their metadata system as a fallback when one is active.
 </Callout>
 
 **Arguments**
@@ -681,7 +681,7 @@ xPlayer.removeWeapon("weapon_pistol50") -- Remove 50. cal pistol
 This function removes a component from a weapon.
 
 <Callout type="error">
-    This function does **not** exist with ox_inventory installed. You should use ox_inventories metadata system as a fallback when ox_inventory is active.
+    This function may **not** exist with a 3rd party inventory installed. You should use their metadata system as a fallback when one is active.
 </Callout>
 
 **Arguments**
@@ -701,7 +701,7 @@ xPlayer.removeWeaponComponent("weapon_pistol50", "suppressor") -- Remove suppres
 This function removes specified ammo count from specified weapon.
 
 <Callout type="error">
-    This function does **not** exist with ox_inventory installed. You should use ox_inventories metadata system as a fallback when ox_inventory is active.
+    This function may **not** exist with a 3rd party inventory installed. You should use their metadata system as a fallback when one is active.
 </Callout>
 
 **Arguments**
@@ -721,7 +721,7 @@ xPlayer.removeWeaponAmmo("weapon_pistol50", 25) -- Remove 25 bullets from 50. ca
 This function removes specified component from specified weapon.
 
 <Callout type="error">
-    This function does **not** exist with ox_inventory installed and will always return `false`. You should use ox_inventories metadata system as a fallback when ox_inventory is active.
+   This function may **not** exist with a 3rd party inventory installed . You should use their metadata system as a fallback when one is active.
 </Callout>
 
 **Arguments**
@@ -751,7 +751,7 @@ end
 This function checks if player has given weapon.
 
 <Callout type="error">
-    This function does **not** exist with ox_inventory installed and will always return `false`. You should use `xPlayer.hasItem` as a fallback when ox_inventory is active.
+    This function may **not** exist with a 3rd party inventory installed. You should use `xPlayer.hasItem` as a fallback when one is active.
 </Callout>
 
 **Arguments**
@@ -781,8 +781,7 @@ end
 This function returns the inventory of the player.
 
 <Callout type="warning">
-    This function has different behaviour with ox_inventory installed. And also returns some different values.
-    You should visit ox_inventory's [docs](https://overextended.dev/ox_inventory/Functions/Server#getinventoryitems) for more information.
+    This function may have different behaviour with a 3rd party inventory installed.
 </Callout>
 
 **Arguments**
@@ -876,8 +875,7 @@ end
 This function returns a boolean if the player can carry specified item with amount of times.
 
 <Callout type="warning">
-    This function has different behaviour with ox_inventory installed. And also returns some different values.
-    You should visit ox_inventory's [docs](https://overextended.dev/ox_inventory/Functions/Server#cancarryitem) for more information.
+  This function may have different behaviour with a 3rd party inventory installed.
 </Callout>
 
 **Arguments**
@@ -908,8 +906,7 @@ end
 This function returns a boolean if the player can swap specified items with the specified amounts.
 
 <Callout type="warning">
-    This function has different behaviour with ox_inventory installed. And also returns some different values.
-    You should visit ox_inventory's [docs](https://overextended.dev/ox_inventory/Functions/Server#canswapitem) for more information.
+  This function may have different behaviour with a 3rd party inventory installed.
 </Callout>
 
 **Arguments**
@@ -964,8 +961,7 @@ This function syncs weight, items and account money from ox_iventory with esx.
 This function checks if player has item.
 
 <Callout type="warning">
-    This function has different behaviour with ox_inventory installed. And also returns some different values.
-    You should visit ox_inventory's [docs](https://overextended.dev/ox_inventory/Functions/Server#getitem) for more information.
+  This function may have different behaviour with a 3rd party inventory installed.
 </Callout>
 
 **Arguments**
@@ -993,8 +989,7 @@ end
 This function returns the specified item from the player's inventory.
 
 <Callout type="warning">
-    This function has different behaviour with ox_inventory installed. And also returns some different values.
-    You should visit ox_inventory's [docs](https://overextended.dev/ox_inventory/Functions/Server#getitem) for more information.
+  This function may have different behaviour with a 3rd party inventory installed.
 </Callout>
 
 **Arguments**
@@ -1031,8 +1026,7 @@ print("Player has " .. item.count .. " water bottles. Each weighing: " .. item.w
 This function gives the player specified item, speciefied count of times.
 
 <Callout type="warning">
-    This function has different behaviour with ox_inventory installed. And also returns some different values.
-    You should visit ox_inventory's [docs](https://overextended.dev/ox_inventory/Functions/Server#additem) for more information.
+   This function may have different behaviour with a 3rd party inventory installed.
 </Callout>
 
 **Arguments**
@@ -1052,8 +1046,7 @@ xPlayer.addInventoryItem("bread", 5) -- Add 5 breads
 This function removes the item from the player's inventory specified count of times.
 
 <Callout type="warning">
-    This function has different behaviour with ox_inventory installed. And also returns some different values.
-    You should visit ox_inventory's [docs](https://overextended.dev/ox_inventory/Functions/Server#removeitem) for more information.
+  This function may have different behaviour with a 3rd party inventory installed.
 </Callout>
 
 **Arguments**
@@ -1073,7 +1066,7 @@ xPlayer.removeInventoryItem("bread", 5) -- Remove 5 breads
 This function sets the item in the player's inventory to the specified count.
 
 <Callout type="warning">
-    This function has different behaviour with ox_inventory installed. And also returns some different values.
+   This function may have different behaviour with a 3rd party inventory installed.
 </Callout>
 
 **Arguments**

@@ -8,7 +8,7 @@ export default {
   contact: {
     title: "Website",
     type: "page",
-    href: "https://esx-framework.org/",
+    href: "https://esx-community.org/",
     newWindow: true,
   },
   tutorial: "Tutorials",
