@@ -117,8 +117,8 @@ This function will spawn an object from the Serverside.
   - The coordinates where the object should spawn.
 - heading: `number`
   - The heading of the object.
-- cb: `function`(networkId: number)
-  - A callback function that will be called when the object is spawned.
+- cb: `fun(networkId: number)?` 
+  - A callback function that will be called when the object is spawned. If not provided, a promise is used instead, and it resolves when the object is spawned.
 
 **Example**
 ```lua
@@ -137,8 +137,8 @@ This function will spawn a ped.
   - The coordinates where the ped should spawn.
 - heading: `number`
   - The heading of the ped.
-- cb: `function`(networkId: number)
-  - A callback function that will be called when the ped is spawned.
+- cb: `fun(networkId: number)?` 
+  - A callback function that will be called when the ped is spawned. If not provided, a promise is used instead, and it resolves when the ped is spawned.
 
 **Example**
 ```lua
@@ -157,8 +157,8 @@ This function will spawn a ped inside a vehicle.
   - The network id of the vehicle.
 - seat: `number`
   - The seat where the ped should spawn in.
-- cb: `function`(networkId: number)
-  - A callback function that will be called when the ped is spawned.
+- cb: `fun(networkId: number)?` 
+  - A callback function that will be called when the ped is spawned. If not provided, a promise is used instead, and it resolves when the ped is spawned.
 
 **Example**
 ```lua
