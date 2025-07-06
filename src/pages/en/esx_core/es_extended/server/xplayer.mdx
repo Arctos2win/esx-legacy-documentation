@@ -1206,3 +1206,17 @@ This function clears the specified meta.
 local xPlayer = ESX.GetPlayerFromId(playerId)
 xPlayer.clearMeta("title") -- Clear the player's title, removing it.
 ```
+
+### executeCommand
+This function executes a command on a players behalf.
+
+**Arguments**
+- command: `string`
+  - The command the player will execute.
+
+**Example**
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId)
+
+xPlayer.executeCommand("dv 500")
+```
