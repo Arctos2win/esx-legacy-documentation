@@ -31,7 +31,20 @@ end
 ```
 
 ## GetConfig
-This function returns the esx config.
+This function returns the esx config or a specific config value.
+
+**Arguments**
+- key: `string?`
+  - Optional: The config key.
+
+**Example**
+```lua
+-- Getting whole config:
+local config = ESX.GetConfig()
+
+-- Checking if EnableDebug is enabled
+local debugEnabled = ESX.GetConfig("EnableDebug")
+```
 
 ## GetWeapon
 Get the weapon from the weapons config and it's index in it using the weapon name.
