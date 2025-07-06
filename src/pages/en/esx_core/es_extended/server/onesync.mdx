@@ -125,6 +125,9 @@ This function will spawn an object from the Serverside.
 ESX.OneSync.SpawnObject('prop_rub_boxpile_04', vector3(0,0,0), 0.0, function(networkId) 
     local obj = NetworkGetEntityFromNetworkId(networkId) 
 end) 
+
+-- With promise (no callback function)
+local networkId = ESX.OneSync.SpawnObject('prop_rub_boxpile_04', vector3(0, 0, 0), 0.0)
 ``` 
 
 ## SpawnPed 
@@ -145,6 +148,9 @@ This function will spawn a ped.
 ESX.OneSync.SpawnPed('a_f_m_beach_01', vector3(0,0,0), 0.0, function(networkId) 
     local ped = NetworkGetEntityFromNetworkId(networkId) 
 end) 
+
+-- With promise (no callback function)
+local networkId = ESX.OneSync.SpawnPed('a_f_m_beach_01', vector3(0, 0, 0), 0.0)
 ``` 
 
 ## SpawnPedInVehicle 
@@ -168,6 +174,9 @@ if #vehicles < 1 then return end
 ESX.OneSync.SpawnPedInVehicle('a_f_m_beach_01', vehicles[math.random(1, #vehicles)], -1, function(networkId)
     local ped = NetworkGetEntityFromNetworkId(networkId) 
 end)
+
+-- With promise (no callback function)
+local networkId = ESX.OneSync.SpawnPedInVehicle('a_f_m_beach_01', vehicles[math.random(1, #vehicles)] -1)
 ```
 
 ## GetPedsInArea 
