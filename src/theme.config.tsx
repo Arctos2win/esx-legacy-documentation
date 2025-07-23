@@ -53,7 +53,7 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: "https://github.com/esx-framework/esx-legacy-documenation",
   footer: {
-    content: Footer,
+    content: null,
   },
   head: Head,
 };

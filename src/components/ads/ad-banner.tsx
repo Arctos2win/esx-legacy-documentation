@@ -139,13 +139,25 @@ export function AdBanner() {
 
         const mainContent = document.querySelector('main');
         if (mainContent && mainContent.firstChild) {
+          // Utilise une classe pour une insertion plus propre
+          topAdDiv.className = 'header-ad-injected';
+          topAdDiv.style.cssText = `
+            position: relative;
+            width: 100%;
+            margin: 0 0 16px 0;
+            z-index: 1;
+            clear: both;
+            display: block;
+            float: none;
+          `;
+          
           mainContent.insertBefore(topAdDiv, mainContent.firstChild);
           
-          // Trigger animation after a small delay to ensure DOM is ready
-          setTimeout(() => {
+          // Trigger animation with more defensive approach
+          requestAnimationFrame(() => {
             topAdDiv.style.opacity = '1';
             topAdDiv.style.transform = 'translateY(0)';
-          }, 50);
+          });
         }
       }
 
