@@ -30,10 +30,17 @@ export function Head() {
             <meta name="og:type" content="website" />
             <meta name="keywords" content={t.keywords} />
             
-            {/* Google Analytics */}
+            {/* Preconnect for performance */}
+            <link rel="preconnect" href="https://www.googletagmanager.com" />
+            <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+            
+            {/* Google Analytics - Optimized Loading */}
             {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
                 <>
-                    <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}></script>
+                    <script
+                        async
+                        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+                    />
                     <script
                         dangerouslySetInnerHTML={{
                             __html: `
@@ -41,30 +48,42 @@ export function Head() {
                                 function gtag(){dataLayer.push(arguments);}
                                 gtag('js', new Date());
                                 gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
-                            page_title: document.title,
-                            page_location: window.location.href
-                        });
-                        
-                        // Function to track ad clicks
-                        window.trackAdClick = function(adLocation, adType) {
-                            gtag('event', 'ad_click', {
-                                event_category: 'advertising',
-                                event_label: adLocation,
-                                ad_type: adType,
-                                value: 1
-                            });
-                        };
-                        
-                        // Function to track ad impressions
-                        window.trackAdImpression = function(adLocation, adType) {
-                            gtag('event', 'ad_impression', {
-                                event_category: 'advertising',
-                                event_label: adLocation,
-                                ad_type: adType,
-                                value: 1
-                            });
-                        };
-                    `
+                                    page_title: document.title,
+                                    page_location: window.location.href,
+                                    send_page_view: false
+                                });
+                                
+                                // Optimized tracking functions
+                                window.trackAdClick = function(adLocation, adType) {
+                                    if (typeof gtag !== 'undefined') {
+                                        gtag('event', 'ad_click', {
+                                            event_category: 'advertising',
+                                            event_label: adLocation,
+                                            ad_type: adType,
+                                            value: 1
+                                        });
+                                    }
+                                };
+                                
+                                window.trackAdImpression = function(adLocation, adType) {
+                                    if (typeof gtag !== 'undefined') {
+                                        gtag('event', 'ad_impression', {
+                                            event_category: 'advertising',
+                                            event_label: adLocation,
+                                            ad_type: adType,
+                                            value: 1
+                                        });
+                                    }
+                                };
+                                
+                                // Send page view after load
+                                window.addEventListener('load', function() {
+                                    gtag('event', 'page_view', {
+                                        page_title: document.title,
+                                        page_location: window.location.href
+                                    });
+                                });
+                            `
                         }}
                     />
                 </>

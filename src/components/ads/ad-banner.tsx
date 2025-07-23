@@ -1,28 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useRouter } from 'next/router';
 
 export function AdBanner() {
   const router = useRouter();
   
-  useEffect(() => {
-    // Check if we should show ads on current page
-    const shouldShowAd = () => {
-      const path = router.asPath;
-      // Show on home pages, esx_core pages, and esx_addons pages
-      return path === '/' || 
-             path === '/en' || 
-             path.startsWith('/esx_core') || 
-             path.startsWith('/en/esx_core') ||
-             path.startsWith('/esx_addons') || 
-             path.startsWith('/en/esx_addons');
-    };
+  // Check if we should show ads on current page
+  const shouldShowAd = useMemo(() => {
+    const path = router.asPath;
+    // Show on home pages, esx_core pages, and esx_addons pages
+    return path === '/' || 
+           path === '/en' || 
+           path.startsWith('/esx_core') || 
+           path.startsWith('/en/esx_core') ||
+           path.startsWith('/esx_addons') || 
+           path.startsWith('/en/esx_addons');
+  }, [router.asPath]);
 
+  useEffect(() => {
     // Inject ads after page loads
     const injectAds = () => {
       const existingAd = document.getElementById('top-ad-banner');
       
       // If we shouldn't show ads, remove existing ad with animation
-      if (!shouldShowAd()) {
+      if (!shouldShowAd) {
         if (existingAd) {
           existingAd.classList.add('fade-out');
           setTimeout(() => {
@@ -241,7 +241,7 @@ export function AdBanner() {
     return () => {
       observer.disconnect();
     };
-  }, [router.asPath]); // Re-run when route changes
+  }, [shouldShowAd]); // Re-run when shouldShowAd changes
 
   return null;
 }
