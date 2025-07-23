@@ -1,6 +1,14 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useRouter } from 'next/router';
 
+// Declare global window properties for tracking
+declare global {
+  interface Window {
+    trackAdImpression?: (placement: string, adType: string) => void;
+    trackAdClick?: (placement: string, adType: string) => void;
+  }
+}
+
 export function AdBanner() {
   const router = useRouter();
   
