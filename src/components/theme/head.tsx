@@ -29,6 +29,46 @@ export function Head() {
             <meta name="og:url" content={url} />
             <meta name="og:type" content="website" />
             <meta name="keywords" content={t.keywords} />
+            
+            {/* Google Analytics */}
+            {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+                <>
+                    <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}></script>
+                    <script
+                        dangerouslySetInnerHTML={{
+                            __html: `
+                                window.dataLayer = window.dataLayer || [];
+                                function gtag(){dataLayer.push(arguments);}
+                                gtag('js', new Date());
+                                gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
+                            page_title: document.title,
+                            page_location: window.location.href
+                        });
+                        
+                        // Function to track ad clicks
+                        window.trackAdClick = function(adLocation, adType) {
+                            gtag('event', 'ad_click', {
+                                event_category: 'advertising',
+                                event_label: adLocation,
+                                ad_type: adType,
+                                value: 1
+                            });
+                        };
+                        
+                        // Function to track ad impressions
+                        window.trackAdImpression = function(adLocation, adType) {
+                            gtag('event', 'ad_impression', {
+                                event_category: 'advertising',
+                                event_label: adLocation,
+                                ad_type: adType,
+                                value: 1
+                            });
+                        };
+                    `
+                        }}
+                    />
+                </>
+            )}
         </>
     );
 }

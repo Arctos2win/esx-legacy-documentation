@@ -14,4 +14,91 @@ li._my-2 {
 
 p._mt-6._leading-7 {
   margin-top: .3rem;
-} 
+}
+
+/* Styles for advertisement above breadcrumb */
+.header-ad-container {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 16px !important;
+}
+
+/* Force advertisement above breadcrumb */
+main .header-ad-container {
+  order: -1;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure breadcrumb stays in normal position */
+.nextra-breadcrumb {
+  order: 0;
+}
+
+/* Smooth transitions for ad banner */
+#top-ad-banner {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out, margin 0.3s ease-out;
+  animation: slideInFromTop 0.5s ease-out forwards;
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+    max-height: 0;
+    margin-bottom: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 200px;
+    margin-bottom: 16px;
+  }
+}
+
+/* Smooth transition for content when banner appears/disappears */
+main > div:not(#top-ad-banner) {
+  transition: margin-top 0.3s ease-out;
+}
+
+/* Fade out animation */
+#top-ad-banner.fade-out {
+  animation: slideOutToTop 0.3s ease-in forwards;
+}
+
+@keyframes slideOutToTop {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 200px;
+    margin-bottom: 16px;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+    max-height: 0;
+    margin-bottom: 0;
+  }
+}
+
+/* Style for bottom advertisement */
+#bottom-ad-banner {
+  width: 100%;
+  grid-column: 1 / -1 !important;
+  max-width: none !important;
+}
+
+/* Fix for two-column layout */
+.nextra-body-typesetting-article {
+  margin-bottom: 0;
+}
+
+/* Ensure bottom ad displays correctly */
+article + #bottom-ad-banner {
+  margin-top: 40px;
+}

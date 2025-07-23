@@ -10,6 +10,7 @@ import { Head } from "./components/theme/head";
 import { Toc } from "./components/theme/toc";
 import { Search } from "./components/theme/search";
 import { ScrollToTop } from "./components/theme/scroll-to-top";
+import { TocWithAd } from "./components/theme/toc-with-ad";
 
 const config: DocsThemeConfig = {
   color: {
@@ -28,6 +29,12 @@ const config: DocsThemeConfig = {
     title: Toc,
     backToTop: false,
     extraContent: ScrollToTop,
+    // extraContent: () => (
+    //   <>
+    //     <ScrollToTop />
+    //     <TocWithAd />
+    //   </>
+    // ),
   },
   feedback: {
     content: FeedbackLink,
