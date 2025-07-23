@@ -11,7 +11,7 @@ export const TRANSLATIONS = {
     poweredBy: "Powered by",
     keywords: "ESX, docs, documentation, ESX docs, ESX documentation, fivem documentation, fivem, fivem server, ESX framework, fivem server management, fivem framework, fivem server tutorial, fivem server management, reworked",
     EDIT_TEXT: "Edit this page on GitHub →",
-    SEARCH_PLACEHOLDER: "Search documentation...",
+    SEARCH_PLACEHOLDER: "Search ESX docs, functions, exports...",
     ON_THIS_PAGE: "On This Page",
     FEEDBACK: "Question? Give us feedback →",
     TIMESTAMP: "Last updated on",

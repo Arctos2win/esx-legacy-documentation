@@ -7,28 +7,128 @@ export function Head() {
     const t = useTranslation();
     const { frontMatter, title } = useConfig();
 
-    const url = `https://documentation.esx-framework.org${asPath}`;
-    const description = t.description || "Official Documentation for ESX Framework";
+    const canonicalUrl = `https://docs.esx-framework.org${asPath}`;
+    const baseDescription = "Complete documentation for ESX Framework - The most popular FiveM roleplay framework. Learn installation, scripting, resources, and advanced features.";
+    
+    // Dynamic description based on page
+    const getPageDescription = () => {
+        if (frontMatter?.description) return frontMatter.description;
+        if (asPath === "/") return baseDescription;
+        if (asPath.includes("esx_core")) return "ESX Core documentation - Essential functions, exports, and API reference for ESX Framework development.";
+        if (asPath.includes("esx_addons")) return "ESX Addons documentation - Complete guide to ESX Framework addons, resources, and extensions.";
+        if (asPath.includes("installation")) return "ESX Framework installation guide - Step-by-step setup instructions for FiveM roleplay servers.";
+        return `${title} - ${baseDescription}`;
+    };
+
+    const description = getPageDescription();
+    const pageTitle = asPath === "/" ? "ESX Framework Documentation - Complete FiveM Roleplay Guide" : `${title} | ESX Framework Docs`;
+    
+    // Structured keywords
+    const keywords = [
+        "ESX Framework",
+        "FiveM",
+        "GTA V Roleplay",
+        "Lua scripting",
+        "FiveM server",
+        "ESX resources",
+        "CitizenFX",
+        "FiveM development",
+        "Roleplay framework",
+        "ESX addons",
+        ...(t.keywords ? t.keywords.split(',').map(k => k.trim()) : [])
+    ].join(', ');
 
     return (
         <>
-            <title>
-                {asPath === "/" 
-                    ? "ESX Documentation" 
-                    : `${title} - ESX-Framework`}
-            </title>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <link
-                rel="icon"
-                href="https://lh3.googleusercontent.com/fife/ALs6j_G7DQkIj5f3meHkGos4OjcXlseHxj33a8-i8rRfQENnY71BAqAr9Y6w3qQzHbSjAFL7dm98HdOAOGtdLjPHv9hTIeqfJwWVqbqWH3FxmTBallwEytmQdEmk61WLcp32xbUM4lfaQtk3KIDA4epU0SbeZ0JC1mpAll24mJZBNB-EKsubSzbpB702oAYY-nwHOoY1AOU_2B85Cux0QVBM9grYOe2ir0czNMQSwW7TztGnSkZuKP-yG21ZDqzfscCGzZwurgURH2X7GYLCEdhQ22Z4oilWSpv6io7Df-ai6NJgz2-GOEBRsvbCx4Twlzi2LrauhqxUBCdWPYyV5I42z5NxinHPGoZCQlaikrnj423f-H8i5Woh1Z7JGUzraSSQPgE48IzhZzmlglhTV8opdaCKK36yeXIXnKoxGT5phRfh_lwCZcqhWfDe--1HWH_IyN19KesxKAjH-EiQgH1O9epZekcKY7u-uTS7PJ281dfvIs8a_F5LhV1uXJbKQ-KyaaFEiaN1rPLSMGk3lVyoavo5lGyjBjLjeIODo5Ol2PhNIWdVVrD9EtfB-4el2fOFZ3jNMxrkazi3S12y57uXkZoD9r7IqBNXUd79H5CqqHRrtMvsQ--UQYko58wnFN7kO2yyMaPOOfpiwR5NtfwAFygn7YvxFufAoUCYL5RqOao7OO4JHphw2sRa6gf1sNQhq8cd4dhjky7hEJAKsU32YumgAqnKmuSQn2yOdw027Q3KEmop16FQMdYee-KK1WKV1lRClZbCkDGzr9nBX8Rtp0bmFYfoYyNaRIQ3GffAYvIxOVPyErdTZe9slkCl2NYJXdzRHMRe7c5pPzw1D9_ojZHqOH6Pm8qgpLrKqinXPq1aYT9SFNLopWBZpSKg9zA-TcZ6lRmziuentqisWMkgyyvjmDNr3oKmNmVeec1UKFl784p8chJ8WeqUc2H5yYujZhlu5-eQaUj0JMzVph5hsBjsEPGOGvq2MEVUFsLN_gLlE71JrXWKx7U-EpEPz2vkRGjpqQTiFz1gtZpzalBJHMCpMpNbHZk87ZAzqLQkjxg_pEauieQlNZBDFoPocBh5rNjbQ1y1E9IpMzVfJcEouM6znr9u_ssWoKIHuEgBkQM-BTIDdWGju5BDg4D-EUkzBv73pPh6lAinTg-05beru81p2DGxvHMtpOzboA_oqGdufHMbG-dOdVGS3gexQuNONXA-TPjATW2dySMAEVa-ZXq6XXhB3ePKFEtNnUlSJrZWQhxttxbv-VRLIlH_oQb7AR73KA_HkinM3fiDdpapV7cCKOQ_Q3gPJ2aTRLdzT_iJR605deofqckhP75wlQrwO-Q4ugdncsgIVnOu29INKK0qO85WFMhOVxnsldcdiDrC0elZgIqg_7rG7boFSZEvUE7n6izXmzfTcdJuBz3mUqvptZdoFnWMdm0BnlhYyosgFmWZ7za4OK6kxTION7PkjDHTdhqn0860PT8D-MsWTHTBxkvICoPHZm-eSQEyNiZkhaF4XehtZKY0cd8BYpq2PCSkKN-ZnanCl4Ee9Sm437aFXznMnY2fXtcCHuIa8VlRRJzE0iZ9SkYs9Qiy6XCsiDis-MSLNKMDHoTlAIXhSSo-rFsQT3nn-Cen_nEdaS1urdvKO-9jqVXBZGDvqc5S-VpAAGPvaaxU4Dz5dN_pQfJKioxTn_kaghtL_E1ZdI0F3GmqZkeQnQ4xFMjLU3jNcaGqL8clhMzrkvlbC4ZLGbOdStEr=w1920-h973"
-            />
-            <meta httpEquiv="Content-Language" content="en" />
+            {/* Primary Meta Tags */}
+            <title>{pageTitle}</title>
+            <meta name="title" content={pageTitle} />
             <meta name="description" content={description} />
-            {asPath === "/" && <meta name="og:title" content="ESX Documentation" />|| <meta name="og:title" content={title + " - ESX-Framework"} />}
-            <meta name="og:description" content={description} />
-            <meta name="og:url" content={url} />
-            <meta name="og:type" content="website" />
-            <meta name="keywords" content={t.keywords} />
+            <meta name="keywords" content={keywords} />
+            <meta name="author" content="ESX Framework Team" />
+            <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+            <meta name="googlebot" content="index, follow" />
+            <link rel="canonical" href={canonicalUrl} />
+            
+            {/* Viewport and Mobile */}
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta name="format-detection" content="telephone=no" />
+            
+            {/* Language and Locale */}
+            <meta httpEquiv="Content-Language" content="en" />
+            <meta name="language" content="English" />
+            
+            {/* Favicon and Icons - Optimized */}
+            <link rel="icon" href="/favicon.ico" />
+            <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+            <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+            <link rel="manifest" href="/site.webmanifest" />
+            <meta name="theme-color" content="#ff6b35" />
+            
+            {/* Open Graph / Facebook */}
+            <meta property="og:type" content="website" />
+            <meta property="og:site_name" content="ESX Framework Documentation" />
+            <meta property="og:title" content={pageTitle} />
+            <meta property="og:description" content={description} />
+            <meta property="og:url" content={canonicalUrl} />
+            <meta property="og:image" content="https://docs.esx-framework.org/og-image.png" />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+            <meta property="og:image:type" content="image/png" />
+            <meta property="og:locale" content="en_US" />
+            
+            {/* Twitter Card */}
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:site" content="@ESXFramework" />
+            <meta name="twitter:creator" content="@ESXFramework" />
+            <meta name="twitter:title" content={pageTitle} />
+            <meta name="twitter:description" content={description} />
+            <meta name="twitter:image" content="https://docs.esx-framework.org/twitter-card.png" />
+            
+            {/* Additional SEO Meta Tags */}
+            <meta name="classification" content="Documentation" />
+            <meta name="category" content="Gaming, Development, FiveM" />
+            <meta name="coverage" content="Worldwide" />
+            <meta name="distribution" content="Global" />
+            <meta name="rating" content="General" />
+            <meta name="revisit-after" content="1 days" />
+            
+            {/* Structured Data JSON-LD */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "TechArticle",
+                        "headline": pageTitle,
+                        "description": description,
+                        "url": canonicalUrl,
+                        "datePublished": "2024-01-01",
+                        "dateModified": new Date().toISOString(),
+                        "author": {
+                            "@type": "Organization",
+                            "name": "ESX Framework Team",
+                            "url": "https://esx-framework.org"
+                        },
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "ESX Framework",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://docs.esx-framework.org/logo.png"
+                            }
+                        },
+                        "mainEntityOfPage": {
+                            "@type": "WebPage",
+                            "@id": canonicalUrl
+                        },
+                        "articleSection": "Documentation",
+                        "keywords": keywords,
+                        "inLanguage": "en-US"
+                    })
+                }}
+            />
             
             {/* Preconnect for performance */}
             <link rel="preconnect" href="https://www.googletagmanager.com" />
