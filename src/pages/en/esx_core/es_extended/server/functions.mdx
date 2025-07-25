@@ -390,6 +390,56 @@ This function gets all jobs from the database and updates the `ESX.Jobs` table.
 ESX.RefreshJobs()
 ```
 
+## AddItems
+This function adds new items to ESX.Items and the database. Items already registered will be skipped.
+
+> ⚠️ This function is only available if `Config.CustomInventory` is set to `false`.
+
+**Arguments**
+- `items`: `{ name: string, label: string, weight?: number, rare?: boolean, canRemove?: boolean }[]`  
+  - An array of item objects to add.
+    - `name`: Unique string identifier for the item.
+    - `label`: Display name for the item.
+    - `weight` (optional): Item weight. Defaults to `1`.
+    - `rare` (optional): Whether the item is rare. Defaults to `false`.
+    - `canRemove` (optional): Whether the item can be removed. Defaults to `true`.
+
+**Example**
+```lua
+ESX.AddItems({
+  {
+    name = 'energy_drink',
+    label = 'Energy Drink',
+    weight = 1,
+    rare = false,
+    canRemove = true
+  },
+  {
+    name = 'diamond_ring',
+    label = 'Diamond Ring',
+    weight = 2,
+    rare = true
+  }
+})
+```
+
+## RefreshItems
+This function reloads all items from the database into `ESX.Items` and updates the inventories of all online players accordingly.
+
+It ensures that every player's inventory is synchronized with the current state of the item list. Any items that no longer exist in the database will be removed from players' inventories.
+
+> ⚠️ This function is only available if `Config.CustomInventory` is set to `false`.
+
+**Returns**
+- `number`: The total number of items reloaded from the database.
+
+**Example**
+```lua
+-- Reload all items from the database and update inventories
+local newItemCount = ESX.RefreshItems()
+print(('Reloaded %s items from DB.'):format(newItemCount))
+```
+
 ## RegisterUsableItem
 This function registers a usable item.
 
