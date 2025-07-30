@@ -280,3 +280,20 @@ AddEventHandler('esx:setJob', function(source,job,lastJob)
     print("Player " .. source .. " changed job! New job name: " .. job.name .. " Last job name: " .. lastJob.name)
 end)
 ```
+
+### esx:jobsRefreshed
+This event is triggered when the jobs are refreshed.
+
+**See more:** [ESX.RefreshJobs()](/esx_core/es_extended/server/functions#refreshjobs)
+
+**Example**
+```lua 
+AddEventHandler('esx:jobsRefreshed', function()
+    local Job = 'police'
+    local Grade = 4
+  
+    if ESX.DoesJobExist(Job, Grade) then 
+      print("Job Exists")
+    end
+end)
+```
