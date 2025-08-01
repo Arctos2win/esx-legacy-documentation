@@ -147,3 +147,20 @@ Config.ValidCharacterSets = {
   ['zh-cn'] = true -- Allow CJK characters
 }
 ```
+
+### Identifier
+This config properties lets you decide what type of license should es_extended use to save player's character.
+
+**Available Options**
+
+[Fivem Documentation - GetPlayerIdentifiers](https://docs.fivem.net/docs/scripting-reference/runtimes/lua/functions/GetPlayerIdentifiers/)
+
+<Callout type="info">
+  Based on the `esx:identifier` convar.
+</Callout>
+
+**Example**
+server.cfg
+```lua
+setr esx:identifier "steam"
+```
