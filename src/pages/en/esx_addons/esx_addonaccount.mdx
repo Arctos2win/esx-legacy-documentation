@@ -40,11 +40,11 @@ An addon account must be configured in the `database` before using it. you **mus
     end)
     ```
 
-- Export: `exports['esx_addonaccount']:getAccount`
-    - Usage: `exports['esx_addonaccount']:getAccount(name, owner)`
+- Export: `exports['esx_addonaccount']:GetAccount`
+    - Usage: `exports['esx_addonaccount']:GetAccount(name, owner)`
     - Example:
     ```lua
-    local account = exports['esx_addonaccount']:getAccount('property_black_money', 'steam:0123456789')
+    local account = exports['esx_addonaccount']:GetAccount('property_black_money', 'steam:0123456789')
     account.addMoney(500))
     ```
 
@@ -59,10 +59,10 @@ An addon account must be configured in the `database` before using it. you **mus
     end)
     ```
 
-- Export: `exports['esx_addonaccount']:getSharedAccount`
-    - Usage: `exports['esx_addonaccount']:getSharedAccount(name)`
+- Export: `exports['esx_addonaccount']:GetSharedAccount`
+    - Usage: `exports['esx_addonaccount']:GetSharedAccount(name)`
     - Example:
     ```lua
-    local account = exports['esx_addonaccount']:getSharedAccount('society_realestateagent')
+    local account = exports['esx_addonaccount']:GetSharedAccount('society_realestateagent')
     account.addMoney(500)
     ```
