@@ -21,6 +21,7 @@ And can then accessed via ESX.PlayerData
         ped = PlayerPedId(),
         group = "user",
         identifier = "char1:1ee4f3096a4051f782385478ddd133f883114876",
+        ssn = "123-45-6789",
         inventory = {},
         job = {},
         loadout = {},
@@ -142,6 +143,21 @@ print("The player's identifier is: " .. xPlayer.identifier)
 **Client Example**
 ```lua 
 print("The player's identifier is: " .. ESX.PlayerData.identifier)
+```
+
+### ssn
+The player's unique Social Security Number (SSN).
+
+**Server Example**
+```lua
+local xPlayer = ESX.GetPlayerFromId(source)
+
+print("The player's SSN is: " .. xPlayer.ssn)
+``` 
+
+**Client Example**
+```lua
+print("The player's SSN is: " .. ESX.PlayerData.ssn)
 ```
 
 ### inventory

@@ -121,6 +121,19 @@ local xPlayer = ESX.GetPlayerFromId(playerId)
 local identifier = xPlayer.getIdentifier()
 ```
 
+### getSSN
+This function will return the player's Social Security Number (SSN).
+
+**Returns**
+
+The player's unique SSN in the format `XXX-XX-XXXX`.
+
+**Example** 
+```lua
+local xPlayer = ESX.GetPlayerFromId(playerId)
+print(xPlayer.getSSN()) -- e.g., "123-45-6789"
+```
+
 ### setName
 This function sets the name of the player.
 
