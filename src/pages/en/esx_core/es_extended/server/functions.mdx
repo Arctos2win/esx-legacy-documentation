@@ -164,7 +164,9 @@ end, false, {
 
 ## GetExtendedPlayers
 This function returns all loaded xPlayers and if a filter is applied that match the filter. 
-
+<Callout type="warning">
+    This is no longer the prefered method to handle ESX player objects. Please refer to [ESX.ExtendedPlayers](#extendedplayers)
+</Callout>
 **Arguments**
 - key?: `string`
   - The key to filter players from.
@@ -267,6 +269,33 @@ AddEventHandler('esx:onPlayerJoined', function ()
     
     print(("Welcome %s!"):format(xPlayer.getName()))
 end)
+```
+
+## ExtendedPlayers
+This function is the new preferred alternative to handle multiple ESX player objects at once. It returns lightweight tables containing only the players' serverIds. Subsequent function calls result in export calls, which can be more efficient than working with full xPlayer objects.
+
+**Arguments**
+- key: `string?`
+  - Optional filter key, e.g., `"job"`.
+- val?: `any`
+  - Optional value(s) to filter players by, e.g., `"police"` or `{"police", "ambulance"}`.
+
+**Returns**
+A table (or nested tables) of callable tables representing the xPlayer objects, which allow you to call player-related functions.
+
+**Example**
+```lua
+local groupedPlayers = ESX.ExtendedPlayers("job", { "ambulance", "police" }) --[[@as table<string, StaticPlayer[]>]]
+for group, players in pairs(groupedPlayers) do
+    for i, xPlayer in ipairs(players) do
+        print(group, xPlayer.getName())
+    end
+end
+
+local xPlayers = ESX.ExtendedPlayers() --[=[@as StaticPlayer[]]=]
+for i, xPlayer in ipairs(xPlayers) do
+    print(xPlayer.getName())
+end
 ```
 
 ## GetIdentifier
