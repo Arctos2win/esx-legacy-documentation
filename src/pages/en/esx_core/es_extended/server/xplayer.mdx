@@ -38,7 +38,7 @@ You can use more arguments like you would do in a classic TriggerEvent
 ```lua 
 local xPlayer = ESX.GetPlayerFromId(playerId) 
 
-xPlayer.triggerEvent('esx:showNotification', 'this is a notification', 'error', 4000) 
+xPlayer.triggerEvent('esx:showNotification', 'this is a notification', 'error', 4000, "Test title", "top-left") 
 ```
 
 ### getPlayTime
@@ -1107,12 +1107,16 @@ This function triggers a notification.
   - The type of the notification.
 - length: `number`
   - The length of the notification.
+- title: `string?`
+  - The title of the notification. Optional.
+- position: `string?`
+  - The position of the notification. Optional, defaults to middle-right.
 
 **Example**
 ```lua
 local xPlayer = ESX.GetPlayerFromId(playerId)
 
-xPlayer.showNotification("You have been invited to a round of DnD", "info", 3000)
+xPlayer.showNotification("You have been invited to a round of DnD", "info", 3000, "Test title", "top-left")
 ```
 
 ### showAdvancedNotification
