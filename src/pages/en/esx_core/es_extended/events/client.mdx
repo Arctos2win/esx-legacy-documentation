@@ -42,7 +42,7 @@ This event gets triggered when the player has finished loading
 
 **Example**
 ```lua
-AddEventHandler('esx:playerLoaded', function (xPlayer, skin)
+RegisterNetEvent('esx:playerLoaded', function (xPlayer, skin)
     print("The character " .. xPlayer.name .. " successfully loaded")
 end)
 ```
