@@ -36,18 +36,22 @@ ESX.UI.Menu.Open(type, namespace, name, data, onSelect, cancel )
   - name of the element
 - value: `number` | `string`
   - value of the element/slider
-- type: `string`
+- type: `slider` | `button` - default is button
   - Type of the element
 - min: `number`
   - minimum slider value
 - max: `number`
   - Maximum slider value
-
-**Locales**
-- backspace: `string`
-  - Backspace button label for the menu
-- select: `string`
-  - Select button label for the menu
+- disableRightArrow?: boolean
+  - Disables right arrow icon for buttons
+- unselectable?: boolean
+  - Makes the menu element not selectable
+- usable?: boolean
+  - Makes the menu element not usable
+- options?: string[]
+  - Allows to use options instead of numbers in slider
+- icon?: string
+  - Icon next to the text
 
 ### onSelect
 
@@ -89,16 +93,10 @@ end
         {label = '<span style="color:green;">HEY! IM GREEN!/span>', name = "geen_element"}
       }
 
-    local Locales = {
-      backspace = "Back",
-      select = "Select"
-    }
-
       ESX.UI.Menu.Open("default", GetCurrentResourceName(), "Example_Menu", {
         title = "Example Menu", -- The Name of Menu to show to users,
-        align    = 'top-left', -- top-left | top-right | bottom-left | bottom-right | center |
+        align = "top-left" | "top-right" | "bottom-left" | "bottom-right" | "center" | "left-center" | "right-center"
         elements = Elements, -- define elements as the pre-created table
-        locales = Locales -- define optional button locales as the pre-created table
       }, function(data,menu) -- OnSelect Function
         --- for a simple element
         if data.current.name == "element1" then
