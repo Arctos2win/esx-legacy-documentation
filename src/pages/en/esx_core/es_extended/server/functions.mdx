@@ -121,7 +121,7 @@ This function registers a command.
 
 **Arguments**
 - name: `string` | `table`
-  - The name of the command.
+  - The name of the command, or a list of aliases.
 - group: `string` | `table`
   - The group able to run this command.
 - cb: `function`
@@ -133,7 +133,7 @@ This function registers a command.
   - showError: `function`
     - The function to show an error message to the player.
 - allowConsole?: `boolean`
-  - If the command should be allowed to be run from the console?
+  - If the command should be allowed to be run from the console.
 - suggestion?: `table`
   - The suggestion that gets added to the chat.
   - help: `string`
@@ -146,6 +146,11 @@ This function registers a command.
       - Explanation of the argument.
     - type: `string`
       - Type of the argument. Possible Types: number, playerId, string, item, weapon, any, merge, coordinate.
+    - Validator?: `table` Optional validation table for the argument.
+      - validate: `function`
+        - A validator function that gets the input passed as a param. Must return `true` or `false`.
+      - err?: `string`
+        - Optional error message if `validate` function is provided and returns false.
 
 **Example**
 ```lua
@@ -157,7 +162,11 @@ end, false, {
     arguments = {
         name = 'radius', 
         help = _U('command_cardel_radius'), 
-        type = 'any'
+        type = 'any',
+        Validator = {
+            validate = function(x) return x > 0 end,
+            err = _U('commanderror_argumentmismatch_positive_number', 'radius')
+        }
     }
 })
 ```
