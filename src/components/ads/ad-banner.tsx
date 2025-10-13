@@ -62,7 +62,7 @@ export function AdBanner() {
               padding: 12px 0;
               margin-bottom: 16px;
             ">
-              <a href="${process.env.NEXT_PUBLIC_PARTNER_URL || 'https://example-partner.com'}" target="_blank" rel="noopener noreferrer" 
+              <a href="${process.env.NEXT_PUBLIC_PARTNER_URL || 'https://example-partner.com'}" target="_blank" rel="noopener" 
                  onclick="if(window.trackAdClick) window.trackAdClick('header', 'partner_banner');" 
                  style="
                 display: block;
