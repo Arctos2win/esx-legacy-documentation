@@ -54,30 +54,42 @@ export function AdBanner() {
         const img = new Image();
         img.onload = function() {
           // Image exists, show without border
-          topAdDiv.innerHTML = `
+            topAdDiv.innerHTML = `
             <div style="
               display: flex;
+              flex-direction: column;
               justify-content: flex-start;
-              align-items: center;
+              align-items: flex-start;
               padding: 12px 0;
               margin-bottom: 16px;
             ">
               <a href="${process.env.NEXT_PUBLIC_PARTNER_URL || 'https://example-partner.com'}" target="_blank" rel="noopener" 
-                 onclick="if(window.trackAdClick) window.trackAdClick('header', 'partner_banner');" 
-                 style="
-                display: block;
-                max-width: 728px;
-                width: 100%;
+               onclick="if(window.trackAdClick) window.trackAdClick('header', 'partner_banner');" 
+               style="
+              display: block;
+              max-width: 728px;
+              width: 100%;
               ">
-                <img src="/ads/partner-banner.gif" alt="Partner Advertisement" style="
-                  width: 100%;
-                  height: auto;
-                  max-height: 90px;
-                  object-fit: contain;
-                "/>
+              <img src="/ads/partner-banner.gif" alt="Partner Advertisement" style="
+                width: 100%;
+                height: auto;
+                max-height: 90px;
+                object-fit: contain;
+              "/>
               </a>
+              <div style="margin-top: 10px; font-size: 15px; color: var(--nextra-text);">
+                <p>
+                  <strong style="color: #f59e0b; font-weight: 600;">Sponsored by:</strong>
+                </p>
+                <p>
+                  Kingmaps is the best store offering various <a href="https://kingmaps.net/" target="_blank" rel="noopener" style="color: #f59e0b; font-weight: 600; text-decoration: underline;">FiveM Maps</a> for your FiveM Server.
+                  <a href="https://kingmaps.net/" target="_blank" rel="noopener" style="color: #f59e0b; font-weight: 600; text-decoration: underline;">
+                    Click here to see more
+                  </a>
+                </p>
+              </div>
             </div>
-          `;
+            `;
           
           // Track impression
           setTimeout(() => {
