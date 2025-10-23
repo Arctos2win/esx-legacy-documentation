@@ -479,6 +479,23 @@ else
 end
 ```
 
+### updatePlayerData
+This function notifies the client about a player data update by triggering the `esx:updatePlayerData` event.  
+It is used internally by other functions like `set`, `setMeta`, and `clearMeta`, but can also be called manually if needed.
+
+**Arguments**
+- key: `string`  
+  - The key that was updated (e.g., `job`, `accounts`, or any custom key).
+- value: `any`  
+  - The new value to send to the client.
+
+**Example**
+```lua
+local xPlayer = ESX.Player(playerId)
+
+xPlayer.updatePlayerData('cool', false)
+```
+
 ## Weapon Functions
 
 ### getLoadout
