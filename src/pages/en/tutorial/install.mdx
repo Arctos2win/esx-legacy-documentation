@@ -1,0 +1,99 @@
+import { Callout } from 'nextra/components';
+
+# How to Install ESX Framework
+
+This guide will walk you through installing ESX Legacy using txAdmin, the recommended way to set up a FiveM server with the framework.
+
+## Prerequisites
+
+Before installing ESX, ensure you have:
+
+- A cfx.re account (create one at [cfx.re](https://cfx.re/))
+- MariaDB installed ([download here](https://mariadb.org/download/))
+
+<Callout type="warning">
+**Do NOT use XAMPP** - it's unstable, outdated, and can cause data loss in production. Use MariaDB instead.
+</Callout>
+
+## Step 1: Download FiveM Server Artifacts
+
+1. Go to [https://artifacts.jgscripts.com](https://artifacts.jgscripts.com)
+   ![Artifacts Preview](/tutorial-images/artifactspreview.png)
+2. Click on Windows, and it'll automatically download the latest server artifacts
+   ![Server Artifacts Download](/tutorial-images/server7z.png)
+3. Extract the server folder to an appropriate location (recommended: `Documents/FiveM Server`)
+   ![Extract Server Files](/tutorial-images/extract.png)
+   - Choose this location carefully as moving it later can be difficult
+
+## Step 2: Run the Server Setup
+
+1. In the server folder, scroll down and find `fxserver.exe`
+   ![FXServer Executable](/tutorial-images/fxserver.png)
+2. Run `fxserver.exe` (if antivirus flags it as a false positive, allow it to run)
+3. This will open a new tab in your browser
+4. Click "Link Account" to connect your cfx.re account
+   ![Link Account](/tutorial-images/linkacc.png)
+5. If you don't have a cfx.re account, create one first
+6. Create a backup password in case you get logged out of your cfx.re account
+   ![Create Backup Password](/tutorial-images/backuppass.png)
+7. Click "Next"
+
+## Step 3: Configure Server Basics
+
+1. Provide a server name (this will show in the FiveM server list)
+   ![Server Name Configuration](/tutorial-images/esxservername.png)
+2. For deployment type, click "Popular Recipes"
+   ![Popular Recipes Selection](/tutorial-images/popularrecipes.png)
+3. Select "ESX Legacy" from the recipes
+   ![ESX Legacy Recipe](/tutorial-images/esxlegacyrecipe.png)
+4. Use the recommended path that txAdmin suggests for your resource files, or set it to your preferred location
+   ![Recommended Resource Path](/tutorial-images/recompath.png)
+
+## Step 4: Database Setup
+
+<Callout type="error">
+**Do NOT use XAMPP for your database!** It's unstable, outdated, and can cause data loss in production. Use MariaDB instead.
+</Callout>
+
+1. **Before going to Recipe Deployer, ensure MariaDB is installed** ([download here](https://mariadb.org/download/))
+2. Go to Recipe Deployer
+   ![Go to Recipe Deployer](/tutorial-images/gotorecipedeployer.png)
+3. Follow the prompts to set up your database connection
+
+## Step 5: License Key Setup
+
+1. On the review recipe page, you'll need to provide a cfx license key
+   ![Review Recipe Page](/tutorial-images/reviewrecipe.png)
+2. Go to [https://portal.cfx.re/servers/registration-keys](https://portal.cfx.re/servers/registration-keys)
+3. Create a new key and copy it
+4. Paste the license key into txAdmin
+5. Click "Next"
+
+<Callout type="error">
+**Never share your cfx license keys with anyone!** License keys are tied to your account and should remain private. Sharing them can compromise your server security and violate cfx.re terms of service.
+</Callout>
+
+## Step 6: Deploy and Configure
+
+1. Click "Run Recipe" to deploy ESX Legacy
+2. Configure your `server.cfg` as desired
+3. Click "Next" - your server is now set up!
+   ![Setup Complete](/tutorial-images/done.png)
+
+## Common Issues
+
+- **Antivirus blocking fxserver.exe**: This is a false positive - allow it to run
+- **Database connection failed**: Ensure MariaDB is properly installed and running
+- **License key errors**: Make sure you're using a valid key from your cfx.re portal
+- **XAMPP issues**: Never use XAMPP for production servers - it's unstable and can cause data loss
+
+## Next Steps
+
+Once ESX is installed via txAdmin, you can:
+
+- Access txAdmin at the provided URL for server management
+- Add additional jobs, vehicles, and scripts
+- Join your server from the FiveM client
+
+
+For more detailed configuration of individual ESX addons, check the documentation sections on this site.
