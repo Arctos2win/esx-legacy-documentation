@@ -82,10 +82,7 @@ export function AdBanner() {
                   <strong style="color: #f59e0b; font-weight: 600;">Sponsored by:</strong>
                 </p>
                 <p>
-                  Kingmaps is the best store offering various <a href="https://kingmaps.net/" target="_blank" rel="noopener" style="color: #f59e0b; font-weight: 600; text-decoration: underline;">FiveM Maps</a> for your FiveM Server.
-                  <a href="https://kingmaps.net/" target="_blank" rel="noopener" style="color: #f59e0b; font-weight: 600; text-decoration: underline;">
-                    Click here to see more
-                  </a>
+                  AD DESCRIPTION GOES HERE
                 </p>
               </div>
             </div>
