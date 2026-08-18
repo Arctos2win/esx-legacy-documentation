@@ -32,5 +32,6 @@ export default {
     esx_lscustom: "LS Custom",
     esx_datastore: "Datastore",
     esx_optionalneeds: "Optional Needs",
+    esx_adminmenu: "Admin Menu",
 
 };
