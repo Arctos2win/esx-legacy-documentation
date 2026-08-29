@@ -1,0 +1,12 @@
+import { TOOLS } from '../../data/tools'
+import { Card } from '../../components/card'
+
+# Tools
+
+These tools are a collection of online tools with a free tier that can be used to help you with developing your FiveM server.
+
+<div className="_flex _flex-wrap _gap-4 _my-6 _align-center _justify-center">
+  {TOOLS.map((tool) => (
+    <Card key={tool.text} icon={tool.icon} url={tool.url} text={tool.text} external={true} />
+  ))}
+</div>
