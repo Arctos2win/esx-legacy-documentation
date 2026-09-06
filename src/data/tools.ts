@@ -16,6 +16,7 @@ export const TOOLS = [
     },
     {
         icon:"https://plebmasters.de/brandkit/smartmerge/smart-merge-icon-blue-white-512.png",
+        lightIcon:"https://plebmasters.de/brandkit/smartmerge/smart-merge-icon-blue-black-1000.png",
         url: "https://smartmerge.de/",
         text: "Smart Merge V"
     },

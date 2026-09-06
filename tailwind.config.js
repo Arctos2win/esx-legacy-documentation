@@ -4,7 +4,7 @@ export default {
     "./src/pages/**/*.{js,ts,jsx,tsx,md,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,md,mdx}",
   ],
-  darkMode: "class",
+  darkMode:"class",
   prefix: "_",
   theme: {
     extend: {},
